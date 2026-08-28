@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import PlatformCard from '../../components/PlatformCard.astro';
+import FilterTabs from '../../components/FilterTabs.astro';
+import { getPlatforms, CATEGORY_LABEL } from '../../lib/data';
+
+const platforms = getPlatforms();
+const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
+  (key) => ({ key, label: CATEGORY_LABEL[key] })
+);
+---
+
+<Base
+  title="免费大模型 API 资源库 - 注册送 Token / 永久免费模型 | iGetToken"
+  description="收录国内大厂与海外平台的免费大模型 API：智谱、硅基流动、阿里百炼、Kimi、Groq、Gemini、OpenRouter。每条附额度明细、领取步骤与核实日期。"
+>
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">免费资源库</h1>
+    <p class="mt-2 text-slate-500">
+      共 {platforms.length} 个平台。每条都标注最后核实日期，额度以官方页面为准；发现失效欢迎反馈。
+    </p>
+
+    <div class="mt-6">
+      <FilterTabs targetId="models-grid" groups={groups} />
+    </div>
+
+    <div id="models-grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        platforms.map((p) => (
+          <div data-category={p.category}>
+            <PlatformCard platform={p} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-5 text-sm text-slate-500">
+      <p class="font-medium text-slate-700">更多平台收录中</p>
+      <p class="mt-2">
+        火山引擎（豆包）· 讯飞星火 · MiniMax · 七牛云 · 百度千帆 · 腾讯混元 · GitHub Models · Cerebras · SambaNova
+      </p>
+    </div>
+  </section>
+</Base>

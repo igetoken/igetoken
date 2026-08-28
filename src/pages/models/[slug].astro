@@ -1,0 +1,159 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import Callout from '../../components/Callout.astro';
+import DealCard from '../../components/DealCard.astro';
+import { getPlatforms, getPlatformBySlug, getDealsByPlatform, OFFER_TYPE_LABEL, CATEGORY_LABEL } from '../../lib/data';
+
+export function getStaticPaths() {
+  return getPlatforms().map((platform) => ({
+    params: { slug: platform.slug },
+    props: { platform },
+  }));
+}
+
+const { platform } = Astro.props as { platform: ReturnType<typeof getPlatformBySlug> };
+const relatedDeals = getDealsByPlatform(platform.slug);
+const all = getPlatforms();
+const idx = all.findIndex((p) => p.slug === platform.slug);
+const prev = all[(idx - 1 + all.length) % all.length];
+const next = all[(idx + 1) % all.length];
+const verifiedShort = platform.last_verified.replace(/-/g, '/');
+
+const curlExample = `curl ${platform.api_base}/chat/completions \\
+  -H "Content-Type: application/json" \\
+  -H "Authorization: Bearer $API_KEY" \\
+  -d '{
+    "model": "${platform.example_model}",
+    "messages": [{"role": "user", "content": "你好，介绍一下你自己"}]
+  }'`;
+
+const pythonExample = `from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ["API_KEY"],
+    base_url="${platform.api_base}",
+)
+
+resp = client.chat.completions.create(
+    model="${platform.example_model}",
+    messages=[{"role": "user", "content": "你好，介绍一下你自己"}],
+)
+print(resp.choices[0].message.content)`;
+---
+
+<Base
+  title={`${platform.name} 免费 Token 领取攻略（2026 最新） | iGetToken`}
+  description={`${platform.name}：${platform.highlight}。附领取步骤、调用示例、坑点提醒，最后核实于 ${verifiedShort}。`}
+>
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <nav class="text-sm text-slate-400">
+      <a href="/models/" class="hover:text-emerald-700">资源库</a>
+      <span class="mx-1">/</span>
+      <span class="text-slate-600">{CATEGORY_LABEL[platform.category]}</span>
+    </nav>
+
+    <!-- 头部 -->
+    <div class="mt-4 flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-black text-slate-900">{platform.name}</h1>
+        <p class="mt-2 text-slate-500">{platform.tagline}</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2">
+        <Badge variant="verified" label={`${verifiedShort} 已核实`} />
+        <a
+          href={platform.website}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
+        >
+          前往官方平台 ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- 额度速览 -->
+    <h2 class="mt-10 text-xl font-bold text-slate-900">额度速览</h2>
+    <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+      {
+        platform.offers.map((offer) => (
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 px-5 py-4 last:border-b-0">
+            <div>
+              <p class="font-medium text-slate-900">{offer.model}</p>
+              <p class="mt-0.5 text-sm text-slate-500">{offer.quota}</p>
+            </div>
+            <span class="rounded-md bg-emerald-600/10 px-2.5 py-1 text-xs font-medium text-emerald-700">
+              {OFFER_TYPE_LABEL[offer.type] ?? offer.type}
+            </span>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- 领取步骤 -->
+    <h2 class="mt-10 text-xl font-bold text-slate-900">领取步骤</h2>
+    <ol class="mt-4 space-y-3">
+      {
+        platform.steps.map((step, i) => (
+          <li class="flex gap-3 rounded-xl border border-slate-200 bg-white p-4">
+            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
+              {i + 1}
+            </span>
+            <span class="text-sm leading-relaxed text-slate-700">{step}</span>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- 怎么用 -->
+    <h2 class="mt-10 text-xl font-bold text-slate-900">怎么用</h2>
+    <p class="mt-2 text-sm text-slate-500">
+      接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
+      示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
+    </p>
+    <div class="mt-4 grid gap-4 md:grid-cols-2">
+      <div>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">cURL</p>
+        <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{curlExample}</code></pre>
+      </div>
+      <div>
+        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Python（openai SDK）</p>
+        <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{pythonExample}</code></pre>
+      </div>
+    </div>
+    <p class="mt-3 text-sm text-slate-500">
+      喜欢图形界面？看教程<a href="/tutorials/cherry-studio-setup/" class="font-medium text-emerald-700 hover:underline">《领取第一个免费 Key 并接入 Cherry Studio》</a>。
+      API 文档：<a href={platform.docs_url} target="_blank" rel="noopener noreferrer" class="font-medium text-emerald-700 hover:underline">{platform.docs_url} ↗</a>
+    </p>
+
+    <!-- 坑点 -->
+    <div class="mt-10">
+      <Callout type="warn" title="坑点提醒">
+        <ul class="list-disc space-y-1 pl-4">
+          {platform.pitfalls.map((pit) => <li>{pit}</li>)}
+        </ul>
+      </Callout>
+    </div>
+
+    <!-- 相关活动 -->
+    {
+      relatedDeals.length > 0 && (
+        <div class="mt-10">
+          <h2 class="text-xl font-bold text-slate-900">📌 该平台的活动快讯</h2>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            {relatedDeals.map((deal) => (
+              <DealCard deal={deal} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- 上下篇 -->
+    <div class="mt-12 flex justify-between border-t border-slate-100 pt-6 text-sm">
+      <a href={`/models/${prev.slug}/`} class="text-emerald-700 hover:underline">← {prev.name}</a>
+      <a href={`/models/${next.slug}/`} class="text-emerald-700 hover:underline">{next.name} →</a>
+    </div>
+  </section>
+</Base>

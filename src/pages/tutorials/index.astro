@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const tutorials = (await getCollection('tutorials')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const formatDate = (d: Date) => d.toISOString().slice(0, 10);
+---
+
+<Base
+  title="保姆级教程 - 免费 Token 从领取到调用 | iGetToken"
+  description="手把手教程：如何领取免费 API Key、如何配置 Cherry Studio 等客户端、如何用 Python 调用免费大模型、免费平台怎么选。"
+>
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">保姆级教程</h1>
+    <p class="mt-2 text-slate-500">从「怎么领」到「怎么用」，每一步都有截图级细节。</p>
+
+    <div class="mt-8 space-y-4">
+      {
+        tutorials.map((t) => (
+          <a
+            href={`/tutorials/${t.id}/`}
+            class="block rounded-xl border border-slate-200 bg-white p-6 transition hover:border-emerald-300 hover:shadow-md"
+          >
+            <div class="flex flex-wrap items-center gap-2 text-xs text-slate-400">
+              <time datetime={formatDate(t.data.pubDate)}>{formatDate(t.data.pubDate)}</time>
+              {t.data.tags.map((tag) => (
+                <span class="rounded-md bg-slate-100 px-2 py-0.5 text-slate-600">{tag}</span>
+              ))}
+            </div>
+            <h2 class="mt-2 text-lg font-bold text-slate-900">{t.data.title}</h2>
+            <p class="mt-1.5 text-sm text-slate-500">{t.data.description}</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

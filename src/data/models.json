@@ -1,0 +1,200 @@
+[
+  {
+    "slug": "zhipu",
+    "name": "智谱AI（BigModel）",
+    "category": "domestic",
+    "website": "https://bigmodel.cn",
+    "register_url": "https://bigmodel.cn",
+    "docs_url": "https://docs.bigmodel.cn",
+    "tagline": "GLM 系列模型官方开放平台，免费力度国内第一梯队",
+    "highlight": "新用户注册送 2000 万 Token，GLM-4-Flash 永久免费",
+    "tags": ["注册送", "永久免费", "国内直连"],
+    "offers": [
+      { "model": "GLM-4-Flash", "quota": "永久免费不限量（限约 30 并发）", "type": "permanent" },
+      { "model": "全系模型体验包", "quota": "新用户注册送 2000 万 Token（时效以控制台为准）", "type": "signup" }
+    ],
+    "steps": [
+      "打开 bigmodel.cn，手机号注册并登录",
+      "按需完成实名认证（部分权益与更高额度需要）",
+      "进入控制台 →「API 密钥」→ 创建并复制 API Key",
+      "用下方调用示例或客户端配置接入，先拿 GLM-4-Flash 免费练手"
+    ],
+    "pitfalls": [
+      "GLM-4-Flash 免费但有并发限制，高峰期可能限流",
+      "2000 万体验包有有效期，在控制台注意到期时间，别攒着不用",
+      "网页版聊天的额度与 API Token 是两套体系，别混淆"
+    ],
+    "api_base": "https://open.bigmodel.cn/api/paas/v4",
+    "example_model": "glm-4-flash",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "siliconflow",
+    "name": "硅基流动 SiliconFlow",
+    "category": "domestic",
+    "website": "https://siliconflow.cn",
+    "register_url": "https://cloud.siliconflow.cn",
+    "docs_url": "https://docs.siliconflow.cn",
+    "tagline": "开源模型聚合平台，100+ 开源模型一个 Key 调用",
+    "highlight": "注册送 ¥14 赠金（约 2000 万 Token），部分小模型永久免费",
+    "tags": ["注册送", "永久免费", "开源模型全"],
+    "offers": [
+      { "model": "免费专区小模型（如 Qwen 7B 级别）", "quota": "永久免费调用", "type": "permanent" },
+      { "model": "平台赠金", "quota": "注册送 ¥14 赠金，可用于付费模型（有效期以官方为准）", "type": "credit" }
+    ],
+    "steps": [
+      "打开 cloud.siliconflow.cn 注册账号",
+      "完成实名认证，领取新人赠金",
+      "左侧「API 密钥」→ 新建并复制",
+      "接口完全兼容 OpenAI 格式，填入 base_url 即可用"
+    ],
+    "pitfalls": [
+      "永久免费的模型名单会调整，调不通先查最新模型列表",
+      "赠金有有效期，注意账单页的到期提示",
+      "平台会发分时段定价调整公告，充值前看一眼更新公告"
+    ],
+    "api_base": "https://api.siliconflow.cn/v1",
+    "example_model": "Qwen/Qwen2.5-7B-Instruct",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "bailian",
+    "name": "阿里云百炼",
+    "category": "domestic",
+    "website": "https://www.aliyun.com/product/bailian",
+    "register_url": "https://bailian.console.aliyun.com",
+    "docs_url": "https://help.aliyun.com/zh/model-studio/",
+    "tagline": "阿里官方大模型平台，Qwen 系列第一入口",
+    "highlight": "新用户每款模型 100 万 Token 免费额度（90 天）",
+    "tags": ["注册送", "大厂", "模型多"],
+    "offers": [
+      { "model": "Qwen 系列等各模型", "quota": "新用户每款模型 100 万 Token，90 天内有效，按模型独立发放", "type": "signup" },
+      { "model": "学生认证福利", "quota": "学生身份可领 300 元无门槛代金券（活动，以官方为准）", "type": "credit" }
+    ],
+    "steps": [
+      "注册阿里云账号并完成实名认证",
+      "进入百炼控制台，开通「模型服务」",
+      "在 API-KEY 管理页创建 Key",
+      "在模型广场查看各模型剩余免费额度"
+    ],
+    "pitfalls": [
+      "免费额度按模型独立发放、不能跨模型合并使用",
+      "额度 90 天有效，建议先集中调用量大的模型",
+      "必须先在控制台开通对应模型服务，否则报错"
+    ],
+    "api_base": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+    "example_model": "qwen-plus",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "kimi",
+    "name": "月之暗面 Kimi（Moonshot）",
+    "category": "domestic",
+    "website": "https://platform.moonshot.cn",
+    "register_url": "https://platform.moonshot.cn",
+    "docs_url": "https://platform.moonshot.cn/docs",
+    "tagline": "长文本见长的国产模型，API 平台送现金额度",
+    "highlight": "注册认证送 15 元平台额度",
+    "tags": ["注册送", "长文本"],
+    "offers": [
+      { "model": "平台现金额度", "quota": "注册并完成认证送 15 元，按调用计费抵扣", "type": "credit" }
+    ],
+    "steps": [
+      "打开 platform.moonshot.cn 注册登录",
+      "完成用户认证领取赠送额度",
+      "「API Key 管理」→ 新建并复制",
+      "兼容 OpenAI 接口，改 base_url 即可接入"
+    ],
+    "pitfalls": [
+      "15 元按 token 计费，长文档场景消耗很快，先小规模试",
+      "赠送额度规则以官方页面实时为准"
+    ],
+    "api_base": "https://api.moonshot.cn/v1",
+    "example_model": "moonshot-v1-8k",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "groq",
+    "name": "Groq",
+    "category": "overseas",
+    "website": "https://groq.com",
+    "register_url": "https://console.groq.com",
+    "docs_url": "https://console.groq.com/docs",
+    "tagline": "全球最快的推理速度，开源模型免费层",
+    "highlight": "每日免费请求额度，无需信用卡",
+    "tags": ["免费层", "无需绑卡", "速度极快"],
+    "offers": [
+      { "model": "Llama / Qwen 等开源模型", "quota": "免费层每日请求额度 + RPM/TPM 限额，个人开发测试够用", "type": "daily" }
+    ],
+    "steps": [
+      "打开 console.groq.com 注册（Google 账号可直接登录）",
+      "左侧「API Keys」→ Create API Key",
+      "接口兼容 OpenAI 格式，base_url 换成 Groq 的即可",
+      "注意免费层的速率限制，控制并发"
+    ],
+    "pitfalls": [
+      "免费层有 RPM/TPM 和每日上限，不适合批量任务",
+      "国内直连不稳定，需要良好的网络条件",
+      "支持的模型上下线较快，调用前看模型列表"
+    ],
+    "api_base": "https://api.groq.com/openai/v1",
+    "example_model": "llama-3.3-70b-versatile",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "gemini",
+    "name": "Google Gemini API",
+    "category": "overseas",
+    "website": "https://ai.google.dev",
+    "register_url": "https://aistudio.google.com",
+    "docs_url": "https://ai.google.dev/gemini-api/docs",
+    "tagline": "多模态能力强，免费层不需要信用卡",
+    "highlight": "免费层无需绑卡，Flash 系列模型免费用",
+    "tags": ["免费层", "无需绑卡", "多模态"],
+    "offers": [
+      { "model": "Gemini Flash 系列免费层", "quota": "每分钟/每日请求数限额内免费，支持图文多模态", "type": "daily" }
+    ],
+    "steps": [
+      "打开 Google AI Studio（aistudio.google.com）登录 Google 账号",
+      "「Get API key」→ Create API key",
+      "可用官方 SDK，或走 OpenAI 兼容端点接入",
+      "在文档中确认当前免费层可用的模型与限额"
+    ],
+    "pitfalls": [
+      "免费层的数据可能被用于改进模型，敏感数据别用免费层",
+      "限额按模型分别计算，超限返回 429",
+      "国内访问需要合适的网络环境"
+    ],
+    "api_base": "https://generativelanguage.googleapis.com/v1beta/openai/",
+    "example_model": "gemini-2.5-flash",
+    "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "openrouter",
+    "name": "OpenRouter",
+    "category": "aggregator",
+    "website": "https://openrouter.ai",
+    "register_url": "https://openrouter.ai",
+    "docs_url": "https://openrouter.ai/docs",
+    "tagline": "全球最大的模型聚合平台，一个 Key 调数百个模型",
+    "highlight": "免费模型每天 50 次调用，充 $10 升到 1000 次/天",
+    "tags": ["聚合", "免费模型多", "英文站"],
+    "offers": [
+      { "model": "带 :free 后缀的模型", "quota": "未充值每天 50 次免费调用；累计充值 $10 后升至每天 1000 次", "type": "daily" }
+    ],
+    "steps": [
+      "打开 openrouter.ai 注册账号",
+      "「Keys」→ Create Key",
+      "在 Models 页筛选 :free 后缀的免费模型",
+      "OpenAI 兼容接口，base_url 指向 openrouter.ai/api/v1"
+    ],
+    "pitfalls": [
+      "免费模型高峰期限流、排队常见，重要任务留好备选",
+      "部分免费模型会记录请求数据，敏感内容注意",
+      "免费模型质量参差，换模型前先小样本测试"
+    ],
+    "api_base": "https://openrouter.ai/api/v1",
+    "example_model": "meta-llama/llama-3.3-70b-instruct:free",
+    "last_verified": "2026-08-28"
+  }
+]

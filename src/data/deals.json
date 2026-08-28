@@ -1,0 +1,188 @@
+[
+  {
+    "id": "2026-08-zhipu-signup-20m",
+    "date": "2026-08-10",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱 AI 新用户注册送 2000 万 Token 体验包",
+    "type": "signup_bonus",
+    "reward": "2000 万 Token（全系模型可用）",
+    "eligibility": "新注册用户，部分权益需实名认证",
+    "deadline": null,
+    "howto": [
+      "注册 bigmodel.cn 账号",
+      "控制台领取新人体验包",
+      "创建 API Key 开始调用"
+    ],
+    "summary": "长期有效的注册福利，额度时效以控制台展示为准，建议注册后尽快使用。",
+    "source": "https://bigmodel.cn",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-siliconflow-signup-14",
+    "date": "2026-08-12",
+    "platform_slug": "siliconflow",
+    "platform_name": "硅基流动 SiliconFlow",
+    "title": "硅基流动注册送 ¥14 赠金，免费模型长期可用",
+    "type": "signup_bonus",
+    "reward": "¥14 赠金 + 免费专区小模型",
+    "eligibility": "新注册用户，需实名认证",
+    "deadline": null,
+    "howto": [
+      "注册 cloud.siliconflow.cn",
+      "完成实名认证自动到账赠金",
+      "免费专区模型（7B 级别）无需赠金直接调"
+    ],
+    "summary": "赠金可用于 DeepSeek、Qwen 等付费模型；免费专区小模型不消耗赠金。",
+    "source": "https://www.siliconflow.cn/news",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-aliyun-token-promo",
+    "date": "2026-08-18",
+    "platform_slug": "bailian",
+    "platform_name": "阿里云百炼",
+    "title": "阿里云推出六大 Token 优惠活动，折扣券最低可至 5.3 折",
+    "type": "limited_time",
+    "reward": "7.5 折折扣券、代金券等，叠加后最低约 5.3 折",
+    "eligibility": "阿里云账号，部分券限量领取",
+    "deadline": "未知，建议尽快领取",
+    "howto": [
+      "进入阿里云百炼活动页",
+      "领取折扣券/代金券",
+      "购买对应模型 Token 包时自动抵扣"
+    ],
+    "summary": "适合已有付费需求的用户囤券；免费额度与优惠券相互独立。",
+    "source": "https://www.aliyun.com/notice/list",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-minimax-signup-10m",
+    "date": "2026-08-15",
+    "platform_slug": "",
+    "platform_name": "MiniMax 开放平台",
+    "title": "MiniMax 新用户注册即送 1000 万 Token",
+    "type": "signup_bonus",
+    "reward": "1000 万 Token（覆盖 MiniMax-M 系列模型）",
+    "eligibility": "新注册用户",
+    "deadline": null,
+    "howto": [
+      "注册 MiniMax 开放平台",
+      "创建 API Key",
+      "额度自动发放，直接调用"
+    ],
+    "summary": "平台详情页收录中，可先通过官方平台直接领取。",
+    "source": "https://www.minimaxi.com",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-qiniu-gift-3m",
+    "date": "2026-08-14",
+    "platform_slug": "",
+    "platform_name": "七牛云",
+    "title": "七牛云新手礼包：300 万 Token 调 50+ 全球模型",
+    "type": "signup_bonus",
+    "reward": "300 万 Token 礼包（一个 API 调用 50+ 模型）",
+    "eligibility": "新注册用户",
+    "deadline": null,
+    "howto": [
+      "注册七牛云账号",
+      "在控制台领取新手礼包",
+      "创建 API Key 使用"
+    ],
+    "summary": "聚合网关型福利，适合想用一个 Key 试多家模型的用户。",
+    "source": "https://www.qiniu.com",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-bailian-signup-1m",
+    "date": "2026-08-08",
+    "platform_slug": "bailian",
+    "platform_name": "阿里云百炼",
+    "title": "百炼新用户：每款模型 100 万 Token 免费（90 天）",
+    "type": "signup_bonus",
+    "reward": "每款模型独立 100 万 Token",
+    "eligibility": "新开通模型服务的阿里云用户",
+    "deadline": null,
+    "howto": [
+      "注册阿里云并实名",
+      "开通百炼模型服务",
+      "各模型额度在模型广场查看"
+    ],
+    "summary": "额度按模型独立发放、90 天有效，不能跨模型合并，建议按用量规划。",
+    "source": "https://help.aliyun.com/zh/model-studio/new-free-quota",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-xunfei-verify-500k",
+    "date": "2026-08-06",
+    "platform_slug": "",
+    "platform_name": "讯飞开放平台",
+    "title": "讯飞星火：实名认证加赠 50 万 Token（30 天有效）",
+    "type": "verify_bonus",
+    "reward": "50 万 Token 额外包",
+    "eligibility": "完成实名认证的新用户",
+    "deadline": null,
+    "howto": [
+      "注册讯飞开放平台",
+      "领取基础免费包",
+      "完成实名认证加赠 50 万 Token"
+    ],
+    "summary": "Spark Lite 模型本身永久免费，加赠额度可用于更高配模型。",
+    "source": "https://www.xfyun.cn",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-siliconflow-price-peak",
+    "date": "2026-08-20",
+    "platform_slug": "siliconflow",
+    "platform_name": "硅基流动 SiliconFlow",
+    "title": "价格变动提醒：DeepSeek 系列模型分时段定价调整",
+    "type": "price_change",
+    "reward": "高峰时段价格上调、错峰时段优惠（以公告为准）",
+    "eligibility": "全体用户",
+    "deadline": null,
+    "howto": [
+      "查看官方更新公告确认新价格",
+      "错峰调用可降低成本",
+      "免费额度部分不受影响"
+    ],
+    "summary": "提示：分时段定价意味着同样的钱错峰能调更多次，薅免费额度也是同理。",
+    "source": "https://docs.siliconflow.cn/cn/release-notes/overview",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-openrouter-free-50",
+    "date": "2026-08-05",
+    "platform_slug": "openrouter",
+    "platform_name": "OpenRouter",
+    "title": "OpenRouter 免费模型每日 50 次，充值 $10 升至 1000 次/天",
+    "type": "new_model",
+    "reward": "每日 50 次免费调用（充 $10 后 1000 次/天）",
+    "eligibility": "全体用户",
+    "deadline": null,
+    "howto": [
+      "注册 openrouter.ai",
+      "Models 页筛选 :free 模型",
+      "未充值每日 50 次，累计充值 $10 后升级"
+    ],
+    "summary": "长期规则而非限时活动：免费模型列表经常更新，值得每周刷一次。",
+    "source": "https://openrouter.ai/docs",
+    "status": "active"
+  },
+  {
+    "id": "2026-07-zhipu-100m-event",
+    "date": "2026-07-15",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱限时活动回顾：每人赠送 1 亿 Token + API 低至 1 折",
+    "type": "limited_time",
+    "reward": "1 亿 Token + API 调用 1-5 折",
+    "eligibility": "所有注册用户",
+    "deadline": "已结束",
+    "howto": [],
+    "summary": "历史活动存档：智谱不定期上重大促，建议关注官方公告页，下次活动第一时间来这查。",
+    "source": "https://bigmodel.cn",
+    "status": "ended"
+  }
+]

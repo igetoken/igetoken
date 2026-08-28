@@ -1,0 +1,52 @@
+---
+interface Props {
+  /** 要筛选的容器 id，容器内条目需带 data-category 属性 */
+  targetId: string;
+  groups: { key: string; label: string }[];
+}
+const { targetId, groups } = Astro.props;
+const tabs = [{ key: 'all', label: '全部' }, ...groups];
+---
+
+<div class="filter-tabs flex flex-wrap gap-2" data-target={targetId} role="tablist">
+  {
+    tabs.map((t, i) => (
+      <button
+        type="button"
+        data-filter={t.key}
+        class:list={[
+          'rounded-full px-4 py-1.5 text-sm font-medium transition',
+          i === 0
+            ? 'bg-emerald-600 text-white'
+            : 'bg-slate-100 text-slate-600 hover:bg-slate-200',
+        ]}
+      >
+        {t.label}
+      </button>
+    ))
+  }
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.filter-tabs').forEach((tabs) => {
+    const target = document.getElementById(tabs.dataset.target ?? '');
+    if (!target) return;
+    const items = target.querySelectorAll<HTMLElement>('[data-category]');
+    const buttons = tabs.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.filter ?? 'all';
+        buttons.forEach((b) => {
+          const active = b === btn;
+          b.classList.toggle('bg-emerald-600', active);
+          b.classList.toggle('text-white', active);
+          b.classList.toggle('bg-slate-100', !active);
+          b.classList.toggle('text-slate-600', !active);
+        });
+        items.forEach((item) => {
+          item.classList.toggle('hidden', key !== 'all' && item.dataset.category !== key);
+        });
+      });
+    });
+  });
+</script>

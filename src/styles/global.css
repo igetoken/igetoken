@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* 关闭 prose 行内代码首尾的装饰引号（避免看起来像字面反引号） */
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-slate-800 antialiased;
+  }
+}

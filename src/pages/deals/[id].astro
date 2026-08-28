@@ -1,0 +1,106 @@
+---
+import Base from '../../layouts/Base.astro';
+import Badge from '../../components/Badge.astro';
+import Callout from '../../components/Callout.astro';
+import { getDeals, getDealById, getPlatformBySlug, DEAL_TYPE_LABEL } from '../../lib/data';
+import type { DealType } from '../../lib/types';
+
+export function getStaticPaths() {
+  return getDeals().map((deal) => ({
+    params: { id: deal.id },
+    props: { deal },
+  }));
+}
+
+const { deal } = Astro.props as { deal: NonNullable<ReturnType<typeof getDealById>> };
+const platform = deal.platform_slug ? getPlatformBySlug(deal.platform_slug) : undefined;
+const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
+---
+
+<Base
+  title={`${deal.title} | iGetToken 活动快讯`}
+  description={deal.summary}
+>
+  <article class="mx-auto max-w-3xl px-4 py-12">
+    <nav class="text-sm text-slate-400">
+      <a href="/deals/" class="hover:text-emerald-700">活动快讯</a>
+      <span class="mx-1">/</span>
+      <span class="text-slate-600">{typeLabel}</span>
+    </nav>
+
+    <h1 class="mt-4 text-2xl font-black leading-snug text-slate-900 md:text-3xl">{deal.title}</h1>
+
+    <div class="mt-4 flex flex-wrap items-center gap-2 text-sm">
+      <span class="rounded-md bg-emerald-600/10 px-2.5 py-1 font-medium text-emerald-700">{deal.platform_name}</span>
+      <span class="rounded-md bg-slate-100 px-2.5 py-1 text-slate-600">{typeLabel}</span>
+      {
+        deal.status === 'ended' ? (
+          <Badge variant="ended" label="已结束" />
+        ) : (
+          <Badge variant="verified" label="进行中" />
+        )
+      }
+      <span class="text-slate-400">发布于 {deal.date}</span>
+    </div>
+
+    <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+      <p class="text-sm font-semibold text-emerald-800">🎁 活动内容</p>
+      <p class="mt-2 font-medium text-emerald-900">{deal.reward}</p>
+      <p class="mt-2 text-sm text-emerald-800">
+        参与门槛：{deal.eligibility}
+        {deal.deadline && <span class="ml-3">截止：{deal.deadline}</span>}
+      </p>
+    </div>
+
+    {
+      deal.howto.length > 0 && (
+        <div class="mt-8">
+          <h2 class="text-lg font-bold text-slate-900">参与步骤</h2>
+          <ol class="mt-3 space-y-2">
+            {deal.howto.map((step, i) => (
+              <li class="flex gap-3 text-sm leading-relaxed text-slate-700">
+                <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-[11px] font-bold text-white">
+                  {i + 1}
+                </span>
+                {step}
+              </li>
+            ))}
+          </ol>
+        </div>
+      )
+    }
+
+    {deal.summary && <p class="mt-6 text-sm leading-relaxed text-slate-600">{deal.summary}</p>}
+
+    <div class="mt-8 text-center">
+      <a
+        href={deal.source}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block rounded-xl bg-emerald-600 px-8 py-4 text-lg font-bold text-white shadow-sm transition hover:bg-emerald-700"
+      >
+        查看官方公告 ↗
+      </a>
+    </div>
+
+    <div class="mt-8">
+      <Callout type="info">
+        本条情报转载自官方公开信息，规则与时效以官方页面为准。若发现失效，欢迎来信纠错。
+      </Callout>
+    </div>
+
+    {
+      platform && (
+        <div class="mt-10 rounded-xl border border-slate-200 p-5">
+          <p class="text-sm text-slate-500">想长期白嫖 {platform.name}？</p>
+          <a
+            href={`/models/${platform.slug}/`}
+            class="mt-2 inline-block font-bold text-emerald-700 hover:underline"
+          >
+            查看 {platform.name} 完整领取攻略 →
+          </a>
+        </div>
+      )
+    }
+  </article>
+</Base>

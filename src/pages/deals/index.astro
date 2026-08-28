@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import DealCard from '../../components/DealCard.astro';
+import { getActiveDeals, getEndedDeals } from '../../lib/data';
+
+const activeDeals = getActiveDeals();
+const endedDeals = getEndedDeals();
+---
+
+<Base
+  title="活动快讯 - 大模型免费 Token 限时活动速报 | iGetToken"
+  description="各大模型平台限时活动、注册福利、价格变动、免费模型上新的实时速报，每条附官方来源链接。支持 RSS 订阅。"
+>
+  <section class="mx-auto max-w-4xl px-4 py-12">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <h1 class="text-3xl font-black text-slate-900">活动快讯</h1>
+        <p class="mt-2 text-slate-500">
+          限时福利、价格变动、免费上新。每条情报均可溯源到官方公告，过期条目归档保留。
+        </p>
+      </div>
+      <a
+        href="/rss.xml"
+        class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-medium text-slate-600 transition hover:border-emerald-400 hover:text-emerald-700"
+      >
+        📡 RSS 订阅
+      </a>
+    </div>
+
+    <div class="mt-8 space-y-4">
+      {activeDeals.map((deal) => <DealCard deal={deal} showSummary />)}
+    </div>
+
+    {
+      endedDeals.length > 0 && (
+        <details class="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-5">
+          <summary class="cursor-pointer font-semibold text-slate-700">
+            已结束归档（{endedDeals.length} 条）
+          </summary>
+          <div class="mt-4 space-y-4">
+            {endedDeals.map((deal) => (
+              <DealCard deal={deal} showSummary />
+            ))}
+          </div>
+        </details>
+      )
+    }
+
+    <p class="mt-8 text-xs leading-relaxed text-slate-400">
+      免责声明：本页信息来自各平台官方公告与页面，时效与规则以官方为准；参与活动请注意个人信息安全。
+    </p>
+  </section>
+</Base>

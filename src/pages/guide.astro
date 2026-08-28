@@ -1,0 +1,71 @@
+---
+import Base from '../layouts/Base.astro';
+import Callout from '../components/Callout.astro';
+---
+
+<Base
+  title="避坑与防骗指南 - 白嫖大模型必看 | iGetToken"
+  description="免费网页版≠免费 API Token；远离劣质中转站；认清额度有效期与并发限制；API Key 安全守则。白嫖路上不踩坑。"
+>
+  <section class="mx-auto max-w-3xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">避坑与防骗指南</h1>
+    <p class="mt-2 text-slate-500">白嫖的正确姿势：先懂规则，再动手领。</p>
+
+    <div class="mt-10 space-y-10">
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">一、免费网页版 ≠ 免费 API Token</h2>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+          很多新手的第一个误区：以为官网能免费聊天，API 就也能免费用。<strong>这是两套完全独立的体系</strong>——
+          网页版的对话额度归产品，API Token 归开放平台，注册的账号可能相同，但额度互不相通。
+          本站收录的都是 API 层面的免费额度，适合接客户端、写脚本、做应用。
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">二、认清三种免费类型</h2>
+        <div class="mt-3 space-y-2 text-sm leading-relaxed text-slate-600">
+          <p><strong>永久免费模型</strong>：厂商拿小参数模型引流，长期免费但有并发/速率限制。适合学习、轻量任务（如 GLM-4-Flash）。</p>
+          <p><strong>注册赠送额度</strong>：一次性赠送，有有效期（常见 30-90 天）。适合集中体验大参数模型。</p>
+          <p><strong>每日重置额度</strong>：每天刷新，适合高频轻量任务和长期挂机应用。</p>
+        </div>
+        <Callout type="warn" title="注意">
+          领了不用会过期，攒额度是最常见的浪费。建议按「有效期 × 每日用量」规划先薅哪个。
+        </Callout>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">三、远离来路不明的「中转站」</h2>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600">
+          市面上大量低价/免费 API 中转站存在这些问题：用廉价模型冒充旗舰模型（挂羊头卖狗肉）、
+          虚报计费多扣额度、<strong>记录并转卖你的对话数据</strong>、随时跑路。
+          判断方法很简单：正经福利一定能在<strong>官方平台</strong>找到对应公告，凡是要你填别人发给你的
+          「专用 base_url」却不给官方来源的，一律当骗局处理。
+        </p>
+        <Callout type="danger" title="红线">
+          不要购买/使用批量注册账号获得的「免费 Key」，不要使用逆向破解官方接口的服务——
+          既随时失效，也有法律与数据安全风险。本站只收录官方正规渠道。
+        </Callout>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">四、API Key 安全守则</h2>
+        <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-600">
+          <li>Key 不要写进前端代码、不要提交到 GitHub（用环境变量）</li>
+          <li>不同应用用不同 Key，泄露时可以单独吊销</li>
+          <li>定期在控制台检查用量，发现异常调用立即删 Key 重生成</li>
+          <li>免费额度被刷完是小事，Key 关联的付费账户被盗刷才是大事</li>
+        </ul>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-slate-900">五、隐形消耗与限流</h2>
+        <ul class="mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-600">
+          <li>多轮对话会把<strong>历史消息</strong>一起计费，聊得越久单次越贵</li>
+          <li>system prompt 也是 Token，别塞一堆用不到的设定</li>
+          <li>免费层普遍有 RPM（每分钟请求数）/并发限制，报 429 就是撞限了</li>
+          <li>长上下文模型处理长文档时消耗成倍增长，先分段试探</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

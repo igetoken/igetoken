@@ -1,0 +1,76 @@
+---
+title: '用 Python 三行代码调用免费大模型'
+description: '用 OpenAI 官方 SDK 的兼容写法调用国内免费大模型 API，一套代码随便切换智谱、硅基流动、Groq 等平台。'
+pubDate: 2026-08-22
+tags: ['Python', '进阶玩法']
+---
+
+好消息是：2026 年了，主流大模型平台几乎全部兼容 OpenAI 接口格式。这意味着你只需要学一种写法，就能调用本站收录的所有平台——切换平台只是换个 `base_url` 的事。
+
+> 本文额度信息最后核实于 2026-08-28，以官方文档为准。
+
+## 准备工作
+
+```bash
+pip install openai
+```
+
+以智谱的永久免费模型 `glm-4-flash` 为例（先去 [bigmodel.cn](https://bigmodel.cn) 领一个 API Key）。
+
+## 核心代码
+
+```python
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key=os.environ["ZHIPU_API_KEY"],          # Key 用环境变量，别写死在代码里
+    base_url="https://open.bigmodel.cn/api/paas/v4",
+)
+
+resp = client.chat.completions.create(
+    model="glm-4-flash",                           # 永久免费模型
+    messages=[{"role": "user", "content": "用一句话介绍你自己"}],
+)
+print(resp.choices[0].message.content)
+```
+
+就这么多。`base_url` + `model` 一换，同一套代码就能跑在别的平台上：
+
+| 平台 | base_url | 免费模型示例 |
+|------|----------|-------------|
+| 智谱 | `https://open.bigmodel.cn/api/paas/v4` | `glm-4-flash` |
+| 硅基流动 | `https://api.siliconflow.cn/v1` | `Qwen/Qwen2.5-7B-Instruct` |
+| Groq | `https://api.groq.com/openai/v1` | `llama-3.3-70b-versatile` |
+| OpenRouter | `https://openrouter.ai/api/v1` | 带 `:free` 后缀的模型 |
+
+> 可用模型以各平台模型列表为准，本站每个平台详情页都附了最新的 base_url 与示例。
+
+## 三个实战建议
+
+**1. Key 一律走环境变量。** Windows 用 `setx`，macOS/Linux 写进 `~/.zshrc`。永远不要把 Key 提交到 GitHub——历史提交删了也能被翻出来。
+
+**2. 处理限流。** 免费层撞到速率限制会返回 429，加个简单的重试：
+
+```python
+import time
+
+def ask(client, prompt, retries=3):
+    for i in range(retries):
+        try:
+            return client.chat.completions.create(
+                model="glm-4-flash",
+                messages=[{"role": "user", "content": prompt}],
+            ).choices[0].message.content
+        except Exception as e:
+            if i == retries - 1:
+                raise
+            time.sleep(2 ** i)  # 指数退避：2s、4s、8s
+```
+
+**3. 控制成本心算。** 免费额度也是钱：多轮对话会把历史消息整体重新计费，跑批量任务前先用 10 条样本估算单条消耗，再乘总量。
+
+## 下一步
+
+- 想把多个免费平台串起来做故障转移？关注本站后续教程《多模型 Fallback 实战》
+- 平台怎么挑？看 [《2026 免费 API 平台怎么选》](/tutorials/choose-free-platform/)
