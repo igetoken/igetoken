@@ -1,86 +1,51 @@
 # iGetToken
 
-> 你的免费 AI 密钥导航 —— 收集全网正规渠道的大模型免费 Token：导航 + 攻略 + 活动快讯。
+> **你的免费 AI 额度导航** —— 收集全网正规渠道的大模型免费额度：注册赠送、永久免费模型、限时活动快讯。
+>
+> 🌐 线上地址：**[https://igetoken.com](https://igetoken.com)** · [RSS 订阅](https://igetoken.com/rss.xml)
 
-纯静态站点（Astro + Tailwind CSS），部署在 Cloudflare Pages，构建产物即整站。
+## 这是什么
 
-## 快速开始
+AI 时代人人都有"Token 焦虑"：各家大模型平台的免费额度散落在不同角落，规则各异、变动频繁。iGetToken 把它们收集到一起，**只收录官方正规渠道**，每条信息标注最后核实日期，配套保姆级教程——从"怎么领"到"怎么用"，让 AI 调用零成本起步。
+
+我们不提供 API 中转、不做 Token 转售，只做信息的搬运工与质检员。
+
+## 内容板块
+
+| 板块 | 说明 |
+|------|------|
+| **免费资源库** | 国内大厂 / 海外平台 / 聚合工具三大分类，每个平台一页：额度明细、领取步骤、调用示例、坑点提醒 |
+| **活动快讯** | 限时活动、注册福利、价格变动的及时速报，每条可溯源到官方公告，过期条目归档保留，支持 RSS 订阅 |
+| **保姆级教程** | 从领取 API Key、配置客户端到 Python 调用、平台选型的完整上手路径 |
+| **避坑指南** | 免费网页版 ≠ API Token、额度类型与有效期、远离劣质中转站、Key 安全守则 |
+
+### 已收录平台
+
+**国内**：智谱AI（BigModel）· 硅基流动 · 阿里云百炼 · 月之暗面 Kimi · 腾讯混元 · WorkBuddy
+**海外**：Google Gemini · Groq
+**聚合与工具**：OpenRouter · OpenCode（Zen 网关）
+
+持续收录中，欢迎通过[联系邮箱](mailto:igetoken@outlook.com)推荐或纠错。
+
+## 技术栈
+
+- [Astro](https://astro.build) — 纯静态生成，构建产物即整站
+- [Tailwind CSS](https://tailwindcss.com) — 样式
+- [Cloudflare Pages](https://pages.cloudflare.com) — 全球 CDN 托管，git push 自动部署
+- 数据即文件：平台与快讯数据以 JSON 维护，本仓库即开放数据源
+
+## 本地开发
 
 ```bash
 npm install
-npm run dev        # 本地开发 http://localhost:4321
-npm run build      # 构建到 dist/
-npm run preview    # 预览构建产物
+npm run dev      # http://localhost:4321
+npm run build    # 构建到 dist/
 ```
 
-## 内容维护（日常操作全在这里）
+## 免责声明
 
-所有内容更新 = 改文件 → git commit → push，Cloudflare Pages 会自动构建上线（约 1-2 分钟）。手机上登 GitHub 网页版同样能操作。
+本站仅聚合各平台官方公开的新人福利、免费额度与活动信息，所有内容仅供参考，具体规则与时效以各官方页面为准。本站不提供 API 中转或 Token 转售服务，不索要用户的 API Key，不收集对话数据。请保护好您的个人隐私与数据安全。
 
-### 发布一条活动快讯
-
-编辑 `src/data/deals.json`，在最上面（数组开头）加一条：
-
-```json
-{
-  "id": "2026-09-xx-platform-slug",          // 格式：日期-平台-关键词，全站唯一
-  "date": "2026-09-01",                       // 发布日期
-  "platform_slug": "zhipu",                   // 对应 models.json 里的 slug；平台未收录则留 ""
-  "platform_name": "智谱AI（BigModel）",       // 展示名称
-  "title": "一句话说清活动",
-  "type": "limited_time",                     // limited_time | signup_bonus | price_change | new_model | referral | verify_bonus
-  "reward": "具体奖励内容",
-  "eligibility": "参与门槛（新人专享？需实名？）",
-  "deadline": "2026-09-30",                   // 没有就 null；未知写 "未知，建议尽快领取"
-  "howto": ["步骤1", "步骤2"],
-  "summary": "一两句补充说明",
-  "source": "https://官方公告链接",            // 必填！只发可溯源到官方的信息
-  "status": "active"                          // active | ended
-}
-```
-
-活动结束：把 `status` 改为 `"ended"`，**不要删除**（归档保留 SEO 与历史）。
-
-### 新增/更新一个平台
-
-编辑 `src/data/models.json`，字段结构参考已有条目（slug、category、offers、steps、pitfalls、api_base、example_model、last_verified 等）。更新额度时**必须同步更新 `last_verified` 日期**。截图等资料放 `src/assets/platforms/{slug}/`。
-
-### 写一篇教程
-
-在 `src/content/tutorials/` 新建 `.mdx` 文件，头部格式：
-
-```yaml
 ---
-title: 教程标题
-description: 一句话描述（用于列表和 SEO）
-pubDate: 2026-09-01
-tags: [新手入门]
----
-```
 
-图片放 `src/assets/tutorials/{文件名同名目录}/`，正文里相对路径引用。
-
-## 目录结构
-
-```
-src/
-├── content/tutorials/    # 教程 MDX
-├── data/                 # models.json（平台）+ deals.json（快讯）—— 站点的"数据库"
-├── assets/               # 截图/配图（构建时压缩）
-├── layouts/Base.astro    # 全局骨架（SEO + Header + Footer）
-├── components/           # 7 个复用组件
-├── lib/                  # 类型 + 数据读取/排序工具
-├── styles/global.css     # Tailwind 入口
-└── pages/                # 路由即目录
-```
-
-## 部署
-
-Cloudflare Pages 绑定 Git 仓库：
-
-- 构建命令：`npm run build`
-- 输出目录：`dist`
-
-## 红线（务必遵守）
-
-只收录官方正规渠道，每条信息可溯源；不做 API 中转、不做 Token 转售、不收录逆向/批量注册等灰色渠道。
+© 2026 iGetToken · 你的免费 AI 额度导航
