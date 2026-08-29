@@ -23,6 +23,8 @@ export interface Platform {
   pitfalls: string[];
   api_base?: string;
   example_model?: string;
+  /** 附加接入端点（如 Coding Plan 专用端点），平台页以表格展示 */
+  extra_endpoints?: { name: string; url: string }[];
   last_verified: string;
 }
 

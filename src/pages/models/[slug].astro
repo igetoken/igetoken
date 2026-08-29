@@ -133,6 +133,25 @@ print(resp.choices[0].message.content)`;
       )
     }
 
+    {
+      platform.extra_endpoints && platform.extra_endpoints.length > 0 && (
+        <div>
+          <h2 class="mt-10 text-xl font-bold text-slate-900">附加端点</h2>
+          <p class="mt-2 text-sm text-slate-500">部分套餐（如 Coding Plan）有专用接入端点，配置时注意区分：</p>
+          <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
+            {
+              platform.extra_endpoints.map((ep) => (
+                <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 px-5 py-3 last:border-b-0">
+                  <span class="text-sm font-medium text-slate-700">{ep.name}</span>
+                  <code class="rounded bg-slate-100 px-2 py-0.5 text-xs">{ep.url}</code>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      )
+    }
+
     <!-- 坑点 -->
     <div class="mt-10">
       <Callout type="warn" title="坑点提醒">

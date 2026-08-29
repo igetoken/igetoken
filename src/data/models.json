@@ -26,6 +26,11 @@
     ],
     "api_base": "https://open.bigmodel.cn/api/paas/v4",
     "example_model": "glm-4-flash",
+    "extra_endpoints": [
+      { "name": "Coding Plan · Anthropic Message 协议", "url": "https://open.bigmodel.cn/api/anthropic" },
+      { "name": "Coding Plan · OpenAI Chat Completion 协议", "url": "https://open.bigmodel.cn/api/coding/paas/v4" },
+      { "name": "Coding Plan · OpenAI Response 协议", "url": "https://open.bigmodel.cn/api/v1" }
+    ],
     "last_verified": "2026-08-28"
   },
   {
