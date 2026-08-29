@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-zcode-weekend-300m",
+    "date": "2026-08-29",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token",
+    "type": "limited_time",
+    "reward": "3 亿 GLM-5.3-Flash Token 体验额度",
+    "eligibility": "所有登录用户，新老用户及 Coding Plan 订阅用户均可参加",
+    "deadline": "每周一 09:00 过期（本周末额度 8 月 31 日 09:00 失效），每周五 20:00 刷新",
+    "howto": [
+      "将 ZCode 客户端更新到最新版",
+      "在「模型设置」切换至「体验套餐」",
+      "点击领取，额度到账后即可在客户端内使用"
+    ],
+    "summary": "每周末例行活动（周五 20:00 至周一 09:00）。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；适合周末集中跑编码任务。",
+    "source": "https://bigmodel.cn",
+    "status": "active"
+  },
+  {
     "id": "2026-08-workbuddy-5000-credits",
     "date": "2026-08-29",
     "platform_slug": "workbuddy",
