@@ -27,21 +27,6 @@ AI 时代人人都有"Token 焦虑"：各家大模型平台的免费额度散落
 
 持续收录中，欢迎通过[联系邮箱](mailto:igetoken@outlook.com)推荐或纠错。
 
-## 技术栈
-
-- [Astro](https://astro.build) — 纯静态生成，构建产物即整站
-- [Tailwind CSS](https://tailwindcss.com) — 样式
-- [Cloudflare Pages](https://pages.cloudflare.com) — 全球 CDN 托管，git push 自动部署
-- 数据即文件：平台与快讯数据以 JSON 维护，本仓库即开放数据源
-
-## 本地开发
-
-```bash
-npm install
-npm run dev      # http://localhost:4321
-npm run build    # 构建到 dist/
-```
-
 ## 免责声明
 
 本站仅聚合各平台官方公开的新人福利、免费额度与活动信息，所有内容仅供参考，具体规则与时效以各官方页面为准。本站不提供 API 中转或 Token 转售服务，不索要用户的 API Key，不收集对话数据。请保护好您的个人隐私与数据安全。
