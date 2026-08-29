@@ -2,13 +2,9 @@ node_modules/
 dist/
 .astro/
 shots/
+docs/
+.edge-tmp/
 .DS_Store
 *.log
 .env
 .env.*
-收集免费大模型token网站-*.txt
-网站规划.md
-部署清单.md
-.edge-tmp/
-
-从规划到上线-知识文档.md
