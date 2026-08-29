@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-zhipu-trial-card",
+    "date": "2026-08-29",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱 GLM Coding 体验卡：免费领 7 天编程套餐（2000 积分）",
+    "type": "limited_time",
+    "reward": "7 天 GLM Coding 套餐体验：2000 积分，可用 GLM-5.3 / GLM-5.3-Flash",
+    "eligibility": "从未订阅过 Coding 套餐的用户可领，每日限量发放",
+    "deadline": "未知，限量发放建议尽快领取",
+    "howto": [
+      "打开活动页 bigmodel.cn/activity/trial-card/PU9MTWG0PM",
+      "登录智谱账号领取体验卡",
+      "配合 Claude Code / Cline 等编码工具使用，7 天或积分用完即止"
+    ],
+    "summary": "注意：这是编程套餐体验卡（配合编码工具使用），不是 API Token 额度；平台的 2000 万 Token 注册赠送与它相互独立。",
+    "source": "https://bigmodel.cn/activity/trial-card/PU9MTWG0PM",
+    "status": "active"
+  },
+  {
     "id": "2026-08-zhipu-signup-20m",
     "date": "2026-08-10",
     "platform_slug": "zhipu",
