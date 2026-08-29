@@ -42,16 +42,17 @@
     "date": "2026-08-29",
     "platform_slug": "hunyuan",
     "platform_name": "腾讯混元（腾讯云）",
-    "title": "混元 Hy3 / Hy4 preview 旗舰模型在 WorkBuddy 限时免费（0 折可用）",
+    "title": "混元 Hy3（至 9/30）/ Hy4 preview（至 9/10）在 WorkBuddy 每日送免费额度",
     "type": "limited_time",
-    "reward": "Hy3 与 Hy4 preview 限时免费体验（客户端内 0.00x 倍率），Hy3 支持 256K 长上下文",
-    "eligibility": "WorkBuddy / CodeBuddy 全体用户",
-    "deadline": "Hy3 已确认延期至 2026-08-31；Hy4 preview 显示「限时免费」，截止未明，建议尽快",
+    "reward": "Hy3、Hy4 preview 每日赠送免费额度（客户端内 0.00x 倍率），Hy4 为混元思考模型",
+    "eligibility": "WorkBuddy 全体用户",
+    "deadline": "2026-09-10",
     "howto": [
-      "打开 WorkBuddy（或 CodeBuddy）",
-      "在模型列表中切换到 Hy3 或 Hy4 preview（带「限时免费」角标）即可使用"
+      "打开 WorkBuddy，在模型列表选择 Hy4 preview 或 Hy3（带「限时免费」角标）",
+      "每日自动赠送免费额度，当天用即可",
+      "点模型右侧详情可查看各自的活动窗口与剩余规则"
     ],
-    "summary": "Hy3 两周限免因反响热烈多次延期（8 月 5 日 → 8 月 31 日，腾讯云社区确认）；Hy4 preview 为混元新一代 preview 模型，客户端内已标「限时免费」0.00x，免费截止时间以客户端标注为准。均为产品内使用，非 API Token。",
+    "summary": "客户端模型详情页一手信息：Hy4 preview 活动窗口 8月28日–9月10日、Hy3 为 7月6日–9月30日，均为每日赠送额度制。注意是产品内使用，非 API Token。",
     "source": "https://cloud.tencent.com/developer/article/2720820",
     "status": "active"
   },
