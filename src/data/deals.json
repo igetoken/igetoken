@@ -1,5 +1,39 @@
 [
   {
+    "id": "2026-08-workbuddy-5000-credits",
+    "date": "2026-08-29",
+    "platform_slug": "workbuddy",
+    "platform_name": "WorkBuddy（腾讯云）",
+    "title": "WorkBuddy 注册送 5000 Credits（约几千万 Token 量级），每日签到可续",
+    "type": "signup_bonus",
+    "reward": "5000 Credits + 每月 500 积分 + 每日签到续积分",
+    "eligibility": "新注册用户",
+    "deadline": null,
+    "howto": [
+      "打开 workbuddy.cn 下载客户端并注册",
+      "新人 Credits 自动到账",
+      "每日签到续积分，选择混元等模型办公"
+    ],
+    "summary": "腾讯云旗下桌面 AI Agent 办公产品，混元模型驱动。注意 Credits 是产品内积分，不能导出为 API Token。",
+    "source": "https://www.workbuddy.cn/",
+    "status": "active"
+  },
+  {
+    "id": "2026-07-hunyuan-hy3-trial",
+    "date": "2026-07-18",
+    "platform_slug": "hunyuan",
+    "platform_name": "腾讯混元（腾讯云）",
+    "title": "回顾：混元 Hy3 在 WorkBuddy / CodeBuddy 限时免费两周",
+    "type": "limited_time",
+    "reward": "Hy3 顶配能力限时免费体验",
+    "eligibility": "WorkBuddy / CodeBuddy 用户",
+    "deadline": "已结束（原定两周，延期至 2026-08-05）",
+    "howto": [],
+    "summary": "历史活动存档：混元新模型发布时常伴随 WorkBuddy 限免活动，下次上新记得第一时间来查。",
+    "source": "https://www.workbuddy.cn/",
+    "status": "ended"
+  },
+  {
     "id": "2026-08-opencode-zen-free",
     "date": "2026-08-29",
     "platform_slug": "opencode",

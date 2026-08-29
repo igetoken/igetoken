@@ -107,25 +107,31 @@ print(resp.choices[0].message.content)`;
     </ol>
 
     <!-- 怎么用 -->
-    <h2 class="mt-10 text-xl font-bold text-slate-900">怎么用</h2>
-    <p class="mt-2 text-sm text-slate-500">
-      接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
-      示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
-    </p>
-    <div class="mt-4 grid gap-4 md:grid-cols-2">
-      <div>
-        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">cURL</p>
-        <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{curlExample}</code></pre>
-      </div>
-      <div>
-        <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Python（openai SDK）</p>
-        <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{pythonExample}</code></pre>
-      </div>
-    </div>
-    <p class="mt-3 text-sm text-slate-500">
-      喜欢图形界面？看教程<a href="/tutorials/cherry-studio-setup/" class="font-medium text-emerald-700 hover:underline">《领取第一个免费 Key 并接入 Cherry Studio》</a>。
-      API 文档：<a href={platform.docs_url} target="_blank" rel="noopener noreferrer" class="font-medium text-emerald-700 hover:underline">{platform.docs_url} ↗</a>
-    </p>
+    {
+      platform.api_base && (
+        <div>
+          <h2 class="mt-10 text-xl font-bold text-slate-900">怎么用</h2>
+          <p class="mt-2 text-sm text-slate-500">
+            接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
+            示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
+          </p>
+          <div class="mt-4 grid gap-4 md:grid-cols-2">
+            <div>
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">cURL</p>
+              <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{curlExample}</code></pre>
+            </div>
+            <div>
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Python（openai SDK）</p>
+              <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{pythonExample}</code></pre>
+            </div>
+          </div>
+          <p class="mt-3 text-sm text-slate-500">
+            喜欢图形界面？看教程<a href="/tutorials/cherry-studio-setup/" class="font-medium text-emerald-700 hover:underline">《领取第一个免费 Key 并接入 Cherry Studio》</a>。
+            API 文档：<a href={platform.docs_url} target="_blank" rel="noopener noreferrer" class="font-medium text-emerald-700 hover:underline">{platform.docs_url} ↗</a>
+          </p>
+        </div>
+      )
+    }
 
     <!-- 坑点 -->
     <div class="mt-10">

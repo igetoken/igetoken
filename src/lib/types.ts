@@ -21,8 +21,8 @@ export interface Platform {
   offers: Offer[];
   steps: string[];
   pitfalls: string[];
-  api_base: string;
-  example_model: string;
+  api_base?: string;
+  example_model?: string;
   last_verified: string;
 }
 

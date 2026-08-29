@@ -224,5 +224,61 @@
     "api_base": "https://opencode.ai/zen/v1/",
     "example_model": "mimo-v2-pro-free",
     "last_verified": "2026-08-29"
+  },
+  {
+    "slug": "hunyuan",
+    "name": "腾讯混元（腾讯云）",
+    "category": "domestic",
+    "website": "https://hunyuan.tencent.com",
+    "register_url": "https://console.cloud.tencent.com/hunyuan",
+    "docs_url": "https://cloud.tencent.com/document/product/1729",
+    "tagline": "腾讯官方大模型，混元-lite 永久免费，生态福利多",
+    "highlight": "混元-lite 永久免费；TokenHub 新人最高领 100 万 Token",
+    "tags": ["永久免费", "注册送", "大厂"],
+    "offers": [
+      { "model": "hunyuan-lite", "quota": "永久免费（能力最轻量的档位）", "type": "permanent" },
+      { "model": "TokenHub 新人体验包", "quota": "每个主账号一次性领取最高 100 万免费 Token，覆盖多个主力模型", "type": "signup" },
+      { "model": "小程序成长计划", "quota": "提交小程序介绍申请通过后，混元额度可提升至最高 10 亿", "type": "credit" }
+    ],
+    "steps": [
+      "注册腾讯云账号并完成实名认证",
+      "进入混元大模型控制台开通服务",
+      "在 TokenHub「启用管理」页领取新人免费体验包",
+      "创建 API Key，用 OpenAI 兼容接口调用"
+    ],
+    "pitfalls": [
+      "lite 免费但能力最弱，体验旗舰模型要靠新人体验包额度",
+      "免费额度按模型独立发放，注意有效期",
+      "小程序成长计划需要审核，个人开发者视情况申请"
+    ],
+    "api_base": "https://api.hunyuan.cloud.tencent.com/v1",
+    "example_model": "hunyuan-lite",
+    "last_verified": "2026-08-29"
+  },
+  {
+    "slug": "workbuddy",
+    "name": "WorkBuddy（腾讯云）",
+    "category": "domestic",
+    "website": "https://www.workbuddy.cn",
+    "register_url": "https://www.workbuddy.cn",
+    "docs_url": "https://www.workbuddy.cn",
+    "tagline": "腾讯桌面 AI 智能体办公产品，注册即送海量 Credits",
+    "highlight": "注册送 5000 Credits（约几千万 Token 量级），每日签到可续",
+    "tags": ["注册送", "签到续额度", "Agent 办公"],
+    "offers": [
+      { "model": "新人 Credits", "quota": "注册送 5000 Credits（官方称约几千万 Token 量级），产品内使用混元等模型", "type": "credit" },
+      { "model": "每月积分 + 签到", "quota": "每月 500 积分，每日签到可续积分", "type": "daily" }
+    ],
+    "steps": [
+      "打开 workbuddy.cn 下载客户端并注册",
+      "新人 Credits 自动到账",
+      "选择混元等模型开始 Agent 办公任务"
+    ],
+    "pitfalls": [
+      "Credits 是产品内积分，不能导出为 API Token 调用",
+      "高级模型消耗 Credits 更快，重任务注意余额",
+      "积分体系与签到规则可能调整，以官网为准"
+    ],
+    "last_verified": "2026-08-29"
   }
 ]
