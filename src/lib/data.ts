@@ -53,6 +53,19 @@ export function getDealById(id: string): Deal | undefined {
   return deals.find((d) => d.id === id);
 }
 
+/** 按紧迫度排序：有截止日期且未过期的进行中活动优先（剩余天数升序），其余按发布时间倒序 */
+export function sortDealsByUrgency(list: Deal[]): Deal[] {
+  return [...list].sort((a, b) => {
+    const urgency = (deal: Deal) => {
+      if (deal.status !== 'active') return Number.POSITIVE_INFINITY;
+      const left = daysLeft(deal.deadline);
+      return left !== null && left >= 0 ? left : Number.POSITIVE_INFINITY;
+    };
+    const diff = urgency(a) - urgency(b);
+    return diff !== 0 ? diff : b.date.localeCompare(a.date);
+  });
+}
+
 export function getDealsByPlatform(slug: string): Deal[] {
   return getActiveDeals().filter((d) => d.platform_slug === slug);
 }

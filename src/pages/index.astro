@@ -3,10 +3,10 @@ import Base from '../layouts/Base.astro';
 import PlatformCard from '../components/PlatformCard.astro';
 import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
-import { getPlatforms, getActiveDeals, getEndedDeals, CATEGORY_LABEL } from '../lib/data';
+import { getPlatforms, getActiveDeals, getEndedDeals, sortDealsByUrgency, CATEGORY_LABEL } from '../lib/data';
 
 const platforms = getPlatforms();
-const recentDeals = [...getActiveDeals(), ...getEndedDeals()].slice(0, 4);
+const recentDeals = sortDealsByUrgency([...getActiveDeals(), ...getEndedDeals()]).slice(0, 8);
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
