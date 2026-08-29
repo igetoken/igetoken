@@ -10,6 +10,10 @@ const recentDeals = [...getActiveDeals(), ...getEndedDeals()].slice(0, 4);
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
+const lastVerified = platforms
+  .map((p) => p.last_verified)
+  .sort()
+  .at(-1);
 ---
 
 <Base
@@ -43,7 +47,7 @@ const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).
           🔥 限时活动快讯
         </a>
       </div>
-      <p class="mt-6 text-xs text-slate-400">内容最后核实：2026-08-28 · 额度以各官方页面为准</p>
+      <p class="mt-6 text-xs text-slate-400">内容最后核实：{lastVerified} · 额度以各官方页面为准</p>
     </div>
   </section>
 
