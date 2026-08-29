@@ -39,18 +39,21 @@
   },
   {
     "id": "2026-07-hunyuan-hy3-trial",
-    "date": "2026-07-18",
+    "date": "2026-08-29",
     "platform_slug": "hunyuan",
     "platform_name": "腾讯混元（腾讯云）",
-    "title": "回顾：混元 Hy3 在 WorkBuddy / CodeBuddy 限时免费两周",
+    "title": "混元 Hy3 / Hy4 preview 旗舰模型在 WorkBuddy 限时免费（0 折可用）",
     "type": "limited_time",
-    "reward": "Hy3 顶配能力限时免费体验",
-    "eligibility": "WorkBuddy / CodeBuddy 用户",
-    "deadline": "已结束（原定两周，延期至 2026-08-05）",
-    "howto": [],
-    "summary": "历史活动存档：混元新模型发布时常伴随 WorkBuddy 限免活动，下次上新记得第一时间来查。",
-    "source": "https://www.workbuddy.cn/",
-    "status": "ended"
+    "reward": "Hy3 与 Hy4 preview 限时免费体验（客户端内 0.00x 倍率），Hy3 支持 256K 长上下文",
+    "eligibility": "WorkBuddy / CodeBuddy 全体用户",
+    "deadline": "Hy3 已确认延期至 2026-08-31；Hy4 preview 显示「限时免费」，截止未明，建议尽快",
+    "howto": [
+      "打开 WorkBuddy（或 CodeBuddy）",
+      "在模型列表中切换到 Hy3 或 Hy4 preview（带「限时免费」角标）即可使用"
+    ],
+    "summary": "Hy3 两周限免因反响热烈多次延期（8 月 5 日 → 8 月 31 日，腾讯云社区确认）；Hy4 preview 为混元新一代 preview 模型，客户端内已标「限时免费」0.00x，免费截止时间以客户端标注为准。均为产品内使用，非 API Token。",
+    "source": "https://cloud.tencent.com/developer/article/2720820",
+    "status": "active"
   },
   {
     "id": "2026-08-opencode-zen-free",
