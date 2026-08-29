@@ -1,5 +1,11 @@
 ---
 const year = new Date().getFullYear();
+
+// 构建版本：北京时间构建时间 + Cloudflare Pages 部署的 commit 号
+const pad = (n: number) => String(n).padStart(2, '0');
+const bj = new Date(Date.now() + 8 * 3_600_000);
+const buildVersion = `${bj.getUTCFullYear()}-${pad(bj.getUTCMonth() + 1)}-${pad(bj.getUTCDate())} ${pad(bj.getUTCHours())}:${pad(bj.getUTCMinutes())}`;
+const commit = (process.env.CF_PAGES_COMMIT_SHA ?? '').slice(0, 7);
 ---
 
 <footer class="border-t border-slate-200 bg-slate-50">
@@ -32,7 +38,8 @@ const year = new Date().getFullYear();
   </div>
   <div class="border-t border-slate-200 py-4">
     <p class="mx-auto max-w-6xl px-4 text-xs leading-relaxed text-slate-400">
-      免责声明：iGetToken 仅聚合各平台官方公开的新人福利、免费额度与活动信息，绝不提供 API 中转或 Token 转售服务。所有额度与活动以官方页面为准，请保护好您的个人隐私与数据安全。© {year} iGetToken
+      免责声明：iGetToken 仅聚合各平台官方公开的新人福利、免费额度与活动信息，绝不提供 API 中转或 Token 转售服务。所有额度与活动以官方页面为准，请保护好您的个人隐私与数据安全。<br />
+      © {year} iGetToken · 构建 v{buildVersion}{commit && ` (${commit})`}
     </p>
   </div>
 </footer>
