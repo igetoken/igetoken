@@ -196,5 +196,33 @@
     "api_base": "https://openrouter.ai/api/v1",
     "example_model": "meta-llama/llama-3.3-70b-instruct:free",
     "last_verified": "2026-08-28"
+  },
+  {
+    "slug": "opencode",
+    "name": "OpenCode（Zen 网关）",
+    "category": "aggregator",
+    "website": "https://opencode.ai",
+    "register_url": "https://opencode.ai/auth",
+    "docs_url": "https://opencode.ai/docs/zh-cn/zen/",
+    "tagline": "开源编程代理官方模型网关，多个编程模型限时免费",
+    "highlight": "Zen 免费模型每日 20 万~100 万 Token 限额，专为编程场景优化",
+    "tags": ["免费层", "编程场景", "免费模型轮换"],
+    "offers": [
+      { "model": "免费模型（如 MiMo-V2.5 Free、nemotron-3-super-free）", "quota": "限时免费，每日 20 万~100 万 Token 限额（视模型而定）", "type": "daily" }
+    ],
+    "steps": [
+      "打开 opencode.ai/auth 注册账号并登录",
+      "创建并复制 API Key",
+      "在 OpenCode 里运行 /connect 选择 OpenCode，粘贴 Key",
+      "免费模型是 OpenAI 兼容接口，也可接入 Claude Code 等其他编码工具"
+    ],
+    "pitfalls": [
+      "免费模型名单轮换很快，限时免费随时可能下线，以 Zen 模型列表为准",
+      "免费层没有固定速率限制，配额随负载浮动，跑批量任务别依赖",
+      "Go 订阅（$10/月）是付费增值项，用免费模型不需要订阅"
+    ],
+    "api_base": "https://opencode.ai/zen/v1/",
+    "example_model": "mimo-v2-pro-free",
+    "last_verified": "2026-08-29"
   }
 ]
