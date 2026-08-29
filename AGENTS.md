@@ -27,7 +27,7 @@
    ```
 2. 编辑 JSON 优先整条复制既有条目改字段，避免 old_string 局部替换匹配错条目（历史上发生过覆盖数据事故）
 3. 快讯新增条目插在数组**开头**；`id` 格式 `YYYY-MM-平台-关键词`，全站唯一
-4. 平台 offers 的 `type` 取值：permanent/signup/daily/credit/referral；快讯 `type`：limited_time/signup_bonus/price_change/new_model/referral/verify_bonus
+4. 平台 offers 的 `type` 取值：permanent/signup/daily/credit/referral；快讯 `type`：limited_time/signup_bonus/price_change/new_model/referral/verify_bonus/task_reward
 5. 更新平台额度时必须同步更新该平台的 `last_verified`；首页"内容最后核实"自动取全站最大值，勿写死日期
 
 ## 已知坑（按场景）

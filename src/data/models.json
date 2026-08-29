@@ -268,7 +268,8 @@
     "tags": ["注册送", "签到续额度", "Agent 办公"],
     "offers": [
       { "model": "新人 Credits", "quota": "注册送 5000 Credits（官方称约几千万 Token 量级），产品内使用混元等模型", "type": "credit" },
-      { "model": "每月积分 + 签到", "quota": "每月 500 积分，每日签到可续积分", "type": "daily" }
+      { "model": "每月积分 + 签到", "quota": "每月 500 积分，每日签到可续积分", "type": "daily" },
+      { "model": "成长计划任务奖励", "quota": "完成对话/技能/模板等任务，每任务 100 Credits + 能量盲盒；限量任务可领一个月轻量云服务器", "type": "credit" }
     ],
     "steps": [
       "打开 workbuddy.cn 下载客户端并注册",

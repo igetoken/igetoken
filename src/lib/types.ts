@@ -32,7 +32,8 @@ export type DealType =
   | 'price_change'
   | 'new_model'
   | 'referral'
-  | 'verify_bonus';
+  | 'verify_bonus'
+  | 'task_reward';
 
 export interface Deal {
   id: string;

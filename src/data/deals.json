@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-08-workbuddy-growth-plan",
+    "date": "2026-08-29",
+    "platform_slug": "workbuddy",
+    "platform_name": "WorkBuddy（腾讯云）",
+    "title": "WorkBuddy 成长计划：做任务领 1000+ Credits，限量任务送一个月轻量云服务器",
+    "type": "task_reward",
+    "reward": "每任务 100 Credits + 能量盲盒（约 13 个任务）；限量任务免费领一个月腾讯轻量应用服务器",
+    "eligibility": "WorkBuddy 国内个人版用户，每任务限领一次",
+    "deadline": "轻量云服务器任务截止 2026-11-13（限量）；「工作台搭建师」等子任务 8.31 截止",
+    "howto": [
+      "打开 WorkBuddy 成长计划页，逐个完成任务（对话/装技能/用模板/召唤专家等）",
+      "完成后手动点击「领取」获得 Credits 与能量值",
+      "「腾讯轻量云」任务：授权连接器后召唤专家对话一次，限量领一个月轻量应用服务器",
+      "Credits 为周期月有效，领完尽快用"
+    ],
+    "summary": "长期任务体系，叠加注册的 5000 Credits 和每日签到。亮点是轻量云服务器白嫖一个月（限量先到先得）。注意防刷条款：同一手机号/设备/IP 视为同一用户，Credits 周期月有效。",
+    "source": "https://www.workbuddy.cn/",
+    "status": "active"
+  },
+  {
     "id": "2026-08-zcode-weekend-300m",
     "date": "2026-08-29",
     "platform_slug": "zhipu",

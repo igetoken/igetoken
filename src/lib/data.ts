@@ -15,6 +15,7 @@ export const DEAL_TYPE_LABEL: Record<DealType, string> = {
   new_model: '免费上新',
   referral: '邀请奖励',
   verify_bonus: '认证福利',
+  task_reward: '任务奖励',
 };
 
 export const OFFER_TYPE_LABEL: Record<string, string> = {
