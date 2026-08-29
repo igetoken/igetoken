@@ -282,5 +282,34 @@
       "积分体系与签到规则可能调整，以官网为准"
     ],
     "last_verified": "2026-08-29"
+  },
+  {
+    "slug": "sensenova",
+    "name": "商汤日日新（SenseNova）",
+    "category": "domestic",
+    "website": "https://www.sensenova.cn",
+    "register_url": "https://platform.sensenova.cn",
+    "docs_url": "https://platform.sensenova.cn/docs",
+    "tagline": "商汤大模型开放平台，公测期完全免费开放",
+    "highlight": "公测期免费：通用池 60 万积分/周 + Flash-Lite 专属池 60 万/周",
+    "tags": ["公测免费", "多模态", "每周刷新"],
+    "offers": [
+      { "model": "SenseNova 6.8 Flash Lite / U1 Fast 等", "quota": "公测期免费：通用积分池 60 万积分/周，5 小时窗口 6 万积分", "type": "daily" },
+      { "model": "Flash-Lite 专属积分池", "quota": "另有 60 万积分/周独立池，仅 Flash-Lite 系列可用", "type": "daily" }
+    ],
+    "steps": [
+      "打开 platform.sensenova.cn 注册并登录",
+      "进入控制台确认 Free 公测档已生效（服务正常）",
+      "「API Keys」创建并复制 Key（最多 20 个）",
+      "OpenAI 兼容接口，base_url 指向 token.sensenova.cn/v1"
+    ],
+    "pitfalls": [
+      "公测期为限时放量，付费档位（Lite/Pro）上线后免费规则可能调整",
+      "积分按 5 小时窗口滚动 + 每周刷新，注意控制台显示的重置时间",
+      "Flash-Lite 专属积分池与通用池相互独立，分开消耗"
+    ],
+    "api_base": "https://token.sensenova.cn/v1",
+    "example_model": "SenseNova-6.8-Flash-Lite",
+    "last_verified": "2026-08-29"
   }
 ]

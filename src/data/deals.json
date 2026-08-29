@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-sensenova-beta-free",
+    "date": "2026-08-29",
+    "platform_slug": "sensenova",
+    "platform_name": "商汤日日新（SenseNova）",
+    "title": "商汤日日新公测期完全免费：每周最高 120 万积分，新增 Flash-Lite 返赠",
+    "type": "new_model",
+    "reward": "通用积分池 60 万/周 + Flash-Lite 专属池 60 万/周，5 小时窗口 6 万积分",
+    "eligibility": "注册即可用（Free 公测档，限时放量）",
+    "deadline": "公测期截止未明，付费档位即将上线，建议尽早薅",
+    "howto": [
+      "打开 platform.sensenova.cn 注册登录",
+      "确认 Free 公测档生效",
+      "创建 API Key，OpenAI 兼容接口直接调用"
+    ],
+    "summary": "支持 SenseNova 6.8 Flash Lite 与 U1 Fast，原生多模态；兼容 OpenAI 协议可接入 Hermes Agent、OpenClaw 等工具，最多 20 个 API Key。8 月 28 日平台公告：积分规则升级 + Flash-Lite 返赠活动。",
+    "source": "https://platform.sensenova.cn",
+    "status": "active"
+  },
+  {
     "id": "2026-08-workbuddy-growth-plan",
     "date": "2026-08-29",
     "platform_slug": "workbuddy",
