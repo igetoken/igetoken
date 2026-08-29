@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-opencode-zen-free",
+    "date": "2026-08-29",
+    "platform_slug": "opencode",
+    "platform_name": "OpenCode（Zen 网关）",
+    "title": "OpenCode Zen 多个编程模型限时免费，每日最高 100 万 Token",
+    "type": "new_model",
+    "reward": "免费模型：MiMo-V2.5 Free（限时）、nemotron-3-super-free 等，每日 20 万~100 万 Token 限额",
+    "eligibility": "注册 OpenCode 账号即可，无需订阅 Go 套餐",
+    "deadline": null,
+    "howto": [
+      "打开 opencode.ai/auth 注册账号",
+      "创建并复制 API Key",
+      "选带 Free 后缀的模型，接入 OpenCode / Claude Code 等编码工具"
+    ],
+    "summary": "免费模型名单轮换快，调用前先看模型列表确认还在线；Go 订阅（$10/月）是付费增值项，用免费模型不需要它。",
+    "source": "https://opencode.ai/docs/zh-cn/zen/",
+    "status": "active"
+  },
+  {
     "id": "2026-08-zhipu-trial-card",
     "date": "2026-08-29",
     "platform_slug": "zhipu",
