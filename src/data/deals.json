@@ -48,7 +48,7 @@
       "创建并复制 API Key",
       "选带 Free 后缀的模型，接入 OpenCode / Claude Code 等编码工具"
     ],
-    "summary": "免费模型名单轮换快，调用前先看模型列表确认还在线；Go 订阅（$10/月）是付费增值项，用免费模型不需要它。",
+    "summary": "免费模型名单轮换快，调用前先看模型列表确认还在线；Go 订阅（$10/月）是付费增值项，用免费模型不需要它。另有邀请奖励：邀请好友订阅 Go 套餐，双方各得 $5 使用额度。",
     "source": "https://opencode.ai/docs/zh-cn/zen/",
     "status": "active"
   },
