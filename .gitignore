@@ -3,6 +3,7 @@ dist/
 .astro/
 shots/
 docs/
+.workbuddy/
 .edge-tmp/
 .DS_Store
 *.log
