@@ -1,5 +1,43 @@
 [
   {
+    "id": "2026-08-minimax-design-h3-launch",
+    "date": "2026-08-30",
+    "platform_slug": "",
+    "platform_name": "MiniMax Design",
+    "title": "MiniMax H3 正式上线：新用户下载 MiniMax Design 立领 3000 免费积分，9/2 前年卡 H3 永久 -20%",
+    "type": "signup_bonus",
+    "reward": "新用户下载 MiniMax Design 桌面端即赠 3000 创作积分，可用于 H3 视频 / 图片 / 音乐 / 音频等生成",
+    "eligibility": "新用户（下载安装 MiniMax Design macOS/Windows 桌面端并注册登录）",
+    "deadline": "2026-09-02",
+    "howto": [
+      "打开 https://design.minimaxi.com，点击「下载桌面端」安装 macOS 或 Windows 客户端",
+      "新用户注册并登录，3000 免费积分自动到账",
+      "9 月 2 日前购买年卡，可在年卡有效期内享 H3 消耗永久降低 20%"
+    ],
+    "summary": "已用无头 Edge 截屏 design.minimaxi.com 官方页面核实：顶部横幅显示「MiniMax H3 正式发布｜新用户下载立即获 3000 免费积分！9月2日前购买年卡，年卡有效期内 H3 消耗永久降低 20%」。注意：3000 积分是 MiniMax Design 产品内创作积分，不是开放平台 API Token，不可导出到 API；H3 在开放平台 API 仍按量计费（768P ¥0.5/秒）。倒计时剩余约 3 天，建议尽快领取。",
+    "source": "https://design.minimaxi.com/",
+    "status": "active"
+  },
+  {
+    "id": "2026-08-minimax-week-free",
+    "date": "2026-08-30",
+    "platform_slug": "",
+    "platform_name": "MiniMax × GMI Cloud",
+    "title": "MiniMax Week：M3、M2.7、Speech 2.8、Music 3.0 免费调用 14 天（至 9 月 6 日）",
+    "type": "limited_time",
+    "reward": "活动期内 MiniMax M3、M2.7、Speech 2.8、Music 3.0 四款模型免费调用（1M 上下文的 M3 也在内；H3 视频仍按标准价计费）",
+    "eligibility": "免费注册 GMI Cloud 账号即可，经 GMI Cloud API 或 OpenRouter 调用",
+    "deadline": "2026-09-06",
+    "howto": [
+      "打开 gmicloud.ai/minimax-week，免费注册 GMI Cloud 账号并创建 API Key",
+      "经 GMI Cloud API 或 OpenRouter 调用 minimax-m3 / minimax-m2.7 等模型",
+      "也可在 Pi、Oh My Pi、Hermes Agent、Trae、OpenCode 中直接使用，或 BYOK 到 Claude Code / Codex / Cursor"
+    ],
+    "summary": "MiniMax 与 GMI Cloud 联名的限时活动，14 天内四款模型免费，活动页明示禁止多账号注册、批量薅羊毛与转售。注意：这是渠道方活动，MiniMax 官方开放平台本身没有常驻免费额度——按量计费全系收费（M3 输入 ¥2.1/百万 tokens 起），Token Plan 为 ¥49/119/469 每月订阅；官方音乐免费接口已于 2026-08-20 停服。实测存在并发限制，建议个人开发测试用途，勿跑批量任务。",
+    "source": "https://www.gmicloud.ai/minimax-week",
+    "status": "active"
+  },
+  {
     "id": "2026-08-volcengine-doubao-seed-2-1-pro",
     "date": "2026-08-30",
     "platform_slug": "volcengine",
@@ -243,9 +281,9 @@
       "创建 API Key",
       "额度自动发放，直接调用"
     ],
-    "summary": "平台详情页收录中，可先通过官方平台直接领取。",
+    "summary": "已归档：2026-08-30 复核官方《按量计费》《Token Plan 定价》《账户相关》《前置准备》四份文档，均未提及新用户注册赠送 Token，按量计费全系收费、Token Plan 为付费订阅，故按内容红线（额度须可溯源官方页面）归档，不删除。若你的控制台确有赠送余额，以控制台显示为准。当前可用的 MiniMax 免费路径见「MiniMax Week」限时活动（至 9 月 6 日）。",
     "source": "https://www.minimaxi.com",
-    "status": "active"
+    "status": "ended"
   },
   {
     "id": "2026-08-qiniu-gift-3m",
