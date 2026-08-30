@@ -39,12 +39,16 @@
 - `npm run build` 不做类型检查，改 TS 类型后需自查或跑 `astro check`
 
 ### 本地验证
-- 无头 Edge 截图本地页面可用；`--dump-dom` 不可靠；外站截图常失败，改用人工/其他抓取方式
+- 无头 Edge 截图本地页面可用；`--dump-dom` 不可靠；外站截图常失败（讯飞、MiniMax Design 实测可成功，见下方 Git / 推送小节的具体命令）
 
 ### 部署 / Cloudflare
 - `*.pages.dev` 国内直连不可用，正式入口是自定义域名，勿用 pages.dev 判断可访问性
 - Pages 会把 `.html` 308 重定向到无扩展名地址——任何"验证文件"类需求**一律用 meta/标签验证**，不用文件验证
 - Cloudflare 默认开启 "Block AI Bots" 和"托管 robots.txt"（会屏蔽 GPTBot/Bytespider 等）——本站策略为全开放，**两处开关必须保持关闭**（换账号/新增站点时复查 `https://igetoken.com/robots.txt` 应零 Disallow）
+
+### Git / 推送
+- `git push` 报 `Failed to connect to github.com port 443 ... Couldn't connect to server`，但 `Test-NetConnection github.com -Port 443` 却是通的 → 是 HTTP/2 连接被卡，用 `git -c http.version=HTTP/1.1 push origin main` 即可，无需改全局配置或代理
+- 外站页面（如 SPA 动态渲染的活动横幅）`web_fetch` 抓不到内容时，用无头 Edge 截图：`msedge.exe --headless --disable-gpu --window-size=1400,1800 --virtual-time-budget=30000 --screenshot="<路径>.png" "<URL>"`（`--headless=new` 不生成截图文件）
 
 ### 搜索引擎
 - 百度不收索引型 sitemap（勿提交 sitemap-index.xml），实体文件是 `sitemap-0.xml`；无备案站点提交配额为 0 属正常，不处理
