@@ -6,32 +6,93 @@ import Badge from './Badge.astro';
 interface Props {
   deal: Deal;
   showSummary?: boolean;
+  variant?: 'default' | 'featured';
 }
-const { deal, showSummary = false } = Astro.props;
-const left = deal.status === 'active' ? daysLeft(deal.deadline) : null;
+const { deal, showSummary = false, variant = 'default' } = Astro.props;
+
+const isEnded = deal.status === 'ended';
+const left = isEnded ? null : daysLeft(deal.deadline);
+const hasDeadline = typeof left === 'number';
 const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
-const showEnding = deal.status === 'active' && typeof left === 'number' && left > 0 && left <= 7;
-const endingLabel = `剩 ${left} 天`;
+
+// 紧迫度三档：≤3 天红色「仅剩 X 天」/ 4-7 天琥珀「剩 X 天」/ 无截止日灰色「长期有效」
+// 判断逻辑全部放在 frontmatter，模板只引用布尔值（AGENTS.md 已知坑）
+// left <= 0（今天截止）也纳入紧急档，展示为「最后 1 天」——deadline 当天活动往往仍有效，避免误导
+const isUrgent = hasDeadline && left >= 0 && left <= 3;
+const isSoon = hasDeadline && left > 3 && left <= 7;
+const isEvergreen = !hasDeadline && !isEnded;
+const displayLeft = Math.max(left ?? 0, 1);
+const urgencyLabel = isUrgent ? `仅剩 ${displayLeft} 天` : isSoon ? `剩 ${displayLeft} 天` : '';
+const urgencyVariant = isUrgent ? 'hot' : 'ending';
+
+// 「限时」标签仅在未显示紧迫徽标时补位，避免同色徽标堆叠
+const showLimitedTag = deal.type === 'limited_time' && !isEnded && !isUrgent && !isSoon;
+
+const isFeatured = variant === 'featured';
+const showCountdown = isUrgent || isSoon;
 ---
 
 <a
   href={`/deals/${deal.id}/`}
   class:list={[
     'block rounded-xl border border-slate-200 bg-white p-5 transition hover:border-emerald-300 hover:shadow-md',
-    deal.status === 'ended' && 'opacity-70',
+    isEnded && 'opacity-70',
+    isFeatured && 'rounded-2xl border-emerald-200 p-6 hover:border-emerald-400 lg:p-7',
   ]}
 >
-  <div class="flex flex-wrap items-center gap-2">
-    <span class="rounded-md bg-emerald-600/10 px-2 py-0.5 text-xs font-medium text-emerald-700">
-      {deal.platform_name}
-    </span>
-    <span class="rounded-md bg-slate-100 px-2 py-0.5 text-xs text-slate-600">{typeLabel}</span>
-    {deal.status === 'ended' && <Badge variant="ended" label="已结束" />}
-    {showEnding && <Badge variant="ending" label={endingLabel} />}
-    {deal.type === 'limited_time' && deal.status === 'active' && <Badge variant="hot" label="限时" />}
+  <div
+    class:list={[
+      'flex gap-5',
+      isFeatured && 'flex-col lg:flex-row lg:items-center lg:gap-8',
+    ]}
+  >
+    <div class="min-w-0 flex-1">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="rounded-md bg-emerald-600/10 px-2 py-0.5 text-xs font-medium text-emerald-700">
+          {deal.platform_name}
+        </span>
+        <span class="rounded-md bg-slate-100 px-2 py-0.5 text-xs text-slate-600">{typeLabel}</span>
+        {isEnded && <Badge variant="ended" label="已结束" />}
+        {isUrgent && <Badge variant={urgencyVariant} label={urgencyLabel} />}
+        {isSoon && <Badge variant={urgencyVariant} label={urgencyLabel} />}
+        {isEvergreen && <Badge variant="evergreen" label="长期有效" />}
+        {showLimitedTag && <Badge variant="hot" label="限时" />}
+      </div>
+
+      <h3
+        class:list={[
+          'mt-3 leading-snug text-slate-900',
+          isFeatured ? 'text-xl font-bold lg:text-2xl' : 'font-semibold',
+        ]}
+      >
+        {deal.title}
+      </h3>
+
+      <p class:list={['text-emerald-700', isFeatured ? 'mt-2 text-base font-medium' : 'mt-1.5 text-sm']}>
+        {deal.reward}
+      </p>
+
+      {
+        (showSummary || isFeatured) && (
+          <p class="mt-2 line-clamp-2 text-sm text-slate-500">{deal.summary}</p>
+        )
+      }
+    </div>
+
+    {
+      isFeatured && (
+        <div class="flex shrink-0 items-center justify-between gap-4 border-t border-slate-100 pt-4 lg:flex-col lg:items-end lg:justify-center lg:gap-3 lg:border-t-0 lg:pt-0">
+          {showCountdown && (
+            <div class="lg:text-right">
+              <span class="text-3xl font-black leading-none text-slate-900 lg:text-4xl">{left}</span>
+              <span class="ml-1 text-sm text-slate-500 lg:ml-0 lg:mt-1 lg:block">天后截止</span>
+            </div>
+          )}
+          <span class="text-sm font-semibold text-emerald-700">立即查看 →</span>
+        </div>
+      )
+    }
   </div>
-  <h3 class="mt-3 font-semibold leading-snug text-slate-900">{deal.title}</h3>
-  <p class="mt-1.5 text-sm text-emerald-700">{deal.reward}</p>
-  {showSummary && <p class="mt-2 line-clamp-2 text-sm text-slate-500">{deal.summary}</p>}
-  <p class="mt-3 text-xs text-slate-400">发布于 {deal.date}</p>
+
+  {!isFeatured && <p class="mt-3 text-xs text-slate-400">发布于 {deal.date}</p>}
 </a>

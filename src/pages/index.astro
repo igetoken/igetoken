@@ -3,10 +3,12 @@ import Base from '../layouts/Base.astro';
 import PlatformCard from '../components/PlatformCard.astro';
 import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
-import { getPlatforms, getActiveDeals, getEndedDeals, sortDealsByUrgency, CATEGORY_LABEL } from '../lib/data';
+import { getPlatforms, selectHomeDeals, CATEGORY_LABEL } from '../lib/data';
 
 const platforms = getPlatforms();
-const recentDeals = sortDealsByUrgency([...getActiveDeals(), ...getEndedDeals()]).slice(0, 8);
+const homeDeals = selectHomeDeals(9);
+const featuredDeal = homeDeals[0];
+const restDeals = homeDeals.slice(1);
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
@@ -52,18 +54,33 @@ const lastVerified = platforms
   </section>
 
   <!-- 最新活动快讯 -->
-  <section class="mx-auto max-w-6xl px-4 py-14">
-    <div class="flex items-end justify-between">
-      <div>
-        <h2 class="text-2xl font-bold text-slate-900">🔥 最新活动快讯</h2>
-        <p class="mt-1 text-sm text-slate-500">限时福利、价格变动、免费上新，及时速报</p>
-      </div>
-      <a href="/deals/" class="text-sm font-medium text-emerald-700 hover:underline">查看全部 →</a>
-    </div>
-    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      {recentDeals.map((deal) => <DealCard deal={deal} />)}
-    </div>
-  </section>
+  {
+    homeDeals.length > 0 && (
+      <section class="mx-auto max-w-6xl px-4 py-14">
+        <div class="flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-slate-900">🔥 最新活动快讯</h2>
+            <p class="mt-1 text-sm text-slate-500">
+              快过期的排最前，剩 7 天以内的全部在列
+            </p>
+          </div>
+          <a
+            href="/deals/"
+            class="shrink-0 text-sm font-medium text-emerald-700 hover:underline"
+            >查看全部 →</a
+          >
+        </div>
+
+        {featuredDeal && <DealCard deal={featuredDeal} variant="featured" />}
+
+        {restDeals.length > 0 && (
+          <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {restDeals.map((deal) => <DealCard deal={deal} />)}
+          </div>
+        )}
+      </section>
+    )
+  }
 
   <!-- 资源库 -->
   <section class="border-y border-slate-100 bg-slate-50/60">

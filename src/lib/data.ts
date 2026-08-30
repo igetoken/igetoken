@@ -70,11 +70,80 @@ export function getDealsByPlatform(slug: string): Deal[] {
   return getActiveDeals().filter((d) => d.platform_slug === slug);
 }
 
-/** 距截止还剩几天；deadline 为空或非日期格式返回 null */
-export function daysLeft(deadline: string | null): number | null {
+/**
+ * 从 deadline 字段解析日期，支持四种写法（依次兜底）：
+ * 1. 纯 ISO「2026-09-06」
+ * 2. ISO 后带中文说明「2026-09-30（2026 Q3 活动窗口，以官方为准）」
+ * 3. 中文月日「8 月 31 日 09:00 失效」（按当前年份构造）
+ * 4. 解析不出日期 → null（如「未知，建议尽快领取」，保持 Infinity 语义）
+ */
+function parseDeadline(deadline: string | null): Date | null {
   if (!deadline) return null;
-  const end = new Date(deadline);
-  if (Number.isNaN(end.getTime())) return null;
+
+  const direct = new Date(deadline);
+  if (!Number.isNaN(direct.getTime())) return direct;
+
+  const iso = deadline.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  if (iso) {
+    const d = new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+
+  const monthDay = deadline.match(/(\d{1,2})\s*[月./]\s*(\d{1,2})\s*日?/);
+  if (monthDay) {
+    const d = new Date(new Date().getFullYear(), Number(monthDay[1]) - 1, Number(monthDay[2]));
+    if (!Number.isNaN(d.getTime())) return d;
+  }
+
+  return null;
+}
+
+/** 距截止还剩几天；deadline 为空或解析不出日期返回 null */
+export function daysLeft(deadline: string | null): number | null {
+  const end = parseDeadline(deadline);
+  if (!end) return null;
   const diff = end.getTime() - Date.now();
   return Math.ceil(diff / 86_400_000);
+}
+
+/** 首页快讯：紧急（剩余天数 ≤ 7）的判定阈值 */
+export const HOME_URGENT_DAYS = 7;
+
+/** 首页快讯：同一平台最多展示条数，避免同一厂商刷屏 */
+export const HOME_MAX_PER_PLATFORM = 2;
+
+/**
+ * 选取首页展示的快讯：
+ * - 只用进行中的活动，已结束归档不进首页
+ * - 第一轮纳入所有紧急条目（≤7 天），时效优先，不受 limit 限制
+ * - 第二轮按紧急度补足到 limit
+ * - 两轮均受同平台限流约束
+ */
+export function selectHomeDeals(limit = 9): Deal[] {
+  const ranked = sortDealsByUrgency(getActiveDeals());
+  const usedByPlatform = new Map<string, number>();
+  const picked: Deal[] = [];
+
+  const take = (deal: Deal) => {
+    const key = deal.platform_slug || deal.platform_name;
+    const used = usedByPlatform.get(key) ?? 0;
+    if (used >= HOME_MAX_PER_PLATFORM) return;
+    usedByPlatform.set(key, used + 1);
+    picked.push(deal);
+  };
+
+  const isUrgent = (deal: Deal) => {
+    const left = daysLeft(deal.deadline);
+    return left !== null && left >= 0 && left <= HOME_URGENT_DAYS;
+  };
+
+  ranked.filter(isUrgent).forEach(take);
+
+  for (const deal of ranked) {
+    if (picked.length >= limit) break;
+    if (picked.includes(deal)) continue;
+    take(deal);
+  }
+
+  return picked;
 }
