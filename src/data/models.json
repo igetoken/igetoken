@@ -345,5 +345,67 @@
     "api_base": "https://api.scnet.cn/api/llm/v1",
     "example_model": "GLM-5-Base",
     "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "baidu",
+    "name": "百度智能云千帆（文心）",
+    "category": "domestic",
+    "website": "https://qianfan.cloud.baidu.com",
+    "register_url": "https://console.bce.baidu.com/qianfan/overview",
+    "docs_url": "https://ai.baidu.com/ai-doc/WENXINWORKSHOP/wlwg8f1i3",
+    "tagline": "百度官方大模型平台，ERNIE-Speed/Lite/Tiny 长期免费，新用户送额度",
+    "highlight": "ERNIE-Speed/Lite/Tiny 永久免费；AI Studio 星河送 100 万 Token",
+    "tags": ["永久免费", "注册送", "大厂"],
+    "offers": [
+      { "model": "ERNIE-Speed / Lite / Tiny 系列（共 7 款预置服务）", "quota": "长期免费开放，完成实名认证后按量调用即免费用（如 ERNIE-Speed-8K、ERNIE-Lite-8K）", "type": "permanent" },
+      { "model": "AI Studio 星河社区 100 万 Tokens", "quota": "每个开发者 100 万免费 Tokens，兼容 OpenAI SDK，覆盖 ERNIE 全系及 DeepSeek/Kimi 等", "type": "signup" },
+      { "model": "千帆新用户每模型额度", "quota": "新用户每款模型 100 万 Token，约 3 个月有效（社区汇总口径，以控制台为准）", "type": "signup" }
+    ],
+    "steps": [
+      "打开 console.bce.baidu.com/qianfan/overview 注册百度智能云并实名",
+      "进入千帆 ModelBuilder，开通模型服务",
+      "在「配额管理」查看免费额度；AI Studio 星河在 aistudio.baidu.com 领 100 万 Token",
+      "OpenAI 兼容接口调用（千帆 base_url 见 api_base，星河见 extra_endpoints）"
+    ],
+    "pitfalls": [
+      "永久免费仅覆盖 ERNIE-Speed/Lite/Tiny 轻量档，旗舰模型需走新用户额度或付费",
+      "新用户 100 万/模型额度有有效期，注意控制台到期时间",
+      "千帆与 AI Studio 星河是两套体系，Key 与 base_url 不通用"
+    ],
+    "api_base": "https://qianfan.baidubce.com/v2",
+    "example_model": "ernie-speed-8k",
+    "extra_endpoints": [
+      { "name": "AI Studio 星河大模型 API（OpenAI 兼容）", "url": "https://aistudio.baidu.com/llm/lmapi/v3" }
+    ],
+    "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "volcengine",
+    "name": "火山引擎方舟（豆包）",
+    "category": "domestic",
+    "website": "https://www.volcengine.com/product/ark",
+    "register_url": "https://console.volcengine.com/ark",
+    "docs_url": "https://www.volcengine.com/product/ark",
+    "tagline": "字节跳动大模型平台，豆包系列每模型送 50 万免费额度，协作计划每日再送",
+    "highlight": "安心体验每模型 50 万 Token；协作奖励计划每日 200 万（企业 500 万）",
+    "tags": ["注册送", "每日刷新", "大厂"],
+    "offers": [
+      { "model": "安心体验（每模型）", "quota": "新用户每款模型一次性赠送 50 万 Token 免费推理额度，覆盖豆包全系及 DeepSeek/Kimi/千问等", "type": "signup" },
+      { "model": "协作奖励计划", "quota": "每日最高赠送 200 万 Token/单模型（个人），企业认证升级至 500 万/单模型，按天重置", "type": "daily" }
+    ],
+    "steps": [
+      "打开 console.volcengine.com/ark 注册火山引擎并实名",
+      "开通方舟模型服务，自动领取安心体验 50 万 Token/模型",
+      "在「开通管理」页加入协作奖励计划，开启每日额度",
+      "OpenAI 兼容接口，base_url 指向 ark.cn-beijing.volces.com/api/v3"
+    ],
+    "pitfalls": [
+      "安心体验额度用尽且未关闭时，对应模型服务会自动暂停，注意评估中断风险",
+      "协作奖励计划需实名认证、开通模型、关闭安心模式才能参与；个人单模型日上限 200 万",
+      "免费额度仅抵扣在线推理费用，不含插件/知识库/批量推理"
+    ],
+    "api_base": "https://ark.cn-beijing.volces.com/api/v3",
+    "example_model": "doubao-seed-2-1-pro-260628",
+    "last_verified": "2026-08-30"
   }
 ]
