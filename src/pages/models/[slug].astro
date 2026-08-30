@@ -20,15 +20,24 @@ const prev = all[(idx - 1 + all.length) % all.length];
 const next = all[(idx + 1) % all.length];
 const verifiedShort = platform.last_verified.replace(/-/g, '/');
 
-const curlExample = `curl ${platform.api_base}/chat/completions \\
+const isOpenAI = platform.openai_compatible !== false;
+
+const curlExample = isOpenAI
+  ? `curl ${platform.api_base}/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $API_KEY" \\
   -d '{
     "model": "${platform.example_model}",
     "messages": [{"role": "user", "content": "你好，介绍一下你自己"}]
-  }'`;
+  }'`
+  : `# 该平台为 WebSocket 自定义协议，不支持 cURL 直连
+# 接入端点（示例模型）：${platform.api_base}
+# domain 参数：${platform.example_model}
+# 鉴权三件套：AppID / APIKey / APISecret（控制台创建应用后获取）
+# 完整文档：${platform.docs_url}`;
 
-const pythonExample = `from openai import OpenAI
+const pythonExample = isOpenAI
+  ? `from openai import OpenAI
 import os
 
 client = OpenAI(
@@ -40,7 +49,30 @@ resp = client.chat.completions.create(
     model="${platform.example_model}",
     messages=[{"role": "user", "content": "你好，介绍一下你自己"}],
 )
-print(resp.choices[0].message.content)`;
+print(resp.choices[0].message.content)`
+  : `# 安装官方 SDK：pip install --upgrade spark_ai_python
+from sparkai.llm.llm import ChatSparkLLM, ChunkPrintHandler
+from sparkai.core.messages import ChatMessage
+
+SPARKAI_URL = '${platform.api_base}'
+SPARKAI_APP_ID = '你的 AppID'
+SPARKAI_API_SECRET = '你的 APISecret'
+SPARKAI_API_KEY = '你的 APIKey'
+SPARKAI_DOMAIN = '${platform.example_model}'
+
+if __name__ == '__main__':
+    spark = ChatSparkLLM(
+        spark_api_url=SPARKAI_URL,
+        spark_app_id=SPARKAI_APP_ID,
+        spark_api_key=SPARKAI_API_KEY,
+        spark_api_secret=SPARKAI_API_SECRET,
+        spark_llm_domain=SPARKAI_DOMAIN,
+        streaming=False,
+    )
+    messages = [ChatMessage(role="user", content='你好，介绍一下你自己')]
+    handler = ChunkPrintHandler()
+    resp = spark.generate([messages], callbacks=[handler])
+    print(resp)`;
 ---
 
 <Base
@@ -111,17 +143,25 @@ print(resp.choices[0].message.content)`;
       platform.api_base && (
         <div>
           <h2 class="mt-10 text-xl font-bold text-slate-900">怎么用</h2>
-          <p class="mt-2 text-sm text-slate-500">
-            接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
-            示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
-          </p>
+          {isOpenAI && (
+            <p class="mt-2 text-sm text-slate-500">
+              接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
+              示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
+            </p>
+          )}
+          {!isOpenAI && (
+            <p class="mt-2 text-sm text-slate-500">
+              接口为官方 WebSocket 自定义协议，<strong class="font-semibold text-slate-700">不兼容 OpenAI SDK</strong>。接入端点：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
+              domain：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>，鉴权用 AppID / APIKey / APISecret（可用模型以官方列表为准）
+            </p>
+          )}
           <div class="mt-4 grid gap-4 md:grid-cols-2">
             <div>
               <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">cURL</p>
               <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{curlExample}</code></pre>
             </div>
             <div>
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">Python（openai SDK）</p>
+              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-400">{isOpenAI ? 'Python（openai SDK）' : 'Python（官方 SDK）'}</p>
               <pre class="overflow-x-auto rounded-xl bg-slate-900 p-4 text-xs leading-relaxed text-slate-100"><code>{pythonExample}</code></pre>
             </div>
           </div>

@@ -288,7 +288,7 @@
   {
     "id": "2026-08-qiniu-gift-3m",
     "date": "2026-08-14",
-    "platform_slug": "",
+    "platform_slug": "qiniu",
     "platform_name": "七牛云",
     "title": "七牛云新手礼包：300 万 Token 调 50+ 全球模型",
     "type": "signup_bonus",
@@ -326,7 +326,7 @@
   {
     "id": "2026-08-xunfei-verify-500k",
     "date": "2026-08-06",
-    "platform_slug": "",
+    "platform_slug": "xunfei",
     "platform_name": "讯飞开放平台",
     "title": "讯飞星火：实名认证加赠 50 万 Token（30 天有效）",
     "type": "verify_bonus",

@@ -407,5 +407,80 @@
     "api_base": "https://ark.cn-beijing.volces.com/api/v3",
     "example_model": "doubao-seed-2-1-pro-260628",
     "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "xunfei",
+    "name": "讯飞星火（Spark）",
+    "category": "domestic",
+    "website": "https://xinghuo.xfyun.cn/",
+    "register_url": "https://console.xfyun.cn/",
+    "docs_url": "https://www.xfyun.cn/doc/spark/Web.html",
+    "tagline": "科大讯飞自研大模型，Spark Lite 官方标注为免费模型，中文与语音能力见长",
+    "highlight": "Spark Lite 免费模型；注册后可领取免费额度用于 Pro / Ultra / X2 等付费模型",
+    "tags": ["永久免费", "注册送", "大厂", "国产"],
+    "offers": [
+      { "model": "Spark Lite", "quota": "官方产品页标注为免费模型，需领取后使用（具体额度与速率限制以控制台为准）", "type": "permanent" },
+      { "model": "新用户免费额度包", "quota": "注册后在星火产品页领取，可用于 Spark Pro / Max / Ultra 等付费模型，额度以官方实时发放为准", "type": "signup" },
+      { "model": "实名认证加赠", "quota": "完成实名认证额外加赠 50 万 Token（30 天有效）", "type": "credit" }
+    ],
+    "steps": [
+      "访问 xinghuo.xfyun.cn 或 xfyun.cn 注册讯飞开放平台账号",
+      "进入控制台创建应用，拿到 AppID、APIKey、APISecret",
+      "在星火产品页领取 Spark Lite 免费模型额度与新用户免费包",
+      "按官方 WebSocket / HTTP 文档接入，或用官方 SDK（Python / Java / JS / Go 等）"
+    ],
+    "pitfalls": [
+      "Spark Lite 免费但有并发与速率限制，高峰期可能排队；官方文档注明并发提升需联系商务",
+      "Lite 之外的模型（Pro / Ultra / X2）按量计费或走 Token Plan，免费额度用尽即扣费，注意切回 Lite",
+      "讯飞星火是 WebSocket + 自定义鉴权协议，不是 OpenAI 兼容格式，迁移现有代码需要适配",
+      "Max 版本官方已于 2026-03-10 下线并合并至 Ultra，注意 domain 与 endpoint 已变更",
+      "1 token ≈ 1.5 个中文汉字 / 0.8 个英文单词，估算成本时别按字符数算"
+    ],
+    "api_base": "wss://spark-api.xf-yun.com/v1.1/chat",
+    "example_model": "lite",
+    "openai_compatible": false,
+    "extra_endpoints": [
+      { "name": "Spark Pro（generalv3）", "url": "wss://spark-api.xf-yun.com/v3.1/chat" },
+      { "name": "Spark Pro-128K", "url": "wss://spark-api.xf-yun.com/chat/pro-128k" },
+      { "name": "Spark Ultra（4.0 Ultra）", "url": "wss://spark-api.xf-yun.com/v4.0/chat" },
+      { "name": "HTTP 调用文档", "url": "https://www.xfyun.cn/doc/spark/HTTP.html" },
+      { "name": "WebSocket 调用文档", "url": "https://www.xfyun.cn/doc/spark/Web.html" }
+    ],
+    "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "qiniu",
+    "name": "七牛云 AI 大模型推理",
+    "category": "domestic",
+    "website": "https://www.qiniu.com/ai/models",
+    "register_url": "https://www.qiniu.com/ai/models",
+    "docs_url": "https://apidocs.qnaigc.com/",
+    "tagline": "一个 Key 调 50+ 国内外模型，OpenAI / Anthropic 双协议兼容，国内直连",
+    "highlight": "新用户送 300 万 Token 全模型免费额度，覆盖 DeepSeek / GLM / Qwen / Kimi / 豆包等",
+    "tags": ["注册送", "模型多", "国内直连"],
+    "offers": [
+      { "model": "全模型免费资源包", "quota": "新用户送 300 万 Token，全系列大语言模型按调用比例抵扣（官方注明额度有限、先到先得）", "type": "signup" }
+    ],
+    "steps": [
+      "注册七牛云账号并登录（支持手机号 / 邮箱）",
+      "进入控制台 → AI 大模型推理 → API Key，创建并复制（首次创建即激活 300 万免费额度）",
+      "base_url 填 https://api.qnaigc.com，直接用 OpenAI SDK 调用",
+      "海外业务改用海外接入点 https://api.modelink.ai"
+    ],
+    "pitfalls": [
+      "免费额度按各模型单价比例抵扣，跑 Claude / GPT / Gemini 这类高价模型消耗极快，建议先用 DeepSeek、GLM 等便宜模型",
+      "官方写明免费额度有限、先到先得，活动可能调整或提前结束，以控制台显示为准",
+      "聚合平台模型上下线频繁，调用前先在模型广场确认模型名与当前价格",
+      "视频 / 图像生成是独立接口，计费方式与对话接口不同"
+    ],
+    "api_base": "https://api.qnaigc.com/v1",
+    "example_model": "deepseek-v4-flash",
+    "extra_endpoints": [
+      { "name": "海外接入点（OpenAI 兼容）", "url": "https://api.modelink.ai/v1" },
+      { "name": "Anthropic 兼容端点", "url": "https://api.qnaigc.com/v1/messages" },
+      { "name": "Anthropic 原厂直通（bypass）", "url": "https://api.qnaigc.com/bypass/anthropic/v1/messages" },
+      { "name": "OpenAI Responses 原厂直通", "url": "https://api.qnaigc.com/bypass/openai/v1/responses" }
+    ],
+    "last_verified": "2026-08-30"
   }
 ]
