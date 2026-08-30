@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-scnet-maas-promo",
+    "date": "2026-08-30",
+    "platform_slug": "scnet",
+    "platform_name": "超算互联网（SCNet）",
+    "title": "超算互联网 MaaS 特惠：新客免费领 1000 万 Token（活动至 9 月 13 日）",
+    "type": "signup_bonus",
+    "reward": "1000 万 Token 量包（GLM-5-Base，128K 上下文），注册即领",
+    "eligibility": "仅新用户",
+    "deadline": "2026-09-13",
+    "howto": [
+      "打开 scnet.cn 注册账号",
+      "进入 MaaS 特惠专场活动页",
+      "新客尝鲜栏点击免费领取，实时到账"
+    ],
+    "summary": "国家超算互联网背景，正规性拉满；同期还有工作日 10:00 的 1 元秒杀（DeepSeek/GLM 1000 万 Token 包 0.1-1 折）。注意：推理速度可能慢于商业云，适合对延迟不敏感的批量任务。",
+    "source": "https://www.scnet.cn",
+    "status": "active"
+  },
+  {
     "id": "2026-08-sensenova-beta-free",
     "date": "2026-08-29",
     "platform_slug": "sensenova",
