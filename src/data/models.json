@@ -482,5 +482,36 @@
       { "name": "OpenAI Responses 原厂直通", "url": "https://api.qnaigc.com/bypass/openai/v1/responses" }
     ],
     "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "sambanova",
+    "name": "SambaNova Cloud",
+    "category": "overseas",
+    "website": "https://cloud.sambanova.ai/",
+    "register_url": "https://cloud.sambanova.ai/",
+    "docs_url": "https://docs.sambanova.ai/docs/en/models/rate-limits",
+    "tagline": "自研 RDU 芯片的超快推理，不绑卡即享永久免费层",
+    "highlight": "Free Tier 无需绑定支付方式：20 万 Token/天，可跑 DeepSeek-V3.1、Llama 3.3 70B、gpt-oss-120b",
+    "tags": ["永久免费", "免绑卡", "速度快"],
+    "offers": [
+      { "model": "DeepSeek-V3.1 / Meta-Llama-3.3-70B-Instruct / gpt-oss-120b", "quota": "Free Tier：20 RPM、20 RPD、20 万 Token/天（不绑支付方式即生效）", "type": "permanent" },
+      { "model": "预览模型 DeepSeek-V3.2 / gemma-4-31B-it", "quota": "同为 20 RPM / 20 RPD / 20 万 TPD，容量有限、可能短期下线", "type": "permanent" }
+    ],
+    "steps": [
+      "注册 SambaCloud 账号，先不要绑定支付方式（绑定后即切到 Developer 计费档）",
+      "在控制台 APIs 页生成 API Key（最多 25 个，生成后不可再查看，务必保存）",
+      "base_url 填 https://api.sambanova.ai/v1，直接用 OpenAI SDK 调用",
+      "看响应头 x-ratelimit-remaining-requests-day 掌握当天剩余次数"
+    ],
+    "pitfalls": [
+      "免费层每天只有 20 次请求（20 RPD），适合少量长文本任务，不适合批量或 Agent 循环",
+      "一旦绑定支付方式就切换到 Developer 档（60 RPM / 12000 RPD），开始按量计费，别误操作",
+      "海外服务，国内访问需要合适的网络环境",
+      "MiniMax-M2.7 只在 Developer 档提供，免费层用不到",
+      "生产模型与预览模型名单会调整（含下线），调用前先查官方模型页"
+    ],
+    "api_base": "https://api.sambanova.ai/v1",
+    "example_model": "Meta-Llama-3.3-70B-Instruct",
+    "last_verified": "2026-08-30"
   }
 ]
