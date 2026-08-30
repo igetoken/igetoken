@@ -23,8 +23,10 @@ export interface Platform {
   pitfalls: string[];
   api_base?: string;
   example_model?: string;
-  /** 是否兼容 OpenAI 接口协议；false 表示自定义协议（如讯飞星火 WebSocket），平台页将展示官方 SDK 示例。缺省视为 true */
+  /** 是否兼容 OpenAI 接口协议；false 表示官方自有协议（如讯飞星火 WebSocket、Cohere v2），平台页将改用 sdk_example。缺省视为 true */
   openai_compatible?: boolean;
+  /** 非 OpenAI 兼容平台的官方 SDK 调用示例（Python）；openai_compatible 为 false 时应提供 */
+  sdk_example?: string;
   /** 附加接入端点（如 Coding Plan 专用端点），平台页以表格展示 */
   extra_endpoints?: { name: string; url: string }[];
   last_verified: string;

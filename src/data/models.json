@@ -439,6 +439,7 @@
     "api_base": "wss://spark-api.xf-yun.com/v1.1/chat",
     "example_model": "lite",
     "openai_compatible": false,
+    "sdk_example": "# 安装官方 SDK：pip install --upgrade spark_ai_python\nfrom sparkai.llm.llm import ChatSparkLLM, ChunkPrintHandler\nfrom sparkai.core.messages import ChatMessage\n\n# Spark Lite 是官方标注的免费模型（domain: lite）\nSPARKAI_URL = 'wss://spark-api.xf-yun.com/v1.1/chat'\nSPARKAI_APP_ID = '你的 AppID'\nSPARKAI_API_SECRET = '你的 APISecret'\nSPARKAI_API_KEY = '你的 APIKey'\nSPARKAI_DOMAIN = 'lite'\n\nif __name__ == '__main__':\n    spark = ChatSparkLLM(\n        spark_api_url=SPARKAI_URL,\n        spark_app_id=SPARKAI_APP_ID,\n        spark_api_key=SPARKAI_API_KEY,\n        spark_api_secret=SPARKAI_API_SECRET,\n        spark_llm_domain=SPARKAI_DOMAIN,\n        streaming=False,\n    )\n    messages = [ChatMessage(role=\"user\", content='你好，介绍一下你自己')]\n    handler = ChunkPrintHandler()\n    resp = spark.generate([messages], callbacks=[handler])\n    print(resp)",
     "extra_endpoints": [
       { "name": "Spark Pro（generalv3）", "url": "wss://spark-api.xf-yun.com/v3.1/chat" },
       { "name": "Spark Pro-128K", "url": "wss://spark-api.xf-yun.com/chat/pro-128k" },
@@ -512,6 +513,102 @@
     ],
     "api_base": "https://api.sambanova.ai/v1",
     "example_model": "Meta-Llama-3.3-70B-Instruct",
+    "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "cloudflare",
+    "name": "Cloudflare Workers AI",
+    "category": "overseas",
+    "website": "https://developers.cloudflare.com/workers-ai/",
+    "register_url": "https://dash.cloudflare.com/sign-up",
+    "docs_url": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+    "tagline": "边缘推理平台，免费计划每天 1 万 Neurons，40+ 开源模型随便调",
+    "highlight": "每天 10,000 Neurons 免费额度，无需付费计划、无需绑卡，每日 00:00 UTC 重置",
+    "tags": ["每日刷新", "免绑卡", "模型多"],
+    "offers": [
+      { "model": "40+ 开源模型（Llama / Qwen / Gemma / gpt-oss 等）", "quota": "每天 10,000 Neurons 免费额度，所有用户在 Workers Free 计划下均可用", "type": "daily" }
+    ],
+    "steps": [
+      "注册 Cloudflare 账号（免费计划即可，不需要绑定支付方式）",
+      "在 Dashboard 首页右侧复制 Account ID",
+      "进入 My Profile → API Tokens，创建一个带 Workers AI 读权限的 Token",
+      "base_url 填 https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1，用 OpenAI SDK 直接调用"
+    ],
+    "pitfalls": [
+      "官方明确标注部分模型需付费账单方式：Kimi K2.6 / K2.7-code、GLM-5.2 / 5.3 / 5.3-flash、DeepSeek-V4-Flash / V4-Pro，免费额度不覆盖这些",
+      "1 万 Neurons 用 70B 大模型只够约 37 万输入 token，换小模型（Llama-3.2-1B）能到约 400 万，别一上来就跑大模型",
+      "额度按 UTC 每天 00:00 重置，与北京时间差 8 小时，注意「今天」的边界",
+      "免费额度是账户维度的，超了直接报错（不是降级），重要任务要留余量"
+    ],
+    "api_base": "https://api.cloudflare.com/client/v4/accounts/<ACCOUNT_ID>/ai/v1",
+    "example_model": "@cf/meta/llama-3.2-1b-instruct",
+    "extra_endpoints": [
+      { "name": "官方模型与价格总表", "url": "https://developers.cloudflare.com/workers-ai/models/" },
+      { "name": "OpenAI 兼容端点文档", "url": "https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/" }
+    ],
+    "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "mistral",
+    "name": "Mistral AI（La Plateforme）",
+    "category": "overseas",
+    "website": "https://mistral.ai/",
+    "register_url": "https://console.mistral.ai/",
+    "docs_url": "https://docs.mistral.ai/api",
+    "tagline": "欧洲头部开源模型厂商，免费计划每月送 $10 API credits",
+    "highlight": "Free 计划每月 $10 API credits，可调用 Mistral 全系模型，无需绑定支付方式",
+    "tags": ["每月赠送", "免绑卡", "开源模型"],
+    "offers": [
+      { "model": "Mistral 全系模型", "quota": "免费计划每月 $10 API credits，按各模型 token 单价抵扣（官方 Free 档明示）", "type": "credit" }
+    ],
+    "steps": [
+      "注册 Mistral 账号（Free 计划不需要支付方式）",
+      "进入 La Plateforme 控制台 → API Keys，创建并复制 Key",
+      "base_url 填 https://api.mistral.ai/v1，用 OpenAI SDK 即可调用",
+      "先用 mistral-small-latest 这类便宜模型试，别一上来就烧大模型"
+    ],
+    "pitfalls": [
+      "$10 credits 按 token 单价抵扣，跑 Mistral Large 这类旗舰模型很快见底，先在账单页看消耗",
+      "免费额度与 Vibe / Studio 的使用限制是两套，别混淆",
+      "海外服务，国内访问需要合适的网络环境",
+      "学生可 $5.99/月 买 Pro（原价 $14.99），Pro 给 $30/月 credits——但那是付费计划，不算白嫖"
+    ],
+    "api_base": "https://api.mistral.ai/v1",
+    "example_model": "mistral-small-latest",
+    "extra_endpoints": [
+      { "name": "可用模型列表", "url": "https://docs.mistral.ai/models" }
+    ],
+    "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "cohere",
+    "name": "Cohere",
+    "category": "overseas",
+    "website": "https://cohere.com/",
+    "register_url": "https://dashboard.cohere.com/api-keys",
+    "docs_url": "https://docs.cohere.com/docs/rate-limits",
+    "tagline": "企业级 NLP 老牌厂商，免费 trial key 每月 1000 次调用，按次数不按 token",
+    "highlight": "注册即得免费 trial key：每月 1000 次 API 调用，Chat 20 req/min",
+    "tags": ["永久免费", "免绑卡", "RAG友好"],
+    "offers": [
+      { "model": "Trial key（Command 全系 / Embed / Rerank）", "quota": "每月 1000 次 API 调用；Chat 20 req/min，Embed 2000 inputs/min，Rerank 10 req/min", "type": "permanent" }
+    ],
+    "steps": [
+      "注册 Cohere 账号（Dashboard 会自动生成一枚 trial key，无需绑卡）",
+      "进入 dashboard.cohere.com/api-keys 复制 trial key",
+      "用官方 SDK（pip install cohere）或 v2 HTTP 接口调用 https://api.cohere.com/v2",
+      "需要更大用量时在控制台申请 production key（付费）"
+    ],
+    "pitfalls": [
+      "1000 次/月是**调用次数**不是 token 数——长对话也只算一次，所以对 RAG、Rerank、Embed 这类高频低量场景特别划算，跑长文本生成反而不省",
+      "Command A+ / Command A Reasoning 等较新模型：官方注明 prod key 也按 trial 限额执行，用量上不去",
+      "Cohere v2 是自有协议，与 OpenAI SDK 不通用，必须用官方 SDK 或按文档拼 HTTP",
+      "海外服务，国内访问需要合适的网络环境"
+    ],
+    "api_base": "https://api.cohere.com/v2",
+    "example_model": "command-a",
+    "openai_compatible": false,
+    "sdk_example": "# 安装官方 SDK：pip install cohere\nimport cohere\n\nco = cohere.ClientV2(\"你的 Trial API Key\")\n\nresp = co.chat(\n    model=\"command-a\",\n    messages=[{\"role\": \"user\", \"content\": \"你好，介绍一下你自己\"}],\n)\nprint(resp.message.content[0].text)\n\n# Rerank 示例（免费额度同样覆盖）\n# rerank = co.rerank(model=\"rerank-v3.5\", query=\"什么是 RAG\", documents=docs)",
     "last_verified": "2026-08-30"
   }
 ]

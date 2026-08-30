@@ -30,10 +30,8 @@ const curlExample = isOpenAI
     "model": "${platform.example_model}",
     "messages": [{"role": "user", "content": "你好，介绍一下你自己"}]
   }'`
-  : `# 该平台为 WebSocket 自定义协议，不支持 cURL 直连
-# 接入端点（示例模型）：${platform.api_base}
-# domain 参数：${platform.example_model}
-# 鉴权三件套：AppID / APIKey / APISecret（控制台创建应用后获取）
+  : `# 该平台使用官方自有协议，不支持 cURL 直连
+# 接入端点：${platform.api_base}
 # 完整文档：${platform.docs_url}`;
 
 const pythonExample = isOpenAI
@@ -50,29 +48,7 @@ resp = client.chat.completions.create(
     messages=[{"role": "user", "content": "你好，介绍一下你自己"}],
 )
 print(resp.choices[0].message.content)`
-  : `# 安装官方 SDK：pip install --upgrade spark_ai_python
-from sparkai.llm.llm import ChatSparkLLM, ChunkPrintHandler
-from sparkai.core.messages import ChatMessage
-
-SPARKAI_URL = '${platform.api_base}'
-SPARKAI_APP_ID = '你的 AppID'
-SPARKAI_API_SECRET = '你的 APISecret'
-SPARKAI_API_KEY = '你的 APIKey'
-SPARKAI_DOMAIN = '${platform.example_model}'
-
-if __name__ == '__main__':
-    spark = ChatSparkLLM(
-        spark_api_url=SPARKAI_URL,
-        spark_app_id=SPARKAI_APP_ID,
-        spark_api_key=SPARKAI_API_KEY,
-        spark_api_secret=SPARKAI_API_SECRET,
-        spark_llm_domain=SPARKAI_DOMAIN,
-        streaming=False,
-    )
-    messages = [ChatMessage(role="user", content='你好，介绍一下你自己')]
-    handler = ChunkPrintHandler()
-    resp = spark.generate([messages], callbacks=[handler])
-    print(resp)`;
+  : (platform.sdk_example ?? `# 该平台需使用官方 SDK 调用，详见 ${platform.docs_url}`);
 ---
 
 <Base
@@ -151,8 +127,8 @@ if __name__ == '__main__':
           )}
           {!isOpenAI && (
             <p class="mt-2 text-sm text-slate-500">
-              接口为官方 WebSocket 自定义协议，<strong class="font-semibold text-slate-700">不兼容 OpenAI SDK</strong>。接入端点：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
-              domain：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>，鉴权用 AppID / APIKey / APISecret（可用模型以官方列表为准）
+              接口为官方自有协议，<strong class="font-semibold text-slate-700">不兼容 OpenAI SDK</strong>。接入端点：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
+              示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（鉴权方式与可用模型以官方文档为准）
             </p>
           )}
           <div class="mt-4 grid gap-4 md:grid-cols-2">
