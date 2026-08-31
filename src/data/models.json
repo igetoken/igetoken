@@ -24,7 +24,8 @@
     "pitfalls": [
       "GLM-4-Flash 免费但有并发限制，高峰期可能限流",
       "2000 万体验包有有效期，在控制台注意到期时间，别攒着不用",
-      "网页版聊天的额度与 API Token 是两套体系，别混淆"
+      "网页版聊天的额度与 API Token 是两套体系，别混淆",
+      "智谱的缓存（Prompt Cache）收费较高，长上下文高频复用请注意控制上下文大小、避免无意义重复"
     ],
     "api_base": "https://open.bigmodel.cn/api/paas/v4",
     "example_model": "glm-4-flash",
