@@ -11,7 +11,9 @@
     "tags": ["注册送", "永久免费", "国内直连"],
     "offers": [
       { "model": "GLM-4-Flash", "quota": "永久免费不限量（限约 30 并发）", "type": "permanent" },
-      { "model": "全系模型体验包", "quota": "新用户注册送 2000 万 Token（时效以控制台为准）", "type": "signup" }
+      { "model": "全系模型体验包", "quota": "新用户注册送 2000 万 Token（时效以控制台为准）", "type": "signup" },
+      { "model": "GLM-5.3（ZCode Start 体验套餐）", "quota": "每天赠送 300 万 Token", "type": "daily" },
+      { "model": "GLM-5.3-Flash（ZCode Start 体验套餐）", "quota": "每天赠送 500 万 Token", "type": "daily" }
     ],
     "steps": [
       "打开 bigmodel.cn，手机号注册并登录",
@@ -31,7 +33,7 @@
       { "name": "Coding Plan · OpenAI Chat Completion 协议", "url": "https://open.bigmodel.cn/api/coding/paas/v4" },
       { "name": "Coding Plan · OpenAI Response 协议", "url": "https://open.bigmodel.cn/api/v1" }
     ],
-    "last_verified": "2026-08-28"
+    "last_verified": "2026-08-31"
   },
   {
     "slug": "siliconflow",
