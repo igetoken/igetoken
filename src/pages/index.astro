@@ -6,7 +6,7 @@ import FilterTabs from '../components/FilterTabs.astro';
 import { getPlatforms, selectHomeDeals, CATEGORY_LABEL } from '../lib/data';
 
 const platforms = getPlatforms();
-const homeDeals = selectHomeDeals(9);
+const homeDeals = selectHomeDeals(10);
 const featuredDeal = homeDeals[0];
 const restDeals = homeDeals.slice(1);
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(

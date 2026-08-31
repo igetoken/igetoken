@@ -112,15 +112,82 @@ export const HOME_URGENT_DAYS = 7;
 /** 首页快讯：同一平台最多展示条数，避免同一厂商刷屏 */
 export const HOME_MAX_PER_PLATFORM = 2;
 
+/** 从文本中解析最大的 Token 量级（亿/万），无则返回 0，用于头条价值评估 */
+function parseTokenMagnitude(text: string): number {
+  let max = 0;
+  const re = /(\d+(?:\.\d+)?)\s*[亿万]/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(text)) !== null) {
+    const n = parseFloat(m[1]);
+    const unit = m[0].includes('亿') ? 1e8 : 1e4;
+    max = Math.max(max, n * unit);
+  }
+  return max;
+}
+
+/** 头条候选资格：进行中 + 有官方平台页（真 API Token 来源）+ 是真额度（Token 量级 / 永久免费模型） */
+function isFeaturedEligible(deal: Deal): boolean {
+  if (deal.status !== 'active') return false;
+  if (!deal.platform_slug) return false;
+  const mag = parseTokenMagnitude(`${deal.title} ${deal.reward}`);
+  const permanent = (deal.deadline ?? '').includes('永久') || deal.type === 'new_model';
+  return mag > 0 || permanent;
+}
+
+/** 头条价值评分：类型基础分 + Token 量级 + 持续性 − 紧迫度惩罚 + 每日复得 */
+export function valueScore(deal: Deal): number {
+  const typeBase: Record<DealType, number> = {
+    signup_bonus: 3,
+    new_model: 3,
+    limited_time: 2,
+    verify_bonus: 2,
+    referral: 2,
+    price_change: 1,
+    task_reward: 1,
+  };
+  let score = typeBase[deal.type] ?? 1;
+
+  const mag = parseTokenMagnitude(`${deal.title} ${deal.reward}`);
+  if (mag >= 1e8) score += 3;
+  else if (mag >= 1e7) score += 2;
+  else if (mag >= 1e6) score += 1;
+
+  if (deal.deadline == null || (deal.deadline ?? '').includes('永久')) score += 2;
+  else {
+    const left = daysLeft(deal.deadline);
+    if (left !== null && left > 30) score += 1;
+    else if (left !== null && left <= 7) score -= 1;
+  }
+
+  if (`${deal.title} ${deal.reward}`.includes('每日')) score += 1;
+
+  return score;
+}
+
+/** 头条：合格候选中价值最高者；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
+export function selectHomeFeatured(): Deal | undefined {
+  const active = getActiveDeals();
+  const pool = active.filter(isFeaturedEligible);
+  const candidates = pool.length > 0 ? pool : active;
+  return [...candidates].sort((a, b) => {
+    const diff = valueScore(b) - valueScore(a);
+    if (diff !== 0) return diff;
+    const mag = parseTokenMagnitude(b.title + ' ' + b.reward) - parseTokenMagnitude(a.title + ' ' + a.reward);
+    if (mag !== 0) return mag;
+    return b.date.localeCompare(a.date);
+  })[0];
+}
+
 /**
  * 选取首页展示的快讯：
- * - 只用进行中的活动，已结束归档不进首页
- * - 第一轮纳入所有紧急条目（≤7 天），时效优先，不受 limit 限制
- * - 第二轮按紧急度补足到 limit
- * - 两轮均受同平台限流约束
+ * - 头条 = 价值最高的合格快讯（见 selectHomeFeatured），不再按紧迫度抢占
+ * - 其余小卡按紧迫度排序（已结束归档不进首页），排除头条本身
+ * - 小卡数量封顶 limit-1，受同平台限流约束
  */
 export function selectHomeDeals(limit = 9): Deal[] {
-  const ranked = sortDealsByUrgency(getActiveDeals());
+  const featured = selectHomeFeatured();
+  const rest = sortDealsByUrgency(getActiveDeals()).filter((d) => d !== featured);
+
   const usedByPlatform = new Map<string, number>();
   const picked: Deal[] = [];
 
@@ -132,18 +199,10 @@ export function selectHomeDeals(limit = 9): Deal[] {
     picked.push(deal);
   };
 
-  const isUrgent = (deal: Deal) => {
-    const left = daysLeft(deal.deadline);
-    return left !== null && left >= 0 && left <= HOME_URGENT_DAYS;
-  };
-
-  ranked.filter(isUrgent).forEach(take);
-
-  for (const deal of ranked) {
-    if (picked.length >= limit) break;
-    if (picked.includes(deal)) continue;
+  for (const deal of rest) {
+    if (picked.length >= limit - 1) break;
     take(deal);
   }
 
-  return picked;
+  return featured ? [featured, ...picked] : picked;
 }
