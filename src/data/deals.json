@@ -19,6 +19,25 @@
     "status": "active"
   },
   {
+    "id": "2026-08-hunyuan-tokenhub-signup",
+    "date": "2026-08-31",
+    "platform_slug": "hunyuan",
+    "platform_name": "腾讯混元（腾讯云）",
+    "title": "混元 TokenHub 新人包：每主账号领最高 100 万免费 Token（至 2026-12-31）",
+    "type": "signup_bonus",
+    "reward": "每个主账号一次性领取最高 100 万免费 Token，覆盖多个主力模型",
+    "eligibility": "混元大模型新用户（每个主账号限领一次）",
+    "deadline": "2026-12-31",
+    "howto": [
+      "进入混元大模型控制台开通服务",
+      "在 TokenHub「启用管理」页领取新人免费体验包",
+      "额度到账后创建 API Key 即可调用"
+    ],
+    "summary": "腾讯官方新人福利，官方文档明示本期活动截至 2026 年 12 月 31 日。与混元-lite 永久免费、WorkBuddy 内每日免费额度相互独立；TokenHub 额度是 API Token，可在混元 API 直接调用，非 WorkBuddy 产品内 Credits。",
+    "source": "https://cloud.tencent.com/document/buy-guide/1823/130053",
+    "status": "active"
+  },
+  {
     "id": "2026-08-minimax-week-free",
     "date": "2026-08-30",
     "platform_slug": "",
@@ -319,7 +338,7 @@
       "开通百炼模型服务",
       "各模型额度在模型广场查看"
     ],
-    "summary": "额度按模型独立发放、90 天有效，不能跨模型合并，建议按用量规划。",
+    "summary": "额度按模型独立发放、90 天有效，不能跨模型合并，建议按用量规划。官方开发者文档确认新用户总计可领约 7000 万 Token 大礼包（各模型 100 万叠加）；与「六大 Token 折扣券」活动相互独立。",
     "source": "https://help.aliyun.com/zh/model-studio/new-free-quota",
     "status": "active"
   },

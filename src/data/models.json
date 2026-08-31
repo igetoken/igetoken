@@ -246,7 +246,7 @@
     "tags": ["永久免费", "注册送", "大厂"],
     "offers": [
       { "model": "hunyuan-lite", "quota": "永久免费（能力最轻量的档位）", "type": "permanent" },
-      { "model": "TokenHub 新人体验包", "quota": "每个主账号一次性领取最高 100 万免费 Token，覆盖多个主力模型", "type": "signup" },
+      { "model": "TokenHub 新人体验包", "quota": "每个主账号一次性领取最高 100 万免费 Token，覆盖多个主力模型（本期活动至 2026-12-31）", "type": "signup" },
       { "model": "小程序成长计划", "quota": "提交小程序介绍申请通过后，混元额度可提升至最高 10 亿", "type": "credit" }
     ],
     "steps": [
