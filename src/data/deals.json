@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-08-tokenrouter-glm-5-3-free",
+    "date": "2026-08-31",
+    "platform_slug": "tokenrouter",
+    "platform_name": "TokenRouter",
+    "title": "TokenRouter：GLM-5.3 限时免费调用（LIMITED OFFER）",
+    "type": "limited_time",
+    "reward": "glm-5.3-free 模型当前限时免费（页面标 LIMITED OFFER），经 TokenRouter 单 Key 统一调用，无需单独充值即可使用",
+    "eligibility": "注册 TokenRouter 账号并创建 API Key；OpenAI 兼容接口 base_url=https://api.tokenrouter.com/v1",
+    "deadline": "未知，建议尽快领取",
+    "howto": [
+      "打开 https://www.tokenrouter.com 注册并登录",
+      "创建 API Key，base_url 指向 https://api.tokenrouter.com/v1",
+      "在模型页筛选标 Free / LIMITED OFFER 的免费模型（如 glm-5.3-free）后调用"
+    ],
+    "summary": "TokenRouter 是多供应商模型路由/聚合网关（单 Key 调数百模型），glm-5.3-free 标 LIMITED OFFER 属限时优惠，随时可能下线，以站内模型列表为准。注意：这是聚合平台的促销型免费，并非官方 API 常驻额度，活动结束即失效；TokenRouter 本质是充值余额、按 token 计费的中转网关，长期免费依赖促销，不宜作为稳定免费来源，请以官方为准。",
+    "source": "https://www.tokenrouter.com/models/?search=glm-5.3-free",
+    "status": "active"
+  },
+  {
     "id": "2026-08-minimax-design-h3-launch",
     "date": "2026-08-30",
     "platform_slug": "",
