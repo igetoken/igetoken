@@ -1,6 +1,7 @@
-import type { Category, Deal, DealType, Platform } from './types';
+import type { Category, Deal, DealType, Platform, Notice, NoticeCategory } from './types';
 import modelsJson from '../data/models.json';
 import dealsJson from '../data/deals.json';
+import noticesJson from '../data/notices.json';
 
 export const CATEGORY_LABEL: Record<Category, string> = {
   domestic: '国内大厂',
@@ -28,6 +29,34 @@ export const OFFER_TYPE_LABEL: Record<string, string> = {
 
 const platforms = modelsJson as unknown as Platform[];
 const deals = dealsJson as unknown as Deal[];
+const notices = noticesJson as unknown as Notice[];
+
+export const NOTICE_CATEGORY_STYLE: Record<NoticeCategory, { bar: string; label: string }> = {
+  new: { bar: 'border-emerald-200 bg-emerald-50 text-emerald-900', label: '新收录' },
+  notice: { bar: 'border-slate-200 bg-slate-50 text-slate-700', label: '公告' },
+  maintenance: { bar: 'border-amber-200 bg-amber-50 text-amber-900', label: '维护' },
+  alert: { bar: 'border-red-200 bg-red-50 text-red-900', label: '提示' },
+};
+
+/**
+ * 首页公告位（notice）：运营公告层，承载站点层/跨条目的临时或半永久说明，不承载具体额度与截止日。
+ * 选取规则：status !== 'removed' + 未过期(expireAt ≥ 今天) + 按 priority 降序再 publishedAt 倒序。
+ * 治理：source 与 expireAt 为必填，缺失直接抛错（构建期即失败，落实"每条须溯源 + 可过期"）。
+ * 结果为空则不渲染（低频才有效，平时首页干净）。
+ */
+export function getActiveNotices(): Notice[] {
+  const today = new Date().toISOString().slice(0, 10);
+  return notices
+    .filter((n) => {
+      if (!n.source) throw new Error(`[notices.json] 缺少必填字段 source: ${n.id}`);
+      if (!n.expireAt) throw new Error(`[notices.json] 缺少必填字段 expireAt: ${n.id}`);
+      return n.status !== 'removed' && n.expireAt >= today;
+    })
+    .sort((a, b) => {
+      const diff = (b.priority ?? 0) - (a.priority ?? 0);
+      return diff !== 0 ? diff : b.publishedAt.localeCompare(a.publishedAt);
+    });
+}
 
 export function getPlatforms(): Platform[] {
   return platforms;

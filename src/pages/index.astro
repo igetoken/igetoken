@@ -4,6 +4,7 @@ import PlatformCard from '../components/PlatformCard.astro';
 import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
 import { getPlatforms, selectHomeDeals, CATEGORY_LABEL } from '../lib/data';
+import Notice from '../components/Notice.astro';
 
 const platforms = getPlatforms();
 const homeDeals = selectHomeDeals(10);
@@ -52,6 +53,9 @@ const lastVerified = platforms
       <p class="mt-6 text-xs text-slate-400">内容最后核实：{lastVerified} · 额度以各官方页面为准</p>
     </div>
   </section>
+
+  <!-- 首页公告位（notice，运营公告层；无内容则不渲染） -->
+  <Notice />
 
   <!-- 最新活动快讯 -->
   {

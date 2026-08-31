@@ -56,3 +56,17 @@ export interface Deal {
   source: string;
   status: 'active' | 'ended';
 }
+
+export type NoticeCategory = 'new' | 'notice' | 'maintenance' | 'alert';
+
+export interface Notice {
+  id: string;
+  text: string;
+  category: NoticeCategory;
+  source: string;
+  linkText?: string;
+  publishedAt: string;
+  expireAt: string;
+  priority?: number;
+  status?: 'active' | 'removed';
+}

@@ -1,0 +1,103 @@
+---
+import { getActiveNotices, NOTICE_CATEGORY_STYLE } from '../lib/data';
+
+const notices = getActiveNotices();
+const single = notices.length === 1;
+const track = single ? notices : [...notices, ...notices];
+---
+
+{
+  notices.length > 0 && (
+    <div class="border-b border-slate-100 bg-white" id="site-notice">
+      <div class="mx-auto max-w-6xl px-4">
+        {single ? (
+          <div
+            class:list={['notice-item flex items-center gap-3 rounded-lg border px-3 py-2 text-sm', NOTICE_CATEGORY_STYLE[notices[0].category].bar]}
+            data-id={notices[0].id}
+          >
+            <span class="shrink-0 font-medium">{NOTICE_CATEGORY_STYLE[notices[0].category].label}</span>
+            <span class="flex-1 text-current">{notices[0].text}</span>
+            {
+              notices[0].source && (
+                <a
+                  href={notices[0].source}
+                  target="_blank"
+                  rel="noopener"
+                  class="shrink-0 font-medium underline decoration-1 underline-offset-2 hover:opacity-80"
+                >
+                  {notices[0].linkText || '详情'}
+                </a>
+              )
+            }
+            <button type="button" class="notice-dismiss shrink-0 rounded p-0.5 hover:bg-black/5" aria-label="关闭公告">✕</button>
+          </div>
+        ) : (
+          <div class="notice-marquee overflow-hidden py-1">
+            <div class="notice-track flex w-max gap-6 py-1.5">
+              {
+                track.map((n) => (
+                  <span
+                    class:list={['notice-item inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm', NOTICE_CATEGORY_STYLE[n.category].bar]}
+                    data-id={n.id}
+                  >
+                    <span class="font-medium">{NOTICE_CATEGORY_STYLE[n.category].label}</span>
+                    <span>{n.text}</span>
+                    {
+                      n.source && (
+                        <a
+                          href={n.source}
+                          target="_blank"
+                          rel="noopener"
+                          class="font-medium underline decoration-1 underline-offset-2 hover:opacity-80"
+                        >
+                          {n.linkText || '详情'}
+                        </a>
+                      )
+                    }
+                    <button type="button" class="notice-dismiss rounded p-0.5 hover:bg-black/5" aria-label="关闭公告">✕</button>
+                  </span>
+                ))
+              }
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+<style>
+  .notice-track {
+    animation: notice-scroll 32s linear infinite;
+  }
+  .notice-marquee:hover .notice-track {
+    animation-play-state: paused;
+  }
+  @keyframes notice-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .notice-track { animation: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.notice-item').forEach((item) => {
+    const el = item as HTMLElement;
+    const id = el.dataset.id;
+    if (id && localStorage.getItem('notice-dismissed:' + id) === '1') el.style.display = 'none';
+    const btn = el.querySelector('.notice-dismiss');
+    btn?.addEventListener('click', () => {
+      if (id) {
+        localStorage.setItem('notice-dismissed:' + id, '1');
+        document
+          .querySelectorAll('.notice-item[data-id="' + id + '"]')
+          .forEach((n) => ((n as HTMLElement).style.display = 'none'));
+      }
+      const bar = document.getElementById('site-notice');
+      const visible = bar?.querySelectorAll('.notice-item:not([style*="display: none"])');
+      if (bar && visible && visible.length === 0) bar.style.display = 'none';
+    });
+  });
+</script>
