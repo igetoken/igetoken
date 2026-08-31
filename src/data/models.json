@@ -613,5 +613,34 @@
     "openai_compatible": false,
     "sdk_example": "# 安装官方 SDK：pip install cohere\nimport cohere\n\nco = cohere.ClientV2(\"你的 Trial API Key\")\n\nresp = co.chat(\n    model=\"command-a\",\n    messages=[{\"role\": \"user\", \"content\": \"你好，介绍一下你自己\"}],\n)\nprint(resp.message.content[0].text)\n\n# Rerank 示例（免费额度同样覆盖）\n# rerank = co.rerank(model=\"rerank-v3.5\", query=\"什么是 RAG\", documents=docs)",
     "last_verified": "2026-08-30"
+  },
+  {
+    "slug": "deepseek",
+    "name": "DeepSeek 深度求索（开放平台）",
+    "category": "domestic",
+    "website": "https://platform.deepseek.com",
+    "register_url": "https://platform.deepseek.com",
+    "docs_url": "https://api-docs.deepseek.com/",
+    "tagline": "推理与代码能力见长，新用户送 API 免费额度",
+    "highlight": "新用户注册送 500 万 tokens（30 天有效），无需绑卡",
+    "tags": ["注册送", "无需绑卡", "OpenAI 兼容"],
+    "offers": [
+      { "model": "DeepSeek-V4-Flash / V4-Pro 全系", "quota": "新用户注册送 500 万 tokens，30 天有效，无需绑卡；免费额度用完即止，超出按量计费", "type": "signup" },
+      { "model": "chat.deepseek.com 网页版", "quota": "面向个人永久免费不限量（仅对话，不含 API，另行注册）", "type": "permanent" }
+    ],
+    "steps": [
+      "打开 platform.deepseek.com 注册并用邮箱验证",
+      "左侧「API Keys」→ 创建并复制 Key",
+      "base_url 填 https://api.deepseek.com，用 OpenAI SDK 调用",
+      "模型用 deepseek-v4-flash / deepseek-v4-pro（2026-07-24 起旧名 deepseek-chat / deepseek-reasoner 已停用）"
+    ],
+    "pitfalls": [
+      "500 万额度仅 30 天有效，过期后按量计费；网页版 chat.deepseek.com 永久免费但只限对话、不含 API",
+      "API 与网页版是两套独立体系，Key 不通用、额度不共享",
+      "V4 推理质量高、单价低，但免费额度用完即停，超出部分按各模型 token 单价扣费"
+    ],
+    "api_base": "https://api.deepseek.com",
+    "example_model": "deepseek-v4-flash",
+    "last_verified": "2026-08-31"
   }
 ]
