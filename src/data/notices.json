@@ -7,5 +7,14 @@
     "linkText": "查看平台",
     "publishedAt": "2026-09-01",
     "expireAt": "2026-09-15"
+  },
+  {
+    "id": "notice-2026-0902-perks-launch",
+    "text": "积分福利社上线：Agent 产品的签到 / 积分福利集中展示，含每日签到、学生认证等",
+    "category": "new",
+    "source": "https://igetoken.com/perks/",
+    "linkText": "去看看",
+    "publishedAt": "2026-09-02",
+    "expireAt": "2026-09-16"
   }
 ]
