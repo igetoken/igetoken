@@ -18,6 +18,13 @@
 4. 区分"API Token 额度"与"产品内积分/订阅额度"（如 WorkBuddy Credits 不可导出），文案必须明确标注
 5. 快讯 `reward`、`eligibility`、`deadline` 为必填语义项；未知截止写"未知，建议尽快领取"，不得留空或编造日期
 
+### 收录判定 SOP：API Token 额度 vs 产品内积分（红线 #4 可执行化）
+完整版见 `docs/收录判定SOP.md`。每次评估新资源都走此流程，三向分流：
+- **能 API Key 在站外调用** → **API Token 额度** → 主线（models.json / deals.json）
+- **不能导出（仅产品内 Web/App 消耗、无 API Key）** → **产品内积分/订阅额度** → 平行专栏（perks.json / /perks/，卡片强标「不可导出为 API」，不进 /models/ 与首页头条）
+- **既无 API 又违规/无价值/不可溯源** → **不收录**（出局存档，标注理由）
+> 关键：产品内积分 ≠ 不收录；真正不收录的是纯倒卖/无价值中转/转售/批量注册/逆向接口（红线 #2）与无价值/不可溯源类。聚合/路由平台（OpenRouter/OpenCode/TokenRouter）能提供稳定可溯源免费额度且可 API 调用 → 主线（`category=aggregator`）。
+
 ## 数据文件修改规则（重要）
 
 1. **修改任何 JSON 后、commit 前，必须先校验**：
