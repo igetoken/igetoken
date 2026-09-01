@@ -767,5 +767,38 @@
     "api_base": "https://api.ant-ling.com/v1",
     "example_model": "Ling-2.6-flash",
     "last_verified": "2026-09-01"
+  },
+  {
+    "slug": "longcat",
+    "name": "美团 LongCat（龙猫）",
+    "category": "domestic",
+    "website": "https://longcat.chat",
+    "register_url": "https://longcat.chat",
+    "docs_url": "https://longcat.chat",
+    "tagline": "美团官方大模型平台，LongCat-2.0-Preview 内测每日免费额度，额度体量不小",
+    "highlight": "内测每日 500 万~1.2 亿 Token（需抢每日限量内测名额），1M 上下文 / 128K 输出",
+    "tags": ["内测免费", "抢名额", "大厂", "OpenAI 兼容"],
+    "offers": [
+      { "model": "LongCat-2.0-Preview（内测）", "quota": "初始 500 万 Tokens/天，提交高质量反馈可刷新，每日最多 1.2 亿 Tokens/天；需抢每日限量内测名额（09:00 & 21:00 UTC+8 开放，先到先得），Preview 阶段免费、暂无强制付费（以官方 ChangeLog 为准）", "type": "daily" }
+    ],
+    "steps": [
+      "打开 longcat.chat 注册（大陆手机号 / 海外手机号或邮箱），登录开放平台",
+      "进入控制台申请并领取每日限量内测名额（官方 ChangeLog：09:00 & 21:00 UTC+8 开放，先到先得）",
+      "创建并复制 API Key",
+      "OpenAI 兼容接口，base_url 指向 api.longcat.chat/openai，模型填 LongCat-2.0-Preview"
+    ],
+    "pitfalls": [
+      "免费额度依赖抢内测名额（每日限量、先到先得），并非注册即每天自动到账；09:00 & 21:00 UTC+8 开放，手慢无",
+      "LongCat 2.0 已于 2026-06-30 推计费（Token 资源包 30 天有效 + 按量计费），免费窗口期可能随时收窄，官方明确「Preview 阶段」「可能随时调整」",
+      "老 6 款免费模型（Flash-Chat / Flash-Thinking / Flash-Lite / Omni 等）已于 2026-05-29 停止调用，旧文章说的「每天 5 亿 Token」是已死的 Flash-Lite 口径，切勿沿用",
+      "上下文 1M、输出 128K；API 同时支持 Anthropic /anthropic 协议端点，可按需切换",
+      "社区普遍称无需绑卡、无需实名（手机号/邮箱即可），以官方注册页实时要求为准"
+    ],
+    "api_base": "https://api.longcat.chat/openai",
+    "example_model": "LongCat-2.0-Preview",
+    "extra_endpoints": [
+      { "name": "Anthropic Message 协议兼容", "url": "https://api.longcat.chat/anthropic" }
+    ],
+    "last_verified": "2026-09-01"
   }
 ]
