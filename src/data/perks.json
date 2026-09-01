@@ -40,5 +40,19 @@
     "source": "https://developer.baidu.com/article/detail.html?id=5567282",
     "last_verified": "2026-09-02",
     "note": "文心产品内积分（充电值），用于抵扣生成消耗，不可导出为 API。"
+  },
+  {
+    "id": "workbuddy-daily-checkin",
+    "product": "WorkBuddy",
+    "title": "每日签到送 100 平台积分",
+    "type": "signin",
+    "amount": "100 平台积分/天",
+    "condition": "WorkBuddy 产品内每日签到（客户端 / 网页「签到」入口）",
+    "recurrence": "daily",
+    "deadline": "2026-09-15",
+    "validity": "积分周期月有效（以产品内展示为准）",
+    "source": "https://www.workbuddy.cn/",
+    "last_verified": "2026-09-02",
+    "note": "产品内积分，不可导出为 API Key，仅限 WorkBuddy 产品内使用；签到入口在客户端/网页，官方活动页待补。活动分期进行，本期至 2026-09-15 结束，下期以产品内展示为准。"
   }
 ]
