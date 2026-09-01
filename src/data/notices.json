@@ -1,11 +1,11 @@
 [
   {
     "id": "notice-2026-0830-new-platforms",
-    "text": "火山引擎方舟、百度千帆、DeepSeek",
+    "text": "火山引擎方舟、百度千帆、DeepSeek、Ollama Cloud（云端推理）",
     "category": "new",
     "source": "https://igetoken.com/models",
     "linkText": "查看平台",
-    "publishedAt": "2026-08-31",
+    "publishedAt": "2026-09-01",
     "expireAt": "2026-09-15"
   }
 ]
