@@ -1,5 +1,25 @@
 [
   {
+    "id": "2026-09-longcat-2-0-preview-free",
+    "date": "2026-09-01",
+    "platform_slug": "longcat",
+    "platform_name": "美团 LongCat（龙猫）",
+    "title": "美团 LongCat：每日最高 1.2 亿 Token 免费额度（需抢内测名额）",
+    "type": "new_model",
+    "reward": "LongCat-2.0-Preview 内测：初始 500 万 Tokens/天，提交高质量反馈可刷新，每日最高 1.2 亿 Tokens/天；OpenAI 兼容 api.longcat.chat/openai，模型 LongCat-2.0-Preview",
+    "eligibility": "注册 longcat.chat（大陆手机号 / 海外手机号或邮箱），抢每日限量内测名额（官方 ChangeLog：09:00 & 21:00 UTC+8 开放，先到先得）后创建 API Key",
+    "deadline": null,
+    "howto": [
+      "打开 longcat.chat 注册并登录开放平台",
+      "进入控制台申请并领取每日限量内测名额（09:00 & 21:00 UTC+8 开放）",
+      "创建并复制 API Key，base_url 填 https://api.longcat.chat/openai",
+      "模型填 LongCat-2.0-Preview，直接按 OpenAI SDK 调用"
+    ],
+    "summary": "美团官方大模型平台，2.0-Preview 内测每日免费额度体量全站最大（最高 1.2 亿 Token/天）。注意：免费额度依赖抢每日限量内测名额（非注册即到账）；2026-06-30 起 2.0 已推计费（Token 资源包 30 天有效 + 按量计费），免费窗口期可能随时收窄，官方明确「Preview 阶段」「可能随时调整」；老 6 款免费模型（Flash-Chat/Thinking/Lite/Omni 等）已于 2026-05-29 停服，旧文章「每天 5 亿」是已死口径。",
+    "source": "https://longcat.chat/platform/docs/zh/change-log",
+    "status": "active"
+  },
+  {
     "id": "2026-08-tokenrouter-glm-5-3-free",
     "date": "2026-08-31",
     "platform_slug": "tokenrouter",
