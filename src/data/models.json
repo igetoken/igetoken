@@ -706,5 +706,66 @@
     "api_base": "https://ollama.com/v1",
     "example_model": "minimax-m3:cloud",
     "last_verified": "2026-09-01"
+  },
+  {
+    "slug": "antdigital",
+    "name": "蚂蚁数科 DTMaaS",
+    "category": "domestic",
+    "website": "https://maas.antdigital.com",
+    "register_url": "https://maas.antdigital.com",
+    "docs_url": "https://maas.antdigital.com/docs",
+    "tagline": "蚂蚁数科企业级大模型服务平台，按调用次数计费，免费版不绑卡",
+    "highlight": "免费版 0 元/月：100 次/5 小时、每周上限 1000 次、每月上限 2000 次",
+    "tags": ["免费版", "按次计费", "多模型", "无需绑卡"],
+    "offers": [
+      { "model": "免费版（LingDT-2.6-flash、Ling-2.6-1T、deepseek-v4-flash、deepseek-v4-pro 限时、qwen3.5/3.6-plus、qwen3-max、kimi-k2.5、glm-5、MiniMax-M2.5）", "quota": "0 元/月：100 次 Prompt/5 小时、每周上限 1000 次、每月上限 2000 次，不绑任何条件（以官方 docs 为准，可能调整）", "type": "permanent" },
+      { "model": "新客免费额度", "quota": "部分口径另有 1000 Credit 免费领取（新客限 1 次），以控制台实时发放为准", "type": "signup" }
+    ],
+    "steps": [
+      "打开 maas.antdigital.com，用手机号/蚂蚁账号注册并登录",
+      "进入控制台开通 Token Plan，选择「免费版」0 元档，无需付费、无需绑卡",
+      "在 API 密钥页创建并复制 API Key",
+      "OpenAI 兼容接口，base_url 指向 api.dtmaas.ai/v1（或安装官方 SDK `npm i dtmaas`）"
+    ],
+    "pitfalls": [
+      "免费版按 Prompt 次数计费（非 Token 量）：单次对话算 1 次，长上下文不会多扣，但 Agent 多轮/批量调用消耗很快",
+      "免费额度：100 次/5 小时、每周上限 1000 次、每月上限 2000 次，超额需购买付费套餐（尝鲜版 9.9 元/月起）",
+      "免费版支持的模型不含全部档位（如 Ling-2.6-1T 仅在部分套餐开放），以控制台模型列表为准",
+      "额度恢复机制：5 小时额度每 5 小时自动恢复，每周一 00:00（UTC+8）重置，每月额度于下月订阅日 00:00 重置",
+      "与蚂蚁灵 Ling API 是两套独立平台（DTMaaS 按次、Ling 按 Token），别混淆"
+    ],
+    "api_base": "https://api.dtmaas.ai/v1",
+    "example_model": "LingDT-2.6-flash",
+    "last_verified": "2026-09-01"
+  },
+  {
+    "slug": "antling",
+    "name": "蚂蚁灵 Ling API",
+    "category": "domestic",
+    "website": "https://www.ant-ling.com",
+    "register_url": "https://developer.ant-ling.com",
+    "docs_url": "https://developer.ant-ling.com/zh-CN/docs/getting-started/quickstart",
+    "tagline": "蚂蚁百灵面向开发者的 API 平台，每日赠送 50 万 Token，OpenAI 兼容",
+    "highlight": "每日免费 50 万 Token（输入+输出共享），次日 02:00（UTC+8）重置、不滚存",
+    "tags": ["每日免费", "OpenAI 兼容", "按 Token 计费", "需绑支付宝"],
+    "offers": [
+      { "model": "全系模型（Ling-2.6-1T / Ling-2.6-flash / Ring-2.6-1T / Ming 全模态等）", "quota": "每日赠送 50 万 tokens（输入+输出共享），每日 02:00（UTC+8）自动发放、不滚存；超出按量计费（Ling-2.6-flash 输入 ¥0.60/百万、输出 ¥1.80/百万）", "type": "daily" }
+    ],
+    "steps": [
+      "打开 developer.ant-ling.com 注册并登录（蚂蚁/支付宝账号）",
+      "在 API 控制台绑定个人支付宝账号并开通 Ling 服务（首次调用前必须完成）",
+      "创建并复制 API Key",
+      "OpenAI 兼容接口，base_url 指向 api.ant-ling.com/v1，或直接用 OpenAI SDK"
+    ],
+    "pitfalls": [
+      "免费额度 50 万 tokens/天（输入+输出共享），每日 02:00（UTC+8）重置、不滚存，当天用尽即止",
+      "首次调用前必须绑定个人支付宝账号并开通 Ling 服务；免费额度到账前产生的费用从账户余额扣除，余额不足暂停服务",
+      "仅支持个人支付宝充值/扣费，企业支付宝暂不支持；按量计费单价以官方定价页为准（2.6 系列限时折扣，原价随时恢复）",
+      "Ling-3.0-flash 等最新模型有活动折扣，活动结束恢复原价，注意账户余额",
+      "与蚂蚁数科 DTMaaS 是两套独立平台（Ling 按 Token、DTMaaS 按次），别混淆"
+    ],
+    "api_base": "https://api.ant-ling.com/v1",
+    "example_model": "Ling-2.6-flash",
+    "last_verified": "2026-09-01"
   }
 ]
