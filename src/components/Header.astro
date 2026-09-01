@@ -1,9 +1,9 @@
 ---
-const nav = [
+const nav: { href: string; label: string; newUntil?: string }[] = [
   { href: '/', label: '首页' },
   { href: '/models/', label: '资源库' },
   { href: '/deals/', label: '活动快讯' },
-  { href: '/perks/', label: '积分福利' },
+  { href: '/perks/', label: '积分福利', newUntil: '2026-09-16' },
   { href: '/tutorials/', label: '教程' },
   { href: '/guide/', label: '避坑指南' },
   { href: '/about/', label: '关于' },
@@ -11,6 +11,9 @@ const nav = [
 const path = Astro.url.pathname;
 const isActive = (href: string) =>
   href === '/' ? path === '/' : path.startsWith(href);
+// 新上架标记：仅在该日期（含）之前展示小红点，到期自动消失，无需手动撤
+const isNew = (item: { newUntil?: string }) =>
+  item.newUntil ? new Date(item.newUntil) >= new Date() : false;
 ---
 
 <header class="sticky top-0 z-40 border-b border-slate-200 bg-white/90 backdrop-blur">
@@ -26,13 +29,22 @@ const isActive = (href: string) =>
           <a
             href={item.href}
             class:list={[
-              'rounded-lg px-3 py-2 text-sm transition',
+              'relative rounded-lg px-3 py-2 text-sm transition',
               isActive(item.href)
                 ? 'bg-emerald-50 font-semibold text-emerald-700'
                 : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900',
             ]}
           >
             {item.label}
+            {
+              isNew(item) && (
+                <span
+                  class="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white"
+                  title="新上架"
+                  aria-label="新上架"
+                />
+              )
+            }
           </a>
         ))
       }
@@ -48,13 +60,22 @@ const isActive = (href: string) =>
             <a
               href={item.href}
               class:list={[
-                'block rounded-lg px-3 py-2 text-sm',
+                'relative block rounded-lg px-3 py-2 text-sm',
                 isActive(item.href)
                   ? 'bg-emerald-50 font-semibold text-emerald-700'
                   : 'text-slate-600 hover:bg-slate-100',
               ]}
             >
               {item.label}
+              {
+                isNew(item) && (
+                  <span
+                    class="absolute right-2 top-2.5 h-2 w-2 rounded-full bg-red-500"
+                    title="新上架"
+                    aria-label="新上架"
+                  />
+                )
+              }
             </a>
           ))
         }
