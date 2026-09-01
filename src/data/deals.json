@@ -15,7 +15,7 @@
       "创建并复制 API Key，base_url 填 https://api.longcat.chat/openai",
       "模型填 LongCat-2.0-Preview，直接按 OpenAI SDK 调用"
     ],
-    "summary": "美团官方大模型平台，2.0-Preview 内测每日免费额度体量全站最大（最高 1.2 亿 Token/天）。注意：免费额度依赖抢每日限量内测名额（非注册即到账）；2026-06-30 起 2.0 已推计费（Token 资源包 30 天有效 + 按量计费），免费窗口期可能随时收窄，官方明确「Preview 阶段」「可能随时调整」；老 6 款免费模型（Flash-Chat/Thinking/Lite/Omni 等）已于 2026-05-29 停服，旧文章「每天 5 亿」是已死口径。",
+    "summary": "美团官方大模型平台。LongCat-2.0-Preview 内测每日免费额度最高 1.2 亿 Token/天，为全站单日免费额度最大的档位。注意：免费额度需抢每日限量内测名额（每日 09:00 & 21:00 UTC+8 开放，先到先得，非注册即到账）；2.0 已于 2026-06-30 推出计费（Token 资源包 30 天有效 + 按量计费），当前仍提供免费额度但窗口期可能调整；此前的 6 款免费模型（Flash-Chat / Flash-Thinking / Flash-Lite / Omni 等）已于 2026-05-29 停止调用。",
     "source": "https://longcat.chat/platform/docs/zh/change-log",
     "status": "active"
   },

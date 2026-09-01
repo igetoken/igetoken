@@ -790,7 +790,7 @@
     "pitfalls": [
       "免费额度依赖抢内测名额（每日限量、先到先得），并非注册即每天自动到账；09:00 & 21:00 UTC+8 开放，手慢无",
       "LongCat 2.0 已于 2026-06-30 推计费（Token 资源包 30 天有效 + 按量计费），免费窗口期可能随时收窄，官方明确「Preview 阶段」「可能随时调整」",
-      "老 6 款免费模型（Flash-Chat / Flash-Thinking / Flash-Lite / Omni 等）已于 2026-05-29 停止调用，旧文章说的「每天 5 亿 Token」是已死的 Flash-Lite 口径，切勿沿用",
+      "此前 6 款免费模型（Flash-Chat / Flash-Thinking / Flash-Lite / Omni 等）已于 2026-05-29 停止调用，部分旧文章提到的「每天 5 亿 Token」对应已停服的 Flash-Lite，请勿沿用该额度",
       "上下文 1M、输出 128K；API 同时支持 Anthropic /anthropic 协议端点，可按需切换",
       "社区普遍称无需绑卡、无需实名（手机号/邮箱即可），以官方注册页实时要求为准"
     ],
