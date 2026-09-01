@@ -148,6 +148,18 @@ export function daysLeft(deadline: string | null): number | null {
   return Math.ceil(diff / 86_400_000);
 }
 
+/**
+ * 过期判定：status 仍为 active，但 deadline 已明确早于今天 → 视为过期。
+ * 用途：首页选取时自动排除，避免「漏改 status 为 ended」导致过期资讯滞留首页。
+ * 注意：只影响首页展示，不自动改写数据——详情页与 /deals/ 归档区仍保留，
+ * 最终是否归档仍由运营手动将 status 改为 'ended' 决定。
+ */
+export function isExpired(deal: Deal): boolean {
+  if (deal.status !== 'active') return false;
+  const left = daysLeft(deal.deadline);
+  return left !== null && left < 0;
+}
+
 /** 首页快讯：紧急（剩余天数 ≤ 7）的判定阈值 */
 export const HOME_URGENT_DAYS = 7;
 
@@ -208,7 +220,7 @@ export function valueScore(deal: Deal): number {
 
 /** 头条：合格候选中价值最高者；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
 export function selectHomeFeatured(): Deal | undefined {
-  const active = getActiveDeals();
+  const active = getActiveDeals().filter((d) => !isExpired(d));
   const pool = active.filter(isFeaturedEligible);
   const candidates = pool.length > 0 ? pool : active;
   return [...candidates].sort((a, b) => {
@@ -228,7 +240,7 @@ export function selectHomeFeatured(): Deal | undefined {
  */
 export function selectHomeDeals(limit = 9): Deal[] {
   const featured = selectHomeFeatured();
-  const rest = sortDealsByUrgency(getActiveDeals()).filter((d) => d !== featured);
+  const rest = sortDealsByUrgency(getActiveDeals().filter((d) => !isExpired(d))).filter((d) => d !== featured);
 
   const usedByPlatform = new Map<string, number>();
   const picked: Deal[] = [];
