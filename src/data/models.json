@@ -673,5 +673,38 @@
     "api_base": "https://api.deepseek.com",
     "example_model": "deepseek-v4-flash",
     "last_verified": "2026-08-31"
+  },
+  {
+    "slug": "ollama",
+    "name": "Ollama Cloud（云端推理）",
+    "category": "overseas",
+    "website": "https://ollama.com",
+    "register_url": "https://ollama.com/settings/keys",
+    "docs_url": "https://ollama.com/search?c=cloud",
+    "tagline": "本地开源运行器的官方云端推理，注册即用免费额度",
+    "highlight": "注册即送免费云端额度，7 款模型常驻免费（须选 :cloud 模型）",
+    "tags": ["注册送", "无需信用卡", "OpenAI 兼容", "免费模型"],
+    "offers": [
+      {
+        "model": "Ollama Cloud 免费云端模型（7 款，须带 :cloud 后缀）",
+        "quota": "注册即免费使用，仅邮箱、无需信用卡/手机号；含 minimax-m3、gpt-oss:120b、gpt-oss:20b、gemma4:31b、nemotron-3-ultra/super/nano。额度为社区实测估算、官方未公布：并发 1 路、每 5h session 约 50 万 token、每 7d 约 100 万 token，可能调整，以官方为准",
+        "type": "permanent"
+      }
+    ],
+    "steps": [
+      "打开 ollama.com 用邮箱注册（无需信用卡/手机号，国内可直连）",
+      "进入 Settings → Keys 创建 API Key",
+      "base_url 填 https://ollama.com/v1，用 OpenAI SDK 调用",
+      "模型须选带 :cloud 后缀的（如 minimax-m3:cloud），普通本地模型 ID 在云端不可用"
+    ],
+    "pitfalls": [
+      "免费额度为社区实测估算，官方未公布具体数字：并发仅 1 路、每 5h 约 50 万 token、每 7d 约 100 万 token，可能调整，以官方为准",
+      "必须用 :cloud 后缀模型（如 minimax-m3:cloud），普通 ollama 模型 ID 是本地版、云端推理不可用",
+      "这是 Ollama 官方云端推理服务，不是本地 Ollama 工具；本地运行模型无需 Key、不消耗此云端额度",
+      "2026-03 才与 NVIDIA 合作推出，服务较新，模型清单与额度可能变动，留意官方公告"
+    ],
+    "api_base": "https://ollama.com/v1",
+    "example_model": "minimax-m3:cloud",
+    "last_verified": "2026-09-01"
   }
 ]
