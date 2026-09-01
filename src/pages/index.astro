@@ -3,13 +3,15 @@ import Base from '../layouts/Base.astro';
 import PlatformCard from '../components/PlatformCard.astro';
 import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
-import { getPlatforms, selectHomeDeals, CATEGORY_LABEL } from '../lib/data';
+import PerkCard from '../components/PerkCard.astro';
+import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks } from '../lib/data';
 import Notice from '../components/Notice.astro';
 
 const platforms = getPlatforms();
 const homeDeals = selectHomeDeals(10);
 const featuredDeal = homeDeals[0];
 const restDeals = homeDeals.slice(1);
+const perks = getPerks();
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
@@ -108,6 +110,33 @@ const lastVerified = platforms
           href="mailto:igetoken@outlook.com"
           class="font-medium text-emerald-700 hover:underline">igetoken@outlook.com</a
         >
+      </p>
+    </div>
+  </section>
+
+  <!-- Agent 福利社 -->
+  <section class="border-y border-slate-100 bg-amber-50/40">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">🎁 Agent 福利社</h2>
+          <p class="mt-1 text-sm text-slate-500">
+            各大 AI Agent 的签到 / 积分福利（产品内积分，<span class="font-medium text-amber-700">不可导出为 API</span>）
+          </p>
+        </div>
+        <a href="/perks/" class="shrink-0 text-sm font-medium text-emerald-700 hover:underline">去攒积分 →</a>
+      </div>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          perks.slice(0, 3).map((p) => <PerkCard perk={p} />)
+        }
+      </div>
+
+      <p class="mt-6 text-sm text-slate-400">
+        现在很多人离不开 Agent，这些产品内积分也是真福利。我们单独开了
+        <a href="/perks/" class="font-medium text-amber-700 hover:underline">积分福利专栏</a>
+        ，和「免费 API Token」分开陈列，避免混淆。
       </p>
     </div>
   </section>

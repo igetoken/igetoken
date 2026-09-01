@@ -1,0 +1,44 @@
+[
+  {
+    "id": "workbuddy-campus-2026",
+    "product": "WorkBuddy",
+    "title": "开学季送 1000 平台积分",
+    "type": "student",
+    "amount": "1000 平台积分",
+    "condition": "高校在读学生 + 微信学生身份认证（扫码小程序 + 手机号授权）",
+    "recurrence": "once",
+    "deadline": "2026-10-31",
+    "validity": "领取之日起 3 个月内有效",
+    "source": "https://www.workbuddy.cn/events/campus-freshman/",
+    "last_verified": "2026-09-02",
+    "note": "产品内积分，不可导出为 API Key，仅限 WorkBuddy 产品内使用（对话 / 生成 / 技能）。"
+  },
+  {
+    "id": "coze-daily-checkin",
+    "product": "扣子 Coze",
+    "title": "每日登录领 1500 活动积分 + 新用户注册赠 1500",
+    "type": "signin",
+    "amount": "1500 积分/日（当日有效）+ 新用户 1500 积分（30 天）",
+    "condition": "个人版用户每日登录即自动到账；新用户首次注册并登录发放",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "每日登录积分有效期 1 天；新用户积分 30 天",
+    "source": "https://docs.coze.cn/guides_coze_points_activity_rules",
+    "last_verified": "2026-09-02",
+    "note": "扣子积分用于 AI 对话、智能体运行、视频生成等算力消耗，不可导出为 API。"
+  },
+  {
+    "id": "wenxin-signin",
+    "product": "文心一言 / 文小言",
+    "title": "每日签到领积分（连续签到有阶梯奖励）",
+    "type": "signin",
+    "amount": "约 50 积分/天起，第 7 天 60、第 30 天 150 点",
+    "condition": "App「我的 — 每日签到」点击打卡，每月可补签 1 次",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "签到积分计入主账户余额，无使用限制（以活动页为准）",
+    "source": "https://developer.baidu.com/article/detail.html?id=5567282",
+    "last_verified": "2026-09-02",
+    "note": "文心产品内积分（充电值），用于抵扣生成消耗，不可导出为 API。"
+  }
+]

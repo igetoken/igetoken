@@ -70,3 +70,21 @@ export interface Notice {
   priority?: number;
   status?: 'active' | 'removed';
 }
+
+// Agent 产品内积分/福利（与 API Token 是两类东西，不可导出为 API）
+export type PerkType = 'signin' | 'student' | 'limited' | 'invite';
+
+export interface Perk {
+  id: string;
+  product: string;
+  title: string;
+  type: PerkType;
+  amount: string;
+  condition: string;
+  recurrence: 'daily' | 'weekly' | 'once';
+  deadline: string | null;
+  validity: string;
+  source: string;
+  last_verified: string;
+  note: string;
+}

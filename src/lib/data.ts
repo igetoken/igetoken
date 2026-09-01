@@ -1,7 +1,8 @@
-import type { Category, Deal, DealType, Platform, Notice, NoticeCategory } from './types';
+import type { Category, Deal, DealType, Platform, Notice, NoticeCategory, Perk, PerkType } from './types';
 import modelsJson from '../data/models.json';
 import dealsJson from '../data/deals.json';
 import noticesJson from '../data/notices.json';
+import perksJson from '../data/perks.json';
 
 export const CATEGORY_LABEL: Record<Category, string> = {
   domestic: '国内大厂',
@@ -30,6 +31,18 @@ export const OFFER_TYPE_LABEL: Record<string, string> = {
 const platforms = modelsJson as unknown as Platform[];
 const deals = dealsJson as unknown as Deal[];
 const notices = noticesJson as unknown as Notice[];
+const perks = perksJson as unknown as Perk[];
+
+export const PERK_TYPE_LABEL: Record<PerkType, string> = {
+  signin: '每日签到',
+  student: '学生认证',
+  limited: '限时活动',
+  invite: '邀请有礼',
+};
+
+export function getPerks(): Perk[] {
+  return perks;
+}
 
 export const NOTICE_CATEGORY_STYLE: Record<NoticeCategory, { bar: string; label: string }> = {
   new: { bar: 'border-emerald-200 bg-emerald-50 text-emerald-900', label: '新收录' },

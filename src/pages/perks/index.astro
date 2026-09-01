@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import PerkCard from '../../components/PerkCard.astro';
+import FilterTabs from '../../components/FilterTabs.astro';
+import { getPerks, PERK_TYPE_LABEL } from '../../lib/data';
+import type { PerkType } from '../../lib/types';
+
+const perks = getPerks();
+const groups = (Object.keys(PERK_TYPE_LABEL) as PerkType[]).map((key) => ({
+  key,
+  label: PERK_TYPE_LABEL[key],
+}));
+---
+
+<Base
+  title="Agent 福利社 - 各大 AI Agent 产品的签到/积分免费福利 | iGetToken"
+  description="收集主流 AI Agent 产品（WorkBuddy、扣子 Coze、文心一言等）的每日签到、学生认证、限时活动福利积分。明确标注：产品内积分，不可导出为 API。"
+>
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">Agent 福利社</h1>
+    <p class="mt-2 text-slate-500">
+      共 {perks.length} 个产品的积分 / 福利。这是<strong class="text-amber-700">产品内积分</strong>，与本站「免费 API Token」是两类东西——积分<strong>不能导出为 API Key</strong>，只能在对应产品内使用（对话 / 生成 / 技能）。
+    </p>
+
+    <div class="mt-6">
+      <FilterTabs targetId="perks-grid" groups={groups} />
+    </div>
+
+    <div id="perks-grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        perks.map((p) => (
+          <div data-category={p.type}>
+            <PerkCard perk={p} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 rounded-xl border border-dashed border-amber-300 bg-amber-50 p-5 text-sm text-slate-600">
+      <p class="font-medium text-amber-800">想补充哪个产品的福利？</p>
+      <p class="mt-2">
+        只收录官方正规渠道、可溯源的积分 / 签到福利。发现新的欢迎到
+        <a
+          href="https://github.com/igetoken/igetoken/issues"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-medium text-emerald-700 hover:underline">GitHub 提 Issue</a
+        >
+        推荐，附官方来源链接会更快收录。
+      </p>
+    </div>
+  </section>
+</Base>
