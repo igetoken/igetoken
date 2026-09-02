@@ -128,10 +128,11 @@ function parseDeadline(deadline: string | null): Date | null {
   const direct = new Date(deadline);
   if (!Number.isNaN(direct.getTime())) return direct;
 
-  const iso = deadline.match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
+  const iso = deadline.match(/(\d{4})-(\d{1,2})-(\d{1,2})(?:[^\d]{1,4}(\d{1,2}):(\d{2}))?/);
   if (iso) {
-    const d = new Date(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3]));
-    if (!Number.isNaN(d.getTime())) return d;
+    const [, y, mo, d, h, mi] = iso;
+    const dt = new Date(Number(y), Number(mo) - 1, Number(d), h ? Number(h) : 0, mi ? Number(mi) : 0);
+    if (!Number.isNaN(dt.getTime())) return dt;
   }
 
   const monthDay = deadline.match(/(\d{1,2})\s*[月./]\s*(\d{1,2})\s*日?/);
@@ -221,11 +222,21 @@ export function valueScore(deal: Deal): number {
   return score;
 }
 
-/** 头条：合格候选中价值最高者；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
+/** 当日闪发：截止时刻就在未来 24 小时内（如 ZCode 惊喜发放约 12 小时窗口）。此类活动给再长的预热都无意义，直接抢占头条，过期自动让位 */
+function isSameDayFlash(deal: Deal): boolean {
+  if (deal.status !== 'active') return false;
+  const end = parseDeadline(deal.deadline);
+  if (!end) return false;
+  const diff = end.getTime() - Date.now();
+  return diff > 0 && diff < 24 * 3_600_000;
+}
+
+/** 头条：优先「今日闪发」（24h 内截止）的大额限时活动；否则合格候选中价值最高者；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
 export function selectHomeFeatured(): Deal | undefined {
   const active = getActiveDeals().filter((d) => !isExpired(d));
   const pool = active.filter(isFeaturedEligible);
-  const candidates = pool.length > 0 ? pool : active;
+  const flashPool = pool.filter(isSameDayFlash);
+  const candidates = flashPool.length > 0 ? flashPool : pool.length > 0 ? pool : active;
   return [...candidates].sort((a, b) => {
     const diff = valueScore(b) - valueScore(a);
     if (diff !== 0) return diff;
