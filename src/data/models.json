@@ -819,5 +819,34 @@
       { "name": "Anthropic Message 协议兼容", "url": "https://api.longcat.chat/anthropic" }
     ],
     "last_verified": "2026-09-01"
+  },
+  {
+    "slug": "modelscope",
+    "name": "魔搭社区 ModelScope",
+    "category": "aggregator",
+    "website": "https://modelscope.cn",
+    "register_url": "https://modelscope.cn",
+    "docs_url": "https://www.modelscope.cn/headlines/article/795",
+    "tagline": "阿里达摩院开源模型社区，注册送每日 2000 次免费推理 API",
+    "highlight": "每位注册用户每日 2000 次免费调用，单模型最高 500 次/天，OpenAI 兼容",
+    "tags": ["开源聚合", "每日免费", "OpenAI兼容"],
+    "offers": [
+      { "model": "免费推理 API（近 3000 个开源模型，Qwen/DeepSeek/GLM/MiniMax 等）", "quota": "每位注册用户每日 2000 次调用；单模型最高 500 次/天，DeepSeek-R1 等大模型限 200 次/天、文生图约 50 次/天（动态调整）", "type": "daily" }
+    ],
+    "steps": [
+      "注册魔搭账号（modelscope.cn）并登录",
+      "绑定阿里云账号 + 完成实名认证（免费推理 API 由阿里云算力支持，必须绑定）",
+      "个人中心 → 访问令牌 → 创建 Token（勾选「大模型推理」权限）",
+      "OpenAI 兼容接口，base_url 指向 api-inference.modelscope.cn/v1，模型名用平台 Model Id（如 Qwen/Qwen3.5-27B）"
+    ],
+    "pitfalls": [
+      "2000 次是所有模型合计的每日总上限（非每模型各 2000 次）；各模型另有独立上限，多数 ~500 次/天、DeepSeek-R1 ~200、文生图 ~50，需自行分配",
+      "必须绑定阿里云账号并实名认证，否则无法调用",
+      "免费 API 面向体验/测试，平台会按压力动态调整限流与并发，勿用于高并发或 SLA 线上任务",
+      "新模型上线后，较老的模型可能逐步降低额度直至下架，以平台实时为准"
+    ],
+    "api_base": "https://api-inference.modelscope.cn/v1",
+    "example_model": "Qwen/Qwen3.5-27B",
+    "last_verified": "2026-09-02"
   }
 ]
