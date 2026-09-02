@@ -66,6 +66,7 @@
     "deadline": "2026-09-30",
     "validity": "首登积分 3 个月有效；月度积分当月有效；签到积分当日有效；邀请人积分 1 年、被邀请人积分 1 个月",
     "source": "https://www.teleai.com.cn/",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02",
     "note": "中国电信 · 天翼 AI 桌面办公智能体，积分仅抵扣客户端内模型调用消耗，不可导出为 API Key。四重积分活动期至 2026-09-30，活动结束后基础积分规则以官方为准。注意：与星辰 TokenHub（API Token 平台）是两个不同产品。"
   },
@@ -80,6 +81,7 @@
     "deadline": null,
     "validity": "积分可累计使用，自到账之日起 30 天内有效",
     "source": "https://agent.minimaxi.com/docs/code/account/usage",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02",
     "note": "积分适用于 MiniMax Code 各类任务场景（办公 / Coding / 深度调研 / 多模态创作），产品内积分，不可导出为 API Key。签到功能于 v3.0.58（2026-08-05）上线。"
   }

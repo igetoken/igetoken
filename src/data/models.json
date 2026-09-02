@@ -847,6 +847,7 @@
     ],
     "api_base": "https://api-inference.modelscope.cn/v1",
     "example_model": "Qwen/Qwen3.5-27B",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02"
   },
   {
@@ -877,6 +878,7 @@
     ],
     "api_base": "https://moma.cmecloud.cn/v1",
     "example_model": "zhipu/glm-5.3-flash",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02"
   },
   {
@@ -906,6 +908,7 @@
     ],
     "api_base": "https://api.moark.com/v1",
     "example_model": "deepseek-r1",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02"
   },
   {
@@ -935,6 +938,7 @@
     ],
     "api_base": "https://chat.intern-ai.org.cn/api/v1",
     "example_model": "intern-latest",
+    "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02"
   }
 ]

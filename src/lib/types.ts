@@ -35,6 +35,8 @@ export interface Platform {
   ratingNote?: string;
   /** 平台官方专属开发 agent / IDE（能直接领 / 消耗该平台免费额度）；仅实测有此工具的平台填写，平台页以「官方开发工具」区块展示。注意：agent 赠送的额度通常为产品内、非开放 API */
   devAgent?: { name: string; url: string; note: string };
+  /** 收录/上线日期（ISO 日期字符串）；新收录平台必填，供 RSS 等按发布时间输出。历史平台可缺省（缺省不进 RSS） */
+  publishedAt?: string;
   last_verified: string;
 }
 
@@ -91,6 +93,8 @@ export interface Perk {
   deadline: string | null;
   validity: string;
   source: string;
+  /** 收录/上线日期（ISO 日期字符串）；新收录福利必填，供 RSS 等按发布时间输出。历史福利可缺省（缺省不进 RSS） */
+  publishedAt?: string;
   last_verified: string;
   note: string;
 }
