@@ -54,5 +54,19 @@
     "source": "https://www.workbuddy.cn/",
     "last_verified": "2026-09-02",
     "note": "产品内积分，不可导出为 API Key，仅限 WorkBuddy 产品内使用；签到入口在客户端/网页，官方活动页待补。活动分期进行，本期至 2026-09-15 结束，下期以产品内展示为准。"
+  },
+  {
+    "id": "teleagent-points",
+    "product": "星辰超级智能体 TeleAgent",
+    "title": "首登赠 3000 + 每月赠 3000 积分 + 每日签到 100 积分",
+    "type": "signin",
+    "amount": "首登 3000（3 个月）+ 月度赠 3000（当月）+ 签到 100/天（当日）+ 邀请人 500 / 被邀请人 3000；每月上限 30000 积分",
+    "condition": "下载 TeleAgent 桌面客户端（Windows / Mac）注册登录；签到在客户端内打卡；邀请通过产品内分享链接",
+    "recurrence": "daily",
+    "deadline": "2026-09-30",
+    "validity": "首登积分 3 个月有效；月度积分当月有效；签到积分当日有效；邀请人积分 1 年、被邀请人积分 1 个月",
+    "source": "https://www.teleai.com.cn/",
+    "last_verified": "2026-09-02",
+    "note": "中国电信 · 天翼 AI 桌面办公智能体，积分仅抵扣客户端内模型调用消耗，不可导出为 API Key。四重积分活动期至 2026-09-30，活动结束后基础积分规则以官方为准。注意：与星辰 TokenHub（API Token 平台）是两个不同产品。"
   }
 ]
