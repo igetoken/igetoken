@@ -33,6 +33,8 @@ export interface Platform {
   rating?: number;
   /** 推荐指数的一句话编辑部说明（如实测短板），配合 rating 展示 */
   ratingNote?: string;
+  /** 平台官方专属开发 agent / IDE（能直接领 / 消耗该平台免费额度）；仅实测有此工具的平台填写，平台页以「官方开发工具」区块展示。注意：agent 赠送的额度通常为产品内、非开放 API */
+  devAgent?: { name: string; url: string; note: string };
   last_verified: string;
 }
 

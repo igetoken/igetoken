@@ -36,7 +36,12 @@
     ],
     "last_verified": "2026-08-31",
     "rating": 4,
-    "ratingNote": "编辑部实测：GLM 系列模型质量稳定、国内直连延迟低、免费力度第一梯队；仅高峰期偶有限流、长上下文缓存成本偏高，属正常范畴。另外 GLM 近期在 ZCode 客户端中赠送 Token 的活动较为频繁，可以多关注，常有免费额度惊喜。"
+    "ratingNote": "编辑部实测：GLM 系列模型质量稳定、国内直连延迟低、免费力度第一梯队；仅高峰期偶有限流、长上下文缓存成本偏高，属正常范畴。另外 GLM 近期在 ZCode 客户端中赠送 Token 的活动较为频繁，可以多关注，常有免费额度惊喜。",
+    "devAgent": {
+      "name": "ZCode（智谱官方编程客户端）",
+      "url": "https://zcode.bigmodel.cn",
+      "note": "智谱官方出品的 AI 编程 IDE，登录即送 GLM 系列免费额度（产品内额度，不可导出为 API）。近期赠送 Token 活动较频繁，可多关注。"
+    }
   },
   {
     "slug": "siliconflow",
@@ -234,7 +239,12 @@
     ],
     "api_base": "https://opencode.ai/zen/v1/",
     "example_model": "mimo-v2-pro-free",
-    "last_verified": "2026-08-29"
+    "last_verified": "2026-08-29",
+    "devAgent": {
+      "name": "OpenCode（开源编程代理 CLI）",
+      "url": "https://opencode.ai",
+      "note": "开源终端 AI 编程代理，原生接入 OpenCode 网关的免费编程模型（Zen 每日额度）；额度走网关、产品内使用，也可作为 Claude Code 等编码工具的免费后端。"
+    }
   },
   {
     "slug": "tokenrouter",
@@ -321,6 +331,11 @@
       "高级模型消耗 Credits 更快，重任务注意余额",
       "积分体系与签到规则可能调整，以官网为准"
     ],
+    "devAgent": {
+      "name": "WorkBuddy（桌面 AI 智能体）",
+      "url": "https://www.workbuddy.cn",
+      "note": "WorkBuddy 本身就是桌面 AI 智能体（agent）产品：注册即送 Credits，可作为 Claude Code / Cursor 等编码工具的免费后端，也可直接在客户端内对话、写技能、跑工作流。额度产品内使用，不可导出为 API。"
+    },
     "last_verified": "2026-08-29"
   },
   {

@@ -52,13 +52,28 @@ resp = client.chat.completions.create(
 )
 print(resp.choices[0].message.content)`
   : (platform.sdk_example ?? `# 该平台需使用官方 SDK 调用，详见 ${platform.docs_url}`);
+
+// 右侧目录（TOC）：与下方区块渲染同源，条件区块自动出现/消失
+const toc = [
+  { id: 'offers', label: '额度速览' },
+  { id: 'steps', label: '领取步骤' },
+  platform.api_base ? { id: 'usage', label: '怎么用' } : null,
+  platform.extra_endpoints && platform.extra_endpoints.length > 0 ? { id: 'endpoints', label: '附加端点' } : null,
+  platform.devAgent ? { id: 'devagent', label: '官方开发工具' } : null,
+  { id: 'pitfalls', label: '坑点提醒' },
+  activeDeals.length > 0 ? { id: 'active', label: '进行中活动' } : null,
+  endedDeals.length > 0 ? { id: 'archived', label: '历史活动' } : null,
+].filter(Boolean);
+
 ---
 
 <Base
   title={`${platform.name} 免费 Token 领取攻略（2026 最新） | iGetToken`}
   description={`${platform.name}：${platform.highlight}。附领取步骤、调用示例、坑点提醒，最后核实于 ${verifiedShort}。`}
 >
-  <section class="mx-auto max-w-4xl px-4 py-12">
+  <div class="mx-auto max-w-6xl px-4 py-12">
+    <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-10">
+      <section class="min-w-0">
     <nav class="text-sm text-slate-400">
       <a href="/models/" class="hover:text-emerald-700">资源库</a>
       <span class="mx-1">/</span>
@@ -93,7 +108,7 @@ print(resp.choices[0].message.content)`
     </div>
 
     <!-- 额度速览 -->
-    <h2 class="mt-10 text-xl font-bold text-slate-900">额度速览</h2>
+    <h2 id="offers" class="mt-10 scroll-mt-24 text-xl font-bold text-slate-900">额度速览</h2>
     <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
       {
         platform.offers.map((offer) => (
@@ -111,7 +126,7 @@ print(resp.choices[0].message.content)`
     </div>
 
     <!-- 领取步骤 -->
-    <h2 class="mt-10 text-xl font-bold text-slate-900">领取步骤</h2>
+    <h2 id="steps" class="mt-10 scroll-mt-24 text-xl font-bold text-slate-900">领取步骤</h2>
     <ol class="mt-4 space-y-3">
       {
         platform.steps.map((step, i) => (
@@ -129,7 +144,7 @@ print(resp.choices[0].message.content)`
     {
       platform.api_base && (
         <div>
-          <h2 class="mt-10 text-xl font-bold text-slate-900">怎么用</h2>
+          <h2 id="usage" class="mt-10 scroll-mt-24 text-xl font-bold text-slate-900">怎么用</h2>
           {isOpenAI && (
             <p class="mt-2 text-sm text-slate-500">
               接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
@@ -163,7 +178,7 @@ print(resp.choices[0].message.content)`
     {
       platform.extra_endpoints && platform.extra_endpoints.length > 0 && (
         <div>
-          <h2 class="mt-10 text-xl font-bold text-slate-900">附加端点</h2>
+          <h2 id="endpoints" class="mt-10 scroll-mt-24 text-xl font-bold text-slate-900">附加端点</h2>
           <p class="mt-2 text-sm text-slate-500">部分套餐（如 Coding Plan）有专用接入端点，配置时注意区分：</p>
           <div class="mt-4 overflow-hidden rounded-xl border border-slate-200">
             {
@@ -179,8 +194,34 @@ print(resp.choices[0].message.content)`
       )
     }
 
+    <!-- 官方开发工具 -->
+    {
+      platform.devAgent && (
+        <div class="mt-10">
+          <h2 id="devagent" class="scroll-mt-24 text-xl font-bold text-slate-900">🛠️ 官方开发工具</h2>
+          <div class="mt-4 rounded-xl border border-slate-200 bg-white p-5">
+            <div class="flex flex-wrap items-start justify-between gap-3">
+              <div class="max-w-xl">
+                <p class="font-semibold text-slate-900">{platform.devAgent.name}</p>
+                <p class="mt-1 text-sm leading-relaxed text-slate-600">{platform.devAgent.note}</p>
+              </div>
+              <a
+                href={platform.devAgent.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="shrink-0 rounded-lg bg-emerald-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700"
+              >
+                前往 {platform.devAgent.name.split('（')[0]} ↗
+              </a>
+            </div>
+            <p class="mt-3 text-xs text-amber-600">⚠️ 该工具赠送的额度通常为产品内额度，不可导出为 API Key。</p>
+          </div>
+        </div>
+      )
+    }
+
     <!-- 坑点 -->
-    <div class="mt-10">
+    <div id="pitfalls" class="mt-10 scroll-mt-24">
       <Callout type="warn" title="坑点提醒">
         <ul class="list-disc space-y-1 pl-4">
           {platform.pitfalls.map((pit) => <li>{pit}</li>)}
@@ -192,7 +233,7 @@ print(resp.choices[0].message.content)`
     {
       activeDeals.length > 0 && (
         <div class="mt-10">
-          <h2 class="text-xl font-bold text-slate-900">📌 进行中活动</h2>
+          <h2 id="active" class="scroll-mt-24 text-xl font-bold text-slate-900">📌 进行中活动</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
             {activeDeals.map((deal) => (
               <DealCard deal={deal} />
@@ -206,7 +247,7 @@ print(resp.choices[0].message.content)`
     {
       endedDeals.length > 0 && (
         <div class="mt-10">
-          <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+          <h2 id="archived" class="scroll-mt-24 flex items-center gap-2 text-xl font-bold text-slate-900">
             🗄️ 历史活动
             <span class="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500">已归档</span>
           </h2>
@@ -224,5 +265,51 @@ print(resp.choices[0].message.content)`
       <a href={`/models/${prev.slug}/`} class="text-emerald-700 hover:underline">← {prev.name}</a>
       <a href={`/models/${next.slug}/`} class="text-emerald-700 hover:underline">{next.name} →</a>
     </div>
-  </section>
+      </section>
+
+      <!-- 右侧目录导航（TOC，仅 lg+ 显示） -->
+      <aside class="hidden lg:block">
+        <div class="sticky top-24">
+          <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-slate-400">目录</p>
+          <nav>
+            <ul class="space-y-2 text-sm">
+              {toc.map((t) => (
+                <li>
+                  <a data-toc-id={t.id} href={`#${t.id}`} class="block text-slate-500 transition hover:text-emerald-700">{t.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <style is:global>
+    html { scroll-behavior: smooth; }
+  </style>
+
+  <script>
+    const links = Array.from(document.querySelectorAll('[data-toc-id]'));
+    if (links.length) {
+      const setActive = (id) => {
+        links.forEach((l) => {
+          const on = l.getAttribute('data-toc-id') === id;
+          l.classList.toggle('text-emerald-700', on);
+          l.classList.toggle('font-semibold', on);
+        });
+      };
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => { if (e.isIntersecting) setActive(e.target.id); });
+        },
+        { rootMargin: '-72px 0px -70% 0px', threshold: 0 }
+      );
+      links.forEach((l) => {
+        const el = document.getElementById(l.getAttribute('data-toc-id'));
+        if (el) observer.observe(el);
+      });
+      setActive(links[0].getAttribute('data-toc-id'));
+    }
+  </script>
 </Base>
