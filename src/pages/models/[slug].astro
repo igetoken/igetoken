@@ -275,7 +275,7 @@ const toc = [
             <ul class="space-y-2 text-sm">
               {toc.map((t) => (
                 <li>
-                  <a data-toc-id={t.id} href={`#${t.id}`} class="block text-slate-500 transition hover:text-emerald-700">{t.label}</a>
+                  <a data-toc-id={t.id} href={`#${t.id}`} class="block toc-link">{t.label}</a>
                 </li>
               ))}
             </ul>
@@ -287,6 +287,18 @@ const toc = [
 
   <style is:global>
     html { scroll-behavior: smooth; }
+    .toc-link {
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      color: #64748b; /* slate-500 */
+      transition: color .15s ease, border-color .15s ease;
+    }
+    .toc-link:hover { color: #047857; } /* emerald-700 */
+    .toc-link.is-active {
+      border-left-color: #059669; /* emerald-600 品牌色 */
+      color: #047857; /* emerald-700 */
+      font-weight: 600;
+    }
   </style>
 
   <script>
@@ -295,9 +307,7 @@ const toc = [
       const setActive = (id) => {
         links.forEach((l) => {
           const on = l.getAttribute('data-toc-id') === id;
-          l.classList.toggle('border-emerald-600', on);
-          l.classList.toggle('text-emerald-700', on);
-          l.classList.toggle('font-semibold', on);
+          l.classList.toggle('is-active', on);
         });
       };
       const observer = new IntersectionObserver(
