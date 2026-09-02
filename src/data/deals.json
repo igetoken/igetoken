@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-09-zcode-flash-100m",
+    "date": "2026-09-01",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱 ZCode 惊喜发放：1 亿 GLM-5.3-Flash 代币（限时，已结束）",
+    "type": "limited_time",
+    "reward": "1 亿（100M）GLM-5.3-Flash 代币（ZCode 客户端内使用），共 5000 个包，先到先得",
+    "eligibility": "登录 ZCode 编程客户端，点击「惊喜发放」卡片领取；所有用户可参与，5000 个包先到先得",
+    "deadline": "已结束（领取窗口 9/1 22:00 至 9/2 10:00 美东时间 ET，约 12 小时；未领取的包于 9/1 22:00 ET 后销毁，先到先得）",
+    "howto": [
+      "打开并登录 ZCode 编程客户端",
+      "在首页点击「惊喜发放」卡片",
+      "领取 1 亿 GLM-5.3-Flash 代币，客户端内开始构建"
+    ],
+    "summary": "历史活动存档：智谱 ZCode 限时惊喜发放 1 亿 GLM-5.3-Flash 代币（9/1 22:00 - 9/2 10:00 美东时间，5000 包先到先得）。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；活动以产品内浮动卡片形式发放，无独立外链，source 溯源至智谱官网。",
+    "source": "https://bigmodel.cn",
+    "status": "ended"
+  },
+  {
     "id": "2026-09-longcat-2-0-preview-free",
     "date": "2026-09-01",
     "platform_slug": "longcat",

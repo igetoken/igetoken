@@ -15,6 +15,8 @@ export function getStaticPaths() {
 
 const { platform } = Astro.props as { platform: ReturnType<typeof getPlatformBySlug> };
 const relatedDeals = getDealsByPlatform(platform.slug);
+const activeDeals = relatedDeals.filter((d) => d.status !== 'ended');
+const endedDeals = relatedDeals.filter((d) => d.status === 'ended');
 const all = getPlatforms();
 const idx = all.findIndex((p) => p.slug === platform.slug);
 const prev = all[(idx - 1 + all.length) % all.length];
@@ -186,13 +188,30 @@ print(resp.choices[0].message.content)`
       </Callout>
     </div>
 
-    <!-- 相关活动 -->
+    <!-- 相关活动：进行中 -->
     {
-      relatedDeals.length > 0 && (
+      activeDeals.length > 0 && (
         <div class="mt-10">
-          <h2 class="text-xl font-bold text-slate-900">📌 该平台的活动快讯</h2>
+          <h2 class="text-xl font-bold text-slate-900">📌 进行中活动</h2>
           <div class="mt-4 grid gap-4 sm:grid-cols-2">
-            {relatedDeals.map((deal) => (
+            {activeDeals.map((deal) => (
+              <DealCard deal={deal} />
+            ))}
+          </div>
+        </div>
+      )
+    }
+
+    <!-- 相关活动：历史（已归档） -->
+    {
+      endedDeals.length > 0 && (
+        <div class="mt-10">
+          <h2 class="flex items-center gap-2 text-xl font-bold text-slate-900">
+            🗄️ 历史活动
+            <span class="rounded-md bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-500">已归档</span>
+          </h2>
+          <div class="mt-4 grid gap-4 sm:grid-cols-2">
+            {endedDeals.map((deal) => (
               <DealCard deal={deal} />
             ))}
           </div>

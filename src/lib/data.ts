@@ -109,7 +109,10 @@ export function sortDealsByUrgency(list: Deal[]): Deal[] {
 }
 
 export function getDealsByPlatform(slug: string): Deal[] {
-  return getActiveDeals().filter((d) => d.platform_slug === slug);
+  const active = getActiveDeals().filter((d) => d.platform_slug === slug);
+  const ended = getEndedDeals().filter((d) => d.platform_slug === slug);
+  // 进行中活动在前，已归档活动在后（DealCard 自动渲染「已结束」标记 + 半透明）
+  return [...active, ...ended];
 }
 
 /**

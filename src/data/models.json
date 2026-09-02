@@ -34,7 +34,9 @@
       { "name": "Coding Plan · OpenAI Chat Completion 协议", "url": "https://open.bigmodel.cn/api/coding/paas/v4" },
       { "name": "Coding Plan · OpenAI Response 协议", "url": "https://open.bigmodel.cn/api/v1" }
     ],
-    "last_verified": "2026-08-31"
+    "last_verified": "2026-08-31",
+    "rating": 4,
+    "ratingNote": "编辑部实测：GLM 系列模型质量稳定、国内直连延迟低、免费力度第一梯队；仅高峰期偶有限流、长上下文缓存成本偏高，属正常范畴。另外 GLM 近期在 ZCode 客户端中赠送 Token 的活动较为频繁，可以多关注，常有免费额度惊喜。"
   },
   {
     "slug": "siliconflow",
