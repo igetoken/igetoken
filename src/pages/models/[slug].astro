@@ -295,6 +295,7 @@ const toc = [
       const setActive = (id) => {
         links.forEach((l) => {
           const on = l.getAttribute('data-toc-id') === id;
+          l.classList.toggle('border-emerald-600', on);
           l.classList.toggle('text-emerald-700', on);
           l.classList.toggle('font-semibold', on);
         });
