@@ -848,5 +848,93 @@
     "api_base": "https://api-inference.modelscope.cn/v1",
     "example_model": "Qwen/Qwen3.5-27B",
     "last_verified": "2026-09-02"
+  },
+  {
+    "slug": "moma",
+    "name": "移动云 MoMA",
+    "category": "aggregator",
+    "website": "https://ecloud.10086.cn/portal/product/MaaS",
+    "register_url": "https://ecloud.10086.cn/portal/product/MaaS",
+    "docs_url": "https://ecloud.10086.cn/op-help-center/doc/article/92837",
+    "tagline": "中国移动官方大模型聚合平台，新用户送 2500 万 Token 免费体验",
+    "highlight": "300+ 主流模型统一 API 网关，新认证用户领 2500 万 Token（30 天）",
+    "tags": ["官方聚合", "300+模型", "免费体验", "OpenAI兼容"],
+    "offers": [
+      { "model": "自营模型（九天 + DeepSeek + Qwen + GLM 等）", "quota": "2500 万 Tokens 限时 30 天（活动期 2026-02-15 至 2026-12-31，每身份仅一次）", "type": "signup" }
+    ],
+    "steps": [
+      "访问移动云 MoMA 控制台并登录（需完成实名认证）",
+      "进入「模型广场」，点击右上角「新用户 2500w Tokens 免费体验」领取",
+      "在「API 密钥」创建访问令牌",
+      "OpenAI 兼容接口，base_url 指向 moma.cmecloud.cn/v1，模型名带厂商前缀（如 zhipu/glm-5.3-flash）"
+    ],
+    "pitfalls": [
+      "2500 万 Token 仅限时 30 天（确认领取后起算），使用量或有效期任一到期即失效",
+      "仅自营模型支持 2500 万免费额度；Qwen3.5-35B-A3B、机密模型、合作模型不支持",
+      "限流 3000 tokens/min，高频调用需注意",
+      "需完成移动云实名认证才能领取",
+      "活动期至 2026-12-31，到期后免费政策以官方为准"
+    ],
+    "api_base": "https://moma.cmecloud.cn/v1",
+    "example_model": "zhipu/glm-5.3-flash",
+    "last_verified": "2026-09-02"
+  },
+  {
+    "slug": "moark",
+    "name": "模力方舟 Gitee AI",
+    "category": "aggregator",
+    "website": "https://ai.gitee.com",
+    "register_url": "https://ai.gitee.com",
+    "docs_url": "https://ai.gitee.com/docs/getting-started",
+    "tagline": "Gitee 官方开源大模型平台，每日 100 次免费 API 调用",
+    "highlight": "70+ 开源模型统一 OpenAI 兼容接口，免费体验令牌每日 100 次",
+    "tags": ["开源聚合", "每日免费", "OpenAI兼容"],
+    "offers": [
+      { "model": "免费体验访问令牌（70+ 开源模型）", "quota": "每位用户每日 100 次免费调用", "type": "daily" }
+    ],
+    "steps": [
+      "用 Gitee 账号登录模力方舟（ai.gitee.com）",
+      "完成开发者认证（支付宝实名，免费）",
+      "创建「免费体验访问令牌」",
+      "OpenAI 兼容接口，base_url 指向 api.moark.com/v1"
+    ],
+    "pitfalls": [
+      "每日 100 次是「免费体验访问令牌」的总上限（所有模型合计），超限返回 400",
+      "模型广场标注「免费」的模型，实际需购买任意金额「全模型资源包」并授权后才能 API 调用，并非零门槛",
+      "免费体验令牌每日重置，适合测试/验证，不适合生产或高并发",
+      "接口已升级，建议用新 OpenAI 格式 api.moark.com/v1（旧接口 ai.gitee.com 逐步废弃）"
+    ],
+    "api_base": "https://api.moark.com/v1",
+    "example_model": "deepseek-r1",
+    "last_verified": "2026-09-02"
+  },
+  {
+    "slug": "intern-ai",
+    "name": "书生·浦语 InternLM",
+    "category": "domestic",
+    "website": "https://intern-ai.org.cn",
+    "register_url": "https://chat.intern-ai.org.cn",
+    "docs_url": "https://internlm.intern-ai.org.cn/api/document",
+    "tagline": "上海 AI 实验室开源大模型，注册送每月百万级免费 Token",
+    "highlight": "新用户每月 100 万 Input + 300 万 Output Token 免费额度，10 RPM",
+    "tags": ["开源", "免费商用", "多模态", "OpenAI兼容"],
+    "offers": [
+      { "model": "InternLM 系列（intern-latest / internvl-latest 等）", "quota": "新注册用户每月 100 万 Input + 300 万 Output Tokens，10 RPM / 5000 TPM", "type": "permanent" }
+    ],
+    "steps": [
+      "访问书生·浦语对话平台（chat.intern-ai.org.cn）注册（手机号或邮箱）",
+      "登录后进入「API 管理」→「获取个人密钥」→ 创建 API Token",
+      "OpenAI 兼容接口，base_url 指向 chat.intern-ai.org.cn/api/v1",
+      "模型名填 intern-latest（通用对话）或 internvl-latest（多模态识图）"
+    ],
+    "pitfalls": [
+      "免费额度为每月 100 万 Input + 300 万 Output Tokens，月初刷新（以官方 API 用量页为准）",
+      "速率限制 10 RPM / 5000 TPM，适合轻量调用，勿用于高并发",
+      "密钥有效期以官方为准（社区文档提及约 6 个月），到期需重新创建",
+      "免费额度口径来自官方实战营/社区文档，实际以官方 API 文档实时为准"
+    ],
+    "api_base": "https://chat.intern-ai.org.cn/api/v1",
+    "example_model": "intern-latest",
+    "last_verified": "2026-09-02"
   }
 ]
