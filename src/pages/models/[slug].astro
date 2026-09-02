@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Badge from '../../components/Badge.astro';
 import Callout from '../../components/Callout.astro';
+import StarRating from '../../components/StarRating.astro';
 import DealCard from '../../components/DealCard.astro';
 import { getPlatforms, getPlatformBySlug, getDealsByPlatform, OFFER_TYPE_LABEL, CATEGORY_LABEL } from '../../lib/data';
 
@@ -67,6 +68,14 @@ print(resp.choices[0].message.content)`
       <div>
         <h1 class="text-3xl font-black text-slate-900">{platform.name}</h1>
         <p class="mt-2 text-slate-500">{platform.tagline}</p>
+        {
+          platform.rating ? (
+            <div class="mt-3 flex flex-wrap items-center gap-2">
+              <StarRating rating={platform.rating} label />
+              {platform.ratingNote && <span class="text-sm text-slate-500">{platform.ratingNote}</span>}
+            </div>
+          ) : null
+        }
       </div>
       <div class="flex flex-wrap items-center gap-2">
         <Badge variant="verified" label={`${verifiedShort} 已核实`} />

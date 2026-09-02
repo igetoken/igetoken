@@ -29,6 +29,10 @@ export interface Platform {
   sdk_example?: string;
   /** 附加接入端点（如 Coding Plan 专用端点），平台页以表格展示 */
   extra_endpoints?: { name: string; url: string }[];
+  /** 编辑部推荐指数（1–5 星，整数）；仅对有实测体验的平台填写，缺省不显示。承载「质检员」主观评价层，与客观 pitfalls 区分 */
+  rating?: number;
+  /** 推荐指数的一句话编辑部说明（如实测短板），配合 rating 展示 */
+  ratingNote?: string;
   last_verified: string;
 }
 

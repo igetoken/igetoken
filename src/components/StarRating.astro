@@ -1,0 +1,22 @@
+---
+interface Props {
+  rating: number;
+  max?: number;
+  label?: boolean;
+}
+const { rating, max = 5, label = false } = Astro.props;
+const stars = Array.from({ length: max }, (_, i) => i < rating);
+---
+<span
+  class="inline-flex items-center gap-0.5"
+  aria-label={`推荐指数 ${rating} / ${max}`}
+  title={`推荐指数 ${rating}/${max}`}
+>
+  {label && <span class="mr-1 text-xs font-bold text-slate-500">推荐指数</span>}
+  {
+    stars.map((on) => (
+      <span class={on ? 'text-amber-400' : 'text-slate-300'}>★</span>
+    ))
+  }
+  <span class="ml-1 text-xs font-medium text-slate-500">{rating}/{max}</span>
+</span>

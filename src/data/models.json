@@ -579,6 +579,8 @@
       { "name": "官方模型与价格总表", "url": "https://developers.cloudflare.com/workers-ai/models/" },
       { "name": "OpenAI 兼容端点文档", "url": "https://developers.cloudflare.com/workers-ai/configuration/open-ai-compatibility/" }
     ],
+    "rating": 2,
+    "ratingNote": "编辑部实测：开源模型推理效果一般，且免费额度偏小（1 万 Neurons/天跑大模型很快见底），仅适合轻量 / 边缘推理，不建议作为主力免费源。",
     "last_verified": "2026-08-30"
   },
   {
