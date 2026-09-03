@@ -951,5 +951,126 @@
     "example_model": "intern-latest",
     "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02"
+  },
+  {
+    "slug": "baishan",
+    "name": "白山云 白山智算",
+    "category": "domestic",
+    "website": "https://www.baishancloud.com",
+    "register_url": "https://ai.baishan.com",
+    "docs_url": "https://ai.baishan.com/website/model-api",
+    "tagline": "边缘算力云平台，新用户送 450 元大模型 API 体验金",
+    "highlight": "注册实名送 150 元、首调用再送 300 元（限前 500 名），多款模型永久免费 API",
+    "tags": ["注册送", "体验金", "永久免费", "国内直连"],
+    "offers": [
+      { "model": "DeepSeek-R1 / BAAI bge-m3 / bge-reranker-v2-m3 等", "quota": "永久免费 API（无需额度即可调用）", "type": "permanent" },
+      { "model": "全平台模型（DeepSeek / Qwen3 / GLM-5 等）", "quota": "新用户注册并完成实名认证送 150 元体验金，首次调用模型服务后再送 300 元，合计最高 450 元（限前 500 名新用户），可用于抵扣 API 调用费用", "type": "credit" }
+    ],
+    "steps": [
+      "打开白山智算 https://ai.baishan.com 注册账号",
+      "完成实名认证（个人认证），账户自动到账 150 元体验金",
+      "进入模型广场选模型 → 创建 API Key",
+      "以 OpenAI 兼容方式接入，base_url 填 https://api.edgefn.net/v1"
+    ],
+    "pitfalls": [
+      "450 元体验金为限时活动，仅前 500 名新用户，先到先得",
+      "150 元实名即到账；另 300 元需首次调用模型服务后约 3 个工作日内发放",
+      "体验金有效期以账户余额页为准，注意到期提示、用完需充值",
+      "永久免费模型名单会调整，调不通先查最新模型列表"
+    ],
+    "api_base": "https://api.edgefn.net/v1",
+    "example_model": "DeepSeek-R1",
+    "publishedAt": "2026-09-03",
+    "last_verified": "2026-09-03"
+  },
+  {
+    "slug": "lingyiwanwu",
+    "name": "零一万物 01.AI",
+    "category": "domestic",
+    "website": "https://www.01.ai",
+    "register_url": "https://platform.lingyiwanwu.com",
+    "docs_url": "https://platform.01.ai/docs",
+    "tagline": "李开复创立的 Yi 系列模型官方平台，注册送免费额度",
+    "highlight": "新用户注册送 ¥10 免费额度（约数百万 Token），OpenAI 兼容",
+    "tags": ["注册送", "开源模型", "OpenAI兼容", "国内直连"],
+    "offers": [
+      { "model": "Yi-Lightning / Yi-Large / Yi-Large-Turbo / Yi-Vision-VL 等", "quota": "新用户注册送 ¥10 免费额度（约数百万 Token，限速 5 RPM），可用于 API 调用", "type": "credit" }
+    ],
+    "steps": [
+      "打开 platform.lingyiwanwu.com 注册账号",
+      "新用户自动获得 ¥10 免费体验额度",
+      "API Keys 页面创建密钥",
+      "OpenAI 兼容接入，base_url 填 https://api.lingyiwanwu.com/v1"
+    ],
+    "pitfalls": [
+      "免费额度约 ¥10，额度较小，用完需充值",
+      "限速 5 RPM，适合轻量调用，勿用于高并发",
+      "需手机号验证（无需绑卡）",
+      "免费额度有效期与具体模型以官方文档为准"
+    ],
+    "api_base": "https://api.lingyiwanwu.com/v1",
+    "example_model": "yi-lightning",
+    "publishedAt": "2026-09-03",
+    "last_verified": "2026-09-03"
+  },
+  {
+    "slug": "ai360",
+    "name": "360智脑",
+    "category": "domestic",
+    "website": "https://ai.360.com",
+    "register_url": "https://ai.360.com/open",
+    "docs_url": "https://ai.360.com/open",
+    "tagline": "360 自研大模型，开放平台送新用户免费试用额度",
+    "highlight": "新用户实名认证后获免费试用额度（约 100 万 Token / 30 天），OpenAI 兼容",
+    "tags": ["注册送", "免费试用", "OpenAI兼容", "国内直连"],
+    "offers": [
+      { "model": "360GPT2-Pro / 360GPT-Turbo / 360GPT-Flash / 360Zhinao-Embedding", "quota": "新用户实名认证后获免费试用额度（社区核实约 100 万 Token、30 天有效，仅限文本生成类接口），具体以官网实时为准", "type": "signup" }
+    ],
+    "steps": [
+      "打开 360智脑开放平台 https://ai.360.com/open 注册（手机号）",
+      "完成实名认证，账户获免费试用额度",
+      "API 密钥管理页面创建密钥",
+      "OpenAI 兼容接入，base_url 填 https://api.360.cn/v1，模型名用 360gpt2-pro 等"
+    ],
+    "pitfalls": [
+      "免费额度约 100 万 Token、30 天有效（社区核实，以官网为准），不跨月结转",
+      "仅限 text-generation 类接口，多模态 / RAG 走收费通道，不从免费额度扣",
+      "需手机号验证；额度用尽返回 402，需充值",
+      "历史 1 亿 Token 赠送活动已于 2024-07-31 结束，当前为新用户标准试用额度"
+    ],
+    "api_base": "https://api.360.cn/v1",
+    "example_model": "360gpt2-pro",
+    "publishedAt": "2026-09-03",
+    "last_verified": "2026-09-03"
+  },
+  {
+    "slug": "ppio",
+    "name": "PPIO 派欧云",
+    "category": "domestic",
+    "website": "https://ppio.com",
+    "register_url": "https://ppinfra.com/user/register",
+    "docs_url": "https://ppio.com/docs",
+    "tagline": "一站式 AIGC 云，新用户送大模型 API 代金券",
+    "highlight": "新用户注册送 ¥15 大模型 API 代金券（无门槛），DeepSeek / Qwen / GLM 等",
+    "tags": ["注册送", "代金券", "开源模型", "OpenAI兼容"],
+    "offers": [
+      { "model": "DeepSeek R1/V3 / Qwen3 / Llama / GLM 等", "quota": "新用户注册送 ¥15 大模型 API 代金券（无门槛，可用于全系模型 API），具体以官网活动为准", "type": "credit" }
+    ],
+    "steps": [
+      "打开 PPIO 派欧云 https://ppinfra.com/user/register 注册账号",
+      "完成实名认证，账户获代金券",
+      "API 密钥管理页面创建密钥",
+      "OpenAI 兼容接入，base_url 填 https://api.ppinfra.com/v3/openai"
+    ],
+    "pitfalls": [
+      "¥15 代金券为新用户活动，额度有限，用完需充值",
+      "代金券有效期与活动规则以官网实时为准",
+      "community 版模型供尝鲜，大量调用需充值切非 community 版",
+      "base_url 为 /v3/openai，注意与旧版 /openai 路径区分"
+    ],
+    "api_base": "https://api.ppinfra.com/v3/openai",
+    "example_model": "deepseek/deepseek-r1",
+    "publishedAt": "2026-09-03",
+    "last_verified": "2026-09-03"
   }
 ]
