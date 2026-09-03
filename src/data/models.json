@@ -25,7 +25,8 @@
       "GLM-4-Flash 免费但有并发限制，高峰期可能限流",
       "2000 万体验包有有效期，在控制台注意到期时间，别攒着不用",
       "网页版聊天的额度与 API Token 是两套体系，别混淆",
-      "智谱的缓存（Prompt Cache）收费较高，长上下文高频复用请注意控制上下文大小、避免无意义重复"
+      "智谱的缓存（Prompt Cache）收费较高，长上下文高频复用请注意控制上下文大小、避免无意义重复",
+      "已订阅 GLM Coding Plan 的用户尽量在 ZCode 客户端内用：额度消耗按 0.67 系数折算（等效约 1.5 倍配额），在 Claude Code 等其它工具中按标准系数扣，同样订阅在 ZCode 里更耐用（折算规则与截止以官方公告为准）"
     ],
     "api_base": "https://open.bigmodel.cn/api/paas/v4",
     "example_model": "glm-4-flash",
@@ -34,13 +35,13 @@
       { "name": "Coding Plan · OpenAI Chat Completion 协议", "url": "https://open.bigmodel.cn/api/coding/paas/v4" },
       { "name": "Coding Plan · OpenAI Response 协议", "url": "https://open.bigmodel.cn/api/v1" }
     ],
-    "last_verified": "2026-08-31",
+    "last_verified": "2026-09-03",
     "rating": 4,
     "ratingNote": "编辑部实测：GLM 系列模型质量稳定、国内直连延迟低、免费力度第一梯队；仅高峰期偶有限流、长上下文缓存成本偏高，属正常范畴。另外 GLM 近期在 ZCode 客户端中赠送 Token 的活动较为频繁，可以多关注，常有免费额度惊喜。",
     "devAgent": {
       "name": "ZCode（智谱官方编程客户端）",
       "url": "https://zcode.bigmodel.cn",
-      "note": "智谱官方出品的 AI 编程 IDE，登录即送 GLM 系列免费额度（产品内额度，不可导出为 API）。近期赠送 Token 活动较频繁，可多关注。"
+      "note": "智谱官方出品的 AI 编程 IDE，登录即送 GLM 系列免费额度（产品内额度，不可导出为 API）。订阅 GLM Coding Plan 的用户在 ZCode 内调用模型，额度按 0.67 系数折算（等效约 1.5 倍配额），在其它编码工具中无此加成；近期赠送 Token 活动较频繁，可多关注。"
     }
   },
   {
