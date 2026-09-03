@@ -1,6 +1,6 @@
 export type Category = 'domestic' | 'overseas' | 'aggregator';
 
-export type OfferType = 'permanent' | 'signup' | 'daily' | 'credit';
+export type OfferType = 'permanent' | 'signup' | 'daily' | 'credit' | 'limited';
 
 export interface Offer {
   model: string;

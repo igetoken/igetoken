@@ -25,6 +25,7 @@ export const OFFER_TYPE_LABEL: Record<string, string> = {
   signup: '注册赠送',
   daily: '每日额度',
   credit: '赠金/额度',
+  limited: '限制免费',
   referral: '邀请奖励',
 };
 
