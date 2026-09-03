@@ -399,6 +399,11 @@
     "example_model": "GLM-5-Base",
     "rating": 2,
     "ratingNote": "编辑部实测：推理速度慢于商业大厂，Token 包消耗偏快，且无 Coding Plan（日常编码不划算）；新客 1000 万 Token 仅限 GLM-5-Base 单模型，更适合尝鲜、跑通流程，不建议作为主力编程源。",
+    "devAgent": {
+      "name": "超算互联网客户端（官方桌面 / CLI 工具）",
+      "url": "https://www.scnet.cn/ui/mall/client/download",
+      "note": "超算互联网官方桌面客户端（GUI / CLI），可在本地下载安装后直接调用 SCNet 的 MaaS 模型额度、跑批处理任务；额度产品内使用，不可导出为 API。注意：该客户端并非编程 agent，也不含 Coding Plan，重度编码场景仍建议走 API。"
+    },
     "last_verified": "2026-09-03"
   },
   {
