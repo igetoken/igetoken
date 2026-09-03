@@ -382,7 +382,7 @@
     "tags": ["注册送", "国家背景", "速度一般"],
     "offers": [
       { "model": "GLM-5-Base 新客礼包", "quota": "注册即领 1000 万 Token（128K 上下文），实时到账", "type": "signup" },
-      { "model": "SCNet-Max（客户端默认模型）", "quota": "限制免费，默认开放，无需额外领取；具体额度上限与有效截止日期以客户端公示为准", "type": "limited" },
+      { "model": "SCNet-Max（客户端默认模型）", "quota": "限时免费，默认开放，无需额外领取；具体额度上限与有效截止日期以客户端公示为准", "type": "limited" },
       { "model": "限时秒杀套餐", "quota": "工作日 10:00 开抢：DeepSeek/GLM 等 1000 万 Token 包 0.1-1 元（新客）", "type": "credit" }
     ],
     "steps": [
