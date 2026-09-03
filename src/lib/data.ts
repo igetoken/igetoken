@@ -231,12 +231,28 @@ function isSameDayFlash(deal: Deal): boolean {
   return diff > 0 && diff < 24 * 3_600_000;
 }
 
-/** 头条：优先「今日闪发」（24h 内截止）的大额限时活动；否则合格候选中价值最高者；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
+/** 本地时区今天（YYYY-MM-DD），用于「今日上新」判定（toISOString 是 UTC，凌晨 0–8 点会偏差） */
+function localToday(): string {
+  const d = new Date();
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const dd = String(d.getDate()).padStart(2, '0');
+  return `${d.getFullYear()}-${mm}-${dd}`;
+}
+
+/** 今日上新：date 就是今天、且是 new_model 免费上新 → 当日头条优先（比闪发更高，因「新品发布」是站点核心即时资讯），次日 date≠今天自动让位 */
+function isTodayLaunch(deal: Deal): boolean {
+  if (deal.status !== 'active') return false;
+  if (deal.type !== 'new_model') return false;
+  return deal.date === localToday();
+}
+
+/** 头条优先级：今日上新 > 今日闪发（24h 内截止） > 价值最高；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
 export function selectHomeFeatured(): Deal | undefined {
   const active = getActiveDeals().filter((d) => !isExpired(d));
   const pool = active.filter(isFeaturedEligible);
+  const launchPool = pool.filter(isTodayLaunch);
   const flashPool = pool.filter(isSameDayFlash);
-  const candidates = flashPool.length > 0 ? flashPool : pool.length > 0 ? pool : active;
+  const candidates = launchPool.length > 0 ? launchPool : flashPool.length > 0 ? flashPool : pool.length > 0 ? pool : active;
   return [...candidates].sort((a, b) => {
     const diff = valueScore(b) - valueScore(a);
     if (diff !== 0) return diff;

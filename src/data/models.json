@@ -221,9 +221,10 @@
     "register_url": "https://opencode.ai/auth",
     "docs_url": "https://opencode.ai/docs/zh-cn/zen/",
     "tagline": "开源编程代理官方模型网关，多个编程模型限时免费",
-    "highlight": "Zen 免费模型每日 20 万~100 万 Token 限额，专为编程场景优化",
+    "highlight": "Zen 免费模型限时开放（含新上线的 Meta Muse Spark 1.3 Contributor Free），专为编程场景优化",
     "tags": ["免费层", "编程场景", "免费模型轮换"],
     "offers": [
+      { "model": "Muse Spark 1.3 Contributor Free（Meta 新模型，限时免费）", "quota": "输入/输出/缓存全免费；以授权 Meta 用你的提示词与补全训练下一代模型为条件，限 Meta 地理政策允许地区", "type": "daily" },
       { "model": "免费模型（如 MiMo-V2.5 Free、nemotron-3-super-free）", "quota": "限时免费，每日 20 万~100 万 Token 限额（视模型而定）", "type": "daily" },
       { "model": "邀请奖励", "quota": "邀请好友订阅 Go 套餐，双方各得 $5 使用额度", "type": "referral" }
     ],
@@ -235,12 +236,13 @@
     ],
     "pitfalls": [
       "免费模型名单轮换很快，限时免费随时可能下线，以 Zen 模型列表为准",
+      "Muse Spark 1.3 / 1.2 的 Contributor 档会拿你的提示词与补全训练 Meta 下一代模型，涉密代码别用；且仅限 Meta 地理政策允许地区（中国大陆等受限）",
       "免费层没有固定速率限制，配额随负载浮动，跑批量任务别依赖",
       "Go 订阅（$10/月）是付费增值项，用免费模型不需要订阅"
     ],
     "api_base": "https://opencode.ai/zen/v1/",
     "example_model": "mimo-v2-pro-free",
-    "last_verified": "2026-08-29",
+    "last_verified": "2026-09-03",
     "devAgent": {
       "name": "OpenCode（开源编程代理 CLI）",
       "url": "https://opencode.ai",

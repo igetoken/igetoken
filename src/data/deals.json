@@ -1,5 +1,24 @@
 [
   {
+    "id": "2026-09-opencode-muse-spark-1-3-free",
+    "date": "2026-09-03",
+    "platform_slug": "opencode",
+    "platform_name": "OpenCode（Zen 网关）",
+    "title": "OpenCode x Muse Spark 1.3 限时免费开放",
+    "type": "new_model",
+    "reward": "Meta 今日发布的新模型 Muse Spark 1.3，在 OpenCode Zen 以 Contributor Free 档限时免费（输入/输出/缓存全 0）",
+    "eligibility": "注册 OpenCode 账号即可，无需订阅 Go 套餐；免费档以「允许用你的提示词与补全训练未来 Meta 模型」为条件，且仅限 Meta 地理政策允许地区",
+    "deadline": null,
+    "howto": [
+      "打开 opencode.ai/auth 注册账号并登录",
+      "创建并复制 API Key，在 OpenCode 里 /connect 选择 OpenCode Zen",
+      "在 /models 里选 Muse Spark 1.3 Contributor Free（模型 ID：muse-spark-1.3-contributor-free）"
+    ],
+    "summary": "Meta 于 9/3 发布新模型 Muse Spark 1.3，主打长任务编程与 Agent 场景（官方称较 1.2 少约 20% 工具调用、少 25% Token）。OpenCode Zen 免费模型列表已上 Contributor Free 档（全免费），OpenCode Go 订阅（$10/月）也同步上线 Contributor 档（$0.10/$0.20/百万，每 5 小时约 4.5 万次请求）。注意：Contributor 档以授权 Meta 用你的提示词与补全训练下一代模型为条件，且仅限 Meta 地理政策允许地区（中国大陆等受限）；限时免费无固定截止日，以 Zen 模型列表为准。",
+    "source": "https://opencode.ai/docs/zh-cn/zen/",
+    "status": "active"
+  },
+  {
     "id": "2026-09-zcode-flash-100m-round2",
     "date": "2026-09-03",
     "platform_slug": "zhipu",
