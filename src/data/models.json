@@ -397,7 +397,9 @@
     ],
     "api_base": "https://api.scnet.cn/api/llm/v1",
     "example_model": "GLM-5-Base",
-    "last_verified": "2026-08-30"
+    "rating": 2,
+    "ratingNote": "编辑部实测：推理速度慢于商业大厂，Token 包消耗偏快，且无 Coding Plan（日常编码不划算）；新客 1000 万 Token 仅限 GLM-5-Base 单模型，更适合尝鲜、跑通流程，不建议作为主力编程源。",
+    "last_verified": "2026-09-03"
   },
   {
     "slug": "baidu",
