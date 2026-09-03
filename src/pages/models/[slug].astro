@@ -23,6 +23,13 @@ const prev = all[(idx - 1 + all.length) % all.length];
 const next = all[(idx + 1) % all.length];
 const verifiedShort = platform.last_verified.replace(/-/g, '/');
 
+// 步骤文本中的 http(s) 链接自动转可点击 <a>（排除中文/半角括号、常见中文标点，避免把包围符号吞进 URL）
+const linkify = (text: string): string =>
+  text.replace(
+    /(https?:\/\/[^\s<>"'\uFF08\uFF09\uFF0C\u3001\u3002()]+)/g,
+    '<a href="$1" target="_blank" rel="noopener noreferrer" class="text-emerald-600 underline decoration-emerald-300/70 hover:text-emerald-700">$1</a>'
+  );
+
 const isOpenAI = platform.openai_compatible !== false;
 
 const curlExample = isOpenAI
@@ -134,7 +141,7 @@ const toc = [
             <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white">
               {i + 1}
             </span>
-            <span class="text-sm leading-relaxed text-slate-700">{step}</span>
+            <span class="text-sm leading-relaxed text-slate-700" set:html={linkify(step)}></span>
           </li>
         ))
       }

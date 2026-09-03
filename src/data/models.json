@@ -386,7 +386,7 @@
     ],
     "steps": [
       "打开 scnet.cn 注册账号",
-      "进入 MaaS 特惠活动页领取新客 1000 万 Token 量包",
+      "进入 MaaS 特惠活动页领取新客 1000 万 Token 量包（领取地址：https://www.scnet.cn/home/subject/maas/index.html）",
       "控制台创建 API Key",
       "OpenAI 兼容接口，base_url 指向 api.scnet.cn/api/llm/v1"
     ],
