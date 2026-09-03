@@ -84,5 +84,20 @@
     "publishedAt": "2026-09-02",
     "last_verified": "2026-09-02",
     "note": "积分适用于 MiniMax Code 各类任务场景（办公 / Coding / 深度调研 / 多模态创作），产品内积分，不可导出为 API Key。签到功能于 v3.0.58（2026-08-05）上线。"
+  },
+  {
+    "id": "wanyou-wuji-beta",
+    "product": "万有无界（阿里云）",
+    "title": "公测免费体验：注册送 3000 积分 + 每日登录 2000 积分",
+    "type": "limited",
+    "amount": "注册 3000 积分（30 天有效）+ 每日登录 2000 积分（当日有效，不可累积）",
+    "condition": "通过官网 qianwenai.com/agents/wanyou 注册并登录即可领取；目前公测开放（部分报道称仍限量名额，以官网实时为准）",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "注册体验金 30 天有效；每日积分 24 小时后过期、不可累积；100 积分 ≈ 1 元 Token 额度",
+    "source": "https://www.qianwenai.com/agents/wanyou",
+    "publishedAt": "2026-09-03",
+    "last_verified": "2026-09-03",
+    "note": "阿里云企业级多 Agent 协作工作台（非 API 平台）。积分仅平台内消耗，用于调用 Qwen3.8-Max / Deepseek-V4-Pro / GLM-5.2 等模型跑 Agent 任务，不可导出为 API Key。免费额度为公开测期活动，后续可能转为收费，以官方为准。"
   }
 ]
