@@ -64,6 +64,10 @@ export interface Deal {
   pitfalls?: string[];
   source: string;
   status: 'active' | 'ended';
+  /** 手动置顶头条：最高优先级，覆盖「今日上新 / 今日闪发 / 价值分」动态逻辑。运营明确要挂的资讯设 true */
+  pinHeadline?: boolean;
+  /** 排除出头条候选池：仍可在首页小卡网格出现，但绝不被选为头条大卡 */
+  excludeHeadline?: boolean;
 }
 
 export type NoticeCategory = 'new' | 'notice' | 'maintenance' | 'alert';

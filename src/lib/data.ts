@@ -247,13 +247,22 @@ function isTodayLaunch(deal: Deal): boolean {
   return deal.date === localToday();
 }
 
-/** 头条优先级：今日上新 > 今日闪发（24h 内截止） > 价值最高；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
+/** 头条优先级：手动置顶(pinHeadline) > 今日上新 > 今日闪发（24h 内截止） > 价值最高；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
 export function selectHomeFeatured(): Deal | undefined {
   const active = getActiveDeals().filter((d) => !isExpired(d));
   const pool = active.filter(isFeaturedEligible);
-  const launchPool = pool.filter(isTodayLaunch);
-  const flashPool = pool.filter(isSameDayFlash);
-  const candidates = launchPool.length > 0 ? launchPool : flashPool.length > 0 ? flashPool : pool.length > 0 ? pool : active;
+
+  // ① 手动置顶：运营明确要挂的资讯，最高优先级，覆盖所有动态通道
+  const pinned = pool.filter((d) => d.pinHeadline);
+  if (pinned.length > 0) {
+    return [...pinned].sort((a, b) => valueScore(b) - valueScore(a))[0];
+  }
+
+  // ② 动态通道：排除被 excludeHeadline 标记的资讯，再按 今日上新 > 今日闪发 > 价值分 选取
+  const dynamicPool = pool.filter((d) => !d.excludeHeadline);
+  const launchPool = dynamicPool.filter(isTodayLaunch);
+  const flashPool = dynamicPool.filter(isSameDayFlash);
+  const candidates = launchPool.length > 0 ? launchPool : flashPool.length > 0 ? flashPool : dynamicPool.length > 0 ? dynamicPool : active;
   return [...candidates].sort((a, b) => {
     const diff = valueScore(b) - valueScore(a);
     if (diff !== 0) return diff;
