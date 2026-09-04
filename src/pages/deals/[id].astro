@@ -66,11 +66,25 @@ const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
               </li>
             ))}
           </ol>
-        </div>
-      )
-    }
+      </div>
+    )
+  }
 
-    {deal.summary && <p class="mt-6 text-sm leading-relaxed text-slate-600">{deal.summary}</p>}
+  {
+    deal.pitfalls && deal.pitfalls.length > 0 && (
+      <div class="mt-8">
+        <Callout type="warn" title="坑点提醒">
+          <ul class="list-disc space-y-1.5 pl-5">
+            {deal.pitfalls.map((p) => (
+              <li class="leading-relaxed">{p}</li>
+            ))}
+          </ul>
+        </Callout>
+      </div>
+    )
+  }
+
+  {deal.summary && <p class="mt-6 text-sm leading-relaxed text-slate-600">{deal.summary}</p>}
 
     <div class="mt-8 text-center">
       <a

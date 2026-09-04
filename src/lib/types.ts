@@ -61,6 +61,7 @@ export interface Deal {
   deadline: string | null;
   howto: string[];
   summary: string;
+  pitfalls?: string[];
   source: string;
   status: 'active' | 'ended';
 }

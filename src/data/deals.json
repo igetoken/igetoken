@@ -7,7 +7,7 @@
     "title": "智谱 ZCode「Flash × ZCode」夜间畅蹬：每晚 23:00–09:00 GLM-5.3-Flash 额度消耗为 0",
     "type": "limited_time",
     "reward": "GLM Coding Plan 夜间活动：每天 23:00 至次日 09:00 调用 GLM-5.3-Flash，在 ZCode 中使用额度消耗为 0（畅用）；在套餐支持的其他 Agent 中使用，可用额度 ×2",
-    "eligibility": "GLM Coding Plan 用户（ZCode 客户端内 / 套餐支持的其他 Agent）；进入时段自动生效，无需手动开启",
+    "eligibility": "已订阅 GLM Coding Plan 的用户（ZCode 客户端内 / 套餐支持的其他 Agent）；进入时段自动生效，无需手动开启",
     "deadline": "2026-09-20（限时活动，以官方为准）",
     "howto": [
       "打开并登录 ZCode 编程客户端（需订阅 GLM Coding Plan）",
@@ -15,6 +15,9 @@
       "在套餐支持的其他 Agent 中使用，可用额度自动 ×2"
     ],
     "summary": "智谱 ZCode 于 9/3 起开启「Flash × ZCode」夜间畅蹬活动，至 9/20。每晚 23:00–次日 09:00 调用 GLM-5.3-Flash：ZCode 客户端内额度消耗为 0（畅用），套餐支持的其他 Agent 中可用额度 ×2；进入时段自动生效，无需手动开启。注意：额度仅限 ZCode 编程客户端内 / Coding Plan 支持的 Agent 使用，不是开放平台 API Token；活动以客户端公告形式发布，无独立外链，source 溯源至智谱官网，以客户端公告为准。",
+    "pitfalls": [
+      "该活动仅对仍保有有效套餐额度的 Coding Plan 订阅用户生效：若你的套餐额度已用尽，进入夜间时段 GLM-5.3-Flash 也不会免单，须先持有可用额度才能享受「额度消耗为 0」。它不是无门槛免费福利，请勿误判。"
+    ],
     "source": "https://bigmodel.cn",
     "status": "active"
   },
