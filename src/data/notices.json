@@ -1,12 +1,12 @@
 [
   {
     "id": "notice-2026-0830-new-platforms",
-    "text": "Ollama Cloud（云端推理）、蚂蚁数科 DTMaaS、蚂蚁灵 Ling API、美团 LongCat",
+    "text": "NVIDIA NIM、快手万擎 StreamLake、基元律动 TokenRhythm、xAI Grok",
     "category": "new",
     "source": "https://igetoken.com/models",
     "linkText": "查看平台",
-    "publishedAt": "2026-09-01",
-    "expireAt": "2026-09-15"
+    "publishedAt": "2026-09-05",
+    "expireAt": "2026-09-19"
   },
   {
     "id": "notice-2026-0902-perks-launch",

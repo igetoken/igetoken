@@ -1,5 +1,104 @@
 [
   {
+    "id": "2026-09-xai-grok-signup-25",
+    "date": "2026-09-05",
+    "platform_slug": "xai",
+    "platform_name": "xAI Grok",
+    "title": "xAI Grok 新账户注册送 $25 API 额度（30 天内有效）",
+    "type": "signup_bonus",
+    "reward": "新账户 $25 促销额度（注册后自动到账，30 天内有效）",
+    "eligibility": "console.x.ai 邮箱或 X 账号注册即可，无需信用卡；国内访问需自备网络环境",
+    "deadline": "未知，建议尽快领取（$25 到账后 30 天过期；此前 $150/月数据共享计划有终止传闻，以 console 实时显示为准）",
+    "howto": [
+      "打开 console.x.ai，邮箱或 X 账号注册并验证邮箱",
+      "在左侧 API Keys 页点击 Create New Key 创建密钥（xai- 开头，仅显示一次）",
+      "按 OpenAI 兼容协议调用 https://api.x.ai/v1（模型 ID 以 /v1/models 返回为准）"
+    ],
+    "summary": "xAI（马斯克旗下）Grok API：每个新账户注册即送 $25 促销额度（几分钟内到账、30 天内有效、无需信用卡），可用于全系 Grok 模型（Grok 4 / 4.1 Fast / 3 / 3 Mini，Grok 4.1 Fast 支持 2M 上下文、输入 $0.20/百万）。OpenAI SDK 兼容（改 base_url 为 api.x.ai/v1 即可）。此前另有 $150/月数据共享计划（授权 xAI 用你的输入输出训练模型、不可逆退出），2025 年 5 月后有已终止的报道，是否仍可开通以 console.x.ai 实时显示为准。海外服务，国内访问需自备网络环境。",
+    "pitfalls": [
+      "$25 促销额度注册后 30 天过期，逾期作废，尽快使用",
+      "$150/月数据共享计划有已终止的传闻（2025 年 5 月报道），且授权不可逆——如仍可开通请谨慎评估隐私代价",
+      "海外服务，国内访问需自备网络环境（参照 Mistral 先例）",
+      "模型 ID 以 /v1/models 端点返回为准"
+    ],
+    "source": "https://console.x.ai",
+    "status": "active"
+  },
+  {
+    "id": "2026-09-tokenrhythm-signup-68",
+    "date": "2026-09-05",
+    "platform_slug": "tokenrhythm",
+    "platform_name": "基元律动 TokenRhythm",
+    "title": "基元律动 TokenRhythm 注册送 ¥68：一个入口调 14 个国产模型",
+    "type": "signup_bonus",
+    "reward": "注册即送 ¥68 免费 Token 额度（按 DeepSeek-V4-Flash 输入 ¥1/百万计，约可跑 4000 万输入 Token）",
+    "eligibility": "手机号注册即可（需短信验证码），无需信用卡；邀请好友双方各得 ¥68，每人邀请 Token 上限 680 元",
+    "deadline": "未知，建议尽快领取（推广期活动，以官方为准）",
+    "howto": [
+      "打开 tokenrhythm.studio，手机号注册账号",
+      "在 API 设置页创建 API Key 并立即保存（仅完整显示一次）",
+      "按 OpenAI 兼容协议调用 https://tokenrhythm.studio/v1（亦支持 Anthropic /v1/messages 协议）"
+    ],
+    "summary": "基元律动（TokenRhythm）：前华为盘古大模型负责人王云鹤创立的多模型聚合路由平台（2026 年成立、天使轮融资 1 亿元），一个入口聚合 DeepSeek-V4-Flash/Pro、GLM-5.2/5.3、Kimi-K2.7-Code、Qwen3.8-Max、MiMo-V2.5-Pro、MiniMax 系列等 14 个文本模型 + 2 个图像模型，OpenAI/Anthropic 双协议兼容。注册即送 ¥68 免费额度，邀请好友可叠加（每人上限 680 元）。注意：平台较新（2026 年 7-8 月公测），部分模型标注「测试中」，稳定性以实测为准；¥68 为一次性赠送，用完需充值。",
+    "pitfalls": [
+      "平台 2026 年 7-8 月才公测上线，较新，稳定性与长期存续以实测为准",
+      "¥68 为一次性注册赠送（非每日/永久免费档），用完需充值",
+      "部分来源称邀请奖励需完成一次有效 OpenSquilla 调用后才到账，以平台活动规则为准",
+      "需手机号注册（不绑卡）"
+    ],
+    "source": "https://tokenrhythm.studio",
+    "status": "active"
+  },
+  {
+    "id": "2026-09-streamlake-kat-coder-free",
+    "date": "2026-09-05",
+    "platform_slug": "streamlake",
+    "platform_name": "快手万擎 StreamLake",
+    "title": "快手万擎 StreamLake：KAT-Coder-Air 永久免费 API + Pro 新客送 2000 万 Tokens",
+    "type": "new_model",
+    "reward": "KAT-Coder-Air 系列永久免费 API（官方承诺）+ KAT-Coder-Pro 新用户 2000 万 Tokens 免费体验额度",
+    "eligibility": "注册快手万擎账号即可，无需信用卡",
+    "deadline": null,
+    "howto": [
+      "进入 console.streamlake.com 注册快手万擎账号",
+      "在「系统管理 → API KEY 管理」创建并复制 API Key",
+      "按 OpenAI 兼容协议调用 https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints（模型如 kat-coder-air-v1）"
+    ],
+    "summary": "快手 StreamLake 官方 AI 编程产品矩阵（CodeFlicker 工具 + KAT-Coder 模型 + 万擎 MaaS 平台）：KAT-Coder-Air 定位轻量免费版，官方宣布在万擎平台对所有用户永久免费提供 API；每位新用户另获 2000 万 tokens 的 KAT-Coder-Pro 免费体验额度（KAT-Coder-Pro 在 SWE-bench Verified 达 73.4%、第一梯队）。平台同时集成 DeepSeek/GLM/Kimi/MiniMax 等主流模型。注意：Air 永久免费为发布时官方承诺（第三方汇总库 2026 年核实仍有效），产品页亦列有标准定价，以万擎控制台实际计费为准。",
+    "pitfalls": [
+      "KAT-Coder-Air「永久免费」为官方发布承诺，产品页同时列有 V2.5 标准定价（输入 ¥1/百万）——实际计费以万擎控制台为准",
+      "免费 API 有 QPS 限制（约 1-3，第三方标注），高频场景可能受限",
+      "Pro 新客 2000 万 Tokens 为一次性体验额度",
+      "另有 Coding Plan 订阅制（独立网关端点），与按量 API 分开"
+    ],
+    "source": "https://www.streamlake.com/product/kat-coder",
+    "status": "active"
+  },
+  {
+    "id": "2026-09-nvidia-nim-free-tier",
+    "date": "2026-09-05",
+    "platform_slug": "nvidia-nim",
+    "platform_name": "NVIDIA NIM",
+    "title": "NVIDIA NIM 免费原型开发：150+ 开源模型不限次调用、无 Token 计费（40 RPM）",
+    "type": "signup_bonus",
+    "reward": "免费原型开发层：多数模型 40 RPM 速率上限、不限次调用、无 Token 计费；API Key 可设最长 12 个月有效",
+    "eligibility": "注册 NVIDIA 账号即可（邮箱注册，支持中国大陆手机号验证），无需信用卡",
+    "deadline": null,
+    "howto": [
+      "打开 build.nvidia.com，点击右上角 Login → Create Account 注册（邮箱即可）",
+      "进入任意模型页（如 DeepSeek V3.2），点击 Get API Key 获取密钥",
+      "按 OpenAI 兼容协议调用 https://integrate.api.nvidia.com/v1，模型 ID 为 org/model 格式"
+    ],
+    "summary": "NVIDIA 官方推理微服务 build.nvidia.com 向所有开发者免费开放原型开发：150+ 开源模型（DeepSeek V3.2、Kimi K2.5、MiniMax M2.7、GLM-5.1、Llama 3.1 405B 等）注册即用，按速率限制调用（多数模型 40 RPM）、不按 Token 计费，API Key 有效期可选最长 12 个月。OpenAI 兼容端点 integrate.api.nvidia.com/v1，中国大陆手机号可完成验证。注意：免费层仅限开发/测试原型用途，正式商用需 NVIDIA AI Enterprise 授权；速率上限以控制台个人配额显示为准。",
+    "pitfalls": [
+      "免费层仅限研究与开发/测试原型，用于正式商用产品需购买 NVIDIA AI Enterprise 授权",
+      "40 RPM 为多数模型上限（部分模型更低），第三方存在「1000 次/月」说法，以官方 FAQ 与控制台实时显示为准",
+      "海外服务，国内访问需自备网络环境"
+    ],
+    "source": "https://build.nvidia.com",
+    "status": "active"
+  },
+  {
     "id": "2026-09-zhipu-weekend-flash-300m",
     "date": "2026-09-04",
     "platform_slug": "zhipu",
@@ -281,7 +380,7 @@
     "type": "limited_time",
     "reward": "3 亿 GLM-5.3-Flash Token 体验额度",
     "eligibility": "所有登录用户，新老用户及 Coding Plan 订阅用户均可参加",
-    "deadline": "本轮领取窗口 2026-09-04 20:00 至 2026-09-07 09:00，到点失效；活动每周五 20:00 刷新新一轮",
+    "deadline": "2026-09-07 09:00（本轮领取窗口 2026-09-04 20:00 至 2026-09-07 09:00；到点失效；活动每周五 20:00 刷新新一轮）",
     "howto": [
       "将 ZCode 客户端更新到最新版",
       "在「模型设置」切换至「体验套餐」",

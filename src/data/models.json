@@ -1112,5 +1112,163 @@
     "example_model": "DeepSeek-V3.2",
     "publishedAt": "2026-09-04",
     "last_verified": "2026-09-04"
+  },
+  {
+    "slug": "nvidia-nim",
+    "name": "NVIDIA NIM",
+    "category": "overseas",
+    "website": "https://build.nvidia.com",
+    "register_url": "https://build.nvidia.com",
+    "docs_url": "https://build.nvidia.com",
+    "tagline": "NVIDIA 官方推理微服务，150+ 开源模型免费原型开发",
+    "highlight": "40 RPM 不限次调用、无 Token 计费；API Key 最长 12 个月",
+    "tags": [
+      "海外",
+      "模型多",
+      "永久免费",
+      "OpenAI兼容"
+    ],
+    "offers": [
+      {
+        "model": "150+ 开源模型（DeepSeek V3.2 / Kimi K2.5 / MiniMax M2.7 / GLM-5.1 / Llama 3.1 405B 等）",
+        "quota": "免费原型开发：多数模型 40 RPM 速率上限、不限次调用、无 Token 计费；API Key 可设最长 12 个月有效",
+        "type": "permanent"
+      }
+    ],
+    "steps": [
+      "打开 build.nvidia.com，右上角 Login → Create Account（邮箱注册，支持中国大陆手机号验证）",
+      "进入任意模型页点击 Get API Key，获取密钥（有效期可选最长 12 个月）",
+      "按 OpenAI 兼容协议调用 https://integrate.api.nvidia.com/v1，模型 ID 为 org/model 格式（以各模型页为准）"
+    ],
+    "pitfalls": [
+      "免费层仅限研究、开发与测试原型；正式商用需 NVIDIA AI Enterprise 授权",
+      "速率上限以控制台右上角个人配额显示为准（多数模型 40 RPM，部分更低）；第三方有「1000 次/月」说法，以官方 FAQ 为准",
+      "海外服务，国内访问需自备网络环境",
+      "模型 ID 以各模型页为准（org/model 格式），命名与通用叫法略有差异"
+    ],
+    "api_base": "https://integrate.api.nvidia.com/v1",
+    "example_model": "meta/llama-3.1-405b-instruct",
+    "publishedAt": "2026-09-05",
+    "last_verified": "2026-09-05"
+  },
+  {
+    "slug": "streamlake",
+    "name": "快手万擎 StreamLake",
+    "category": "domestic",
+    "website": "https://www.streamlake.com",
+    "register_url": "https://console.streamlake.com",
+    "docs_url": "https://www.streamlake.com/product/wanqing",
+    "tagline": "快手官方企业级大模型服务平台，自研 KAT-Coder 编程模型矩阵",
+    "highlight": "KAT-Coder-Air 永久免费 API + Pro 新客送 2000 万 Tokens",
+    "tags": [
+      "国内大厂",
+      "编程模型",
+      "永久免费",
+      "注册送",
+      "OpenAI兼容"
+    ],
+    "offers": [
+      {
+        "model": "KAT-Coder-Air（轻量编程模型，256K 上下文）",
+        "quota": "永久免费 API 调用（官方承诺，以万擎控制台实际计费为准）",
+        "type": "permanent"
+      },
+      {
+        "model": "KAT-Coder-Pro（高性能编程模型，SWE-bench Pro 65.2%）",
+        "quota": "新用户赠送 2000 万 Tokens 免费体验额度（一次性）",
+        "type": "signup"
+      }
+    ],
+    "steps": [
+      "进入 console.streamlake.com 注册快手万擎账号",
+      "在「系统管理 → API KEY 管理」创建并复制 API Key",
+      "按 OpenAI 兼容协议调用 https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints（模型如 kat-coder-air-v1；订阅 Coding Plan 用户另有 coding 专用端点）"
+    ],
+    "pitfalls": [
+      "KAT-Coder-Air「永久免费」为官方发布承诺（V1 时期宣布，第三方汇总库 2026 年核实仍有效），但产品页同时列有 V2.5 标准定价（输入 ¥1/百万）——实际计费以万擎控制台为准",
+      "免费 API 存在 QPS 限制（约 1-3，第三方标注），高频场景可能受限",
+      "Pro 新客 2000 万 Tokens 为一次性体验额度，用完按量计费",
+      "平台另有 Coding Plan 订阅制（独立网关端点），与按量 API 分开管理"
+    ],
+    "api_base": "https://wanqing.streamlakeapi.com/api/gateway/v1/endpoints",
+    "example_model": "kat-coder-air-v1",
+    "publishedAt": "2026-09-05",
+    "last_verified": "2026-09-05"
+  },
+  {
+    "slug": "tokenrhythm",
+    "name": "基元律动 TokenRhythm",
+    "category": "aggregator",
+    "website": "https://tokenrhythm.studio",
+    "register_url": "https://tokenrhythm.studio",
+    "docs_url": "https://tokenrhythm.studio/docs/overview",
+    "tagline": "多模型聚合路由平台，前华为盘古大模型负责人创立",
+    "highlight": "注册送 ¥68 免费额度（约 4000 万 Token 量级）",
+    "tags": [
+      "聚合平台",
+      "注册送",
+      "国产模型",
+      "OpenAI兼容"
+    ],
+    "offers": [
+      {
+        "model": "14 个文本模型（DeepSeek-V4-Flash/Pro、GLM-5.2/5.3、Kimi-K2.7-Code、Qwen3.8-Max、MiMo-V2.5-Pro、MiniMax 系列等）+ 2 个图像模型",
+        "quota": "注册即送 ¥68 免费 Token 额度（一次性）；邀请好友双方各得 ¥68，每人上限 680 元",
+        "type": "signup"
+      }
+    ],
+    "steps": [
+      "打开 tokenrhythm.studio，手机号注册（短信验证码，无需信用卡）",
+      "在 API 设置页创建 API Key 并立即保存（仅完整显示一次）",
+      "按 OpenAI 兼容协议调用 https://tokenrhythm.studio/v1（亦支持 Anthropic /v1/messages 协议）"
+    ],
+    "pitfalls": [
+      "平台 2026 年 7-8 月才公测上线，较新，稳定性与长期存续以实测为准",
+      "¥68 为一次性注册赠送（非每日/永久免费档），用完需充值",
+      "部分模型标注「测试中」可能不稳定；折扣价随时可能调整",
+      "需手机号注册（不绑卡、无信用卡）"
+    ],
+    "api_base": "https://tokenrhythm.studio/v1",
+    "example_model": "deepseek-v4-flash",
+    "publishedAt": "2026-09-05",
+    "last_verified": "2026-09-05"
+  },
+  {
+    "slug": "xai",
+    "name": "xAI Grok",
+    "category": "overseas",
+    "website": "https://x.ai",
+    "register_url": "https://console.x.ai",
+    "docs_url": "https://docs.x.ai",
+    "tagline": "马斯克 xAI 官方 API，Grok 系列模型（4.1 Fast 支持 2M 上下文）",
+    "highlight": "新账户注册送 $25 API 额度（30 天内有效）",
+    "tags": [
+      "海外",
+      "注册送",
+      "OpenAI兼容",
+      "需网络环境"
+    ],
+    "offers": [
+      {
+        "model": "Grok 全系（Grok 4 / 4.1 Fast / 3 / 3 Mini）",
+        "quota": "新账户注册送 $25 促销额度（30 天内有效，无需信用卡；此前另有 $150/月数据共享计划，现况以 console 实时显示为准）",
+        "type": "signup"
+      }
+    ],
+    "steps": [
+      "打开 console.x.ai，邮箱或 X 账号注册并验证邮箱",
+      "在左侧 API Keys 页创建密钥（xai- 开头，仅显示一次）",
+      "按 OpenAI 兼容协议调用 https://api.x.ai/v1（模型 ID 以 /v1/models 返回为准）"
+    ],
+    "pitfalls": [
+      "$25 促销额度注册后 30 天过期，逾期作废",
+      "$150/月数据共享计划有已终止的报道（2025 年 5 月），且授权训练不可逆——如仍可开通请谨慎评估隐私代价",
+      "海外服务，国内访问需自备网络环境（参照 Mistral 先例）",
+      "Grok 4 上下文 256K、Grok 4.1 Fast 达 2M；模型 ID 以 /v1/models 端点为准"
+    ],
+    "api_base": "https://api.x.ai/v1",
+    "example_model": "grok-4.1-fast",
+    "publishedAt": "2026-09-05",
+    "last_verified": "2026-09-05"
   }
 ]
