@@ -1,5 +1,30 @@
 [
   {
+    "id": "2026-09-zhipu-weekend-build-iv",
+    "date": "2026-09-05",
+    "platform_slug": "zhipu",
+    "platform_name": "智谱AI（BigModel）",
+    "title": "智谱 ZCode WEEKEND BUILD IV：3 亿 GLM-5.3-Flash Token 放量 3 万份（先到先得，9/7 截止）",
+    "type": "limited_time",
+    "reward": "每人 3 亿 GLM-5.3-Flash Tokens（限量 30,000 份名额，先到先得、领完即止）",
+    "eligibility": "登录 ZCode 客户端的所有用户；打开 ZCode → 点左下角活动卡片领取（没看到卡片重启客户端即可）；名额有限，领完即止",
+    "deadline": "2026-09-07（WEEKEND BUILD IV 新放 30,000 份名额，先到先得、领完即止）",
+    "howto": [
+      "打开并登录 ZCode 编程客户端（更新到最新版）",
+      "点左下角活动卡片即可领取（没看到卡片重启客户端就会刷新出来）",
+      "每人 3 亿 GLM-5.3-Flash Tokens，先到先得，领完即止，9/7 硬截止"
+    ],
+    "summary": "WEEKEND BUILD IV 又放量了：智谱 ZCode 刚新放 30,000 份名额，每人 3 亿 GLM-5.3-Flash Tokens，先到先得、领完即止。打开 ZCode → 点左下角活动卡片就能领，没看到卡片重启一下就有。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；以客户端公告 / 活动卡片形式发布，无独立外链，以客户端卡片显示为准。",
+    "pitfalls": [
+      "该活动以 ZCode 客户端内活动卡片形式发布，无独立外链，额度仅限客户端内使用、不可导出为开放平台 API Token",
+      "30,000 份为限量名额，先到先得、领完即止，手慢无；9/7 为硬截止，逾期不可领",
+      "若客户端左下角没看到活动卡片，重启 ZCode 客户端即可刷新出来"
+    ],
+    "source": "https://bigmodel.cn",
+    "status": "active",
+    "pinHeadline": true
+  },
+  {
     "id": "2026-09-xai-grok-signup-25",
     "date": "2026-09-05",
     "platform_slug": "xai",
@@ -103,7 +128,7 @@
     "date": "2026-09-04",
     "platform_slug": "zhipu",
     "platform_name": "智谱AI（BigModel）",
-    "title": "智谱 ZCode 周末畅用：3 亿 GLM-5.3-Flash Token 限时开放（9/5 9:00–9/6 有效）",
+    "title": "智谱 ZCode 周末畅用：3 亿 GLM-5.3-Flash Token 限时开放（9/5 9:00–9/6 有效）（已结束）",
     "type": "limited_time",
     "reward": "3 亿 GLM-5.3-Flash Token 体验额度（周末畅用）",
     "eligibility": "所有登录 ZCode 客户端的用户（新老用户、Coding Plan 订阅用户均可）；今晚（9/4 晚）开放领取",
@@ -113,10 +138,9 @@
       "今晚（9/4 晚）在活动入口或首页卡片点击领取",
       "周六（9/5）早上 9 点起开始畅用，截止周日（9/6）有效"
     ],
-    "summary": "智谱 ZCode 本周末（9/5–9/6）特别活动：3 亿 GLM-5.3-Flash Token 畅用体验。今晚（9/4 晚）开放领取，周六（9/5）早上 9 点生效，截止周日（9/6）有效。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；以客户端公告/活动卡片形式发布，无独立外链，source 溯源至智谱官网。",
+    "summary": "历史活动存档：智谱 ZCode 本周末（9/5–9/6）特别活动 3 亿 GLM-5.3-Flash Token 畅用体验，名额已领完、已到期（2026-09-07 由 WEEKEND BUILD IV 接力放量）。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；以客户端公告/活动卡片形式发布，无独立外链，source 溯源至智谱官网。",
     "source": "https://bigmodel.cn",
-    "status": "active",
-    "pinHeadline": true
+    "status": "ended"
   },
   {
     "id": "2026-09-zcode-night-flash-ride",
