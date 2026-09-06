@@ -72,8 +72,14 @@ export function getActiveNotices(): Notice[] {
     });
 }
 
-export function getPlatforms(): Platform[] {
+/** 全部平台（含已归档 ended），用于生成详情页静态路由与上下篇导航；永不删除归档页 */
+export function getAllPlatforms(): Platform[] {
   return platforms;
+}
+
+/** 在架平台（排除已停服 ended），用于首页 / 资源库列表 / RSS 上新源 */
+export function getPlatforms(): Platform[] {
+  return platforms.filter((p) => p.status !== 'ended');
 }
 
 export function getPlatformBySlug(slug: string): Platform | undefined {

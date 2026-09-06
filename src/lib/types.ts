@@ -38,6 +38,8 @@ export interface Platform {
   /** 收录/上线日期（ISO 日期字符串）；新收录平台必填，供 RSS 等按发布时间输出。历史平台可缺省（缺省不进 RSS） */
   publishedAt?: string;
   last_verified: string;
+  /** 平台归档状态：'ended' 表示已停服/下线，从列表与首页隐藏、RSS 上新源排除，但保留详情页（永不删除）；缺省视为 'active' */
+  status?: 'active' | 'ended';
 }
 
 export type DealType =

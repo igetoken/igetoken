@@ -1012,7 +1012,8 @@
     "api_base": "https://api.lingyiwanwu.com/v1",
     "example_model": "yi-lightning",
     "publishedAt": "2026-09-03",
-    "last_verified": "2026-09-03"
+    "last_verified": "2026-09-03",
+    "status": "ended"
   },
   {
     "slug": "ai360",

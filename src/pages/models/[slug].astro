@@ -4,10 +4,10 @@ import Badge from '../../components/Badge.astro';
 import Callout from '../../components/Callout.astro';
 import StarRating from '../../components/StarRating.astro';
 import DealCard from '../../components/DealCard.astro';
-import { getPlatforms, getPlatformBySlug, getDealsByPlatform, OFFER_TYPE_LABEL, CATEGORY_LABEL } from '../../lib/data';
+import { getAllPlatforms, getPlatforms, getPlatformBySlug, getDealsByPlatform, OFFER_TYPE_LABEL, CATEGORY_LABEL } from '../../lib/data';
 
 export function getStaticPaths() {
-  return getPlatforms().map((platform) => ({
+  return getAllPlatforms().map((platform) => ({
     params: { slug: platform.slug },
     props: { platform },
   }));
@@ -17,7 +17,7 @@ const { platform } = Astro.props as { platform: ReturnType<typeof getPlatformByS
 const relatedDeals = getDealsByPlatform(platform.slug);
 const activeDeals = relatedDeals.filter((d) => d.status !== 'ended');
 const endedDeals = relatedDeals.filter((d) => d.status === 'ended');
-const all = getPlatforms();
+const all = getAllPlatforms();
 const idx = all.findIndex((p) => p.slug === platform.slug);
 const prev = all[(idx - 1 + all.length) % all.length];
 const next = all[(idx + 1) % all.length];
@@ -86,6 +86,14 @@ const toc = [
       <span class="mx-1">/</span>
       <span class="text-slate-600">{CATEGORY_LABEL[platform.category]}</span>
     </nav>
+
+    {
+      platform.status === 'ended' && (
+        <Callout type="danger" title="该平台已停服归档">
+          <p>{platform.name} 已停止服务，本页仅作历史归档保留，相关免费额度已不可用；如需使用请移步其他在架平台。</p>
+        </Callout>
+      )
+    }
 
     <!-- 头部 -->
     <div class="mt-4 flex flex-wrap items-start justify-between gap-4">
