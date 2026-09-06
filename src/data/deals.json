@@ -4,7 +4,7 @@
     "date": "2026-09-05",
     "platform_slug": "zhipu",
     "platform_name": "智谱AI（BigModel）",
-    "title": "智谱 ZCode WEEKEND BUILD IV：3 亿 GLM-5.3-Flash Token 放量 3 万份（先到先得，9/7 截止）",
+    "title": "智谱 ZCode WEEKEND BUILD IV：3 亿 GLM-5.3-Flash Token 放量 3 万份（先到先得，9/7 截止，已结束）",
     "type": "limited_time",
     "reward": "每人 3 亿 GLM-5.3-Flash Tokens（限量 30,000 份名额，先到先得、领完即止）",
     "eligibility": "登录 ZCode 客户端的所有用户；打开 ZCode → 点左下角活动卡片领取（没看到卡片重启客户端即可）；名额有限，领完即止",
@@ -21,8 +21,7 @@
       "若客户端左下角没看到活动卡片，重启 ZCode 客户端即可刷新出来"
     ],
     "source": "https://bigmodel.cn",
-    "status": "active",
-    "pinHeadline": true
+    "status": "ended"
   },
   {
     "id": "2026-09-xai-grok-signup-25",
@@ -316,7 +315,7 @@
     ],
     "summary": "MiniMax 与 GMI Cloud 联名的限时活动，14 天内四款模型免费，活动页明示禁止多账号注册、批量薅羊毛与转售。注意：这是渠道方活动，MiniMax 官方开放平台本身没有常驻免费额度——按量计费全系收费（M3 输入 ¥2.1/百万 tokens 起），Token Plan 为 ¥49/119/469 每月订阅；官方音乐免费接口已于 2026-08-20 停服。实测存在并发限制，建议个人开发测试用途，勿跑批量任务。",
     "source": "https://www.gmicloud.ai/minimax-week",
-    "status": "active"
+    "status": "ended"
   },
   {
     "id": "2026-08-volcengine-doubao-seed-2-1-pro",
@@ -400,7 +399,7 @@
     "date": "2026-09-04",
     "platform_slug": "zhipu",
     "platform_name": "智谱AI（BigModel）",
-    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮）",
+    "title": "智谱 ZCode 周末活动：所有用户免费领 3 亿 GLM-5.3-Flash Token（2026-09-04-2026-09-07 新一轮，已结束）",
     "type": "limited_time",
     "reward": "3 亿 GLM-5.3-Flash Token 体验额度",
     "eligibility": "所有登录用户，新老用户及 Coding Plan 订阅用户均可参加",
@@ -412,7 +411,7 @@
     ],
     "summary": "每周末例行活动（周五 20:00 至周一 09:00）。注意：额度仅限 ZCode 编程客户端内使用，不是开放平台 API Token；适合周末集中跑编码任务。本轮（8/29-8/31）领取已结束，等周五 20:00 刷新新一轮。",
     "source": "https://bigmodel.cn",
-    "status": "active"
+    "status": "ended"
   },
   {
     "id": "2026-08-workbuddy-5000-credits",
