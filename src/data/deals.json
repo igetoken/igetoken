@@ -439,17 +439,36 @@
     "date": "2026-08-29",
     "platform_slug": "hunyuan",
     "platform_name": "腾讯混元（腾讯云）",
-    "title": "混元 Hy3（至 9/30）/ Hy4 preview（至 9/10）在 WorkBuddy 每日送免费额度",
+    "title": "混元 Hy3（至 9/30）在 WorkBuddy 每日送免费额度",
     "type": "limited_time",
-    "reward": "Hy3、Hy4 preview 每日赠送免费额度（客户端内 0.00x 倍率），Hy4 为混元思考模型",
+    "reward": "Hy3 每日赠送免费额度（客户端内 0.00x 倍率）",
+    "eligibility": "WorkBuddy 全体用户",
+    "deadline": "2026-09-30",
+    "howto": [
+      "打开 WorkBuddy，在模型列表选择 Hy3（带「限时免费」角标）",
+      "每日自动赠送免费额度，当天用即可",
+      "点模型右侧详情可查看活动窗口与剩余规则"
+    ],
+    "summary": "客户端模型详情页一手信息（官方公告 cloud.tencent.com/developer/article/2734830 同步确认）：Hy3 活动窗口 7月6日–9月30日，每日赠送免费额度（客户端内 0.00x 倍率）。注意是产品内使用，非 API Token。",
+    "source": "https://cloud.tencent.com/developer/article/2734830",
+    "status": "active"
+  },
+  {
+    "id": "2026-09-hunyuan-hy4-preview-free",
+    "date": "2026-09-06",
+    "platform_slug": "hunyuan",
+    "platform_name": "腾讯混元（腾讯云）",
+    "title": "混元 Hy4 preview 限时免费至 9/10（WorkBuddy 每日送免费额度）",
+    "type": "limited_time",
+    "reward": "Hy4 preview 每日赠送免费额度（客户端内 0.00x 倍率），混元旗舰思考模型",
     "eligibility": "WorkBuddy 全体用户",
     "deadline": "2026-09-10",
     "howto": [
-      "打开 WorkBuddy，在模型列表选择 Hy4 preview 或 Hy3（带「限时免费」角标）",
+      "打开 WorkBuddy，在模型列表选择 Hy4 preview（带「限时免费」角标）",
       "每日自动赠送免费额度，当天用即可",
-      "点模型右侧详情可查看各自的活动窗口与剩余规则"
+      "点模型右侧详情可查看活动窗口与剩余规则"
     ],
-    "summary": "客户端模型详情页一手信息：Hy4 preview 活动窗口 8月28日–9月10日、Hy3 为 7月6日–9月30日，均为每日赠送额度制。注意是产品内使用，非 API Token。",
+    "summary": "Hy4 preview 是 8/28 发布的 770B/49B MoE 旗舰，主攻长任务编程、复杂办公与科学推理；WorkBuddy 限时两周免费至 9/10 23:59，每日赠送免费额度（0.00x 倍率）。注意是产品内使用，非 API Token。",
     "source": "https://cloud.tencent.com/developer/article/2734830",
     "status": "active"
   },
