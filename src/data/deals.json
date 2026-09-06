@@ -364,7 +364,7 @@
     "platform_name": "商汤日日新（SenseNova）",
     "title": "商汤日日新公测期完全免费：每周最高 120 万积分，新增 Flash-Lite 返赠",
     "type": "new_model",
-    "reward": "通用积分池 60 万/周 + Flash-Lite 专属池 60 万/周，5 小时窗口 6 万积分；U1.5 Lite 每 5 小时 1500 次请求（公测完全免费）",
+    "reward": "通用池 + Flash-Lite 池各 60 万/周（合计 120 万/周），每池独立 5h 窗口配额 6 万（两池对称、滚动重置）；U1.5 Lite 每 5 小时 1500 次请求（公测完全免费）",
     "eligibility": "注册即可用（Free 公测档，限时放量）",
     "deadline": "公测期截止未明，付费档位即将上线，建议尽早薅",
     "howto": [
