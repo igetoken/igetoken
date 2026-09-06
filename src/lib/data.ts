@@ -255,11 +255,13 @@ function isTodayLaunch(deal: Deal): boolean {
 
 /** 头条优先级：手动置顶(pinHeadline) > 今日上新 > 今日闪发（24h 内截止） > 价值最高；同分时比 Token 量级（更大者胜），再比发布日；无合格候选则回退紧迫度最前 */
 export function selectHomeFeatured(): Deal | undefined {
-  const active = getActiveDeals().filter((d) => !isExpired(d));
-  const pool = active.filter(isFeaturedEligible);
+  const activeDeals = getActiveDeals().filter((d) => !isExpired(d));
+  const pool = activeDeals.filter(isFeaturedEligible);
 
-  // ① 手动置顶：运营明确要挂的资讯，最高优先级，覆盖所有动态通道
-  const pinned = pool.filter((d) => d.pinHeadline);
+  // ① 手动置顶：运营明确要挂的资讯，最高优先级，覆盖所有动态通道与 isFeaturedEligible 闸门
+  //    不经过 isFeaturedEligible 池——pinHeadline 是运营 override，可让"无具体 Token 数字 + 限时限免"
+  //    这类 deal（如智谱夜间畅蹬、ZCode 客户端内活动）破格上头条。
+  const pinned = activeDeals.filter((d) => d.pinHeadline);
   if (pinned.length > 0) {
     return [...pinned].sort((a, b) => valueScore(b) - valueScore(a))[0];
   }
