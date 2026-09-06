@@ -350,11 +350,11 @@
     "register_url": "https://platform.sensenova.cn",
     "docs_url": "https://platform.sensenova.cn/docs",
     "tagline": "商汤大模型开放平台，公测期完全免费开放",
-    "highlight": "公测期免费：通用池 60 万积分/周 + Flash-Lite 专属池 60 万/周",
+    "highlight": "公测期免费：通用池 + Flash-Lite 池各 60 万积分/周（合计 120 万/周），每池独立 5h 窗口配额 6 万（双池对称、滚动重置）",
     "tags": ["公测免费", "多模态", "每周刷新"],
     "offers": [
-      { "model": "SenseNova 6.8 Flash Lite / U1 Fast 等", "quota": "公测期免费：通用积分池 60 万积分/周，5 小时窗口 6 万积分", "type": "daily" },
-      { "model": "Flash-Lite 专属积分池", "quota": "另有 60 万积分/周独立池，仅 Flash-Lite 系列可用", "type": "daily" }
+      { "model": "SenseNova 6.8 Flash Lite / U1 Fast 等", "quota": "通用积分池 60 万/周 + 5h 窗口 6 万/池（与 Flash-Lite 专属池并存对称）", "type": "daily" },
+      { "model": "Flash-Lite 专属积分池", "quota": "另有 60 万/周 + 5h 窗口 6 万/池（仅 Flash-Lite 系列可用，与通用池互不挤占）", "type": "daily" }
     ],
     "steps": [
       "打开 platform.sensenova.cn 注册并登录",
