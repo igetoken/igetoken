@@ -96,7 +96,8 @@
       "另有 Coding Plan 订阅制（独立网关端点），与按量 API 分开"
     ],
     "source": "https://www.streamlake.com/product/kat-coder",
-    "status": "active"
+    "status": "active",
+    "excludeHeadline": true
   },
   {
     "id": "2026-09-nvidia-nim-free-tier",
@@ -161,7 +162,8 @@
       "该活动仅对仍保有有效套餐额度的 Coding Plan 订阅用户生效：若你的套餐额度已用尽，进入夜间时段 GLM-5.3-Flash 也不会免单，须先持有可用额度才能享受「额度消耗为 0」。它不是无门槛免费福利，请勿误判。"
     ],
     "source": "https://bigmodel.cn",
-    "status": "active"
+    "status": "active",
+    "pinHeadline": true
   },
   {
     "id": "2026-09-opencode-muse-spark-1-3-free",
