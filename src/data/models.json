@@ -247,7 +247,9 @@
     ],
     "api_base": "https://opencode.ai/zen/v1/",
     "example_model": "mimo-v2-pro-free",
-    "last_verified": "2026-09-03",
+    "last_verified": "2026-09-07",
+    "rating": 4,
+    "ratingNote": "编辑部实测：开源编程代理的官方模型网关（Zen），免费档持续上 Muse Spark 1.3 等编程模型，可直接作 Claude Code 等编码工具的免费后端；扣分点是免费模型名单轮换快、Contributor Free 需贡献提示词/补全给 Meta 训练下一代模型、且限 Meta 地理政策允许地区（大陆等受限）——做主力编程源前需看清模型池。",
     "devAgent": {
       "name": "OpenCode（开源编程代理 CLI）",
       "url": "https://opencode.ai",
