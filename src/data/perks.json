@@ -1,5 +1,20 @@
 [
   {
+    "id": "qwenwork-office-2026",
+    "product": "千问办公",
+    "title": "注册送积分 + 每日签到送积分",
+    "type": "signin",
+    "amount": "注册送积分 + 每日签到送积分（具体额度以页面为准）",
+    "condition": "个人用户注册即送，每日签到续送",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "以产品内展示为准",
+    "source": "https://qwenwork.cn/subscribe?scope=personal",
+    "publishedAt": "2026-09-07",
+    "last_verified": "2026-09-07",
+    "note": "产品内积分，不可导出为 API Key，仅限千问办公产品内使用（文档 / 对话 / 智能体等），以官方页面为准。"
+  },
+  {
     "id": "workbuddy-campus-2026",
     "product": "WorkBuddy",
     "title": "开学季送 1000 平台积分",
