@@ -4,7 +4,8 @@ import PlatformCard from '../components/PlatformCard.astro';
 import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
 import PerkCard from '../components/PerkCard.astro';
-import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks } from '../lib/data';
+import SearchCard from '../components/SearchCard.astro';
+import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks, getSearchApis } from '../lib/data';
 import Notice from '../components/Notice.astro';
 
 const platforms = getPlatforms();
@@ -12,6 +13,7 @@ const homeDeals = selectHomeDeals(10);
 const featuredDeal = homeDeals[0];
 const restDeals = homeDeals.slice(1);
 const perks = getPerks();
+const searchApis = getSearchApis();
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
@@ -137,6 +139,33 @@ const lastVerified = platforms
         现在很多人离不开 Agent，这些产品内积分也是真福利。我们单独开了
         <a href="/perks/" class="font-medium text-amber-700 hover:underline">积分福利专栏</a>
         ，和「免费 API Token」分开陈列，避免混淆。
+      </p>
+    </div>
+  </section>
+
+  <!-- Web Search API -->
+  <section class="border-y border-slate-100 bg-emerald-50/40">
+    <div class="mx-auto max-w-6xl px-4 py-14">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900">🔎 Web Search API</h2>
+          <p class="mt-1 text-sm text-slate-500">
+            Agent / RAG 的搜索 grounding 配套（<span class="font-medium text-emerald-700">可站外调用，与 Token 并列</span>）
+          </p>
+        </div>
+        <a href="/search/" class="shrink-0 text-sm font-medium text-emerald-700 hover:underline">全部搜索 API →</a>
+      </div>
+
+      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          searchApis.slice(0, 3).map((api) => <SearchCard api={api} />)
+        }
+      </div>
+
+      <p class="mt-6 text-sm text-slate-400">
+        建 Agent 必接的网页搜索 / 抓取 API，我们单独开了
+        <a href="/search/" class="font-medium text-emerald-700 hover:underline">搜索 API 专栏</a>
+        ，和「免费 LLM Token」分开陈列，避免混淆。
       </p>
     </div>
   </section>

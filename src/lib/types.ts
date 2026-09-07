@@ -107,3 +107,38 @@ export interface Perk {
   last_verified: string;
   note: string;
 }
+
+// Web Search API 平行专栏（与 LLM Token 主线并列，不进首页头条 token 流）
+export type SearchType = 'free_tier' | 'freemium' | 'limited' | 'credit';
+
+export interface SearchApi {
+  id: string;
+  /** 平台/产品名 */
+  product: string;
+  /** 一句话主打 */
+  title: string;
+  /** 免费层类型（用于筛选 tab） */
+  type: SearchType;
+  /** 免费额度主描述（绿色高亮） */
+  amount: string;
+  /** 认证方式（如 "API Key" / "X-Subscription-Token" / "无需 Key"） */
+  auth: string;
+  /** 接入方式：REST / MCP / SDK / CLI 等 */
+  interfaces: string[];
+  /** 限流说明（可选） */
+  rate_limit?: string;
+  /** 额度重置周期 */
+  recurrence: 'monthly' | 'daily' | 'once';
+  /** 限时免费截止日（ISO；非限时填 null） */
+  deadline: string | null;
+  /** 额度有效期 / 超出后说明 */
+  validity: string;
+  /** 官方来源（必填，供溯源） */
+  source: string;
+  /** 收录/上线日期（ISO；新收录必填，供 RSS） */
+  publishedAt?: string;
+  /** 最后核实日期（ISO；必填） */
+  last_verified: string;
+  /** 补充说明（实测/坑点/稳定性等） */
+  note: string;
+}

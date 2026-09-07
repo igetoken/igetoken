@@ -1,8 +1,9 @@
-import type { Category, Deal, DealType, Platform, Notice, NoticeCategory, Perk, PerkType } from './types';
+import type { Category, Deal, DealType, Platform, Notice, NoticeCategory, Perk, PerkType, SearchApi, SearchType } from './types';
 import modelsJson from '../data/models.json';
 import dealsJson from '../data/deals.json';
 import noticesJson from '../data/notices.json';
 import perksJson from '../data/perks.json';
+import searchJson from '../data/search.json';
 
 export const CATEGORY_LABEL: Record<Category, string> = {
   domestic: '国内大厂',
@@ -33,6 +34,7 @@ const platforms = modelsJson as unknown as Platform[];
 const deals = dealsJson as unknown as Deal[];
 const notices = noticesJson as unknown as Notice[];
 const perks = perksJson as unknown as Perk[];
+const searchApis = searchJson as unknown as SearchApi[];
 
 export const PERK_TYPE_LABEL: Record<PerkType, string> = {
   signin: '每日签到',
@@ -40,6 +42,17 @@ export const PERK_TYPE_LABEL: Record<PerkType, string> = {
   limited: '限时活动',
   invite: '邀请有礼',
 };
+
+export const SEARCH_TYPE_LABEL: Record<SearchType, string> = {
+  free_tier: '免费额度',
+  freemium: '免费增值',
+  limited: '限时免费',
+  credit: '积分额度',
+};
+
+export function getSearchApis(): SearchApi[] {
+  return searchApis;
+}
 
 export function getPerks(): Perk[] {
   return perks;

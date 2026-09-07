@@ -1,0 +1,53 @@
+[
+  {
+    "id": "keenable-web-search",
+    "product": "Keenable（可宁）",
+    "title": "面向 AI Agent 的网页搜索/抓取 API，每月 10 万次免费请求",
+    "type": "freemium",
+    "amount": "认证组织 100,000 请求/月（每月重置）+ 免鉴权公开端点 1,000 次/小时（不耗额度）",
+    "auth": "API Key（单密钥覆盖 Search + Fetch）",
+    "interfaces": ["REST", "MCP", "CLI"],
+    "rate_limit": "认证 10 请求/秒/组织（默认）；免鉴权 10 请求/秒/IP",
+    "recurrence": "monthly",
+    "deadline": null,
+    "validity": "免费额度每月重置；超出后 Search/Fetch 返回 HTTP 402，需付费档",
+    "source": "https://www.keenable.ai/",
+    "publishedAt": "2026-09-07",
+    "last_verified": "2026-09-07",
+    "note": "独立自建网页索引（>1000 亿文档），非 Google/Bing 转售；2026-08-25 出道的新公司，免费层慷慨但长期稳定性待验证。官方托管 MCP 服务器暴露 search_web_pages / fetch_page_content 两个工具，推荐 Agent 走 MCP。每月 10 万次对原型与小流量产品足够。"
+  },
+  {
+    "id": "brave-search-api",
+    "product": "Brave Search API",
+    "title": "独立索引的网页搜索 API，免费层 2,000 次/月",
+    "type": "free_tier",
+    "amount": "2,000 查询/月（1 查询/秒）",
+    "auth": "X-Subscription-Token 请求头（非 Bearer）",
+    "interfaces": ["REST"],
+    "rate_limit": "1 查询/秒（免费层）",
+    "recurrence": "monthly",
+    "deadline": null,
+    "validity": "免费层每月重置；付费 Base ~$3/千次、Pro/AI ~$5/千次",
+    "source": "https://brave.com/search/api/",
+    "publishedAt": "2026-09-07",
+    "last_verified": "2026-09-07",
+    "note": "西方唯一隐私优先的独立搜索索引（非 Google/Bing 转售），适合 RAG / Agent 做 grounding；端点含 Web / Local / News / Suggest。认证用 X-Subscription-Token 头而非 Authorization: Bearer，接入时注意。独立索引质量对隐私场景友好。"
+  },
+  {
+    "id": "tavily-search-api",
+    "product": "Tavily",
+    "title": "为 AI Agent 优化的搜索 API，免费层 1,000 credits/月",
+    "type": "freemium",
+    "amount": "1,000 API credits/月（免信用卡）",
+    "auth": "API Key（Bearer）",
+    "interfaces": ["REST", "SDK", "MCP"],
+    "rate_limit": "免费层有限频（以仪表盘为准）",
+    "recurrence": "monthly",
+    "deadline": null,
+    "validity": "免费层每月重置；超出转 Pay As You Go $0.008/credit",
+    "source": "https://tavily.com/pricing",
+    "publishedAt": "2026-09-07",
+    "last_verified": "2026-09-07",
+    "note": "专为 LLM / RAG 设计的搜索 API，返回结果已做 Agent 友好结构化（URL / 标题 / 摘要 / 内容）；支持学生免费档。认证用标准 API Key（Bearer），生态成熟（LangChain / LlamaIndex 等均有集成）。"
+  }
+]

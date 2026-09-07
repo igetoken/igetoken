@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import SearchCard from '../../components/SearchCard.astro';
+import FilterTabs from '../../components/FilterTabs.astro';
+import { getSearchApis, SEARCH_TYPE_LABEL } from '../../lib/data';
+import type { SearchType } from '../../lib/types';
+
+const apis = getSearchApis();
+// 仅展示数据中实际存在的类型，避免出现无对应卡片的空筛选 tab
+const presentTypes = [...new Set(apis.map((a) => a.type))] as SearchType[];
+const groups = presentTypes.map((key) => ({
+  key,
+  label: SEARCH_TYPE_LABEL[key],
+}));
+---
+
+<Base
+  title="Web Search API - 可站外调用的免费搜索/抓取 API | iGetToken"
+  description="收集面向 AI Agent / RAG 的网页搜索与内容抓取 API（Keenable、Brave、Tavily 等）的免费额度、认证方式与限流。与本站「免费 LLM Token」并列的独立板块。"
+>
+  <section class="mx-auto max-w-6xl px-4 py-12">
+    <h1 class="text-3xl font-black text-slate-900">Web Search API</h1>
+    <p class="mt-2 text-slate-500">
+      共 {apis.length} 个可站外调用的搜索 / 抓取 API。这是<strong class="text-emerald-700">Agent / RAG 的搜索 grounding 配套</strong>，与本站「免费 LLM Token」是两类东西——搜索 API 负责把新鲜网页喂给模型，不能当生成模型用。
+    </p>
+
+    <div class="mt-6">
+      <FilterTabs targetId="search-grid" groups={groups} />
+    </div>
+
+    <div id="search-grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        apis.map((api) => (
+          <div data-category={api.type}>
+            <SearchCard api={api} />
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8 rounded-xl border border-dashed border-emerald-300 bg-emerald-50 p-5 text-sm text-slate-600">
+      <p class="font-medium text-emerald-800">想补充哪个搜索 API？</p>
+      <p class="mt-2">
+        只收录官方正规渠道、可站外 API 调用、额度可溯源的搜索 / 抓取服务。发现新的欢迎邮件推荐：<a
+          href="mailto:igetoken@outlook.com"
+          class="font-medium text-emerald-700 hover:underline">igetoken@outlook.com</a
+        >，附官方来源链接会更快收录。
+      </p>
+    </div>
+  </section>
+</Base>
