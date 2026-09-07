@@ -16,5 +16,14 @@
     "linkText": "去看看",
     "publishedAt": "2026-09-02",
     "expireAt": "2026-09-16"
+  },
+  {
+    "id": "notice-2026-0907-dots-studio",
+    "text": "新收录：小红书 Dots Studio dots3-note Preview（280B MoE、512K 上下文、多模态、限时免费 API）",
+    "category": "new",
+    "source": "https://igetoken.com/models/dots/",
+    "linkText": "查看平台",
+    "publishedAt": "2026-09-07",
+    "expireAt": "2026-09-21"
   }
 ]
