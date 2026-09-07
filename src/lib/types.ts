@@ -25,6 +25,8 @@ export interface Platform {
   example_model?: string;
   /** 是否兼容 OpenAI 接口协议；false 表示官方自有协议（如讯飞星火 WebSocket、Cohere v2），平台页将改用 sdk_example。缺省视为 true */
   openai_compatible?: boolean;
+  /** 自定义认证请求头名（不含值）；部分平台用非标准头（如 Dots 的 api-key）替代默认 Authorization。缺省按 Authorization: Bearer 处理 */
+  authHeader?: string;
   /** 非 OpenAI 兼容平台的官方 SDK 调用示例（Python）；openai_compatible 为 false 时应提供 */
   sdk_example?: string;
   /** 附加接入端点（如 Coding Plan 专用端点），平台页以表格展示 */

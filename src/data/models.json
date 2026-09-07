@@ -1275,5 +1275,47 @@
     "example_model": "grok-4.1-fast",
     "publishedAt": "2026-09-05",
     "last_verified": "2026-09-05"
+  },
+  {
+    "slug": "dots",
+    "name": "Dots Studio（小红书 dots3-note）",
+    "category": "domestic",
+    "website": "https://dots.ai",
+    "register_url": "https://dots.ai/platform/apikeys",
+    "docs_url": "https://dots.ai/platform/docs",
+    "tagline": "小红书开源多模态大模型，512K 上下文 + MoE 280B/16B",
+    "highlight": "预览期免费开放 API（OpenRouter 免费档 9/30 下线）；512K 上下文、文本/图像/视频/音频四模态输入",
+    "tags": [
+      "开源",
+      "多模态",
+      "长上下文",
+      "限时免费"
+    ],
+    "offers": [
+      {
+        "model": "dots3-note-prev（免费预览 API）",
+        "quota": "预览期免费开放 API（OpenAI / Anthropic 双协议兼容）；RPM 60 次/分、TPM 1,500,000 Tokens/分，按单个 API Key 分别限流；OpenRouter 免费档 2026/9/30 下线，官方 dots.ai/platform 截止日未公布，随时可能调整",
+        "type": "limited"
+      }
+    ],
+    "steps": [
+      "打开 dots.ai/platform 用小红书账号或手机号注册登录",
+      "左侧「API Keys」创建 Key（仅展示一次，立即保存）",
+      "Base URL 填 note3-prev-api.askdiandian.com/v1，接口兼容 OpenAI / Anthropic 格式",
+      "认证请求头用 api-key（非标准 Authorization: Bearer），部分客户端需手动配置自定义头",
+      "模型名 dots3-note-prev，原生 512K 上下文，支持文本/图像/视频/音频输入、文本输出"
+    ],
+    "pitfalls": [
+      "免费为预览期，随时可能调整；OpenRouter 免费档明确 2026/9/30 下线，官方平台端截止日未公布，建议尽快用",
+      "认证请求头是 api-key 而非标准 Bearer，用 openai SDK 时需设 default_headers={'api-key': KEY}，否则返回 401",
+      "IMO 2026 满分（42/42）是 dots-note-3.0 分支版本在内部 harness 跑出的，开源 preview checkpoint 未做 IMO 声明，引用时勿把满分直接挂到 dots3-note-prev 上",
+      "网上有少数二手文章写 30 RPM / 750K TPM，与官方文档（60 RPM / 1.5M TPM）不符，以官方为准",
+      "额定 280B（激活 16B）MoE，免费档速率有限，不适合高并发生产，适合体验长上下文与多模态"
+    ],
+    "api_base": "https://note3-prev-api.askdiandian.com/v1",
+    "example_model": "dots3-note-prev",
+    "authHeader": "api-key",
+    "publishedAt": "2026-09-07",
+    "last_verified": "2026-09-07"
   }
 ]

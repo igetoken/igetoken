@@ -31,11 +31,14 @@ const linkify = (text: string): string =>
   );
 
 const isOpenAI = platform.openai_compatible !== false;
+// 自定义认证头（如 Dots 用 api-key 替代默认 Authorization: Bearer）
+const authHeaderName = platform.authHeader ?? 'Authorization';
+const isCustomAuth = authHeaderName !== 'Authorization';
 
 const curlExample = isOpenAI
   ? `curl ${platform.api_base}/chat/completions \\
   -H "Content-Type: application/json" \\
-  -H "Authorization: Bearer $API_KEY" \\
+  -H "${authHeaderName}${isCustomAuth ? '' : ': Bearer'}: $API_KEY" \\
   -d '{
     "model": "${platform.example_model}",
     "messages": [{"role": "user", "content": "你好，介绍一下你自己"}]
@@ -45,7 +48,22 @@ const curlExample = isOpenAI
 # 完整文档：${platform.docs_url}`;
 
 const pythonExample = isOpenAI
-  ? `from openai import OpenAI
+  ? (isCustomAuth
+      ? `from openai import OpenAI
+import os
+
+client = OpenAI(
+    api_key="placeholder",  # 占位；实际认证走下方自定义请求头
+    default_headers={"${authHeaderName}": os.environ["API_KEY"]},
+    base_url="${platform.api_base}",
+)
+
+resp = client.chat.completions.create(
+    model="${platform.example_model}",
+    messages=[{"role": "user", "content": "你好，介绍一下你自己"}],
+)
+print(resp.choices[0].message.content)`
+      : `from openai import OpenAI
 import os
 
 client = OpenAI(
@@ -57,7 +75,7 @@ resp = client.chat.completions.create(
     model="${platform.example_model}",
     messages=[{"role": "user", "content": "你好，介绍一下你自己"}],
 )
-print(resp.choices[0].message.content)`
+print(resp.choices[0].message.content)`)
   : (platform.sdk_example ?? `# 该平台需使用官方 SDK 调用，详见 ${platform.docs_url}`);
 
 // 右侧目录（TOC）：与下方区块渲染同源，条件区块自动出现/消失
@@ -164,6 +182,7 @@ const toc = [
             <p class="mt-2 text-sm text-slate-500">
               接口兼容 OpenAI 格式。base_url：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.api_base}</code>
               示例模型：<code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{platform.example_model}</code>（可用模型以官方列表为准）
+              {isCustomAuth && <span class="ml-1 text-amber-600">⚠️ 认证请求头为 <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">{authHeaderName}</code>，非标准 Authorization: Bearer</span>}
             </p>
           )}
           {!isOpenAI && (
