@@ -25,5 +25,14 @@
     "linkText": "查看平台",
     "publishedAt": "2026-09-07",
     "expireAt": "2026-09-21"
+  },
+  {
+    "id": "notice-2026-0907-search-api",
+    "text": "新增「Web Search API」专栏：可站外调用的免费搜索接口聚合（Keenable / Brave / Tavily 等）",
+    "category": "new",
+    "source": "https://igetoken.com/search/",
+    "linkText": "查看专栏",
+    "publishedAt": "2026-09-07",
+    "expireAt": "2026-09-21"
   }
 ]
