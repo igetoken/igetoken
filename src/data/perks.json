@@ -1,5 +1,20 @@
 [
   {
+    "id": "monkeycode-agent-2026",
+    "product": "MonkeyCode",
+    "title": "基础会员长期每日 10M Token + 签到/邀请/分享赢积分",
+    "type": "signin",
+    "amount": "基础会员每日 10M Token（长期，滚动不累积）+ 每日签到 100 积分 + 邀请成功 5000 积分 + 分享原创心得审核通过赢 10,000 或 100,000 积分；客户端 6 款基础模型免费（Qwen3.8-Flash / DeepSeek-V4-Flash / GLM-5.3-Flash / Kimi-2.5 / MiniMax-M2.5 / Qwen3.5-Plus）",
+    "condition": "注册即为基础会员（¥0 永久免费）；每日 10M Token 为滚动额度（当日刷新，非累积）；每日签到 +100 积分；邀请好友成功 +5000 积分；在主流社区发布原创使用心得并提交官方审核秒到账 10,000 或 100,000 积分，可用于调用更高级模型或 MCP 服务",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "每日 10M Token 滚动刷新、不累积；积分用于客户端内高级模型 / MCP 服务 / 额度耗尽后续用；征文积分审核通过秒到账",
+    "source": "https://monkeycode.cn",
+    "publishedAt": "2026-09-08",
+    "last_verified": "2026-09-08",
+    "note": "长亭科技开源云端 AI 编程 Agent 平台（AGPL-3.0，github.com/chaitin/MonkeyCode）。产品内 Token 额度与积分，不可导出为 API Key，仅限 MonkeyCode 客户端 / 云端内 Agent 任务消耗；基础模型列表见客户端。额度冲突提示：官方定价页标注基础会员每日 3000 万 Token、社区亦见 1000 万说法，本次按实测记 10M，实际随档位与活动调整，以账号页面显示为准。"
+  },
+  {
     "id": "qwenwork-office-2026",
     "product": "千问办公",
     "title": "新用户注册赠 2000 积分 + 每日登录赠 100 积分",
