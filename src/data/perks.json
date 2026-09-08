@@ -1,5 +1,20 @@
 [
   {
+    "id": "cline-free-models-2026",
+    "product": "Cline",
+    "title": "客户端内免费模型轮换池（下拉 FREE 即用，无 Key/信用卡）",
+    "type": "signin",
+    "amount": "Cline CLI / IDE 内免费模型（代表：GLM-5.3-Flash / DeepSeek V4 Flash / LongCat-2.0 等），模型选择器选带 FREE 标签即用，无需 API Key、无需信用卡",
+    "condition": "安装 Cline（VS Code / Cursor 等 IDE 插件或 Cline CLI）并登录账号；在模型选择器下拉选带 FREE 标签的模型即用",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "免费模型为官方轮换促销池，会更换、会过期（如 GLM-5.3-Flash 官方标注 free through this week），以客户端 FREE 标签实时为准，不承诺长期",
+    "source": "https://docs.cline.bot",
+    "publishedAt": "2026-09-08",
+    "last_verified": "2026-09-08",
+    "note": "产品内福利，不可导出为 API Key：免费模型仅限 Cline 自身 CLI / IDE 内使用，无法接你自己的 agent。所谓「API 端能接 agent 的 20 余款」是 BYOK 或 OpenRouter 等聚合器接的你自己的 Key，与 Cline 免费额度无关；站外调用请走 BYOK 填你自己的模型 Key。模型轮换，以客户端 FREE 标签为准。"
+  },
+  {
     "id": "monkeycode-agent-2026",
     "product": "MonkeyCode",
     "title": "基础会员长期每日 10M Token + 签到/邀请/分享赢积分",
