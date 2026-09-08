@@ -12,7 +12,7 @@
     "source": "https://monkeycode.cn",
     "publishedAt": "2026-09-08",
     "last_verified": "2026-09-08",
-    "note": "长亭科技开源云端 AI 编程 Agent 平台（AGPL-3.0，github.com/chaitin/MonkeyCode）。产品内 Token 额度与积分，不可导出为 API Key，仅限 MonkeyCode 客户端 / 云端内 Agent 任务消耗；基础模型列表见客户端。额度冲突提示：官方定价页标注基础会员每日 3000 万 Token、社区亦见 1000 万说法，本次按实测记 10M，实际随档位与活动调整，以账号页面显示为准。"
+    "note": "长亭科技开源云端 AI 编程 Agent 平台（AGPL-3.0）。产品内 Token 与积分，不可导出为 API Key，仅限客户端 / 云端 Agent 任务消耗。⚠️ 额度冲突：官方定价页标 3000 万/天、社区旧文 1000 万，本条目按实测记 10M，以账号页面为准。"
   },
   {
     "id": "qwenwork-office-2026",
