@@ -19,7 +19,7 @@
   },
   {
     "id": "notice-2026-0907-dots-studio",
-    "text": "新收录：小红书 Dots Studio dots3-note Preview（280B MoE、512K 上下文、多模态、限时免费 API）",
+    "text": "小红书 Dots Studio dots3-note Preview（280B MoE、512K 上下文、多模态、限时免费 API）",
     "category": "new",
     "source": "https://igetoken.com/models/dots/",
     "linkText": "查看平台",
@@ -32,7 +32,16 @@
     "category": "new",
     "source": "https://igetoken.com/search/",
     "linkText": "查看专栏",
-    "publishedAt": "2026-09-07",
-    "expireAt": "2026-09-21"
+      "publishedAt": "2026-09-07",
+      "expireAt": "2026-09-21"
+  },
+  {
+    "id": "notice-2026-0908-amd-radeon-cloud",
+    "text": "AMD Radeon Cloud Token Factory 上新：免费 DeepSeek-V4-Flash / Qwen3.8 多模态 API（免绑卡、国内直连、1M 上下文、OpenAI + Anthropic 双协议）",
+    "category": "new",
+    "source": "https://igetoken.com/models/amd-radeon-cloud/",
+    "linkText": "查看平台",
+    "publishedAt": "2026-09-08",
+    "expireAt": "2026-09-22"
   }
 ]

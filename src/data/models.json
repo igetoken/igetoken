@@ -1323,5 +1323,66 @@
     "authHeader": "api-key",
     "publishedAt": "2026-09-07",
     "last_verified": "2026-09-07"
+  },
+  {
+    "slug": "amd-radeon-cloud",
+    "name": "AMD Radeon Cloud Token Factory",
+    "category": "domestic",
+    "website": "https://developer.amd.com.cn/radeon/tokenfactory",
+    "register_url": "https://developer.amd.com.cn/radeon/tokenfactory",
+    "docs_url": "https://developer.amd.com.cn/radeon/tokenfactory",
+    "tagline": "AMD 官方开发者云免费大模型 API 网关（BETA）：DeepSeek-V4-Flash / Qwen3.8 多模态免费用",
+    "highlight": "官方标注 Free to use，账户验证后自动签发 rc- 开头 Key，免绑卡、国内直连；OpenAI + Anthropic 双协议兼容；DeepSeek-V4-Flash 1M 上下文",
+    "tags": [
+      "免费API",
+      "多模态",
+      "长上下文",
+      "国内直连",
+      "双协议"
+    ],
+    "offers": [
+      {
+        "model": "DeepSeek-V4-Flash-0731（免费文本 API，1M 上下文）",
+        "quota": "Public Free 始终在线、不消耗积分；OpenAI/Anthropic 双协议；账户级每日 spend cap（页面示 1 pt，约 $10/天，Asia/Shanghai 每日重置），每 Key 30 RPM、并发 8",
+        "type": "permanent"
+      },
+      {
+        "model": "Qwen3.8-Flash-Next（免费多模态 API，256K 上下文）",
+        "quota": "Public Free 视觉/多模态，支持图文理解；双协议兼容，额度口径同 DeepSeek-V4-Flash（每日 spend cap、30 RPM/Key）",
+        "type": "permanent"
+      },
+      {
+        "model": "MiniCPM5-1B（免费文本 API，128K 上下文）",
+        "quota": "Public Free 轻量端侧小模型，适合高频流水线调用；双协议兼容，额度口径同免费档",
+        "type": "permanent"
+      },
+      {
+        "model": "DeepSeek-V4-Flash-Vision-Exp（视觉多模态，1M 上下文）",
+        "quota": "官方标 Limited Free（限免，口径比纯免费档更易变）；图文理解，双协议兼容",
+        "type": "limited"
+      },
+      {
+        "model": "MiniCPM5-2B（文本，128K 上下文）",
+        "quota": "官方标 Limited Free（限免）；轻量模型，双协议兼容",
+        "type": "limited"
+      }
+    ],
+    "steps": [
+      "打开 developer.amd.com.cn/radeon/tokenfactory，邮箱验证码或手机登录（支持国内邮箱/手机号，免绑卡；可走 ModelScope/CSDN 授权）",
+      "在「Public Free Model APIs」任意免费模型卡片点开详情，复制 rc- 开头的 API Key（账户验证后自动签发，无需单独申请）",
+      "Base URL 填 https://developer.amd.com.cn/radeon/api/v1，按 OpenAI 格式调用（同时支持 Anthropic 风格 /v1/messages + x-api-key）",
+      "模型名填对应端点名（如 DeepSeek-V4-Flash-0731 / Qwen3.8-Flash-Next）；OpenCode 等工具已原生集成，填供应商+Key 即用"
+    ],
+    "pitfalls": [
+      "Token Factory 为 BETA，部分模型标 experimental，免费额度与端点列表可能随时调整，以官网当前页面为准",
+      "免费端点（Public Free）与 Dedicated 专属实例是两回事：后者消耗账户 credits（按 GPU 卡数/时长计费，非免费），别把免费端点当无限算力用",
+      "速度偏慢：实测首字延迟明显比官方慢，高峰时段更明显；每日 spend cap 用完后当天限流、次日自动恢复，不适合高频/生产环境",
+      "多模态 Vision 版（DeepSeek-V4-Flash-Vision-Exp、MiniCPM5-2B）官方标「Limited Free」，口径可能比纯免费档更易变；ZCode 适配有参数报错，急用先换 OpenCode",
+      "返回的 Points 只是相对用量统计、不产生真实账单，但每日有 spend cap；具体日额度/限速以官网当前页面为准"
+    ],
+    "api_base": "https://developer.amd.com.cn/radeon/api/v1",
+    "example_model": "DeepSeek-V4-Flash-0731",
+    "publishedAt": "2026-09-08",
+    "last_verified": "2026-09-08"
   }
 ]
