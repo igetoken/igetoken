@@ -1,6 +1,7 @@
 node_modules/
 dist/
 dist_bak_*/
+dist_old_*/
 .astro/
 shots/
 docs/
