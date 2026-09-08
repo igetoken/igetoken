@@ -28,10 +28,10 @@ const groups = presentTypes.map((key) => ({
       <FilterTabs targetId="search-grid" groups={groups} />
     </div>
 
-    <div id="search-grid" class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div id="search-grid" class="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
       {
         apis.map((api) => (
-          <div data-category={api.type}>
+          <div data-category={api.type} class="mb-4 w-full break-inside-avoid">
             <SearchCard api={api} />
           </div>
         ))
