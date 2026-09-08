@@ -160,9 +160,13 @@ const lastVerified = platforms
         <a href="/search/" class="shrink-0 text-sm font-medium text-emerald-700 hover:underline">全部搜索 API →</a>
       </div>
 
-      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
         {
-          searchApis.slice(0, 3).map((api) => <SearchCard api={api} />)
+          searchApis.slice(0, 3).map((api) => (
+            <div class="mb-4 w-full break-inside-avoid">
+              <SearchCard api={api} />
+            </div>
+          ))
         }
       </div>
 
@@ -183,7 +187,7 @@ const lastVerified = platforms
       </div>
       <a href="/tutorials/" class="text-sm font-medium text-emerald-700 hover:underline">全部教程 →</a>
     </div>
-    <div class="mt-6 grid gap-4 md:grid-cols-3">
+    <div class="mt-6 columns-1 gap-4 md:columns-3">
       {
         [
           {
@@ -205,14 +209,16 @@ const lastVerified = platforms
             desc: '按场景对号入座：学习、高频轻任务、长文本、多模态各选谁。',
           },
         ].map((t) => (
-          <a
-            href={t.href}
-            class="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-emerald-300 hover:shadow-md"
-          >
-            <span class="text-3xl">{t.emoji}</span>
-            <h3 class="mt-3 font-bold text-slate-900">{t.title}</h3>
-            <p class="mt-2 text-sm text-slate-500">{t.desc}</p>
-          </a>
+          <div class="mb-4 w-full break-inside-avoid">
+            <a
+              href={t.href}
+              class="block rounded-xl border border-slate-200 bg-white p-6 transition hover:border-emerald-300 hover:shadow-md"
+            >
+              <span class="text-3xl">{t.emoji}</span>
+              <h3 class="mt-3 font-bold text-slate-900">{t.title}</h3>
+              <p class="mt-2 text-sm text-slate-500">{t.desc}</p>
+            </a>
+          </div>
         ))
       }
     </div>
