@@ -129,9 +129,13 @@ const lastVerified = platforms
         <a href="/perks/" class="shrink-0 text-sm font-medium text-emerald-700 hover:underline">去攒积分 →</a>
       </div>
 
-      <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
         {
-          perks.slice(0, 3).map((p) => <PerkCard perk={p} />)
+          perks.slice(0, 3).map((p) => (
+            <div class="mb-4 w-full break-inside-avoid">
+              <PerkCard perk={p} />
+            </div>
+          ))
         }
       </div>
 
