@@ -73,13 +73,13 @@ const showCountdown = isUrgent || isSoon;
         {deal.title}
       </h3>
 
-      <p class:list={['text-emerald-700', isFeatured ? 'mt-2 text-base font-medium' : 'mt-1.5 text-sm']}>
+      <p class:list={['text-emerald-700 break-words', isFeatured ? 'mt-2 text-base font-medium' : 'mt-1.5 text-sm']}>
         {deal.reward}
       </p>
 
       {
         (showSummary || isFeatured) && (
-          <p class="mt-2 line-clamp-2 text-sm text-slate-500">{deal.summary}</p>
+          <p class="mt-2 line-clamp-2 break-words text-sm text-slate-500">{deal.summary}</p>
         )
       }
     </div>
