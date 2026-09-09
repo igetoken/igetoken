@@ -226,7 +226,7 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
     }
     ctx.strokeStyle='#e2e8f0'; ctx.beginPath(); ctx.moveTo(40,my+6); ctx.lineTo(560,my+6); ctx.stroke();
     const fy=my+32;
-    ctx.fillStyle='#0f172a'; ctx.font=`600 16px ${F}`; ctx.fillText(data.footerPath,40,fy);
+    ctx.fillStyle='#0f172a'; ctx.font=`600 14px ${F}`; ctx.fillText(trunc(ctx, data.footerPath, 400), 40, fy);
     ctx.fillStyle='#64748b'; ctx.font=`12px ${F}`; ctx.fillText('扫码访问 iGetToken · 长按复制分享好友',40,fy+22);
     const img=new Image();
     img.onerror=()=>{ img.onerror=null; img.src='/share/qr-site.png'; };
