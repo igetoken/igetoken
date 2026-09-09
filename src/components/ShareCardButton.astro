@@ -176,7 +176,7 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
     ctx.fillStyle='#059669'; rrTop(ctx,0,0,W,108,28); ctx.fill();
     ctx.fillStyle='#ffffff'; ctx.beginPath(); ctx.arc(46,54,22,0,Math.PI*2); ctx.fill();
     ctx.fillStyle='#ffffff'; ctx.font=`600 18px ${F}`; ctx.textAlign='left'; ctx.textBaseline='middle'; ctx.fillText('iG',36,55);
-    ctx.fillStyle='#ffffff'; ctx.font=`600 22px ${F}`; ctx.fillText('iGetToken',80,48);
+    ctx.fillStyle='#ffffff'; ctx.font=`600 22px ${F}`; ctx.fillText('iGetoken',80,48);
     ctx.fillStyle='rgba(255,255,255,0.82)'; ctx.font=`13px ${F}`; ctx.fillText('拒绝割韭菜！拒绝付费上班！免费LLM Token导航。',80,72);
     ctx.fillStyle='#0f172a'; ctx.textBaseline='alphabetic';
     const ns=fit(ctx,data.title,512,30,20); ctx.font=`600 ${ns}px ${F}`;
@@ -227,7 +227,7 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
     ctx.strokeStyle='#e2e8f0'; ctx.beginPath(); ctx.moveTo(40,my+6); ctx.lineTo(560,my+6); ctx.stroke();
     const fy=my+32;
     ctx.fillStyle='#0f172a'; ctx.font=`600 14px ${F}`; ctx.fillText(trunc(ctx, data.footerPath, 400), 40, fy);
-    ctx.fillStyle='#64748b'; ctx.font=`12px ${F}`; ctx.fillText('扫码访问 iGetToken · 长按复制分享好友',40,fy+22);
+    ctx.fillStyle='#64748b'; ctx.font=`12px ${F}`; ctx.fillText('扫码访问 iGetoken · 长按复制分享好友',40,fy+22);
     const img=new Image();
     img.onerror=()=>{ img.onerror=null; img.src='/share/qr-site.png'; };
     img.src=`/share/qr/${data.slug}.png`;

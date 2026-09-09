@@ -71,7 +71,7 @@ export const GET: APIRoute = (context) => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title>iGetToken 上新速报</title>
+    <title>iGetoken 上新速报</title>
     <link>${site.href}</link>
     <description>大模型免费 API 平台上新、限时活动、积分福利速报</description>
     <language>zh-CN</language>

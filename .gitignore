@@ -11,3 +11,4 @@ docs/
 *.log
 .env
 .env.*
+.stale-trash/
