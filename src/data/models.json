@@ -1343,17 +1343,17 @@
     "offers": [
       {
         "model": "DeepSeek-V4-Flash-0731（免费文本 API，1M 上下文）",
-        "quota": "Public Free 采用积分制：每天发放 1 积分，预计可用约 2500 万 token；OpenAI/Anthropic 双协议；Asia/Shanghai 每日重置；每 Key 20 RPM、并发 8",
+        "quota": "Public Free 采用积分制：每 24 小时滚动发放 1 积分，预计可用约 2500 万 token；OpenAI/Anthropic 双协议；每 Key 20 RPM、并发 8",
         "type": "permanent"
       },
       {
         "model": "Qwen3.8-Flash-Next（免费多模态 API，256K 上下文）",
-        "quota": "Public Free 视觉/多模态，支持图文理解；双协议兼容，额度口径同 DeepSeek-V4-Flash（每天 1 积分≈2500万 token、20 RPM/Key）",
+        "quota": "Public Free 视觉/多模态，支持图文理解；双协议兼容，额度口径同 DeepSeek-V4-Flash（每 24 小时 1 积分≈2500万 token、20 RPM/Key）",
         "type": "permanent"
       },
       {
         "model": "MiniCPM5-1B（免费文本 API，128K 上下文）",
-        "quota": "Public Free 轻量端侧小模型，适合高频流水线调用；双协议兼容，额度口径同免费档（每天 1 积分≈2500万 token、20 RPM/Key）",
+        "quota": "Public Free 轻量端侧小模型，适合高频流水线调用；双协议兼容，额度口径同免费档（每 24 小时 1 积分≈2500万 token、20 RPM/Key）",
         "type": "permanent"
       },
       {
@@ -1376,7 +1376,7 @@
     "pitfalls": [
       "Token Factory 为 BETA，部分模型标 experimental，免费额度与端点列表可能随时调整，以官网当前页面为准",
       "免费端点（Public Free）与 Dedicated 专属实例是两回事：后者消耗账户 credits（按 GPU 卡数/时长计费，非免费），别把免费端点当无限算力用",
-      "速度偏慢：实测首字延迟明显比官方慢，高峰时段更明显；每日 spend cap 用完后当天限流、次日自动恢复，不适合高频/生产环境",
+      "速度偏慢：实测首字延迟明显比官方慢，高峰时段更明显；24 小时滚动额度用完后限流、满 24 小时自动恢复，不适合高频/生产环境",
       "多模态 Vision 版（DeepSeek-V4-Flash-Vision-Exp、MiniCPM5-2B）官方标「Limited Free」，口径可能比纯免费档更易变；ZCode 适配有参数报错，急用先换 OpenCode",
       "返回的 Points 只是相对用量统计、不产生真实账单，但每日有 spend cap；具体日额度/限速以官网当前页面为准"
     ],
@@ -1385,6 +1385,6 @@
     "publishedAt": "2026-09-08",
     "last_verified": "2026-09-09",
     "rating": 4,
-    "ratingNote": "编辑部实测：每天 1 积分≈2500万 token，国内直连免绑卡；BETA 速度偏慢、20 RPM，适合尝鲜与轻量调用"
+    "ratingNote": "编辑部实测：每 24 小时 1 积分≈2500万 token，国内直连免绑卡；BETA 速度偏慢、20 RPM，适合尝鲜与轻量调用"
   }
 ]
