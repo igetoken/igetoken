@@ -206,7 +206,7 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
       if(o.sub){
         ctx.font=`12px ${F}`;
         let rest=o.sub;
-        while(rest.length>0 && subLines.length<2){
+        while(rest.length>0 && subLines.length<6){
           let lo=0,hi=rest.length;
           while(lo<hi){ const mid=(lo+hi+1)>>1; if(ctx.measureText(rest.slice(0,mid)).width<=470) lo=mid; else hi=mid-1; }
           if(lo===0) lo=1;
@@ -214,7 +214,7 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
         }
         if(rest.length>0) subLines[subLines.length-1]=subLines[subLines.length-1].slice(0,-1)+'…';
       }
-      const bh= o.sub ? (subLines.length>1 ? 84 : 64) : 64;
+      const bh= o.sub ? 64 + (subLines.length-1)*18 : 64;
       ctx.fillStyle='#f0fdf9'; rr(ctx,40,my,520,bh,14); ctx.fill();
       ctx.fillStyle='#0f172a'; ctx.font=`500 15px ${F}`;
       ctx.fillText(trunc(ctx,o.title,470),56,my+26);
