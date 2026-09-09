@@ -1343,17 +1343,17 @@
     "offers": [
       {
         "model": "DeepSeek-V4-Flash-0731（免费文本 API，1M 上下文）",
-        "quota": "Public Free 始终在线、不消耗积分；OpenAI/Anthropic 双协议；账户级每日 spend cap（页面示 1 pt，约 $10/天，Asia/Shanghai 每日重置），每 Key 30 RPM、并发 8",
+        "quota": "Public Free 采用积分制：每天发放 1 积分，预计可用约 2500 万 token；OpenAI/Anthropic 双协议；Asia/Shanghai 每日重置；每 Key 20 RPM、并发 8",
         "type": "permanent"
       },
       {
         "model": "Qwen3.8-Flash-Next（免费多模态 API，256K 上下文）",
-        "quota": "Public Free 视觉/多模态，支持图文理解；双协议兼容，额度口径同 DeepSeek-V4-Flash（每日 spend cap、30 RPM/Key）",
+        "quota": "Public Free 视觉/多模态，支持图文理解；双协议兼容，额度口径同 DeepSeek-V4-Flash（每天 1 积分≈2500万 token、20 RPM/Key）",
         "type": "permanent"
       },
       {
         "model": "MiniCPM5-1B（免费文本 API，128K 上下文）",
-        "quota": "Public Free 轻量端侧小模型，适合高频流水线调用；双协议兼容，额度口径同免费档",
+        "quota": "Public Free 轻量端侧小模型，适合高频流水线调用；双协议兼容，额度口径同免费档（每天 1 积分≈2500万 token、20 RPM/Key）",
         "type": "permanent"
       },
       {
@@ -1383,6 +1383,8 @@
     "api_base": "https://developer.amd.com.cn/radeon/api/v1",
     "example_model": "DeepSeek-V4-Flash-0731",
     "publishedAt": "2026-09-08",
-    "last_verified": "2026-09-08"
+    "last_verified": "2026-09-09",
+    "rating": 4,
+    "ratingNote": "编辑部实测：每天 1 积分≈2500万 token，国内直连免绑卡；BETA 速度偏慢、20 RPM，适合尝鲜与轻量调用"
   }
 ]
