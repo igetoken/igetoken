@@ -200,14 +200,27 @@ const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, c
     let my=ty+58; ctx.fillStyle='#94a3b8'; ctx.font=`600 12px ${F}`; ctx.fillText(data.itemsLabel||'要点',40,my);
     my+=8;
     for(const o of (data.items||[]).slice(0,4)){
-      const bh=64;
+      ctx.font=`500 15px ${F}`; ctx.textBaseline='alphabetic';
+      // 子标题按宽度折行，最多 2 行，避免长文本被截断导致卡片"显示不完整"
+      let subLines=[];
+      if(o.sub){
+        ctx.font=`12px ${F}`;
+        let rest=o.sub;
+        while(rest.length>0 && subLines.length<2){
+          let lo=0,hi=rest.length;
+          while(lo<hi){ const mid=(lo+hi+1)>>1; if(ctx.measureText(rest.slice(0,mid)).width<=470) lo=mid; else hi=mid-1; }
+          if(lo===0) lo=1;
+          subLines.push(rest.slice(0,lo)); rest=rest.slice(lo);
+        }
+        if(rest.length>0) subLines[subLines.length-1]=subLines[subLines.length-1].slice(0,-1)+'…';
+      }
+      const bh= o.sub ? (subLines.length>1 ? 84 : 64) : 64;
       ctx.fillStyle='#f0fdf9'; rr(ctx,40,my,520,bh,14); ctx.fill();
       ctx.fillStyle='#0f172a'; ctx.font=`500 15px ${F}`;
       ctx.fillText(trunc(ctx,o.title,470),56,my+26);
       if(o.sub){
         ctx.fillStyle='#059669'; ctx.font=`12px ${F}`;
-        let q1=(o.sub||'').split(/[，。；;]/)[0]; if(q1.length>46) q1=q1.slice(0,45)+'…';
-        ctx.fillText(trunc(ctx,q1,470),56,my+46);
+        subLines.forEach((ln,i)=> ctx.fillText(ln,56,my+46+i*18));
       }
       my+=bh+10;
     }

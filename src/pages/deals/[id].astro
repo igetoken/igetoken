@@ -50,10 +50,12 @@ const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
         tagline={`${deal.platform_name} · ${typeLabel}`}
         tags={[typeLabel]}
         items={[
-          ...(deal.reward ? [{ title: '奖励', sub: deal.reward }] : []),
-          ...deal.howto.slice(0, 3).map((s) => ({ title: s })),
+          ...(deal.reward ? [{ title: '活动内容', sub: deal.reward }] : []),
+          ...((deal.eligibility || deal.deadline)
+            ? [{ title: '参与门槛', sub: [deal.eligibility, deal.deadline && `截止 ${deal.deadline}`].filter(Boolean).join(' · ') }]
+            : []),
         ]}
-        itemsLabel="活动要点"
+        itemsLabel="活动详情"
         footerPath={`igetoken.com/deals/${deal.id}`}
         slug={deal.id}
       />
