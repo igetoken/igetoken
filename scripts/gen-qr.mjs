@@ -11,6 +11,7 @@ const SITE = 'https://igetoken.com';
 const opts = { margin: 1, width: 512, color: { dark: '#0f172a', light: '#ffffff' } };
 
 const models = JSON.parse(fs.readFileSync(path.join(root, 'src/data/models.json'), 'utf8'));
+const deals = JSON.parse(fs.readFileSync(path.join(root, 'src/data/deals.json'), 'utf8'));
 const qrDir = path.join(root, 'public/share/qr');
 fs.mkdirSync(qrDir, { recursive: true });
 
@@ -20,5 +21,10 @@ for (const p of models) {
   await QRCode.toFile(path.join(qrDir, `${p.slug}.png`), url, opts);
   n++;
 }
+for (const d of deals) {
+  const url = `${SITE}/deals/${d.id}/`;
+  await QRCode.toFile(path.join(qrDir, `${d.id}.png`), url, opts);
+  n++;
+}
 await QRCode.toFile(path.join(root, 'public/share/qr-site.png'), SITE, opts);
-console.log(`[gen-qr] generated ${n} platform QR codes + site-root fallback`);
+console.log(`[gen-qr] generated ${n} QR codes (models + deals) + site-root fallback`);

@@ -2,6 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import Badge from '../../components/Badge.astro';
 import Callout from '../../components/Callout.astro';
+import ShareCardButton from '../../components/ShareCardButton.astro';
 import { getDeals, getDealById, getPlatformBySlug, DEAL_TYPE_LABEL } from '../../lib/data';
 import type { DealType } from '../../lib/types';
 
@@ -41,6 +42,21 @@ const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
         )
       }
       <span class="text-slate-400">发布于 {deal.date}</span>
+    </div>
+
+    <div class="mt-4">
+      <ShareCardButton
+        title={deal.title}
+        tagline={`${deal.platform_name} · ${typeLabel}`}
+        tags={[typeLabel]}
+        items={[
+          ...(deal.reward ? [{ title: '奖励', sub: deal.reward }] : []),
+          ...deal.howto.slice(0, 3).map((s) => ({ title: s })),
+        ]}
+        itemsLabel="活动要点"
+        footerPath={`igetoken.com/deals/${deal.id}`}
+        slug={deal.id}
+      />
     </div>
 
     <div class="mt-8 rounded-xl border border-emerald-200 bg-emerald-50 p-5">

@@ -1,0 +1,274 @@
+---
+// 通用「一键分享卡片」按钮 + 弹层 + Canvas 绘制。
+// 平台页与活动快讯（deals/[id]）共用同一套绘制/导出逻辑，消除重复。
+// 设计要点：二维码用构建期预生成的同源静态 PNG（public/share/qr/<slug>.png），
+// 避免运行时 import 裸模块名导致加载失败；同源图不污染 canvas，toBlob 导出稳定。
+import type { ShareItem } from '../lib/types';
+
+interface Props {
+  title: string;
+  tagline?: string;
+  tags?: string[];
+  items?: ShareItem[];
+  itemsLabel?: string;
+  footerPath: string;
+  slug: string;
+  category?: string;
+  openai?: boolean;
+}
+
+const {
+  title,
+  tagline = '',
+  tags = [],
+  items = [],
+  itemsLabel = '免费模型',
+  footerPath,
+  slug,
+  category,
+  openai,
+} = Astro.props;
+
+const shareData = { title, tagline, tags, items, itemsLabel, footerPath, slug, category, openai };
+---
+
+<button
+  id="share-card-btn"
+  type="button"
+  class="inline-flex items-center gap-1.5 rounded-lg border border-emerald-600 px-3 py-1.5 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
+>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <circle cx="18" cy="5" r="3"></circle>
+    <circle cx="6" cy="12" r="3"></circle>
+    <circle cx="18" cy="19" r="3"></circle>
+    <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+    <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+  </svg>
+  分享卡片
+</button>
+
+<div id="share-modal" aria-hidden="true">
+  <div class="panel">
+    <canvas id="share-canvas"></canvas>
+    <div class="actions">
+      <button id="share-copy-img" class="btn-primary" type="button">复制图片</button>
+      <button id="share-download" class="btn-ghost" type="button">下载 PNG</button>
+      <button id="share-copy-link" class="btn-ghost" type="button">复制链接</button>
+      <button id="share-close" class="btn-close" type="button">关闭</button>
+    </div>
+    <div id="share-toast"></div>
+  </div>
+</div>
+
+<style is:global>
+  #share-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(15, 23, 42, 0.55);
+    backdrop-filter: blur(2px);
+  }
+  #share-modal.open { display: flex; }
+  #share-modal .panel {
+    width: 100%;
+    max-width: 640px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.35);
+  }
+  #share-modal canvas { width: 100%; height: auto; border-radius: 12px; display: block; }
+  #share-modal .actions { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+  #share-modal .actions button {
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  #share-modal .actions button:active { opacity: 0.8; }
+  #share-modal .btn-primary { background: #059669; color: #fff; border: none; }
+  #share-modal .btn-ghost { background: #fff; color: #059669; border: 1px solid #059669; }
+  #share-modal .btn-close { background: #f1f5f9; color: #475569; border: none; }
+  #share-modal .panel { position: relative; }
+  #share-toast {
+    position: absolute;
+    left: 50%;
+    bottom: 18px;
+    transform: translateX(-50%) translateY(8px);
+    background: rgba(15, 23, 42, 0.92);
+    color: #fff;
+    font-size: 13px;
+    padding: 7px 14px;
+    border-radius: 999px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+  #share-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+
+<script define:vars={{ shareData }}>
+  // 二维码用构建期预生成的同源静态图（public/share/qr/<slug>.png），缺失回退站点根
+  const data = shareData;
+  const modal = document.getElementById('share-modal');
+  const canvas = document.getElementById('share-canvas');
+  const openBtn = document.getElementById('share-card-btn');
+  const closeBtn = document.getElementById('share-close');
+  const copyImgBtn = document.getElementById('share-copy-img');
+  const dlBtn = document.getElementById('share-download');
+  const copyLinkBtn = document.getElementById('share-copy-link');
+  const toastEl = document.getElementById('share-toast');
+  const F = 'system-ui, "PingFang SC", "Microsoft YaHei", sans-serif';
+
+  function toast(msg){ toastEl.textContent = msg; toastEl.classList.add('show'); setTimeout(()=>toastEl.classList.remove('show'), 1900); }
+  function rr(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,r);
+    ctx.arcTo(x,y+h,x,y,r);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+  function rrTop(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    ctx.moveTo(x+r,y);
+    ctx.arcTo(x+w,y,x+w,y+h,r);
+    ctx.arcTo(x+w,y+h,x,y+h,0);
+    ctx.arcTo(x,y+h,x,y,0);
+    ctx.arcTo(x,y,x+w,y,r);
+    ctx.closePath();
+  }
+  function fit(ctx,text,maxW,start,min){
+    let s=start;
+    while(s>min){ ctx.font=`600 ${s}px ${F}`; if(ctx.measureText(text).width<=maxW) break; s-=2; }
+    return s;
+  }
+  function buildTags(){
+    const set=new Set();
+    (data.tags||[]).slice(0,4).forEach(t=>set.add(t));
+    if(data.category==='domestic') set.add('国内直连');
+    if(data.openai) set.add('OpenAI 兼容');
+    if(data.category==='aggregator') set.add('聚合路由');
+    return Array.from(set).slice(0,4);
+  }
+  function trunc(ctx,text,maxW){
+    if(ctx.measureText(text).width<=maxW) return text;
+    let t=text;
+    while(t.length>4 && ctx.measureText(t+'…').width>maxW) t=t.slice(0,-1);
+    return t+'…';
+  }
+
+  async function buildCard(){
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    const W=600,H=824;
+    canvas.width=W*dpr; canvas.height=H*dpr;
+    const ctx=canvas.getContext('2d');
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,W,H);
+    ctx.fillStyle='#ffffff'; rr(ctx,0,0,W,H,28); ctx.fill();
+    ctx.fillStyle='#059669'; rrTop(ctx,0,0,W,108,28); ctx.fill();
+    ctx.fillStyle='#ffffff'; ctx.beginPath(); ctx.arc(46,54,22,0,Math.PI*2); ctx.fill();
+    ctx.fillStyle='#059669'; ctx.font=`600 18px ${F}`; ctx.textAlign='left'; ctx.textBaseline='middle'; ctx.fillText('iG',36,55);
+    ctx.fillStyle='#ffffff'; ctx.font=`600 22px ${F}`; ctx.fillText('iGetToken',80,48);
+    ctx.fillStyle='rgba(255,255,255,0.82)'; ctx.font=`13px ${F}`; ctx.fillText('免费 LLM Token 导航',80,72);
+    ctx.fillStyle='#0f172a'; ctx.textBaseline='alphabetic';
+    const ns=fit(ctx,data.title,512,30,20); ctx.font=`600 ${ns}px ${F}`;
+    let ny=162;
+    if(data.title.length>15){
+      const mid=Math.ceil(data.title.length/2);
+      ctx.fillText(data.title.slice(0,mid),40,ny);
+      ctx.fillText(data.title.slice(mid),40,ny+ns+8);
+      ny+=ns*2+14;
+    } else { ctx.fillText(data.title,40,ny); ny+=ns+20; }
+    ctx.fillStyle='#64748b'; ctx.font=`13px ${F}`;
+    ctx.fillText(trunc(ctx,data.tagline||'',520),40,ny);
+    let ty=ny+30; const tags=buildTags(); let tx=40; ctx.font=`500 13px ${F}`;
+    for(const tag of tags){
+      const tw=ctx.measureText(tag).width+24;
+      if(tx+tw>560) break;
+      ctx.fillStyle='#ecfdf5'; rr(ctx,tx,ty,tw,30,15); ctx.fill();
+      ctx.fillStyle='#047857'; ctx.fillText(tag,tx+12,ty+20);
+      tx+=tw+8;
+    }
+    let my=ty+58; ctx.fillStyle='#94a3b8'; ctx.font=`600 12px ${F}`; ctx.fillText(data.itemsLabel||'要点',40,my);
+    my+=8;
+    for(const o of (data.items||[]).slice(0,4)){
+      const bh=64;
+      ctx.fillStyle='#f0fdf9'; rr(ctx,40,my,520,bh,14); ctx.fill();
+      ctx.fillStyle='#0f172a'; ctx.font=`500 15px ${F}`;
+      ctx.fillText(trunc(ctx,o.title,470),56,my+26);
+      if(o.sub){
+        ctx.fillStyle='#059669'; ctx.font=`12px ${F}`;
+        let q1=(o.sub||'').split(/[，。；;]/)[0]; if(q1.length>46) q1=q1.slice(0,45)+'…';
+        ctx.fillText(trunc(ctx,q1,470),56,my+46);
+      }
+      my+=bh+10;
+    }
+    ctx.strokeStyle='#e2e8f0'; ctx.beginPath(); ctx.moveTo(40,my+6); ctx.lineTo(560,my+6); ctx.stroke();
+    const fy=my+32;
+    ctx.fillStyle='#0f172a'; ctx.font=`600 16px ${F}`; ctx.fillText(data.footerPath,40,fy);
+    ctx.fillStyle='#64748b'; ctx.font=`12px ${F}`; ctx.fillText('扫码访问 iGetToken · 长按复制分享好友',40,fy+22);
+    const img=new Image();
+    img.onerror=()=>{ img.onerror=null; img.src='/share/qr-site.png'; };
+    img.src=`/share/qr/${data.slug}.png`;
+    await new Promise(res=>{ img.onload=res; img.onerror=res; });
+    ctx.drawImage(img,452,fy-18,108,108);
+  }
+
+  async function openModal(){
+    openBtn.disabled=true; const t=openBtn.textContent; openBtn.textContent='生成中…';
+    try{ await buildCard(); }catch(e){ console.error('share card build failed',e); }
+    modal.classList.add('open'); modal.setAttribute('aria-hidden','false');
+    openBtn.disabled=false; openBtn.textContent=t;
+  }
+  function closeModal(){ modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+  function canvasToBlob(){
+    return new Promise((res,rej)=>{
+      try{ canvas.toBlob(b=> b?res(b):rej(new Error('toBlob null')), 'image/png'); }
+      catch(e){ rej(e); }
+    });
+  }
+  async function copyImage(){
+    try{
+      const blob=await canvasToBlob();
+      if(navigator.clipboard && window.ClipboardItem && typeof navigator.clipboard.write==='function'){
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        toast('图片已复制，去粘贴分享吧');
+      } else { throw new Error('clipboard image unsupported'); }
+    }catch(e){
+      const a=document.createElement('a');
+      a.download=`igetoken-${data.slug}.png`;
+      a.href=canvas.toDataURL('image/png');
+      a.click();
+      toast('当前浏览器不支持复制图片，已为你下载 PNG');
+    }
+  }
+  function downloadPng(){
+    const a=document.createElement('a');
+    a.download=`igetoken-${data.slug}.png`;
+    a.href=canvas.toDataURL('image/png');
+    a.click();
+    toast('已下载 PNG');
+  }
+  async function copyLink(){
+    try{
+      await navigator.clipboard.writeText(window.location.href);
+      toast('链接已复制');
+    }catch(e){ toast('复制失败，请手动复制'); }
+  }
+
+  openBtn?.addEventListener('click', openModal);
+  closeBtn?.addEventListener('click', closeModal);
+  copyImgBtn?.addEventListener('click', copyImage);
+  dlBtn?.addEventListener('click', downloadPng);
+  copyLinkBtn?.addEventListener('click', copyLink);
+  modal?.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal?.classList.contains('open')) closeModal(); });
+</script>

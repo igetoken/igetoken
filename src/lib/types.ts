@@ -1,5 +1,11 @@
 export type Category = 'domestic' | 'overseas' | 'aggregator';
 
+// 分享卡片要点（平台页与活动快讯共用 ShareCardButton 组件）
+export interface ShareItem {
+  title: string;
+  sub?: string;
+}
+
 export type OfferType = 'permanent' | 'signup' | 'daily' | 'credit' | 'limited';
 
 export interface Offer {
