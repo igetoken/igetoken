@@ -484,7 +484,7 @@
     "date": "2026-09-06",
     "platform_slug": "hunyuan",
     "platform_name": "腾讯混元（腾讯云）",
-    "title": "混元 Hy4 preview 限时免费至 9/10（WorkBuddy 每日送免费额度）",
+    "title": "混元 Hy4 preview 限时免费至 9/10（WorkBuddy 每日送免费额度）（已结束）",
     "type": "limited_time",
     "reward": "Hy4 preview 每日赠送免费额度（客户端内 0.00x 倍率），混元旗舰思考模型",
     "eligibility": "WorkBuddy 全体用户",
@@ -494,9 +494,9 @@
       "每日自动赠送免费额度，当天用即可",
       "点模型右侧详情可查看活动窗口与剩余规则"
     ],
-    "summary": "Hy4 preview 是 8/28 发布的 770B/49B MoE 旗舰，主攻长任务编程、复杂办公与科学推理；WorkBuddy 限时两周免费至 9/10 23:59，每日赠送免费额度（0.00x 倍率）。注意是产品内使用，非 API Token。",
+    "summary": "历史活动存档：Hy4 preview 是 8/28 发布的 770B/49B MoE 旗舰，主攻长任务编程、复杂办公与科学推理；WorkBuddy 限时两周免费至 9/10 23:59，每日赠送免费额度（0.00x 倍率）。注意是产品内使用，非 API Token。",
     "source": "https://cloud.tencent.com/developer/article/2734830",
-    "status": "active"
+    "status": "ended"
   },
   {
     "id": "2026-08-opencode-zen-free",
