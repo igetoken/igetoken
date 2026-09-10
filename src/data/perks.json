@@ -1,5 +1,20 @@
 [
   {
+    "id": "atomcode-codingplan-2026",
+    "product": "AtomCode",
+    "title": "CodingPlan 免费编码权益（5 小时滚动窗口，终端 Agent 内可用）",
+    "type": "signin",
+    "amount": "Lite 档限时免费：最多约 200 次调用/5 小时滚动窗口；支持模型由系统动态发放当前最高权益（已知出现过 qwen3.8-27b、glm5.3-flash、deepseek-v4-flash、Qwen3-VL-8B、GLM-5.2 等），以登录后客户端内实际可用模型为准；Pro 档额度更高、额外支持 GLM-5.2",
+    "condition": "下载 AtomCode 客户端（macOS / Linux / Windows / HarmonyOS PC）→ 登录 AtomGit 账号（免费注册、无信用卡）→ 客户端内执行 /login，系统自动完成 OAuth 授权并申领当前最高 CodingPlan 权益、自动配好 provider 与模型",
+    "recurrence": "daily",
+    "deadline": null,
+    "validity": "额度按 5 小时滚动窗口计量（非每日重置，窗口滑动刷新）；领取后有效期约 7–30 天（权益档位动态调整，以领取时页面为准）；每日限量发放（约 500–1000 人/日），名额次日刷新",
+    "source": "https://ai.atomgit.com/serverless-api 与 https://atomcode.atomgit.com/docs/zh/login.html",
+    "publishedAt": "2026-09-11",
+    "last_verified": "2026-09-11",
+    "note": "🔴 产品内权益，不可导出为 API Key：CodingPlan 免费额度仅在 AtomCode 终端 Agent 客户端内消耗，无法接你自己的 agent 或站外 API 调用。官方文档明确区分 CodingPlan（产品内）与「传统 API Key」（用户自有 Key）——想站外调用请 BYOK 填自己的模型 Key。⚠️ 权益体系动态调整：档位 / 模型列表 / 限量人数频繁变化（如 glm5.3-flash 在最新文档已变 GLM-5.2），以领取时客户端内实际可用模型为准；5 小时滚动窗口非每日重置。"
+  },
+  {
     "id": "cline-free-models-2026",
     "product": "Cline",
     "title": "客户端内免费模型轮换池（下拉 FREE 即用，无 Key/信用卡）",
