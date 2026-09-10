@@ -4,7 +4,7 @@
     "date": "2026-09-11",
     "platform_slug": "bai",
     "platform_name": "B.AI（Bank of AI）",
-    "title": "B.AI 限时免费：4 款大模型 0 成本调用（GLM-5.3-Flash / Qwen3.8-Flash / Hy3 / MiMo-V2.5）⚠️ 需 Google 登录 + 科学上网",
+    "title": "B.AI 限时免费：4 款大模型 0 成本调用（GLM-5.3-Flash / Qwen3.8-Flash / Hy3 / MiMo-V2.5）⚠️ 需 Google 登录",
     "type": "limited_time",
     "reward": "4 款模型 100% 免费调用（GLM-5.3-Flash / Qwen3.8-Flash / Hy3 / MiMo-V2.5），OpenAI 兼容 API，无 Token 数字量级限制；当前免费档非全量，DeepSeek-V4-Flash / Vision-Exp 已于 9/3 转 5 折计费",
     "eligibility": "注册 chat.b.ai（Google 登录或 TronLink/MetaMask 等区块链钱包，需科学上网）→ 控制台创建 API Key（Bearer 或 x-api-key）→ Base URL https://api.b.ai/v1。当前免费档：GLM-5.3-Flash（320B 总参 / 18B 激活、1M 上下文、原生多模态）、Qwen3.8-Flash、Hy3、MiMo-V2.5（以登录后控制台「限时免费」标识为准）",
