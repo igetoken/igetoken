@@ -19,7 +19,8 @@
       "🔴 产品内积分折扣，不可导出为 API Key：本次特惠是 WorkBuddy 平台内调用 DeepSeek-V4.1-Flash 的 Credits 消耗折扣（0.03 倍），仅限 WorkBuddy 客户端 / 网页内使用，无法作为独立 API Token 站外调用"
     ],
     "source": "https://www.workbuddy.cn/",
-    "status": "active"
+    "status": "active",
+    "pinHeadline": true
   },
   {
     "id": "2026-09-flatkey-free-promo",
@@ -94,7 +95,7 @@
     ],
     "source": "https://developer.amd.com.cn/radeon/tokenfactory",
     "status": "active",
-    "pinHeadline": true
+    "pinHeadline": false
   },
   {
     "id": "2026-09-xai-grok-signup-25",
