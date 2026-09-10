@@ -1,5 +1,27 @@
 [
   {
+    "id": "2026-09-workbuddy-deepseek-v4-1-flash-promo",
+    "date": "2026-09-10",
+    "platform_slug": "workbuddy",
+    "platform_name": "WorkBuddy（腾讯云）",
+    "title": "WorkBuddy 独家特惠：DeepSeek-V4.1-Flash 限时折扣，积分倍率 0.03 倍（9/10–9/23）",
+    "type": "limited_time",
+    "reward": "DeepSeek-V4.1-Flash 限时特惠，调用积分倍率低至 0.03 倍（约等同免费），旗舰级质量",
+    "eligibility": "WorkBuddy 用户，在其客户端 / 网页版内调用 DeepSeek-V4.1-Flash 生效",
+    "deadline": "2026-09-23",
+    "howto": [
+      "打开 WorkBuddy 客户端或网页版并登录",
+      "在模型列表选择 DeepSeek-V4.1-Flash（带「限时特惠」角标）",
+      "9/10–9/23 窗口内按 0.03 倍积分倍率消耗，对话 / 编码即享近免费调用"
+    ],
+    "summary": "WorkBuddy 独家官方合作限时折扣。核心亮点：对话速度约 300–500 token/秒（基本秒回）；1M 超长上下文；原生多模态；实测速度优于 GLM-5.3-Flash。活动窗口 9/10–9/23，积分倍率 0.03 倍近乎免费。⚠️ 注意：这是 WorkBuddy 产品内积分折扣，不可导出为独立 API Key，仅限 WorkBuddy 内调用。独家合作活动，官方活动页待补，以 WorkBuddy 客户端内展示为准。",
+    "pitfalls": [
+      "🔴 产品内积分折扣，不可导出为 API Key：本次特惠是 WorkBuddy 平台内调用 DeepSeek-V4.1-Flash 的 Credits 消耗折扣（0.03 倍），仅限 WorkBuddy 客户端 / 网页内使用，无法作为独立 API Token 站外调用"
+    ],
+    "source": "https://www.workbuddy.cn/",
+    "status": "active"
+  },
+  {
     "id": "2026-09-flatkey-free-promo",
     "date": "2026-09-10",
     "platform_slug": "flatkey",
