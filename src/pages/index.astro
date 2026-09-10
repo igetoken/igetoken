@@ -5,7 +5,7 @@ import DealCard from '../components/DealCard.astro';
 import FilterTabs from '../components/FilterTabs.astro';
 import PerkCard from '../components/PerkCard.astro';
 import SearchCard from '../components/SearchCard.astro';
-import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks, getSearchApis } from '../lib/data';
+import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks, getSearchApis, getDeals } from '../lib/data';
 import Notice from '../components/Notice.astro';
 
 const platforms = getPlatforms();
@@ -14,11 +14,17 @@ const featuredDeal = homeDeals[0];
 const restDeals = homeDeals.slice(1);
 const perks = getPerks();
 const searchApis = getSearchApis();
+const deals = getDeals();
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
-const lastVerified = platforms
-  .map((p) => p.last_verified)
+const lastVerified = [
+  ...platforms.map((p) => p.last_verified),
+  ...deals.map((d) => d.date),
+  ...perks.map((p) => p.last_verified),
+  ...searchApis.map((a) => a.last_verified),
+]
+  .filter(Boolean)
   .sort()
   .at(-1);
 ---
