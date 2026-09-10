@@ -1,5 +1,31 @@
 [
   {
+    "id": "2026-09-bai-free-models",
+    "date": "2026-09-11",
+    "platform_slug": "bai",
+    "platform_name": "B.AI（Bank of AI）",
+    "title": "B.AI 限时免费：4 款大模型 0 成本调用（GLM-5.3-Flash / Qwen3.8-Flash / Hy3 / MiMo-V2.5）⚠️ 需 Google 登录 + 科学上网",
+    "type": "limited_time",
+    "reward": "4 款模型 100% 免费调用（GLM-5.3-Flash / Qwen3.8-Flash / Hy3 / MiMo-V2.5），OpenAI 兼容 API，无 Token 数字量级限制；当前免费档非全量，DeepSeek-V4-Flash / Vision-Exp 已于 9/3 转 5 折计费",
+    "eligibility": "注册 chat.b.ai（Google 登录或 TronLink/MetaMask 等区块链钱包，需科学上网）→ 控制台创建 API Key（Bearer 或 x-api-key）→ Base URL https://api.b.ai/v1。当前免费档：GLM-5.3-Flash（320B 总参 / 18B 激活、1M 上下文、原生多模态）、Qwen3.8-Flash、Hy3、MiMo-V2.5（以登录后控制台「限时免费」标识为准）",
+    "deadline": "未知，建议尽快领取（免费档随时轮换、可能随时结束，以控制台标识为准）",
+    "howto": [
+      "注册 chat.b.ai：Google 账号或区块链钱包（TronLink/MetaMask）登录（注意需科学上网）",
+      "进入 API 页面创建 API Key，仅创建时完整显示，立即保存",
+      "请求头 Authorization: Bearer <key>（或 x-api-key），Base URL https://api.b.ai/v1",
+      "POST /chat/completions，model 填免费模型 ID（如 glm-5.3-flash），跑通最小请求即接入成功"
+    ],
+    "summary": "B.AI（Bank of AI，chat.b.ai）是合规 AI 聚合/路由平台，OpenAI 兼容（Chat Completions / Responses / Anthropic Messages 三协议），一个 API Key 通吃主流大模型。当前 4 款模型 100% 免费：GLM-5.3-Flash（320B 总参 / 18B 激活、1M 上下文、原生多模态）、Qwen3.8-Flash（中文写作/翻译）、Hy3（快速推理）、MiMo-V2.5（推理/代码/数学/多语言）。注意：DeepSeek-V4-Flash / Vision-Exp 已于 9/3 转 5 折计费，不再是免费档；免费档随时轮换、勿当生产依赖。⚠️ 注册需 Google 账号或区块链钱包（TronLink/MetaMask）且需科学上网；平台条款注明对话会被记录存储、充值积分不退。",
+    "pitfalls": [
+      "🔴 注册硬门槛：仅支持 Google 登录或区块链钱包（TronLink/MetaMask），且需科学上网，国内用户双重摩擦",
+      "🔴 隐私条款：对话会被记录存储、充值积分不退；新户赠送 Credits 仅 30 天有效",
+      "⚠️ 免费档随时轮换：DeepSeek-V4-Flash / Vision-Exp 已于 9/3 转 5 折计费，其余 4 款免费也可能随时结束，勿当生产依赖",
+      "⚠️ 限流（RPM/TPM）官方未公开明确数值，以登录后控制台为准"
+    ],
+    "source": "https://docs.bankofai.io/llmservice/api/ 与 2026-09-02 官方权益调整公告",
+    "status": "active"
+  },
+  {
     "id": "2026-09-workbuddy-deepseek-v4-1-flash-promo",
     "date": "2026-09-10",
     "platform_slug": "workbuddy",
