@@ -1,5 +1,30 @@
 [
   {
+    "id": "2026-09-flatkey-free-promo",
+    "date": "2026-09-10",
+    "platform_slug": "flatkey",
+    "platform_name": "Flatkey AI",
+    "title": "Flatkey AI 限时免费：DeepSeek V4 Flash 免费调用 + 新户 $5 额度（⚠️ 注册有邮箱域名限制，Outlook/Foxmail 被拦）",
+    "type": "limited_time",
+    "reward": "两项限时促销：① DeepSeek V4 Flash 本周大促期间免费调用（官方价 $0.056/M，促销期实付 $0，模型名 deepseek-v4-flash，1M 上下文）；② 新户福利：前 2000 名经邀请链接兑换 $5 额度（限时、兑完即止），或充值赠送（Top up $20 赠至 $25 / $10 赠至 $13 等，属充值赠送非纯免费）",
+    "eligibility": "注册邮箱域名受限：实测 Outlook / Foxmail 均报「Registration with this email domain is currently unavailable」被拦，仅放行特定域名（Gmail/企业邮箱能否过待验证）；OpenAI 兼容 One Key，base_url=https://router.flatkey.ai/v1，一个 Key 调 92+ 模型；全模型付费，最低订阅 Starter $10/月，免费仅为促销",
+    "deadline": "未知，建议尽快领取（DeepSeek V4 Flash 免费为本周大促、额度兑完即止；新户 $5 为前 2000 名限时兑换，无明确截止）",
+    "howto": [
+      "用未被拦截的邮箱域名注册 flatkey.ai（Outlook/Foxmail 实测被拦，建议换 Gmail 或自有域名邮箱先验证能否过）",
+      "控制台 Keys 页创建 API Key 并保存",
+      "OpenAI SDK 改 base_url=https://router.flatkey.ai/v1，模型填 deepseek-v4-flash 即可在促销期免费调用"
+    ],
+    "summary": "Flatkey AI 是统一 AI API 网关（聚合 92+ 官方模型 + 1000+ 工具，OpenAI 兼容 One Key），本质是按量/订阅付费服务、无常驻免费档。当前仅两项限时促销对白嫖用户有价值：DeepSeek V4 Flash 本周大促免费、新户 $5 额度。⚠️ 重要门槛：注册对邮箱域名有准入限制，Outlook / Foxmail 实测均被拦（报错 Registration with this email domain is currently unavailable），本站用户大概率踩坑——请换 Gmail 或企业邮箱先试能否注册。免费额度均为促销、可能随时结束，以官方页面为准。",
+    "pitfalls": [
+      "🔴 注册邮箱域名限制：Outlook / Foxmail 实测报 Registration with this email domain is currently unavailable 被硬拦，仅放行特定域名（Gmail/企业邮箱能否过待验证）；这是即开即用的硬摩擦，注册这关就可能过不去",
+      "无常驻免费档：flatkey 是订阅/按量付费网关（最低 Starter $10/月），免费仅为限时促销，不满足「稳定可溯源免费额度」，故未进资源库主线、仅作快讯",
+      "DeepSeek V4 Flash 免费为本周大促、额度兑完即止，随时可能结束；新户 $5 中「前 2000 名兑换」为限时、充值赠送部分需先充值",
+      "限流仅消费封顶短时限流（Starter $10/5h·$18/7d 等），官方未公布 RPM/TPM 请求速率"
+    ],
+    "source": "https://flatkey.ai/",
+    "status": "active"
+  },
+  {
     "id": "2026-09-zhipu-weekend-build-iv",
     "date": "2026-09-05",
     "platform_slug": "zhipu",
