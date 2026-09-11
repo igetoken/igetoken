@@ -1,5 +1,20 @@
 [
   {
+    "id": "workbuddy-ai-invite-2026",
+    "product": "WorkBuddy 海外版",
+    "title": "邀请好友各得积分：你 +100 / 好友 +350，注册再送 250 Credits",
+    "type": "invite",
+    "amount": "邀请人 +100 Credits（好友注册并完成首次提问后到账）；好友 +350 Credits（100 邀请奖励 + 250 注册礼）；Free 档 $0：每月 100 Credits + 每日活跃 30 Credits（限免期全模型可选）",
+    "condition": "打开 workbuddy.ai 登录 → 复制专属邀请链接分享给好友；好友经链接注册并提交首次提问，双方奖励生效。新用户注册即送 250 Credits，符合条件另可领 7 天 Pro 试用 + 500 Credits。",
+    "recurrence": "once",
+    "deadline": null,
+    "validity": "邀请奖励实时到账；Free 档额度按月发放、活跃奖励每日结算；注册礼 250 Credits 即时到账；Credits 有效期以产品内展示为准",
+    "source": "https://www.workbuddy.ai/",
+    "publishedAt": "2026-09-11",
+    "last_verified": "2026-09-11",
+    "note": "🔴 产品内 Credits，不可导出为 API Key：仅限 WorkBuddy 海外版客户端 / 网页内消耗（对话 / Agent 任务），无法接站外 API。⚠️ 海外版为独立体系：账号与积分与国内版（workbuddy.cn）互不相通、不可混用。海外版已支持 DeepSeek-V4.1-Flash（1M 上下文、原生多模态，官方合作方），免费档额度内可调用，具体以产品内实际展示为准。"
+  },
+  {
     "id": "atomcode-codingplan-2026",
     "product": "AtomCode",
     "title": "CodingPlan 免费编码权益（5 小时滚动窗口，终端 Agent 内可用）",
