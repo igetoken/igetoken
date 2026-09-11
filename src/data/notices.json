@@ -1,12 +1,31 @@
 [
   {
+    "id": "notice-2026-0911-perks-new",
+    "text": "Agent 福利社新增：AtomCode CodingPlan 免费编码权益、WorkBuddy 海外版邀请有礼（你 +100 / 好友 +350）",
+    "category": "new",
+    "source": "https://igetoken.com/perks/",
+    "linkText": "去看看",
+    "publishedAt": "2026-09-11",
+    "expireAt": "2026-09-25"
+  },
+  {
+    "id": "notice-2026-0911-quota-review",
+    "text": "额度复核：已按官方页修正蚂蚁灵 / SambaNova / Gemini / PPIO / 快手万擎 / 百度千帆 6 平台的额度标注",
+    "category": "notice",
+    "source": "https://igetoken.com/models/",
+    "linkText": "查看资源库",
+    "publishedAt": "2026-09-11",
+    "expireAt": "2026-09-25"
+  },
+  {
     "id": "notice-2026-0830-new-platforms",
     "text": "NVIDIA NIM、快手万擎 StreamLake、基元律动 TokenRhythm、xAI Grok",
     "category": "new",
     "source": "https://igetoken.com/models",
     "linkText": "查看平台",
     "publishedAt": "2026-09-05",
-    "expireAt": "2026-09-19"
+    "expireAt": "2026-09-19",
+    "status": "removed"
   },
   {
     "id": "notice-2026-0902-perks-launch",
@@ -15,7 +34,8 @@
     "source": "https://igetoken.com/perks/",
     "linkText": "去看看",
     "publishedAt": "2026-09-02",
-    "expireAt": "2026-09-16"
+    "expireAt": "2026-09-16",
+    "status": "removed"
   },
   {
     "id": "notice-2026-0907-dots-studio",
@@ -32,8 +52,8 @@
     "category": "new",
     "source": "https://igetoken.com/search/",
     "linkText": "查看专栏",
-      "publishedAt": "2026-09-07",
-      "expireAt": "2026-09-21"
+    "publishedAt": "2026-09-07",
+    "expireAt": "2026-09-21"
   },
   {
     "id": "notice-2026-0908-amd-radeon-cloud",
