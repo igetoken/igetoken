@@ -1,5 +1,51 @@
 [
   {
+    "slug": "tokenharbor",
+    "name": "TokenHarbor",
+    "category": "aggregator",
+    "website": "https://tokenharbor.ai/",
+    "register_url": "https://tokenharbor.ai/login",
+    "docs_url": "https://tokenharbor.ai/pricing",
+    "tagline": "统一 API 网关，OpenAI 兼容，DeepSeek V4.1 Flash 等免费档",
+    "highlight": "OpenAI 兼容（base URL tokenharbor.ai/v1），DeepSeek V4.1 Flash 免费档，无需订阅",
+    "tags": ["聚合", "免费档", "OpenAI兼容"],
+    "offers": [
+      {
+        "model": "DeepSeek V4.1 Flash（deepseek-v4.1-flash:free）",
+        "quota": "免费档，无需订阅；每日免费请求配额（活跃用户 150 次/天，余额 $10+ 用户 1500 次/天），叠加 $5 新户无门槛额度",
+        "type": "daily"
+      },
+      {
+        "model": "其他免费模型（Qwen3.8-27B、GLM-5.3-Flash、DeepSeek V4 Flash、MiMo V2.5 等）",
+        "quota": "部分标 $0 免费档，以站内模型列表实时标注为准",
+        "type": "daily"
+      },
+      {
+        "model": "邀请奖励",
+        "quota": "每邀请一位活跃用户得 $2 额度",
+        "type": "referral"
+      }
+    ],
+    "steps": [
+      "打开 https://tokenharbor.ai/ 用 Google 或 GitHub 注册（无需信用卡）",
+      "进入 API Keys 创建你的 API 密钥",
+      "OpenAI 兼容接口，base_url 指向 https://tokenharbor.ai/v1",
+      "在模型列表选择 deepseek-v4.1-flash:free 等免费模型接入任意 AI Agent"
+    ],
+    "pitfalls": [
+      "🔴 免费档不稳定：社区实测额度消耗快、'旗舰白嫖'随时可能下线，进去先看模型是否还标 $0，以站内实时为准",
+      "⚠️ 两人团队运营（新加坡），无 SLA、无 failover，第三方评测建议'生产推理请去别处'，重要任务留好备选",
+      "⚠️ 免费模型程序可能允许上游保留你的 prompt/response（隐私），涉敏内容谨慎；付费模型不保留",
+      "⚠️ 模型与额度随运营策略频繁调整，免费层随时变，以官方当前页面为准",
+      "⚠️ 收录用官方首页，未嵌入任何专属邀请码（站内保持中立）"
+    ],
+    "api_base": "https://tokenharbor.ai/v1",
+    "example_model": "deepseek-v4.1-flash:free",
+    "openai_compatible": true,
+    "last_verified": "2026-09-12",
+    "publishedAt": "2026-09-12"
+  },
+  {
     "slug": "zhipu",
     "name": "智谱AI（BigModel）",
     "category": "domestic",
