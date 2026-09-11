@@ -1,25 +1,25 @@
 [
   {
-    "id": "2026-09-workbuddy-ai-invite",
+    "id": "2026-09-workbuddy-ai-deepseek-free",
     "date": "2026-09-11",
     "platform_slug": "workbuddy-ai",
     "platform_name": "WorkBuddy 海外版（腾讯）",
-    "title": "WorkBuddy 海外版邀请有礼：注册送 250 Credits，邀请好友你 +100 / 好友 +350",
-    "type": "referral",
-    "reward": "注册送 250 Credits；邀请好友注册并完成首次提问后，你 +100 Credits、好友 +350 Credits（100 邀请礼 + 250 注册礼）。免费档（$0）每月 100 Credits + 每日活跃 30 Credits，限免期全模型可选",
-    "eligibility": "WorkBuddy 海外版（workbuddy.ai）注册用户；与国内版 workbuddy.cn 为两套完全独立的账号 / 积分体系",
+    "title": "WorkBuddy 海外版免费使用 DeepSeek-V4.1-Flash：1M 上下文 / 原生多模态（限免期）",
+    "type": "limited_time",
+    "reward": "限免期内免费档即可调用 DeepSeek-V4.1-Flash：1M 超长上下文、原生多模态、旗舰级质量；免费档（$0）每月 100 Credits + 每日活跃 30 Credits，全模型可选、代码补全不限次",
+    "eligibility": "注册 WorkBuddy 海外版（workbuddy.ai）即可用免费档免费调用，无需付费；与国内版 workbuddy.cn 为两套完全独立的账号 / 积分体系",
     "deadline": null,
     "howto": [
       "打开 https://www.workbuddy.ai/ 注册（海外版，注意与国内版 workbuddy.cn 区分）",
-      "注册即送 250 Credits；免费档每月 100 Credits + 每日活跃再领 30 Credits",
-      "在「邀请好友」页获取专属邀请链接并分享给好友",
-      "好友经链接注册并完成首次提问后，你 +100 Credits、好友 +350 Credits（含 250 注册礼）"
+      "免费档（$0）每月 100 Credits + 每日活跃 30 Credits，无需付费即可开始",
+      "在模型列表选择 DeepSeek-V4.1-Flash（限免期全模型可选），对话 / 编码即免费使用",
+      "（可选）邀请好友可额外得积分，邀请有礼详见「积分福利社」"
     ],
-    "summary": "腾讯 WorkBuddy 国际版（workbuddy.ai）的邀请有礼活动，与国内版 workbuddy.cn 是两套独立的账号 / 积分体系，切勿混淆。新用户注册送 250 Credits，免费档（$0）每月 100 Credits + 每日活跃 30 Credits，限免期全模型可选、代码补全不限次，已支持 DeepSeek-V4.1-Flash（1M 上下文 / 原生多模态）。邀请机制：好友注册并完成首次提问后，你 +100 Credits、好友 +350 Credits（100 邀请礼 + 250 注册礼）。⚠️ 本质是产品内 Credits，不可导出为独立 API Key，仅限 WorkBuddy 内调用。",
+    "summary": "腾讯 WorkBuddy 国际版（workbuddy.ai）限免期内可免费使用 DeepSeek-V4.1-Flash（DeepSeek 官方合作方）：1M 超长上下文、原生多模态，旗舰级质量。免费档（$0）每月 100 Credits + 每日活跃 30 Credits，全模型可选、代码补全不限次。⚠️ 注意：Credits 为产品内积分，不可导出为独立 API Key，仅限 WorkBuddy 内调用；且与国内版 workbuddy.cn 为两套完全独立的账号 / 积分体系。其邀请有礼（你 +100 / 好友 +350）详见积分福利社。",
     "pitfalls": [
-      "🔴 产品内积分（Credits），不可导出为独立 API Key：邀请奖励为 WorkBuddy 海外版内消费积分，仅限产品内使用，无法作为 API Token 站外调用",
+      "🔴 产品内积分（Credits），不可导出为独立 API Key：额度仅限 WorkBuddy 海外版内消费，无法作为 API Token 站外调用",
       "⚠️ 与国内版 workbuddy.cn 是两套完全独立的账号 / 积分体系，注册与积分互不相通，切勿混用",
-      "⚠️ 邀请奖励需好友完成首次提问后到账；海外版可能需要相应网络环境，注册与使用门槛高于国内版"
+      "⚠️ 「免费使用 DeepSeek-V4.1-Flash」为限免期政策，可能随时调整；海外版可能需要相应网络环境"
     ],
     "source": "https://www.workbuddy.ai/",
     "status": "active",
