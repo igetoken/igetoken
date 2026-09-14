@@ -48,10 +48,11 @@
       "⚠️ 与国内版 workbuddy.cn 是两套完全独立的账号 / 积分体系，注册与积分互不相通，切勿混用",
       "⚠️ 「免费使用 DeepSeek-V4.1-Flash」为限免期政策，可能随时调整；海外版可能需要相应网络环境"
     ],
-    "source": "https://www.workbuddy.ai/",
-    "status": "active",
-    "excludeHeadline": true
-  },
+  "source": "https://www.workbuddy.ai/",
+  "status": "active",
+  "pinHeadline": true,
+  "excludeHeadline": false
+},
   {
     "id": "2026-09-bai-free-models",
     "date": "2026-09-11",
@@ -680,10 +681,10 @@
       "创建 API Key 开始调用"
     ],
     "summary": "长期有效的注册福利，额度时效以控制台展示为准，建议注册后尽快使用。",
-    "source": "https://bigmodel.cn",
-    "status": "active",
-    "pinHeadline": true
-  },
+  "source": "https://bigmodel.cn",
+  "status": "active",
+  "pinHeadline": false
+},
   {
     "id": "2026-08-siliconflow-signup-14",
     "date": "2026-08-12",
