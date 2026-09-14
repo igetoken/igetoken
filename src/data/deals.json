@@ -23,8 +23,8 @@
       "「全球构建计划」每晚 23:00–次日 09:00 的畅用为订阅用户权益，新用户额外 1 亿额度可叠加"
     ],
     "source": "https://zcode.z.ai/",
-    "status": "active",
-    "pinHeadline": true
+    "status": "ended",
+    "pinHeadline": false
   },
   {
     "id": "2026-09-workbuddy-ai-deepseek-free",
@@ -508,7 +508,7 @@
     ],
     "summary": "国家超算互联网背景，正规性拉满；同期还有工作日 10:00 的 1 元秒杀（DeepSeek/GLM 1000 万 Token 包 0.1-1 折）。注意：推理速度可能慢于商业云，适合对延迟不敏感的批量任务。",
     "source": "https://www.scnet.cn",
-    "status": "active"
+    "status": "ended"
   },
   {
     "id": "2026-08-sensenova-beta-free",
@@ -681,7 +681,8 @@
     ],
     "summary": "长期有效的注册福利，额度时效以控制台展示为准，建议注册后尽快使用。",
     "source": "https://bigmodel.cn",
-    "status": "active"
+    "status": "active",
+    "pinHeadline": true
   },
   {
     "id": "2026-08-siliconflow-signup-14",
