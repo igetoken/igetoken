@@ -12,3 +12,4 @@ docs/
 .env
 .env.*
 .stale-trash/
+public/search-index.json

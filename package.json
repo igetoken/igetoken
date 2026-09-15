@@ -8,8 +8,9 @@
     "build": "astro build",
     "preview": "astro preview",
     "gen:qr": "node scripts/gen-qr.mjs",
+    "gen:search": "node scripts/gen-search-index.mjs",
     "indexnow": "node scripts/ping-indexnow.mjs",
-    "prebuild": "node scripts/gen-qr.mjs",
+    "prebuild": "node scripts/gen-qr.mjs && node scripts/gen-search-index.mjs",
     "postbuild": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
