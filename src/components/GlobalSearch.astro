@@ -81,6 +81,11 @@
     const input = root.querySelector('#gs-input');
     const resultsEl = root.querySelector('#gs-results');
 
+    // ⚠️ Header 带 backdrop-blur（backdrop-filter），会为 position:fixed 的后代建立「包含块」，
+    // 使浮层的 fixed inset-0 被限制在导航栏高度（约 56px）内。将浮层外挂到 <body> 才能全屏。
+    // 注意：必须在取到内部元素引用之后再移动，否则 root.querySelector 会失配。
+    if (overlay.parentElement !== document.body) document.body.appendChild(overlay);
+
     const GROUPS = {
       platform: { label: '资源库', color: 'bg-emerald-600' },
       deal: { label: '活动快讯', color: 'bg-orange-500' },
@@ -225,14 +230,14 @@
       flat[activeIdx].scrollIntoView({ block: 'nearest' });
     }
 
-    function open() {
+    function open(initial) {
       overlay.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
-      input.value = '';
+      input.value = initial || '';
       activeIdx = -1;
-      showState('输入关键词，搜索平台 / 活动快讯 / 积分福利 / 搜索 API');
       ensureIndex().then(() => {
-        if (input.value) input.dispatchEvent(new Event('input'));
+        if (input.value) render(runSearch(input.value), input.value);
+        else showState('输入关键词，搜索平台 / 活动快讯 / 积分福利 / 搜索 API');
       });
       requestAnimationFrame(() => input.focus());
     }
@@ -244,7 +249,7 @@
 
     const isOpen = () => !overlay.classList.contains('hidden');
 
-    trigger.addEventListener('click', open);
+    trigger.addEventListener('click', () => open());
     backdrop.addEventListener('click', close);
 
     let debounce;
@@ -281,5 +286,10 @@
         flat[activeIdx].click();
       }
     });
+
+    // 深链：/?q=关键词 或 #search 直接打开搜索（便于分享 / 收藏搜索结果链接）
+    const urlQ = new URLSearchParams(location.search).get('q');
+    if (urlQ) open(urlQ);
+    else if (location.hash === '#search') open();
   }
 </script>
