@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * iGetToken 信源监控（零依赖）
+ * iGetoken 信源监控（零依赖）
  * ------------------------------------------------------------------
  * 抓取 monitor/sources.json 里的官方信源页与社区 RSS，做快照比对，
  * 命中变化/线索时推飞书群机器人卡片；每日 09:00 CST 必发一条汇总。
@@ -196,10 +196,10 @@ function buildCard({ changed, leads, failures, isDaily, total, checked, overdue 
   const hasFail = failures.length > 0;
 
   let title, template;
-  if (isDaily) { title = `📊 iGetToken 信源监控 · 每日汇总`; template = 'turquoise'; }
-  else if (hasChange) { title = `🔔 iGetToken 信源监控 · 发现 ${changed.length} 处变化`; template = 'orange'; }
-  else if (hasLead) { title = `🔎 iGetToken 信源监控 · 社区线索 ${leads.length} 条`; template = 'blue'; }
-  else { title = `⚠️ iGetToken 信源监控 · 信源异常`; template = 'red'; }
+  if (isDaily) { title = `📊 iGetoken 信源监控 · 每日汇总`; template = 'turquoise'; }
+  else if (hasChange) { title = `🔔 iGetoken 信源监控 · 发现 ${changed.length} 处变化`; template = 'orange'; }
+  else if (hasLead) { title = `🔎 iGetoken 信源监控 · 社区线索 ${leads.length} 条`; template = 'blue'; }
+  else { title = `⚠️ iGetoken 信源监控 · 信源异常`; template = 'red'; }
   if (!isDaily && hasFail && !hasChange) template = 'red';
 
   const elements = [];

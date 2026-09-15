@@ -1,10 +1,10 @@
-# AGENTS.md — iGetToken 项目规则
+# AGENTS.md — iGetoken 项目规则
 
 面向 AI 编码助手的持久化指令。本文件提交入仓库；**本地私有文档在 `docs/`（已 gitignore），不要读取后提交或外泄其内容**。
 
 ## 项目速览
 
-- iGetToken：免费大模型额度导航站（资源库 + 活动快讯 + 教程 + 避坑指南）
+- iGetoken：免费大模型额度导航站（资源库 + 活动快讯 + 教程 + 避坑指南）
 - 线上：https://igetoken.com · 仓库：github.com/igetoken/igetoken · 部署：Cloudflare Pages（git push 自动构建，1-2 分钟上线）
 - 技术栈：Astro 5 + Tailwind 4 纯静态，无后端；Node 22
 - 数据即内容：`src/data/models.json`（平台→offers 两级）、`src/data/deals.json`（活动快讯）是站点核心，页面只是渲染器

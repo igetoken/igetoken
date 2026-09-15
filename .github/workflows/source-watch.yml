@@ -1,6 +1,6 @@
 name: source-watch
 
-# iGetToken 信源监控
+# iGetoken 信源监控
 # 每 6h 静默巡检（仅异常推飞书）；每日 09:00 CST 汇总必发（兼作存活信号）。
 # 状态快照提交到独立分支 monitor-state，main / Cloudflare Pages 完全不受影响。
 # 配置与脚本始终取 main 上的版本：新增信源只改 monitor/sources.json。
