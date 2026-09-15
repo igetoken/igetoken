@@ -43,7 +43,11 @@ jobs:
           node-version: '22'
 
       - name: 取 main 的脚本与信源清单
-        run: git checkout main -- scripts/source-watch.mjs monitor/sources.json
+        # 检出的是 monitor-state 分支，本地无 main 引用，用 FETCH_HEAD 稳妥解析
+        run: |
+          git fetch --no-tags --depth=1 origin main
+          git checkout FETCH_HEAD -- scripts/source-watch.mjs monitor/sources.json
+          git reset --quiet -- scripts/source-watch.mjs monitor/sources.json
 
       - name: 巡检
         env:
