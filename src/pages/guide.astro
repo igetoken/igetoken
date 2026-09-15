@@ -1,11 +1,43 @@
 ---
 import Base from '../layouts/Base.astro';
 import Callout from '../components/Callout.astro';
+
+// 「中转站」风险识别：五个红灯信号（命中任意一条就该警惕，命中两条以上基本可以放弃）
+const relayRedFlags = [
+  {
+    label: '查不到经营主体',
+    desc: '没有公司主体、没有 ICP 备案、没有可开发票的对公渠道，联系方式只有一个邮箱或即时通讯群；服务条款、定价说明一律找不到。',
+  },
+  {
+    label: '额度按「日」批量放量',
+    desc: '免费送 Claude Opus、GPT 旗舰这类闭源顶配，而且每天限量放一批。正规集采分销不可能出现这种形态——这是共享账号池被拆分的典型特征。',
+  },
+  {
+    label: '要求伪装官方客户端',
+    desc: '必须带上 X-Stainless-*、Anthropic-Beta 之类的官方客户端特征头才放行，或者锁死只能用指定的官方 CLI，第三方客户端一律拒绝。合规网关不需要这种动作。',
+  },
+  {
+    label: '靠签到 / 邀请续命',
+    desc: '额度用光要靠每日签到、邀请返现、加群补给来续；公告里明确不承诺 SLA、不支持充值，还会时不时出现「池子耗尽」的错误。',
+  },
+  {
+    label: '准入设奇怪门槛',
+    desc: '例如要求 GitHub 账号注册满一年以上、账号年龄达标才给注册。这类门槛的真实作用是拦住批量注册——它防的不是你，是同行。',
+  },
+];
+
+// 反向特征：合规聚合 / 路由平台长什么样
+const relayLegitTraits = [
+  '有注册公司与主体信息，服务条款、定价说明公开可查',
+  '免费层长期稳定存在，或明确标注活动期与截止时间',
+  '额度与用量口径写得清楚，不靠每日限量发放维持',
+  '有官方授权或企业级合作可核（如各模型的合规分销渠道）',
+];
 ---
 
 <Base
   title="避坑与防骗指南 - 白嫖大模型必看 | iGetoken"
-  description="免费网页版≠免费 API Token；远离劣质中转站；认清额度有效期与并发限制；API Key 安全守则。白嫖路上不踩坑。"
+  description="免费网页版≠免费 API Token；五个信号识别劣质 API 中转站；认清额度有效期与并发限制；API Key 安全守则。白嫖路上不踩坑。"
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">避坑与防骗指南</h1>
@@ -36,15 +68,48 @@ import Callout from '../components/Callout.astro';
       <div>
         <h2 class="text-xl font-bold text-slate-900">三、远离来路不明的「中转站」</h2>
         <p class="mt-3 text-sm leading-relaxed text-slate-600">
-          市面上大量低价/免费 API 中转站存在这些问题：用廉价模型冒充旗舰模型（挂羊头卖狗肉）、
-          虚报计费多扣额度、<strong>记录并转卖你的对话数据</strong>、随时跑路。
-          判断方法很简单：正经福利一定能在<strong>官方平台</strong>找到对应公告，凡是要你填别人发给你的
-          「专用 base_url」却不给官方来源的，一律当骗局处理。
+          市面上有一类第三方 API 网关（俗称「中转站」），打着「公益」「免费送旗舰模型」的旗号，
+          实际上是用廉价模型冒充旗舰模型（挂羊头卖狗肉）、虚报计费多扣额度、
+          <strong>记录并转卖你的对话数据</strong>，随时可能跑路。
+          它们往往做得挺像样，所以别靠「看起来正规」来判断，用下面五条对照。
         </p>
-        <Callout type="danger" title="红线">
-          不要购买/使用批量注册账号获得的「免费 Key」，不要使用逆向破解官方接口的服务——
-          既随时失效，也有法律与数据安全风险。本站只收录官方正规渠道。
-        </Callout>
+
+        <p class="mt-5 text-sm font-semibold text-slate-900">红灯信号：命中任意一条就要警惕，命中两条以上基本可以放弃</p>
+        <div class="mt-3 space-y-2.5">
+          {
+            relayRedFlags.map((f, i) => (
+              <div class="rounded-xl border border-red-100 bg-red-50/50 p-3.5">
+                <p class="text-sm font-semibold text-slate-900">
+                  <span class="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-red-100 text-xs font-bold text-red-600">
+                    {i + 1}
+                  </span>
+                  {f.label}
+                </p>
+                <p class="mt-1.5 pl-7 text-sm leading-relaxed text-slate-600">{f.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+
+        <p class="mt-5 text-sm font-semibold text-slate-900">反过来，合规的聚合 / 路由平台长这样</p>
+        <ul class="mt-2 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-600">
+          {relayLegitTraits.map((t) => <li>{t}</li>)}
+        </ul>
+
+        <div class="mt-5">
+          <Callout type="danger" title="红线">
+            不要购买、不要使用批量注册账号得来的「免费 Key」，不要使用逆向破解官方接口的服务——
+            既随时失效，也有法律与数据安全风险（已有中转站站长因「反向代理 + 账号池」被追究刑事责任的公开案例）。
+            本站只收录官方正规渠道，以及有主体、有授权、有公开条款的合规聚合平台。
+          </Callout>
+        </div>
+
+        <div class="mt-3">
+          <Callout type="warn" title="如果你已经在用了">
+            那就把它当成「公开场合」来用：不要接入涉密代码、客户数据或任何隐私信息（你的每一次请求都经过第三方服务器），
+            不要为它开启全权限 / 免确认的沙箱模式，也不要把主力业务挂在上面——额度说没就没。
+          </Callout>
+        </div>
       </div>
 
       <div>
