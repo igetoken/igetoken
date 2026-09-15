@@ -1,0 +1,197 @@
+---
+title: '免 429 指南：免费 API 的限流、并发与批量任务'
+description: '免费额度不是「不能用多」，而是「要按规则用」。这篇把 RPM / TPM / 日限额 / 并发数四类限制拆开讲清，给出站内收录平台的真实量级，并附可直接运行的退避重试与并发池代码——让批量任务跑得完，又不撞 429。'
+pubDate: 2026-09-15
+updatedAt: 2026-09-15
+tags: ['问题排查', '工程实践']
+emoji: '🚦'
+---
+
+[报错手册](/tutorials/api-error-troubleshooting/)里 429 只占一节，因为其他错误只要改代码就能消失。**429 不一样：它不是 bug，是免费额度的固有属性。** 你能做的不是消除它，而是让程序按对方的规则说话。
+
+这篇讲的就是「按规则用」的具体做法。
+
+## 一、先把四类限制分开
+
+很多人把「限流」当成一件事，实际上至少有四种不同的机制，对策完全不同：
+
+| 限制 | 计量对象 | 撞了会怎样 | 对策 |
+|---|---|---|---|
+| **RPM** | 每分钟**请求数** | 429 | 降频、退避重试 |
+| **TPM** | 每分钟 **token 数**（输入 + 输出都算） | 429，**长 prompt 更容易撞** | 缩短上下文，或换 TPM 高的渠道 |
+| **日限额 / RPD** | 每天的次数或 token | 429 或被直接拒绝，**要等重置** | 排队到重置点；注意重置时区 |
+| **并发数** | 同时在飞的请求数 | 排队、变慢、超时，**未必报 429** | 限制并发，别把长任务堆在一起 |
+| 积分 / 滚动窗口 | 配额窗口内的额度 | **不是 429，是「没额度了」** | 按窗口节奏用，别一天打光 |
+
+**关键区别在最后两行**：并发超限和额度耗尽都不会给你 429，表现出来只是「很慢」或「突然全失败」。如果不区分，就会把「额度没了」误判成「网络问题」，一直重试到天亮。
+
+## 二、站内收录平台的真实量级
+
+下面都是各平台页记录的口径（**额度会调整，以平台页的核实日期为准**）：
+
+| 平台 | 速率口径 | 适合什么 |
+|---|---|---|
+| [智谱](/models/zhipu/) | GLM-4-Flash 永久免费**不限量**，约 30 并发 | 日常主力，批量任务的理想选择 |
+| [NVIDIA NIM](/models/nvidia-nim/) | 多数模型 **40 RPM**，不限次、无 token 计费 | 高频小请求 |
+| [Dots Studio](/models/dots/) | **60 RPM / 150 万 TPM**，限免期内 | 长上下文任务 |
+| [SambaNova](/models/sambanova/) | **20 RPM / 20 RPD / 20 万 TPD** | 低频高频宽，别做批量 |
+| [ModelScope 魔搭](/models/modelscope/) | 每日 2000 次，单模型最高 500 次/天 | 每天跑一轮的定时任务 |
+| [书生·浦语](/models/intern-ai/) | **10 RPM / 5000 TPM** | 轻量调用，长 prompt 会秒撞 |
+| [零一万物](/models/lingyiwanwu/) | **5 RPM** | 只适合手动试 |
+| [Ollama Cloud](/models/ollama/) | 并发仅 **1 路**，每 5h 约 50 万 token（社区实测） | 串行任务 |
+| [AMD Radeon Cloud](/models/amd-radeon-cloud/) | 每 24h 滚动发 1 积分 ≈ 2500 万 token，有日消耗上限 | 少量大任务 |
+| [Cohere](/models/cohere/) | **按次数**：1000 次/月，Chat 20 req/min、Embed 2000 inputs/min | 长对话、检索类高频低量 |
+
+这张表最该读出两件事：
+
+1. **「不限量」和「不限速」是两回事。** 智谱的 GLM-4-Flash 是站内最耐用的免费额度，但它仍限约 30 并发——**批量任务的瓶颈会从额度变成并发**。
+2. **计费口径决定了使用策略，且两者是相反的。** 按**次数**计费的平台（如 Cohere），长对话更划算；按 **token / TPM** 计费的平台，短 prompt 更划算。同一个任务，换一家可能就是另一种写法。
+
+## 三、三个反直觉的点
+
+**① 限流按账户（Key）算，不是按进程算。** 你开 8 个进程抢同一个 Key，不会获得 8 倍速率，只会更快撞墙。想提速率只有两条路：降低单次请求成本，或者**增加不同平台的渠道**。
+
+**② 重试本身会制造新的尖峰。** 10 个 worker 同时被 429、又同时 `sleep(1)` 重试，1 秒后会再来一次 10 并发——这叫惊群，限流会一直不解除。**所以退避必须带随机抖动（jitter）。**
+
+**③ 长任务被限流打断的代价，往往大于换一家。** 一个跑了两分钟的任务，输在最后一跳，重来就是再花两分钟。所以多候选场景下，**先切、再等**是更优顺序（理由见[《多模型 Fallback 实战》](/tutorials/multi-model-fallback/)第一节）。
+
+## 四、正确姿势一：照着 Retry-After 睡
+
+服务端如果给了 `Retry-After`，说明它明确知道该等多久。**这时候任何"聪明的"自研退避都不如照做。**
+
+```python
+import random
+import time
+
+from openai import APIStatusError, OpenAI
+
+client = OpenAI(api_key="...", base_url="https://平台页给的/v1")
+
+RETRYABLE = {429, 500, 502, 503, 504}
+
+def chat_with_backoff(messages, model, max_tries=5, base=1.0, cap=60.0):
+    """先听服务端的话；它没说才自己退避——且一定带抖动。"""
+    for attempt in range(max_tries):
+        try:
+            return client.chat.completions.create(model=model, messages=messages)
+        except APIStatusError as e:
+            if e.status_code not in RETRYABLE:
+                raise                       # 4xx 里的参数/鉴权错误，重试一万次也没用
+
+            header = e.response.headers.get("retry-after")
+            if header:
+                delay = float(header)       # 服务端明说了，照做
+            else:
+                delay = min(cap, base * 2 ** attempt)
+                delay += random.uniform(0, delay * 0.3)   # ±30% 抖动，破惊群
+
+            print(f"HTTP {e.status_code}，{delay:.1f}s 后重试（第 {attempt + 1} 次）")
+            time.sleep(delay)
+
+    raise RuntimeError("重试次数用尽")
+```
+
+**注意 `RETRYABLE` 白名单的写法**：只在「换时间就能成功」的错误上重试。401 / 404 这类错误重试只是浪费额度——这个判断逻辑在[报错手册](/tutorials/api-error-troubleshooting/)里展开过。
+
+## 五、正确姿势二：令牌桶 + 并发池
+
+退避解决的是「已经撞了怎么办」。批量任务真正需要的是**一开始就别撞**。两个东西配合：
+
+- **令牌桶**把「每分钟 N 次」摊平成平滑节奏，而不是「这一分钟的前 3 秒打完 60 次」。
+- **并发池**（信号量）限制同时在飞的请求数，避免长任务堆在一起拖垮整体。
+
+```python
+import asyncio
+import time
+
+from openai import AsyncOpenAI
+
+
+class RateLimiter:
+    """令牌桶：以 rpm 的速率匀速发放令牌。"""
+
+    def __init__(self, rpm: int, burst: int = 1):
+        self.capacity = burst
+        self.tokens = float(burst)
+        self.rate = rpm / 60.0          # 每秒补多少令牌
+        self.updated = time.monotonic()
+        self._lock = asyncio.Lock()
+
+    async def acquire(self):
+        async with self._lock:          # 串行发放，保证节奏准确
+            while True:
+                now = time.monotonic()
+                self.tokens = min(self.capacity, self.tokens + (now - self.updated) * self.rate)
+                self.updated = now
+                if self.tokens >= 1:
+                    self.tokens -= 1
+                    return
+                await asyncio.sleep((1 - self.tokens) / self.rate)
+
+
+async def run_batch(texts, model, concurrency=3, rpm=30):
+    client = AsyncOpenAI(api_key="...", base_url="https://平台页给的/v1")
+    limiter = RateLimiter(rpm=rpm, burst=concurrency)
+    sem = asyncio.Semaphore(concurrency)
+
+    async def worker(text: str):
+        await limiter.acquire()          # 先排队拿令牌（控速）
+        async with sem:                  # 再占用并发位（控并发）
+            resp = await client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "你是分类器。只输出 JSON。"},
+                    {"role": "user", "content": text},
+                ],
+                temperature=0,
+            )
+            return resp.choices[0].message.content
+
+    # return_exceptions=True：单条失败不拖垮整批，失败项事后单独重试
+    return await asyncio.gather(*(worker(t) for t in texts), return_exceptions=True)
+```
+
+**并发数该设几？** 用利特尔法则心算：
+
+```
+并发 ≈ (RPM ÷ 60) × 单次响应秒数
+```
+
+比如一家平台 40 RPM、单次响应约 5 秒 → 40 ÷ 60 × 5 ≈ **3.3**，那就设 3。设大了不会更快，只会排队并拉长响应时间；设小了则浪费额度。
+
+**`return_exceptions=True` 不是可选项。** 批量任务里总有个别输入触发内容策略或超长报错，让它自然失败、事后再针对失败项重试，比整批回滚划算得多。
+
+## 六、什么时候该放弃单家
+
+上面讲的都是「在一家内部把节奏调对」。但如果某个渠道的 RPM 只有 5、还要跑几百条任务，正确做法不是调参，而是**横向扩展**：把任务分给多家平台，各自按自己的节奏跑。
+
+这也是「多渠道」真正的价值——不只是容灾，还是**把几家免费额度并成一个更大的额度池**。实现方式是给候选加轮转，代码在[《多模型 Fallback 实战》](/tutorials/multi-model-fallback/)第四节。
+
+> ⚠️ 别用「同一平台多开账号」来扩额度。那属于批量注册薅量，是[避坑指南](/guide/)写明的红线——真正能扩的是**不同平台**。
+
+## 七、token 预算心算
+
+TPM 限制的是「每分钟 token 总量」，而一次请求的 **输入 + 输出都算**。所以判据不是「我的 prompt 有多长」，而是「这一分钟的吞吐有多大」。
+
+- 中文换算：讯飞官方口径是 **1 token ≈ 1.5 个汉字**（[平台页](/models/xunfei/)），即 1 个汉字约 0.67 token。不同厂商略有差异，估数量级够用。
+- **滑窗不是整分钟**：TPM 通常按滚动 60 秒算，所以前 30 秒打满、后 30 秒只能说也不一定恢复。
+- **重复的长系统提示会持续吃 TPM**。把 3000 字的系统提示放进每条请求，100 条就是 30 万 token 的输入——优先精简它，而不是换模型。
+- 长 prompt 任务请优先挑 TPM 高的渠道（站内 **150 万 TPM** 的 [Dots Studio](/models/dots/) 是个参考点），否则无论怎么调都会撞。
+
+## 八、反模式清单
+
+| 反模式 | 为什么错 |
+|---|---|
+| 多进程抢同一个 Key | 限流按账户算，只会更快撞墙 |
+| 固定 `sleep(1)` 重试 | 没有抖动 → 惊群 → 限流不解除 |
+| 把「日限额」当「每分钟限额」 | 一天的量在 1 分钟内打完，剩下 23 小时全程 429 |
+| 忽略重置时区 | 以为「过了 0 点就恢复」，实际还没到重置点 |
+| 「不限量」就当无限用 | 并发仍有限（[智谱](/models/zhipu/)明确的约 30 并发） |
+| 用免费层跑 SLA 任务 | 免费层的定位是体验与开发测试，见[避坑指南](/guide/) |
+
+## 下一步
+
+- 想加渠道把额度池做大：[《多模型 Fallback 实战》](/tutorials/multi-model-fallback/)
+- 分不清 429 / 402 / 401：[《大模型 API 报错排查手册》](/tutorials/api-error-troubleshooting/)
+- 要让客户端读你的文档（embedding 也有速率限制）：[《RAG 最小实现》](/tutorials/rag-minimal/)
+- 按速率口径挑平台 → [资源库](/models/)

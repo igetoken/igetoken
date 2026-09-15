@@ -1,0 +1,211 @@
+---
+title: 'RAG 最小实现：用免费额度做一个「能回答你文档」的问答'
+description: '不引入向量数据库、不装框架：用一份可运行代码跑通「切分 → 向量化 → 检索 → 生成」全流程，并讲清免费额度下最容易踩的三个坑——embedding 额度怎么找、Top-K 怎么定、上下文为什么塞不下。'
+pubDate: 2026-09-15
+updatedAt: 2026-09-15
+tags: ['进阶玩法', '工程实践']
+emoji: '📚'
+---
+
+你有没有试过把一份 50 页的文档粘给大模型，然后它自信地答错了？
+
+原因很简单：**大模型不认识你的文档，它只是把问题接了下去。** 把全文塞进 prompt 也许能解决，但会立刻撞上两件事——上下文装不下，以及 token 账单烧得飞快（免费额度下一两次就用光）。
+
+RAG（检索增强生成）就是绕开这两件事的标准做法：**不把全文给模型，只把最相关的那几段给它。**
+
+这篇的目标是让你在半小时内跑通完整流程，并且知道每一段参数为什么这么设。
+
+## 一、RAG 就四步
+
+| 步骤 | 做什么 | 用什么 |
+|---|---|---|
+| ① 切分 | 把长文档切成小片段 | 纯 Python 字符串操作 |
+| ② 向量化 | 把每个片段变成一串数字（向量） | **embedding 接口** |
+| ③ 检索 | 把问题也向量化，找最像的几个片段 | 余弦相似度（numpy 就够） |
+| ④ 生成 | 把命中的片段 + 问题拼起来问模型 | 普通聊天接口 |
+
+最小实现**不需要向量数据库、不需要 LangChain**。这两样在片段超过几千条、或者要增量更新时才值得引入——先用 200 行把流程跑通，你才有判断力决定要不要上它们。
+
+> ⚠️ 注意第 ② 步：它用的**不是**聊天模型，而是另一种接口（embedding / 向量化）。这是绝大多数人第一次配 RAG 时卡住的地方——**聊天额度能用，不代表 embedding 额度能用。**
+
+## 二、免费额度里，embedding 该挑哪家
+
+先给一条判据：**embedding 的调用特征是「高频、低量」**——一次调用只处理一小段文本，但建库时要调几百上千次。所以**按「调用次数」计费的平台，比按 token 计费的平台划算得多**。
+
+按这个判据看站内收录的额度：
+
+| 平台 | 为什么适合（或不适合） |
+|---|---|
+| [Cohere](/models/cohere/) | **首选**。trial key 每月 1000 次**调用**、Embed 2000 inputs/min——站内平台页明确写着「长对话也只算一次，对 RAG、Rerank、Embed 这类高频低量场景特别划算」。注意它是自有 v2 协议，**不能用 OpenAI SDK** |
+| [硅基流动](/models/siliconflow/) | 聚合平台，通常提供 bge 系列开源 embedding，可用平台赠金调用——**具体模型 ID 与计费以平台页/控制台为准** |
+| [阿里云百炼](/models/bailian/) | 新用户额度按「每款模型」独立发放，embedding 模型是否在覆盖范围、以控制台为准 |
+| [360 智脑](/models/ai360/) | ⚠️ **不适合**。平台页明确记录：免费额度仅限文本生成类接口，**RAG 走收费通道**，不从免费额度扣 |
+
+**最重要的一条原则：embedding 和生成可以是两家不同平台。**
+
+不要因为「想在一家配好」而牺牲额度——[上一节](/tutorials/rate-limit-and-concurrency/)里那张表说得很清楚，一家平台的 RPM 可能只有 5，另一家能做 embedding 2000 inputs/min。分开用，两边的长处都拿到了。
+
+## 三、完整实现
+
+依赖只有两个：
+
+```bash
+pip install openai numpy
+```
+
+### 3.1 两个客户端：生成一家、embedding 另一家
+
+```python
+import json
+import os
+
+import numpy as np
+from openai import OpenAI
+
+# 生成用的渠道（聊天模型）
+CHAT = OpenAI(api_key=os.environ["CHAT_KEY"], base_url=os.environ["CHAT_BASE"])
+CHAT_MODEL = os.environ["CHAT_MODEL"]
+
+# embedding 用的渠道（可以是完全另一家平台）
+EMB = OpenAI(api_key=os.environ["EMB_KEY"], base_url=os.environ["EMB_BASE"])
+EMB_MODEL = os.environ["EMB_MODEL"]
+```
+
+`CHAT_BASE` / `EMB_BASE` 一律从[资源库](/models/)的平台页复制 `api_base`——**别凭记忆写**，多一个 `/v1` 就是 404。
+
+### 3.2 切分：带重叠
+
+```python
+def chunk_text(text, size=500, overlap=80):
+    """按字符切分。重叠区是为了避免把一句完整的话从中间切断。"""
+    chunks, start = [], 0
+    while start < len(text):
+        chunks.append(text[start:start + size])
+        start += size - overlap
+    return chunks
+```
+
+中文按字符切就够了（500 字 ≈ 350 token 左右，量级心里有数即可）。**重叠区是必须的**——检索时如果答案刚好落在切点上，没有重叠的两个片段都会「缺一半」。
+
+### 3.3 向量化：批量送，别一条条发
+
+```python
+def embed(texts):
+    """OpenAI 兼容的 /embeddings 接口。一次送一批，调用次数才是成本。"""
+    resp = EMB.embeddings.create(model=EMB_MODEL, input=texts)
+    # 按 index 排序：接口不保证返回顺序，但保证带 index
+    ordered = sorted(resp.data, key=lambda d: d.index)
+    return np.array([d.embedding for d in ordered], dtype="float32")
+```
+
+**批量送是这里唯一重要的优化。** 一段文本一次调用、还是一批文本一次调用，对 RPM 受限的免费额度来说是 50 倍的差距。
+
+### 3.4 检索：numpy 做余弦相似度
+
+```python
+def search(question, chunks, matrix, top_k=3):
+    q = embed([question])[0]
+    q = q / np.linalg.norm(q)                       # 归一化后，点积 = 余弦相似度
+    m = matrix / np.linalg.norm(matrix, axis=1, keepdims=True)
+    scores = m @ q
+    idx = np.argsort(-scores)[:top_k]
+    return [(chunks[i], float(scores[i])) for i in idx]
+```
+
+### 3.5 生成：把「不知道」写进提示词
+
+```python
+PROMPT = """只依据下面的资料回答问题。资料里没有提到的内容，直接回答「资料中没有提到」，不要用你自己的知识补充。
+
+资料：
+{context}
+
+问题：{question}"""
+
+
+def ask(question, chunks, matrix, top_k=3):
+    hits = search(question, chunks, matrix, top_k)
+    context = "\n\n---\n\n".join(f"[{i + 1}] {c}" for i, (c, _) in enumerate(hits))
+    resp = CHAT.chat.completions.create(
+        model=CHAT_MODEL,
+        messages=[{"role": "user", "content": PROMPT.format(context=context, question=question)}],
+        temperature=0,      # 问答场景不需要创造力
+    )
+    return resp.choices[0].message.content, hits
+```
+
+**「资料里没有提到就说没有」这一句不能省。** 少了它，模型在检索失败时会用训练知识硬答——那正是 RAG 想避免的事，而且这种错误最难被发现，因为答案读起来很通顺。
+
+### 3.6 主流程：索引必须缓存
+
+```python
+def build_index(path, cache="index.json"):
+    if os.path.exists(cache):
+        data = json.load(open(cache, encoding="utf-8"))
+        return data["chunks"], np.array(data["vectors"], dtype="float32")
+
+    text = open(path, encoding="utf-8").read()
+    chunks = chunk_text(text)
+    matrix = embed(chunks)          # 建库要调用 N 次，只做一次
+    json.dump({"chunks": chunks, "vectors": matrix.tolist()},
+              open(cache, "w", encoding="utf-8"))
+    return chunks, matrix
+
+
+if __name__ == "__main__":
+    chunks, matrix = build_index("handbook.md")
+    print(f"已建索引：{len(chunks)} 个片段")
+
+    while True:
+        q = input("\n问题（直接回车退出）> ").strip()
+        if not q:
+            break
+        answer, hits = ask(q, chunks, matrix)
+        print("\n" + answer)
+        print("引用：" + "、".join(f"#{i + 1}({s:.2f})" for i, (_, s) in enumerate(hits)))
+```
+
+**缓存是必须的，不是优化。** 改一次提示词就重算一遍全库 embedding，几百次调用说没就没——免费额度禁不起这么烧。
+
+## 四、三个必踩的坑
+
+### ① 切分粒度：太碎和太长都不行
+
+| 症状 | 原因 | 调整方向 |
+|---|---|---|
+| 检索到的片段答非所问 | 切太大，一块里混了好几个主题 | 缩小 `size`（400 → 250） |
+| 答案缺一半、前后接不上 | 切太碎，或重叠区太小 | 加大 `overlap`（80 → 150） |
+| 上下文塞不下 | 片段太长 × Top-K 太大 | 缩小 `size` 或降低 `top_k` |
+
+**起始值就给 500 / 80，然后按症状调**——不要一开始就研究分块算法。经验上，切分方式对检索质量的影响，比换 embedding 模型大得多。
+
+### ② Top-K：3 是起点，不是越大越好
+
+很多人第一反应是「多取几段更保险」。**实际上反过来**：Top-K 越大，塞进去的无关内容越多，模型越容易被带着跑偏，同时还持续吃 TPM。
+
+`top_k=3` 起步，看完回答再决定加还是减。如果正确答案总排在第 5、第 6 位，问题多半出在切分或 embedding 模型上，不是在 K 上。
+
+### ③ 上下文预算：算的是总量，不是单段长度
+
+一次问答的输入是 `系统提示 + Top-K 片段 + 问题`。举例：3 段 × 500 字 ≈ 1000 token，加上提示词和问题，单次输入 1500 token 左右——量级不大，但**如果你的平台 TPM 只有 5000，两次并发就撞墙**。
+
+所以挑平台时要把「生成 + embedding 两边的速率口径」一起看，判据见[《免 429 指南》](/tutorials/rate-limit-and-concurrency/)第一节。
+
+## 五、什么时候该上向量库（现在还不用）
+
+出现下面任一情况，再考虑 Chroma / Qdrant 这类方案：
+
+- 片段数**超过几千条**，每次全量算相似度开始变慢；
+- 文档会**持续更新**，需要增量写入而不是全量重建；
+- 需要**按元数据过滤**（只检索某个部门、某段时间的文档）。
+
+在此之前，还有一条更省事的路：**不确定要不要写代码时，先用图形客户端的现成知识库功能**——它内置的就是这套流程，配置要点见[《Cherry Studio 进阶》](/tutorials/cherry-studio-advanced/)第六节。
+
+> 用 Cohere 的话有一个额外的坑：它的 embedding 不是 OpenAI 兼容接口，要按官方文档拼 `POST https://api.cohere.com/v2/embed`；而且**建库与检索要用不同的 `input_type`**（文档用 `search_document`、问题用 `search_query`），填错会明显掉检索质量。
+
+## 下一步
+
+- 额度被 embedding 调用打光了：[《免 429 指南》](/tutorials/rate-limit-and-concurrency/)
+- 检索接口报错分不清类型：[《大模型 API 报错排查手册》](/tutorials/api-error-troubleshooting/)
+- 不想写代码，想要图形界面：[《Cherry Studio 进阶》](/tutorials/cherry-studio-advanced/)
+- 挑 embedding 与生成渠道 → [资源库](/models/)
