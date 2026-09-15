@@ -3,6 +3,7 @@ import Base from '../../layouts/Base.astro';
 import SearchCard from '../../components/SearchCard.astro';
 import FilterTabs from '../../components/FilterTabs.astro';
 import { getSearchApis, SEARCH_TYPE_LABEL } from '../../lib/data';
+import { webPageNode, topLevelBreadcrumb } from '../../lib/schema';
 import type { SearchType } from '../../lib/types';
 
 const apis = getSearchApis();
@@ -12,12 +13,19 @@ const groups = presentTypes.map((key) => ({
   key,
   label: SEARCH_TYPE_LABEL[key],
 }));
+
+// 条目指向站外官方页，无站内详情页 → 只声明集合页，不输出 ItemList
+const pageUrl = '/search/';
+const pageTitle = 'Web Search API - 可站外调用的免费搜索/抓取 API | iGetoken';
+const pageDesc =
+  '收集面向 AI Agent / RAG 的网页搜索与内容抓取 API（Keenable、Brave、Tavily 等）的免费额度、认证方式与限流。与本站「免费 LLM Token」并列的独立板块。';
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: 'Web Search API', description: pageDesc, type: 'CollectionPage' }),
+  topLevelBreadcrumb(pageUrl, '搜索 API'),
+];
 ---
 
-<Base
-  title="Web Search API - 可站外调用的免费搜索/抓取 API | iGetoken"
-  description="收集面向 AI Agent / RAG 的网页搜索与内容抓取 API（Keenable、Brave、Tavily 等）的免费额度、认证方式与限流。与本站「免费 LLM Token」并列的独立板块。"
->
+<Base title={pageTitle} description={pageDesc} schema={pageSchema}>
   <section class="mx-auto max-w-6xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">Web Search API</h1>
     <p class="mt-2 text-slate-500">

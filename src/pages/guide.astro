@@ -1,6 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
 import Callout from '../components/Callout.astro';
+import { webPageNode, topLevelBreadcrumb } from '../lib/schema';
 
 // 「中转站」风险识别：五个红灯信号（命中任意一条就该警惕，命中两条以上基本可以放弃）
 const relayRedFlags = [
@@ -33,12 +34,18 @@ const relayLegitTraits = [
   '额度与用量口径写得清楚，不靠每日限量发放维持',
   '有官方授权或企业级合作可核（如各模型的合规分销渠道）',
 ];
+
+const pageUrl = '/guide/';
+const pageTitle = '避坑与防骗指南 - 白嫖大模型必看 | iGetoken';
+const pageDesc =
+  '免费网页版≠免费 API Token；五个信号识别劣质 API 中转站；认清额度有效期与并发限制；API Key 安全守则。白嫖路上不踩坑。';
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: '避坑与防骗指南', description: pageDesc }),
+  topLevelBreadcrumb(pageUrl, '避坑指南'),
+];
 ---
 
-<Base
-  title="避坑与防骗指南 - 白嫖大模型必看 | iGetoken"
-  description="免费网页版≠免费 API Token；五个信号识别劣质 API 中转站；认清额度有效期与并发限制；API Key 安全守则。白嫖路上不踩坑。"
->
+<Base title={pageTitle} description={pageDesc} schema={pageSchema}>
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">避坑与防骗指南</h1>
     <p class="mt-2 text-slate-500">白嫖的正确姿势：先懂规则，再动手领。</p>

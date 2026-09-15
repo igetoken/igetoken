@@ -8,6 +8,12 @@ import SearchCard from '../components/SearchCard.astro';
 import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks, getSearchApis, getDeals } from '../lib/data';
 import Notice from '../components/Notice.astro';
 import { getCollection } from 'astro:content';
+import { webPageNode } from '../lib/schema';
+
+const pageUrl = '/';
+const pageTitle = 'iGetoken - 2026 全网最全 AI 大模型免费 Token 白嫖指南 & 实操教程';
+const pageDesc =
+  '拒绝割韭菜！只收录官方正规渠道的免费大模型 API 与 Token 福利：注册赠送、永久免费模型、限时活动快讯每日更新，附保姆级领取与使用教程。';
 
 const platforms = getPlatforms();
 const homeDeals = selectHomeDeals(10);
@@ -41,12 +47,19 @@ const homeTutorials = (await getCollection('tutorials'))
     return a.id.localeCompare(b.id); // 同日同日发布时按 id 兜底，保证顺序稳定
   })
   .slice(0, 3);
+
+// 首页是站点根：只声明 WebPage，不挂面包屑（自身即层级起点）
+const pageSchema = [
+  webPageNode({
+    url: pageUrl,
+    name: 'iGetoken - 免费大模型 Token 导航与教程',
+    description: pageDesc,
+    withBreadcrumb: false,
+  }),
+];
 ---
 
-<Base
-  title="iGetoken - 2026 全网最全 AI 大模型免费 Token 白嫖指南 & 实操教程"
-  description="拒绝割韭菜！只收录官方正规渠道的免费大模型 API 与 Token 福利：注册赠送、永久免费模型、限时活动快讯每日更新，附保姆级领取与使用教程。"
->
+<Base title={pageTitle} description={pageDesc} schema={pageSchema}>
   <!-- Hero -->
   <section class="border-b border-slate-100 bg-gradient-to-b from-emerald-50 via-white to-white">
     <div class="mx-auto max-w-6xl px-4 py-16 text-center md:py-24">

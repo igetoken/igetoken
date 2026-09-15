@@ -1,10 +1,20 @@
 ---
 import Base from '../layouts/Base.astro';
+import { webPageNode, topLevelBreadcrumb } from '../lib/schema';
+
+const pageUrl = '/about/';
+const pageDesc =
+  'iGetoken 是免费大模型额度的导航与教程站：只收录官方正规渠道，所有情报可溯源，不做 API 中转，不做 Token 转售。';
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: '关于 iGetoken', description: pageDesc, type: 'AboutPage' }),
+  topLevelBreadcrumb(pageUrl, '关于我们'),
+];
 ---
 
 <Base
   title="关于 iGetoken - 你的免费 AI 额度导航"
-  description="iGetoken 是免费大模型额度的导航与教程站：只收录官方正规渠道，所有情报可溯源，不做 API 中转，不做 Token 转售。"
+  description={pageDesc}
+  schema={pageSchema}
 >
   <section class="mx-auto max-w-3xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">关于 iGetoken</h1>

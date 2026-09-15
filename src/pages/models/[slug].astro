@@ -5,6 +5,7 @@ import Callout from '../../components/Callout.astro';
 import StarRating from '../../components/StarRating.astro';
 import DealCard from '../../components/DealCard.astro';
 import { getAllPlatforms, getPlatforms, getPlatformBySlug, getDealsByPlatform, OFFER_TYPE_LABEL, CATEGORY_LABEL } from '../../lib/data';
+import { webPageNode, breadcrumbNode, articleNode } from '../../lib/schema';
 
 export function getStaticPaths() {
   return getAllPlatforms().map((platform) => ({
@@ -22,6 +23,43 @@ const idx = all.findIndex((p) => p.slug === platform.slug);
 const prev = all[(idx - 1 + all.length) % all.length];
 const next = all[(idx + 1) % all.length];
 const verifiedShort = platform.last_verified.replace(/-/g, '/');
+
+const pageUrl = `/models/${platform.slug}/`;
+const pageTitle = `${platform.name} 免费 Token 领取攻略（2026 最新） | iGetoken`;
+const pageDesc = `${platform.name}：${platform.highlight}。附领取步骤、调用示例、坑点提醒，最后核实于 ${verifiedShort}。`;
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: `${platform.name} 免费 Token 领取攻略`, description: pageDesc }),
+  breadcrumbNode(pageUrl, [
+    { name: '首页', url: '/' },
+    { name: '资源库', url: '/models/' },
+    { name: platform.name, url: pageUrl },
+  ]),
+  articleNode({
+    url: pageUrl,
+    headline: `${platform.name} 免费 Token 领取攻略`,
+    description: platform.highlight,
+    // 收录日优先；历史平台没有收录日则退回最后核实日
+    datePublished: platform.publishedAt ?? platform.last_verified,
+    dateModified: platform.last_verified,
+    keywords: platform.tags,
+    articleSection: '免费大模型 API 资源库',
+    about: {
+      '@type': 'SoftwareApplication',
+      name: platform.name,
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Web',
+      url: platform.website,
+      description: platform.tagline,
+      // 如实描述「有免费额度」，不声明整站免费
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'CNY',
+        description: '提供免费额度，具体额度与有效期以官方页面为准',
+      },
+    },
+  }),
+];
 
 // 一键分享卡片所需数据（序列化进客户端脚本，避免运行时跨域加载）
 const shareUrl = `https://igetoken.com/models/${platform.slug}/`;
@@ -106,10 +144,7 @@ const toc = [
 
 ---
 
-<Base
-  title={`${platform.name} 免费 Token 领取攻略（2026 最新） | iGetoken`}
-  description={`${platform.name}：${platform.highlight}。附领取步骤、调用示例、坑点提醒，最后核实于 ${verifiedShort}。`}
->
+<Base title={pageTitle} description={pageDesc} ogType="article" schema={pageSchema}>
   <div class="mx-auto max-w-6xl px-4 py-12">
     <div class="lg:grid lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-10">
       <section class="min-w-0">

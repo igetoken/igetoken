@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
+import { webPageNode, topLevelBreadcrumb, itemListNode } from '../../lib/schema';
 
 const tutorials = (await getCollection('tutorials')).sort((a, b) => {
   const av = (a.data.updatedAt ?? a.data.pubDate).valueOf();
@@ -12,12 +13,23 @@ const tutorials = (await getCollection('tutorials')).sort((a, b) => {
   return a.id.localeCompare(b.id); // 兜底，保证顺序稳定
 });
 const formatDate = (d: Date) => d.toISOString().slice(0, 10);
+
+const pageUrl = '/tutorials/';
+const pageTitle = '保姆级教程 - 免费 Token 从领取到调用 | iGetoken';
+const pageDesc =
+  '从领 Key、配客户端到写代码，再到报错排查与多模型容灾：免费大模型 API 的完整教程系列，含可运行代码与跨平台排错对照。';
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: '保姆级教程', description: pageDesc, type: 'CollectionPage' }),
+  topLevelBreadcrumb(pageUrl, '教程'),
+  itemListNode({
+    url: pageUrl,
+    name: '免费大模型 API 教程',
+    items: tutorials.map((t) => ({ name: t.data.title, url: `/tutorials/${t.id}/` })),
+  }),
+];
 ---
 
-<Base
-  title="保姆级教程 - 免费 Token 从领取到调用 | iGetoken"
-  description="从领 Key、配客户端到写代码，再到报错排查与多模型容灾：免费大模型 API 的完整教程系列，含可运行代码与跨平台排错对照。"
->
+<Base title={pageTitle} description={pageDesc} schema={pageSchema}>
   <section class="mx-auto max-w-4xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">保姆级教程</h1>
     <p class="mt-2 text-slate-500">从「怎么领」到「怎么用」，每一步都有截图级细节。</p>

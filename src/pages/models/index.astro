@@ -3,17 +3,29 @@ import Base from '../../layouts/Base.astro';
 import PlatformCard from '../../components/PlatformCard.astro';
 import FilterTabs from '../../components/FilterTabs.astro';
 import { getPlatforms, CATEGORY_LABEL } from '../../lib/data';
+import { webPageNode, topLevelBreadcrumb, itemListNode } from '../../lib/schema';
 
 const platforms = getPlatforms();
 const groups = (Object.keys(CATEGORY_LABEL) as (keyof typeof CATEGORY_LABEL)[]).map(
   (key) => ({ key, label: CATEGORY_LABEL[key] })
 );
+
+const pageUrl = '/models/';
+const pageTitle = '免费大模型 API 资源库 - 注册送 Token / 永久免费模型 | iGetoken';
+const pageDesc =
+  '收录国内大厂与海外平台的免费大模型 API：智谱、硅基流动、阿里百炼、Kimi、Groq、Gemini、OpenRouter。每条附额度明细、领取步骤与核实日期。';
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: '免费资源库', description: pageDesc, type: 'CollectionPage' }),
+  topLevelBreadcrumb(pageUrl, '资源库'),
+  itemListNode({
+    url: pageUrl,
+    name: '免费大模型 API 资源库',
+    items: platforms.map((p) => ({ name: p.name, url: `/models/${p.slug}/` })),
+  }),
+];
 ---
 
-<Base
-  title="免费大模型 API 资源库 - 注册送 Token / 永久免费模型 | iGetoken"
-  description="收录国内大厂与海外平台的免费大模型 API：智谱、硅基流动、阿里百炼、Kimi、Groq、Gemini、OpenRouter。每条附额度明细、领取步骤与核实日期。"
->
+<Base title={pageTitle} description={pageDesc} schema={pageSchema}>
   <section class="mx-auto max-w-6xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">免费资源库</h1>
     <p class="mt-2 text-slate-500">

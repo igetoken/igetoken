@@ -4,6 +4,7 @@ import Badge from '../../components/Badge.astro';
 import Callout from '../../components/Callout.astro';
 import ShareCardButton from '../../components/ShareCardButton.astro';
 import { getDeals, getDealById, getPlatformBySlug, DEAL_TYPE_LABEL } from '../../lib/data';
+import { webPageNode, breadcrumbNode, articleNode } from '../../lib/schema';
 import type { DealType } from '../../lib/types';
 
 export function getStaticPaths() {
@@ -16,12 +17,36 @@ export function getStaticPaths() {
 const { deal } = Astro.props as { deal: NonNullable<ReturnType<typeof getDealById>> };
 const platform = deal.platform_slug ? getPlatformBySlug(deal.platform_slug) : undefined;
 const typeLabel = DEAL_TYPE_LABEL[deal.type as DealType] ?? '情报';
+
+const pageUrl = `/deals/${deal.id}/`;
+const pageTitle = `${deal.title} | iGetoken 活动快讯`;
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: deal.title, description: deal.summary }),
+  breadcrumbNode(pageUrl, [
+    { name: '首页', url: '/' },
+    { name: '活动快讯', url: '/deals/' },
+    { name: deal.title, url: pageUrl },
+  ]),
+  articleNode({
+    url: pageUrl,
+    headline: deal.title,
+    description: deal.summary,
+    // 快讯的「发布时间」即活动收录日期
+    datePublished: deal.date,
+    keywords: [typeLabel, deal.platform_name, '免费 Token', '限时活动'],
+    articleSection: '活动快讯',
+    about: {
+      '@type': 'SoftwareApplication',
+      name: deal.platform_name,
+      applicationCategory: 'DeveloperApplication',
+      operatingSystem: 'Web',
+      ...(platform ? { url: platform.website } : {}),
+    },
+  }),
+];
 ---
 
-<Base
-  title={`${deal.title} | iGetoken 活动快讯`}
-  description={deal.summary}
->
+<Base title={pageTitle} description={deal.summary} ogType="article" schema={pageSchema}>
   <article class="mx-auto max-w-3xl px-4 py-12">
     <nav class="text-sm text-slate-400">
       <a href="/deals/" class="hover:text-emerald-700">活动快讯</a>

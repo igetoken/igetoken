@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { getCollection, render } from 'astro:content';
+import { webPageNode, breadcrumbNode, articleNode } from '../../lib/schema';
 
 export async function getStaticPaths() {
   const tutorials = await getCollection('tutorials');
@@ -13,9 +14,30 @@ export async function getStaticPaths() {
 const { tutorial } = Astro.props;
 const { Content } = await render(tutorial);
 const formatDate = (d: Date) => d.toISOString().slice(0, 10);
+
+const pageUrl = `/tutorials/${tutorial.id}/`;
+const pageTitle = `${tutorial.data.title} | iGetoken 教程`;
+const updatedAt = tutorial.data.updatedAt ?? tutorial.data.pubDate;
+const pageSchema = [
+  webPageNode({ url: pageUrl, name: tutorial.data.title, description: tutorial.data.description }),
+  breadcrumbNode(pageUrl, [
+    { name: '首页', url: '/' },
+    { name: '教程', url: '/tutorials/' },
+    { name: tutorial.data.title, url: pageUrl },
+  ]),
+  articleNode({
+    url: pageUrl,
+    headline: tutorial.data.title,
+    description: tutorial.data.description,
+    datePublished: formatDate(tutorial.data.pubDate),
+    dateModified: formatDate(updatedAt),
+    keywords: tutorial.data.tags,
+    articleSection: '教程',
+  }),
+];
 ---
 
-<Base title={`${tutorial.data.title} | iGetoken 教程`} description={tutorial.data.description}>
+<Base title={pageTitle} description={tutorial.data.description} ogType="article" schema={pageSchema}>
   <article class="mx-auto max-w-3xl px-4 py-12">
     <nav class="text-sm text-slate-400">
       <a href="/tutorials/" class="hover:text-emerald-700">教程</a>

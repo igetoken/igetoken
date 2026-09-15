@@ -2,14 +2,29 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { siteNodes, SITE_NAME, type SchemaNode } from '../lib/schema';
 
 interface Props {
   title: string;
   description: string;
+  /** og:type：普通页 website、详情页 article */
+  ogType?: string;
+  /** 页面级结构化数据节点，与站点级节点合并后以单个 @graph 输出 */
+  schema?: SchemaNode[];
+  /** 是否为不该被索引的页面（如 404） */
+  noindex?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, ogType = 'website', schema = [], noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+
+// 结构化数据：站点级节点（WebSite + Organization）每页都带，页面级节点按需追加
+const schemaGraph = [...siteNodes(), ...schema];
+// 转义 `<`：防止正文里的尖括号提前闭合 script 标签
+const schemaJson = JSON.stringify({ '@context': 'https://schema.org', '@graph': schemaGraph }).replace(
+  /</g,
+  '\\u003c'
+);
 ---
 
 <!doctype html>
@@ -20,14 +35,19 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title="iGetoken 上新速报" href="/rss.xml" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content="zh_CN" />
     <meta name="generator" content={Astro.generator} />
     <meta name="baidu-site-verification" content="codeva-KR3u0Bje8F" />
     <meta name="msvalidate.01" content="3E8F6410B5C9D766DF2E12ECBE9734BE" />
+    <script type="application/ld+json" set:html={schemaJson} />
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
