@@ -51,6 +51,8 @@ jobs:
 
       - name: 巡检
         env:
+          # 当前实际配置：NOTICE 里存的是「签名密钥」（值非 http 开头，脚本自动判别为密钥），
+          # webhook 地址走脚本内兜底常量。若改成 NOTICE=地址，则需另配 FEISHU_SECRET=密钥。
           FEISHU_WEBHOOK_NOTICE: ${{ secrets.FEISHU_WEBHOOK_NOTICE }}
           FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
           FEISHU_SECRET: ${{ secrets.FEISHU_SECRET }}
