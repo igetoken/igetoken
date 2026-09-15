@@ -1,0 +1,578 @@
+{
+  "version": 1,
+  "_comment": "唯一配置入口。新增/移除信源只改这里。keywords 仅用于命中时提取上下文片段，不参与变化判定（判定始终是整页归一化 hash）。type: page | rss | hn-algolia | openrouter-free。上线前须逐个人工核实可抓性（见 docs/信源监控规划.md §4.1）；换 URL 后必须重跑一次建立基线。",
+  "sources": [
+    {
+      "id": "bailian-free-quota",
+      "name": "阿里百炼 · 新人免费额度规则",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://help.aliyun.com/zh/model-studio/new-free-quota",
+      "type": "page",
+      "keywords": [
+        "免费额度",
+        "新人",
+        "万",
+        "亿",
+        "Tokens",
+        "有效期",
+        "用完即停"
+      ],
+      "note": "百炼新用户 100 万 Token 口径来源页"
+    },
+    {
+      "id": "siliconflow-notes",
+      "name": "硅基流动 · 更新公告",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://docs.siliconflow.cn/cn/release-notes/overview",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "上线",
+        "价格",
+        "调整",
+        "活动"
+      ],
+      "note": "硅基流动价格/活动一手来源"
+    },
+    {
+      "id": "siliconflow-news",
+      "name": "硅基流动 · 最新资讯",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://www.siliconflow.cn/news",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "上线",
+        "活动"
+      ],
+      "note": ""
+    },
+    {
+      "id": "moonshot-pricing",
+      "name": "Kimi · 模型推理价格说明",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://platform.moonshot.cn/docs/pricing/chat",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "价格",
+        "调整",
+        "万",
+        "亿"
+      ],
+      "note": ""
+    },
+    {
+      "id": "hunyuan-pricing",
+      "name": "腾讯混元 · 生文计费概述",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://cloud.tencent.com/document/product/1729/97731",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "价格",
+        "调整"
+      ],
+      "note": "混元 Hy3/Hy4 额度口径来源"
+    },
+    {
+      "id": "zhipu-docs",
+      "name": "智谱 BigModel · 平台介绍",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://docs.bigmodel.cn/cn/guide/start/introduction",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "体验包"
+      ],
+      "note": "智谱定价页为 SPA 抓不到，改用文档站（SSR）"
+    },
+    {
+      "id": "deepseek-pricing",
+      "name": "DeepSeek · Models & Pricing",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://api-docs.deepseek.com/quick_start/pricing",
+      "type": "page",
+      "keywords": [
+        "free",
+        "trial",
+        "赠送",
+        "额度",
+        "price",
+        "discount",
+        "token"
+      ],
+      "note": ""
+    },
+    {
+      "id": "qiniu-docs",
+      "name": "七牛云 AI · 文档",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://apidocs.qnaigc.com/",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "万"
+      ],
+      "note": ""
+    },
+    {
+      "id": "baidu-wenxin-doc",
+      "name": "百度千帆 · 文档",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://ai.baidu.com/ai-doc/WENXINWORKSHOP/wlwg8f1i3",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "体验"
+      ],
+      "note": ""
+    },
+    {
+      "id": "xunfei-web-doc",
+      "name": "讯飞星火 · 接口文档",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://www.xfyun.cn/doc/spark/Web.html",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "Lite"
+      ],
+      "note": ""
+    },
+    {
+      "id": "ctyun-tokenhub",
+      "name": "中国电信 · 星辰 TokenHub API 文档",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://www.ctyun.cn/document/11061839/11062312",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "万",
+        "体验"
+      ],
+      "note": ""
+    },
+    {
+      "id": "ppio-docs",
+      "name": "PPIO 派欧云 · 官方公告",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://ppio.com/docs",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "代金券",
+        "上线",
+        "价格"
+      ],
+      "note": ""
+    },
+    {
+      "id": "ai360-open",
+      "name": "360 智脑 · 开放平台",
+      "group": "official",
+      "priority": "P2",
+      "url": "https://ai.360.com/open/",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "试用",
+        "Tokens"
+      ],
+      "note": ""
+    },
+    {
+      "id": "gitee-moark-docs",
+      "name": "模力方舟 Gitee AI · 新手入门",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://ai.gitee.com/docs/getting-started",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "体验",
+        "资源包",
+        "Tokens"
+      ],
+      "note": ""
+    },
+    {
+      "id": "streamlake-wanqing",
+      "name": "快手万擎 StreamLake",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://www.streamlake.com/product/wanqing",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "万",
+        "价格"
+      ],
+      "note": ""
+    },
+    {
+      "id": "longcat-changelog",
+      "name": "美团 LongCat · 更新日志",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://longcat.chat/platform/docs/zh/change-log",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "上线",
+        "内测"
+      ],
+      "note": "龙猫额度/内测开放时间以更新日志为准"
+    },
+    {
+      "id": "scnet-maas",
+      "name": "超算互联网 SCNet · MaaS",
+      "group": "official",
+      "priority": "P2",
+      "url": "https://www.scnet.cn/home/subject/maas/index.html",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "Tokens",
+        "万",
+        "特惠"
+      ],
+      "note": "整页 JS 渲染，但 <main> 恰包住 MaaS 特惠卡（含 1000万 Tokens/秒杀价/仅新用户），hash 只看该卡，已避开页面秒杀倒计时"
+    },
+    {
+      "id": "antling-quickstart",
+      "name": "蚂蚁灵 Ling API · 快速开始",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://developer.ant-ling.com/zh-CN/docs/getting-started/quickstart",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "每日",
+        "万",
+        "Tokens"
+      ],
+      "note": "蚂蚁百灵每日 50 万 Token 口径来源"
+    },
+    {
+      "id": "tokenrhythm-root",
+      "name": "基元律动 TokenRhythm",
+      "group": "official",
+      "priority": "P2",
+      "url": "https://tokenrhythm.studio/",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "赠送",
+        "额度",
+        "¥",
+        "折扣",
+        "Tokens"
+      ],
+      "note": "文档站为 SPA，用根页（SSR）"
+    },
+    {
+      "id": "cloudflare-pricing",
+      "name": "Cloudflare Workers AI · Pricing",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://developers.cloudflare.com/workers-ai/platform/pricing/",
+      "type": "page",
+      "keywords": [
+        "free",
+        "Neurons",
+        "no charge",
+        "allocation",
+        "pricing"
+      ],
+      "note": ""
+    },
+    {
+      "id": "mistral-pricing",
+      "name": "Mistral · Pricing",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://mistral.ai/pricing",
+      "type": "page",
+      "keywords": [
+        "free",
+        "credits",
+        "plan",
+        "pricing",
+        "tier"
+      ],
+      "note": ""
+    },
+    {
+      "id": "cohere-rate-limits",
+      "name": "Cohere · Rate Limits",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://docs.cohere.com/docs/rate-limits",
+      "type": "page",
+      "keywords": [
+        "free",
+        "trial",
+        "rate limit",
+        "calls per month"
+      ],
+      "note": ""
+    },
+    {
+      "id": "sambanova-rate",
+      "name": "SambaNova · Rate Limits",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://docs.sambanova.ai/docs/en/models/rate-limits",
+      "type": "page",
+      "keywords": [
+        "free",
+        "tier",
+        "rate limit",
+        "payment method",
+        "TPD"
+      ],
+      "note": "Free Tier 定义页（是否需绑卡）"
+    },
+    {
+      "id": "gemini-pricing",
+      "name": "Google Gemini API · Pricing",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://ai.google.dev/gemini-api/docs/pricing?hl=en",
+      "type": "page",
+      "keywords": [
+        "free",
+        "free tier",
+        "pricing",
+        "rate limits"
+      ],
+      "note": "必须带 ?hl=en：Google 会按地域返回机器翻译版（英文 54840 字符 vs 波兰语 59563），不加则整页 hash 假变化"
+    },
+    {
+      "id": "groq-rate-limits",
+      "name": "Groq · Rate Limits",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://console.groq.com/docs/rate-limits",
+      "type": "page",
+      "keywords": [
+        "free",
+        "tier",
+        "rate limit",
+        "requests per"
+      ],
+      "note": ""
+    },
+    {
+      "id": "xai-docs",
+      "name": "xAI Grok · Models & Pricing",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://docs.x.ai/docs/models",
+      "type": "page",
+      "keywords": [
+        "free",
+        "credits",
+        "$25",
+        "pricing"
+      ],
+      "note": ""
+    },
+    {
+      "id": "openrouter-docs",
+      "name": "OpenRouter · Docs",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://openrouter.ai/docs",
+      "type": "page",
+      "keywords": [
+        "free",
+        "credits",
+        "rate limit",
+        "50"
+      ],
+      "note": ""
+    },
+    {
+      "id": "openrouter-free-models",
+      "name": "OpenRouter · 免费模型清单(API)",
+      "group": "official",
+      "priority": "P0",
+      "url": "https://openrouter.ai/api/v1/models",
+      "type": "openrouter-free",
+      "keywords": [
+        "free"
+      ],
+      "note": "直接读官方 API，比较 $0 模型集合的增删（比整页 hash 精准）"
+    },
+    {
+      "id": "tokenharbor-pricing",
+      "name": "TokenHarbor · Pricing",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://tokenharbor.ai/pricing",
+      "type": "page",
+      "keywords": [
+        "free",
+        "$0",
+        "daily",
+        "requests",
+        "quota"
+      ],
+      "note": ""
+    },
+    {
+      "id": "agnes-flash-doc",
+      "name": "Agnes 3.0 Flash · 官方文档",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://agnes-ai.com/en/docs/agnes-30-flash",
+      "type": "page",
+      "keywords": [
+        "free",
+        "$0",
+        "pricing",
+        "promotional",
+        "context"
+      ],
+      "note": "限免期是否结束看这里"
+    },
+    {
+      "id": "tokenrouter-models",
+      "name": "TokenRouter · 模型列表",
+      "group": "official",
+      "priority": "P2",
+      "url": "https://www.tokenrouter.com/models/",
+      "type": "page",
+      "keywords": [
+        "free",
+        "限免",
+        "赠送",
+        "折扣"
+      ],
+      "note": ""
+    },
+    {
+      "id": "opencode-zen",
+      "name": "OpenCode Zen",
+      "group": "official",
+      "priority": "P1",
+      "url": "https://opencode.ai/docs/zh-cn/zen/",
+      "type": "page",
+      "keywords": [
+        "免费",
+        "free",
+        "额度",
+        "限免",
+        "上线"
+      ],
+      "note": ""
+    },
+    {
+      "id": "ollama-cloud",
+      "name": "Ollama Cloud · 模型列表",
+      "group": "official",
+      "priority": "P2",
+      "url": "https://ollama.com/search?c=cloud",
+      "type": "page",
+      "keywords": [
+        "free",
+        "cloud",
+        "usage",
+        "limits"
+      ],
+      "note": ""
+    },
+    {
+      "id": "v2ex-rss",
+      "name": "V2EX · 首页（社区线索）",
+      "group": "community",
+      "priority": "P1",
+      "url": "https://www.v2ex.com/index.xml",
+      "type": "rss",
+      "keywords": [
+        "免费",
+        "白嫖",
+        "额度",
+        "token",
+        "API",
+        "限免",
+        "赠送",
+        "薅"
+      ],
+      "note": "仅作线索，须回官方页核实后才进候选池"
+    },
+    {
+      "id": "hn-algolia",
+      "name": "Hacker News · 最新帖（社区线索）",
+      "group": "community",
+      "priority": "P1",
+      "url": "https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=60",
+      "type": "hn-algolia",
+      "keywords": [
+        "free",
+        "no cost",
+        "credits",
+        "tier",
+        "api",
+        "tokens",
+        "llm"
+      ],
+      "note": "用 HN 官方 Algolia Search API（JSON，稳定）；hnrss.org 实测偶发超时已弃用。仅线索，须回官方页核实"
+    }
+  ]
+}

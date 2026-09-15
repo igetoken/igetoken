@@ -1,0 +1,70 @@
+name: source-watch
+
+# iGetToken 信源监控
+# 每 6h 静默巡检（仅异常推飞书）；每日 09:00 CST 汇总必发（兼作存活信号）。
+# 状态快照提交到独立分支 monitor-state，main / Cloudflare Pages 完全不受影响。
+# 配置与脚本始终取 main 上的版本：新增信源只改 monitor/sources.json。
+
+on:
+  schedule:
+    - cron: '0 1 * * *'        # UTC 01:00 = CST 09:00 → 每日汇总（必发）
+    - cron: '0 7,13,19 * * *'  # CST 15:00 / 21:00 / 03:00 → 静默巡检
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '只打印结果，不推飞书、不写状态'
+        type: boolean
+        default: false
+      force_report:
+        description: '强制按汇总模式发送（验证 webhook 用）'
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: source-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 检出状态分支
+        uses: actions/checkout@v4
+        with:
+          ref: monitor-state
+          fetch-depth: 0          # 需要取 main 的脚本与配置
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: 取 main 的脚本与信源清单
+        run: git checkout main -- scripts/source-watch.mjs monitor/sources.json
+
+      - name: 巡检
+        env:
+          FEISHU_WEBHOOK_NOTICE: ${{ secrets.FEISHU_WEBHOOK_NOTICE }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+          FEISHU_SECRET: ${{ secrets.FEISHU_SECRET }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          FORCE_REPORT: ${{ inputs.force_report }}
+          SCHEDULE: ${{ github.event.schedule }}
+        run: node scripts/source-watch.mjs
+
+      - name: 回写快照
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name  "igetoken-monitor"
+          git config user.email "monitor@users.noreply.github.com"
+          # monitor/state 在 .gitignore 中（main 工作区保持干净），此处强制入库
+          git add -f monitor/state
+          if git diff --cached --quiet; then
+            echo "状态无变化，跳过提交"
+          else
+            git commit -m "chore(monitor): snapshots $(date -u +%FT%TZ)"
+            git push
+          fi

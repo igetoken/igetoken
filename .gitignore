@@ -13,3 +13,4 @@ docs/
 .env.*
 .stale-trash/
 public/search-index.json
+monitor/state/
