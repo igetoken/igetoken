@@ -48,11 +48,11 @@
       "⚠️ 与国内版 workbuddy.cn 是两套完全独立的账号 / 积分体系，注册与积分互不相通，切勿混用",
       "⚠️ 「免费使用 DeepSeek-V4.1-Flash」为限免期政策，可能随时调整；海外版可能需要相应网络环境"
     ],
-  "source": "https://www.workbuddy.ai/",
-  "status": "active",
-  "pinHeadline": true,
-  "excludeHeadline": false
-},
+    "source": "https://www.workbuddy.ai/",
+    "status": "active",
+    "pinHeadline": false,
+    "excludeHeadline": false
+  },
   {
     "id": "2026-09-bai-free-models",
     "date": "2026-09-11",
@@ -851,5 +851,33 @@
     "summary": "历史活动存档：智谱不定期上重大促，建议关注官方公告页，下次活动第一时间来这查。",
     "source": "https://bigmodel.cn",
     "status": "ended"
+  },
+  {
+    "id": "2026-09-atria-dawn-preview",
+    "date": "2026-09-15",
+    "platform_slug": "atria",
+    "platform_name": "Atria Dawn Preview（上海人工智能实验室）",
+    "title": "Atria Dawn Preview 上线：注册赠 1 亿 Tokens 免费额度（744B MoE、256K 上下文、MIT 开源）",
+    "type": "new_model",
+    "reward": "新用户注册赠 1 亿 Tokens 免费额度（Google 登录领 Key，OpenAI 兼容 api.atria-asi.ai/v1；官方控制台实测确认，有效期/限速以控制台为准）",
+    "eligibility": "Google 账号登录即可注册、无需信用卡；Atria-Dawn-Preview 为 744B MoE（GLM-5.2 底座）、256K 上下文、最大输出 max_tokens 65536、MIT 开源权重、纯文本、支持 Thinking",
+    "deadline": null,
+    "howto": [
+      "打开 https://api.atria-asi.ai/console 用 Google 登录（无需信用卡）",
+      "进入控制台创建 API Key（仅显示一次，妥善保存）",
+      "OpenAI 兼容接口，base_url 指向 https://api.atria-asi.ai/v1",
+      "选择模型 Atria-Dawn-Preview，用 Chat Completions / Messages / Responses 任一端点调用"
+    ],
+    "summary": "上海人工智能实验室发布 Atria Dawn Preview（与书生/InternLM 同源）：744B MoE、256K 上下文、MIT 开源权重、纯文本、支持 Thinking。新用户 Google 登录注册即赠 1 亿 Tokens 免费额度，OpenAI 兼容 api.atria-asi.ai/v1，可站外 API Key 调用。⚠️ Preview 版，官方未公布计价（1 亿额度为控制台实测确认），第三方评测缺失，重要任务留备选。",
+    "pitfalls": [
+      "🔴 免费额度「1 亿 Token」为 2026-09-15 官方控制台实测确认；官方页未公开计价，超额/后续计费以控制台为准",
+      "⚠️ Preview 版，基准多为实验室自报、暂无第三方独立评测，稳定性与能力待验证",
+      "⚠️ 纯文本（256K 上下文，最大输出 max_tokens 上限 65536），不支持图像/文件输入",
+      "⚠️ base URL 与具体路径以控制台创建 Key 后官方文档为准（OpenAI 兼容，疑似 /v1）"
+    ],
+    "source": "https://atria-asi.ai/",
+    "status": "active",
+    "pinHeadline": true,
+    "excludeHeadline": false
   }
 ]
