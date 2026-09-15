@@ -2,15 +2,21 @@
 import Base from '../../layouts/Base.astro';
 import { getCollection } from 'astro:content';
 
-const tutorials = (await getCollection('tutorials')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const tutorials = (await getCollection('tutorials')).sort((a, b) => {
+  const av = (a.data.updatedAt ?? a.data.pubDate).valueOf();
+  const bv = (b.data.updatedAt ?? b.data.pubDate).valueOf();
+  if (bv !== av) return bv - av; // 更新日期优先
+  const ap = a.data.pubDate.valueOf();
+  const bp = b.data.pubDate.valueOf();
+  if (bp !== ap) return bp - ap;
+  return a.id.localeCompare(b.id); // 兜底，保证顺序稳定
+});
 const formatDate = (d: Date) => d.toISOString().slice(0, 10);
 ---
 
 <Base
   title="保姆级教程 - 免费 Token 从领取到调用 | iGetoken"
-  description="手把手教程：如何领取免费 API Key、如何配置 Cherry Studio 等客户端、如何用 Python 调用免费大模型、免费平台怎么选。"
+  description="从领 Key、配客户端到写代码，再到报错排查与多模型容灾：免费大模型 API 的完整教程系列，含可运行代码与跨平台排错对照。"
 >
   <section class="mx-auto max-w-4xl px-4 py-12">
     <h1 class="text-3xl font-black text-slate-900">保姆级教程</h1>
@@ -25,6 +31,11 @@ const formatDate = (d: Date) => d.toISOString().slice(0, 10);
           >
             <div class="flex flex-wrap items-center gap-2 text-xs text-slate-400">
               <time datetime={formatDate(t.data.pubDate)}>{formatDate(t.data.pubDate)}</time>
+              {t.data.updatedAt && (
+                <span class="rounded-md bg-emerald-50 px-2 py-0.5 text-emerald-700">
+                  更新于 {formatDate(t.data.updatedAt)}
+                </span>
+              )}
               {t.data.tags.map((tag) => (
                 <span class="rounded-md bg-slate-100 px-2 py-0.5 text-slate-600">{tag}</span>
               ))}
@@ -35,5 +46,11 @@ const formatDate = (d: Date) => d.toISOString().slice(0, 10);
         ))
       }
     </div>
+
+    <p class="mt-8 text-sm text-slate-400">
+      教程只讲方法与口径，具体的免费额度、截止日期一律以
+      <a href="/models/" class="font-medium text-emerald-700 hover:underline">资源库</a>
+      各平台页为准（每页都标注了核实日期）。
+    </p>
   </section>
 </Base>

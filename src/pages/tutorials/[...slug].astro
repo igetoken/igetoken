@@ -22,7 +22,14 @@ const formatDate = (d: Date) => d.toISOString().slice(0, 10);
     </nav>
     <h1 class="mt-4 text-3xl font-black leading-snug text-slate-900">{tutorial.data.title}</h1>
     <div class="mt-3 flex flex-wrap items-center gap-2 text-xs text-slate-400">
-      <time datetime={formatDate(tutorial.data.pubDate)}>{formatDate(tutorial.data.pubDate)}</time>
+      <time datetime={formatDate(tutorial.data.pubDate)}>发布 {formatDate(tutorial.data.pubDate)}</time>
+      {
+        tutorial.data.updatedAt && (
+          <span class="rounded-md bg-emerald-50 px-2 py-0.5 text-emerald-700">
+            更新于 {formatDate(tutorial.data.updatedAt)}
+          </span>
+        )
+      }
       {
         tutorial.data.tags.map((tag) => (
           <span class="rounded-md bg-slate-100 px-2 py-0.5 text-slate-600">{tag}</span>
@@ -33,6 +40,22 @@ const formatDate = (d: Date) => d.toISOString().slice(0, 10);
       class="prose prose-slate mt-8 max-w-none prose-headings:font-bold prose-a:text-emerald-700 prose-pre:bg-slate-900 prose-pre:text-slate-100"
     >
       <Content />
+    </div>
+
+    <div class="mt-10 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-600">
+      <p>
+        本文只讲方法与口径，不保证任何具体额度长期有效——文中提到的平台请以
+        <a href="/models/" class="font-medium text-emerald-700 hover:underline">资源库平台页</a>
+        为准，每页都标注了核实日期。
+      </p>
+      <p class="mt-2">
+        还没开始？从
+        <a href="/tutorials/cherry-studio-setup/" class="font-medium text-emerald-700 hover:underline">
+          《领取第一个免费 Key》
+        </a>
+        读起。担心踩坑，先看
+        <a href="/guide/" class="font-medium text-emerald-700 hover:underline">避坑指南</a>。
+      </p>
     </div>
   </article>
 </Base>

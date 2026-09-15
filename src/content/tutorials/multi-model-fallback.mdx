@@ -1,0 +1,216 @@
+---
+title: '多模型 Fallback 实战：一家挂了自动切下一家'
+description: '免费额度一定会出现限流、耗尽、平台调整三件事。这篇给出可直接运行的故障转移实现：候选列表、失败即切、熔断与半开、命中日志，并讲清「该等还是该切」的判断。'
+pubDate: 2026-09-15
+updatedAt: 2026-09-15
+tags: ['进阶玩法', '工程实践']
+emoji: '🔀'
+---
+
+这是上一篇 [《用 Python 三行代码调用免费大模型》](/tutorials/python-call-api/)结尾预告过的内容。
+
+当时我说「想把多个免费平台串起来做故障转移？关注后续教程」——现在来还这笔账。
+
+先说结论：**只要你的应用需要长期稳定运行，用一个免费渠道就是错的。** 免费额度一定会遇到下面三件事，且都和你的代码质量无关：
+
+| 会发生的事 | 表现 |
+|---|---|
+| 撞限流 | 突发流量直接 429 |
+| 额度耗尽 | 一次性赠送的额度说没就没 |
+| 平台调整 | 模型下架、免费层取消、接口换版本 |
+
+它们都不在你的控制范围内。**唯一的对策是：让"换一家"成为系统能力，而不是凌晨两点的手工操作。**
+
+## 一、先想清楚：什么时候该等，什么时候该切
+
+这是故障转移设计里最容易被忽略、却最决定体验的一环。
+
+- **单渠道场景**，429 只能等——退避重试是唯一选项。
+- **多候选场景**，429 时**切换通常优于等待**。因为下一个候选是完全独立的资源池，它很可能此刻完全空闲。
+
+所以正确的顺序是：**先切（成本近乎为零）→ 全切完还失败才等 → 仍失败再降级（换更小的模型或返回兜底话术）**。
+
+这跟单渠道应用的直觉是反的。记住这一点，下面代码的设计就有了解释。
+
+## 二、定义候选：排序比数量重要
+
+候选不是越多越好，而是要**按"额度剩余 × 稳定性 × 速度"排序**。一个可用的排法：
+
+1. **每天重置的额度放前面**——最耐用，日常都用它。
+2. **一次性赠送额度放中间**——额度大但会过期，跑攻坚任务。
+3. **限速严厉的放最后**——兜底用，平时别让它承担主力流量。
+
+配置写成数据，不要写死在逻辑里：
+
+```python
+ROUTES = [
+    dict(name="日常-永久免费",  base_url="https://平台页给的/v1", model="小参数免费模型", api_key_env="KEY_A"),
+    dict(name="攻坚-赠送额度",  base_url="https://平台页给的/v1", model="大参数模型",     api_key_env="KEY_B"),
+    dict(name="兜底-宽松限速",  base_url="https://平台页给的/v1", model="稳定小模型",     api_key_env="KEY_C"),
+]
+```
+
+具体填什么，从[资源库](/models/)平台页复制 `api_base` 与示例模型——**别凭记忆写模型 ID**。
+
+> **一个反模式**：把同一平台的不同 Key 当成两个候选。它们共享同一份额度与同一个限速池，一起挂的。真正的冗余必须来自**不同平台**。
+
+## 三、完整实现
+
+下面是可直接运行的版本，共三部分：错误分流、熔断、调用。
+
+```python
+import logging
+import os
+import time
+from dataclasses import dataclass
+
+from openai import APIConnectionError, APIStatusError, APITimeoutError, OpenAI
+
+log = logging.getLogger("fallback")
+
+# 重试/换渠道有用的错误
+RETRYABLE = {429, 500, 502, 503, 504}
+# 换了渠道也没用的错误：参数、鉴权、模型不存在
+FATAL = {400, 401, 403, 404, 413, 422}
+
+
+@dataclass
+class Route:
+    name: str
+    base_url: str
+    model: str
+    api_key_env: str
+    fails: int = 0
+    open_until: float = 0.0          # 熔断截止时间（epoch 秒）
+
+    @property
+    def is_open(self) -> bool:       # True = 正在熔断，跳过
+        return time.time() < self.open_until
+
+
+class FallbackClient:
+    """
+    按候选顺序尝试，失败即切下一个；连续失败达阈值则熔断一段时间。
+    熔断到期后自动恢复（天然半开），不需要额外的探测逻辑。
+    """
+
+    def __init__(self, routes, fail_threshold=2, cooldown=120):
+        self.routes = routes
+        self.fail_threshold = fail_threshold
+        self.cooldown = cooldown
+        self._clients = {}
+
+    def _client(self, r: Route) -> OpenAI:
+        if r.name not in self._clients:
+            key = os.environ.get(r.api_key_env)
+            if not key:
+                raise RuntimeError(f"缺少环境变量 {r.api_key_env}")
+            # 显式设 timeout：默认值在免费渠道上往往偏长
+            self._clients[r.name] = OpenAI(
+                api_key=key, base_url=r.base_url, timeout=60.0, max_retries=0
+            )
+        return self._clients[r.name]
+
+    def _candidates(self):
+        """优先返回未熔断的；若全在熔断中，则退化为全部（总比直接失败强）。"""
+        return [r for r in self.routes if not r.is_open] or self.routes
+
+    def _on_success(self, r: Route):
+        r.fails = 0
+        r.open_until = 0.0
+
+    def _on_fail(self, r: Route):
+        r.fails += 1
+        if r.fails >= self.fail_threshold:
+            r.open_until = time.time() + self.cooldown
+            log.warning("熔断 %s，冷却 %ss（连续失败 %s 次）", r.name, self.cooldown, r.fails)
+
+    def chat(self, messages, temperature=0.7, max_tokens=None):
+        errors = []
+        for r in self._candidates():
+            try:
+                kwargs = {"model": r.model, "messages": messages, "temperature": temperature}
+                if max_tokens:
+                    kwargs["max_tokens"] = max_tokens
+
+                resp = self._client(r).chat.completions.create(**kwargs)
+                self._on_success(r)
+                log.info("命中 %s / %s", r.name, r.model)
+                return resp.choices[0].message.content
+
+            except APIStatusError as e:
+                code = e.status_code
+                if code in FATAL:
+                    # 请求本身有问题，换渠道也是白搭——直接抛出，别浪费其它渠道的额度
+                    raise
+                self._on_fail(r)
+                errors.append(f"{r.name}: HTTP {code}")
+                log.warning("候选 %s 失败 HTTP %s，切下一个", r.name, code)
+
+            except (APIConnectionError, APITimeoutError) as e:
+                self._on_fail(r)
+                errors.append(f"{r.name}: {type(e).__name__}")
+                log.warning("候选 %s 网络失败 %s，切下一个", r.name, type(e).__name__)
+
+        raise RuntimeError("所有候选均失败 → " + " | ".join(errors))
+
+
+if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
+
+    client = FallbackClient([
+        Route("日常-永久免费", os.environ["URL_A"], "model-a", "KEY_A"),
+        Route("攻坚-赠送额度", os.environ["URL_B"], "model-b", "KEY_B"),
+    ])
+
+    print(client.chat([{"role": "user", "content": "用一句话说明什么是故障转移"}]))
+```
+
+**三个设计点值得单独说明**：
+
+**① `FATAL` 直接抛出，不做切换。** 如果错误是「模型 ID 写错了」，切到第二家同样会报 404——白白消耗另一家的配额，还把日志搅乱。**只在渠道性错误上切换**，是这套实现里最重要的判断。
+
+**② `max_retries=0`。** 我们自己做故障转移，就得关掉 SDK 内置重试，否则两层重试叠加会让响应时间成倍拉长。**重试策略只能有一层。**
+
+**③ 熔断的恢复就是"时间到了自动放行"。** 这就是半开的简化版——不需要额外的状态机。代价是恢复后的第一个请求会真实失败一次，但换来的是实现复杂度大幅下降。
+
+## 四、让候选自己转起来（否则会浪费额度）
+
+上面的实现有个缺点：**只要第一个候选不挂，后面的永远用不上**。而一次性赠送的额度是**会过期**的，闲置就等于浪费。
+
+对策：给候选加**轮转**，让流量按比例分散。最简单的做法是每次成功调用后把该候选移到队尾：
+
+```python
+def _rotate(self, used: Route):
+    self.routes.remove(used)
+    self.routes.append(used)
+```
+
+在 `_on_success` 里调一次即可。效果是**所有候选轮流承接流量**，每家的额度都在被消耗，最坏情况（某家突然挂掉）发生时你也不会「第一次用它就发现它已经不能用了」。
+
+> 如果某家有明确的到期日，就反向操作：**把快过期的候选临时提到队首**，优先把它用掉。
+
+## 五、日志才是这套系统的价值所在
+
+跑一段时间后，日志会告诉你一些只有真实运行才知道的事：
+
+- **哪家最常失败**——如果某家每周熔断三次，它就不该留在候选里。
+- **失败是不是集中在某个时段**——固定时段失败 = 对方有定时限流，可以按时间表调整顺序。
+- **命中率分布**——如果第一个候选承担了 99% 的流量，说明冗余是纸面上的。
+
+建议至少记录三个字段：**命中的渠道名、失败渠道的错误码、单次耗时**。这三样足够你做出「留谁砍谁」的判断。
+
+## 六、还可以再往前走一步
+
+这版实现够用了，但有两个方向值得在真实项目里补：
+
+**① 按能力路由，而不只是按故障路由。** 长文本任务自动选长上下文模型、需要工具调用的任务只走支持 tool calling 的渠道——这已经是「路由器」而不只是「容灾」了。
+
+**② 流式场景要额外处理。** 流式请求失败时**无法从中途切换**（已经吐出的内容收不回来）。可行做法是：流式只走最稳定的候选，或者先非流式试通、再转流式输出。中断处理见[《大模型 API 报错排查手册》](/tutorials/api-error-troubleshooting/)第五节。
+
+## 下一步
+
+- 报错看不懂？[《大模型 API 报错排查手册》](/tutorials/api-error-troubleshooting/)
+- 要接到 AI 编程工具里？[《用免费 API 白嫖 AI 编程》](/tutorials/ai-coding-tools/)
+- 挑平台填候选 → [资源库](/models/)；盯额度到期 → [活动快讯](/deals/)
+- 担心渠道来源 → [避坑指南](/guide/)

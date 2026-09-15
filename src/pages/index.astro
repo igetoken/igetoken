@@ -7,6 +7,7 @@ import PerkCard from '../components/PerkCard.astro';
 import SearchCard from '../components/SearchCard.astro';
 import { getPlatforms, selectHomeDeals, CATEGORY_LABEL, getPerks, getSearchApis, getDeals } from '../lib/data';
 import Notice from '../components/Notice.astro';
+import { getCollection } from 'astro:content';
 
 const platforms = getPlatforms();
 const homeDeals = selectHomeDeals(10);
@@ -27,6 +28,19 @@ const lastVerified = [
   .filter(Boolean)
   .sort()
   .at(-1);
+// 首页教程区从内容集合派生：取已标记 featured 的条目，按「更新日期优先」排序（人工精选语义保留）
+const homeTutorials = (await getCollection('tutorials'))
+  .filter((t) => t.data.featured)
+  .sort((a, b) => {
+    const av = (a.data.updatedAt ?? a.data.pubDate).valueOf();
+    const bv = (b.data.updatedAt ?? b.data.pubDate).valueOf();
+    if (bv !== av) return bv - av;
+    const ap = a.data.pubDate.valueOf();
+    const bp = b.data.pubDate.valueOf();
+    if (bp !== ap) return bp - ap;
+    return a.id.localeCompare(b.id); // 同日同日发布时按 id 兜底，保证顺序稳定
+  })
+  .slice(0, 3);
 ---
 
 <Base
@@ -195,34 +209,15 @@ const lastVerified = [
     </div>
     <div class="mt-6 columns-1 gap-4 md:columns-3">
       {
-        [
-          {
-            href: '/tutorials/cherry-studio-setup/',
-            emoji: '🔑',
-            title: '领取第一个免费 Key 并接入 Cherry Studio',
-            desc: '以智谱 GLM-4-Flash 为例，注册、领额度、配置客户端一气呵成。',
-          },
-          {
-            href: '/tutorials/python-call-api/',
-            emoji: '🐍',
-            title: '用 Python 三行代码调用免费大模型',
-            desc: 'OpenAI SDK 兼容写法，一套代码随便切换免费平台。',
-          },
-          {
-            href: '/tutorials/choose-free-platform/',
-            emoji: '🧭',
-            title: '2026 免费 API 平台怎么选',
-            desc: '按场景对号入座：学习、高频轻任务、长文本、多模态各选谁。',
-          },
-        ].map((t) => (
+        homeTutorials.map((t) => (
           <div class="mb-4 w-full break-inside-avoid">
             <a
-              href={t.href}
+              href={`/tutorials/${t.id}/`}
               class="block rounded-xl border border-slate-200 bg-white p-6 transition hover:border-emerald-300 hover:shadow-md"
             >
-              <span class="text-3xl">{t.emoji}</span>
-              <h3 class="mt-3 font-bold text-slate-900">{t.title}</h3>
-              <p class="mt-2 text-sm text-slate-500">{t.desc}</p>
+              <span class="text-3xl">{t.data.emoji}</span>
+              <h3 class="mt-3 font-bold text-slate-900">{t.data.title}</h3>
+              <p class="mt-2 line-clamp-2 text-sm text-slate-500">{t.data.description}</p>
             </a>
           </div>
         ))
