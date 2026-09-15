@@ -1474,5 +1474,46 @@
     "openai_compatible": true,
     "publishedAt": "2026-09-14",
     "last_verified": "2026-09-14"
+  },
+  {
+    "slug": "atria",
+    "name": "Atria Dawn Preview（上海人工智能实验室）",
+    "category": "domestic",
+    "website": "https://atria-asi.ai/",
+    "register_url": "https://api.atria-asi.ai/console",
+    "docs_url": "https://github.com/atria-asi/Atria-Dawn-Preview",
+    "tagline": "上海人工智能实验室智能体基础模型，注册送 1 亿 Token 免费额度",
+    "highlight": "新注册赠 1 亿 Tokens 免费额度（控制台实测确认）；OpenAI 兼容（Chat Completions / Messages / Responses）；744B MoE、256K 上下文、MIT 开源权重",
+    "tags": [
+      "智能体",
+      "开源",
+      "免费额度",
+      "OpenAI兼容"
+    ],
+    "offers": [
+      {
+        "model": "Atria-Dawn-Preview",
+        "quota": "新用户注册赠 1 亿 Tokens 免费额度（官方控制台实测确认，2026-09-15；有效期与限速以控制台为准）",
+        "type": "signup"
+      }
+    ],
+    "steps": [
+      "打开 https://api.atria-asi.ai/console 用 Google 登录（无需信用卡）",
+      "进入控制台创建 API Key（仅显示一次，妥善保存）",
+      "OpenAI 兼容接口，base_url 指向 https://api.atria-asi.ai/v1",
+      "选择模型 Atria-Dawn-Preview，用 Chat Completions / Messages / Responses 任一端点调用"
+    ],
+    "pitfalls": [
+      "🔴 免费额度「注册送 1 亿 Token」为 2026-09-15 官方控制台实测确认；官方页未公开计价，超额/后续计费规则以控制台为准",
+      "⚠️ 官方未公布 API 计价与速率限制，1 亿额度用尽后的计费与限速未知，重要业务留备选",
+      "⚠️ 模型为 Preview 版，基准多为实验室自报、暂无第三方独立评测，稳定性与能力待验证",
+      "⚠️ 纯文本（256K 上下文），不支持图像/文件输入；权重 MIT 开源可自部署（需多卡 H 级显卡）",
+      "⚠️ base URL 与具体路径以控制台创建 Key 后文档为准（OpenAI 兼容，疑似 /v1）"
+    ],
+    "api_base": "https://api.atria-asi.ai/v1",
+    "example_model": "Atria-Dawn-Preview",
+    "openai_compatible": true,
+    "publishedAt": "2026-09-15",
+    "last_verified": "2026-09-15"
   }
 ]
