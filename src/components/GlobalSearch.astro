@@ -103,7 +103,10 @@
     async function ensureIndex() {
       if (index) return index;
       if (!loading) {
-        loading = fetch('/search-index.json', { cache: 'force-cache' })
+        // ⚠️ 不能用 force-cache：索引路径固定（无 hash），强缓存会让浏览器一直复用旧索引，
+        // 新收录的平台会上线后长期搜不到（本地 dev 同理，必须硬刷新才可见）。
+        // no-cache 语义是「每次向服务器校验」：未变命中 304（几乎零开销），变了立即取新文件。
+        loading = fetch('/search-index.json', { cache: 'no-cache' })
           .then((r) => (r.ok ? r.json() : []))
           .catch(() => [])
           .then((data) => {
