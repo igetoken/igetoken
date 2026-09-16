@@ -1523,8 +1523,8 @@
     "website": "https://zenmux.ai",
     "register_url": "https://zenmux.ai",
     "docs_url": "https://zenmux.ai/docs/about/intro.html",
-    "tagline": "聚合 192 个模型的官方渠道路由网关，常驻多个 $0 免费模型",
-    "highlight": "7 个模型输入输出双 $0（含 GLM 两个长期 free SKU）；注册仅需邮箱/GitHub，无需手机号与信用卡；国内可直连",
+    "tagline": "聚合 192 个模型的官方渠道路由网关，7 个 $0 免费模型（需先充值解锁）",
+    "highlight": "7 个模型输入输出双 $0（含 GLM 两个长期 free SKU），但需账户余额 > 0 才可调用 —— 官方定性为反滥用门槛、非使用收费，等于要先充 $5 才能解锁；注册仅需邮箱/GitHub；国内可直连",
     "tags": [
       "聚合平台",
       "免费模型",
@@ -1534,28 +1534,29 @@
     "offers": [
       {
         "model": "inclusionai/ling-3.0-flash-vl（124B MoE / 5.5B 激活，原生图像+文本+视频输入，262K 上下文，支持工具调用）",
-        "quota": "限时 $0（原价 $0.06 / $0.18 每百万 token 已划线，2026-09-15 上线）；截止时间官方未公布，以站内标价为准",
+        "quota": "限时 $0（原价 $0.06 / $0.18 每百万 token 已划线，2026-09-15 上线）；截止时间官方未公布，以站内标价为准；⚠️ 调用需账户余额 > 0",
         "type": "limited"
       },
       {
         "model": "z-ai/glm-4.7-flash-free、z-ai/glm-4.6v-flash-free（200K 上下文，后者支持图像/视频/文件输入）",
-        "quota": "长期 $0 免费 SKU（模型 ID 自带 -free，已在架 8 个月以上）",
+        "quota": "长期 $0 免费 SKU（模型 ID 自带 -free，已在架 8 个月以上）；同样受「余额 > 0」门槛限制",
         "type": "permanent"
       },
       {
         "model": "inclusionai/ling-3.0-tiny、atria-asi/atria-dawn-preview、dots-studio/dots3-note-prev、sapiens-ai/agnes-2.5-flash",
-        "quota": "预览期 / 限时 $0；免费阵容会轮换（2026-06 指南里的 kimi-k2.7-code-free 等已下架），以官网实时标价为准",
+        "quota": "预览期 / 限时 $0；免费阵容会轮换（2026-06 指南里的 kimi-k2.7-code-free 等已下架），以官网实时标价为准；同受余额门槛限制",
         "type": "limited"
       }
     ],
     "steps": [
       "打开 zenmux.ai 注册（仅需邮箱 / GitHub / Google，无需手机号与信用卡）",
+      "⚠️ 先充值使账户余额 > 0：$0 免费模型要求余额大于 0 才可调用（官方定性为反滥用措施、非使用收费），对应最低充值 $5 —— 余额为 0 时调用任何免费模型都返回 402",
       "控制台创建 Pay As You Go API Key 并立即保存",
       "在模型列表筛选标 $0 或模型 ID 带 -free 的免费模型",
       "OpenAI 兼容接口，base_url 指向 https://zenmux.ai/api/v1；同一 Key 亦支持 Anthropic /v1/messages 与 Google Vertex 协议"
     ],
     "pitfalls": [
-      "🔴 免费模型是否需先充值存在口径冲突：官方 Pay As You Go 文档只写「预付余额、最低充值 $5」，通篇未提免费模型；而多篇社区实操均为「注册 → 建 PAYG Key → 直接调 free 模型，不用信用卡」。收录时点以社区口径为准，若实际报余额不足，需先充 $5 解锁（本站已标注待实测复核）",
+      "🔴 免费模型不能白拿：实测调用 inclusionai/ling-3.0-flash-vl 返回 402，原文「this model is only available to accounts with a balance greater than 0. This is an anti-abuse measure, not a usage charge.」——即账户余额必须大于 0，对应官方 PAYG 文档的最低充值 $5。这笔钱是「反滥用门槛」而非燃料费：充值后调用 $0 模型仍不扣费、余额可留给付费模型，但入场前必须先押 $5，否则一个免费模型也调不动",
       "⚠️ 免费阵容会轮换：两个 -free SKU 已稳定在架 8 个月以上，但 2026-06 社区指南里的 kimi-k2.7-code-free / glm-5.2-free / step-3.7-flash-free 现已全部下架，随时以官网实时标价为准",
       "7 个免费模型里有 3 个在站内已有官方直连入口（Atria / Dots / Agnes），无需绕道聚合器；Ling 系列官方直连见「蚂蚁灵 Ling API」（每日 50 万 Token 免费）",
       "别把本条的 Ling-3.0-flash-VL 与蚂蚁灵官方混写：官方直连的 Ling-3.0-flash 限时免费已于 2026-08-03 结束，本次是聚合器对 VL 变体给出的 $0，模型与活动都不同",
@@ -1565,6 +1566,8 @@
     "api_base": "https://zenmux.ai/api/v1",
     "example_model": "z-ai/glm-4.7-flash-free",
     "openai_compatible": true,
+    "rating": 2,
+    "ratingNote": "编辑部实测：$0 免费模型需账户余额 > 0 才能调用（官方定性为反滥用措施、非使用收费），实际门槛是先充 $5，且官方 PAYG 文档未向用户明示；充值后 7 个免费模型可直连调用、GLM 两个 free SKU 长期稳定，扣分点是入场门槛与快速轮换的免费名单。",
     "publishedAt": "2026-09-16",
     "last_verified": "2026-09-16"
   }
