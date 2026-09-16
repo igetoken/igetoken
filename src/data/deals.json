@@ -26,7 +26,7 @@
     ],
     "source": "https://opencode.ai/docs/zen/",
     "status": "active",
-    "pinHeadline": false,
+    "pinHeadline": true,
     "excludeHeadline": false
   },
   {
@@ -907,7 +907,7 @@
     ],
     "source": "https://atria-asi.ai/",
     "status": "active",
-    "pinHeadline": true,
+    "pinHeadline": false,
     "excludeHeadline": false
   }
 ]

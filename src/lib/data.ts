@@ -283,7 +283,7 @@ export function selectHomeFeatured(): Deal | undefined {
   const dynamicPool = pool.filter((d) => !d.excludeHeadline);
   const launchPool = dynamicPool.filter(isTodayLaunch);
   const flashPool = dynamicPool.filter(isSameDayFlash);
-  const candidates = launchPool.length > 0 ? launchPool : flashPool.length > 0 ? flashPool : dynamicPool.length > 0 ? dynamicPool : active;
+  const candidates = launchPool.length > 0 ? launchPool : flashPool.length > 0 ? flashPool : dynamicPool.length > 0 ? dynamicPool : activeDeals;
   return [...candidates].sort((a, b) => {
     const diff = valueScore(b) - valueScore(a);
     if (diff !== 0) return diff;
