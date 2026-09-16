@@ -2,112 +2,112 @@
   "version": 1,
   "sources": {
     "zhipu-docs": {
-      "fetchedAt": "2026-09-16T13:07:24.054Z",
+      "fetchedAt": "2026-09-16T19:04:54.996Z",
       "hash": "f6b28bb66900141d0e92ee6857a55901b2c7fc965ad6e0d16dbeb83942733bf2",
       "textLen": 1609,
       "failCount": 0
     },
     "bailian-free-quota": {
-      "fetchedAt": "2026-09-16T13:07:23.896Z",
+      "fetchedAt": "2026-09-16T19:04:55.072Z",
       "hash": "17497fd9878b83d7b3b2c82e1855b90fac2762b7222a7ee0c71b55c80729186f",
       "textLen": 6186,
       "failCount": 0
     },
     "siliconflow-news": {
-      "fetchedAt": "2026-09-16T13:07:23.867Z",
+      "fetchedAt": "2026-09-16T19:04:55.388Z",
       "hash": "c7fba165036fab7902c0638abd9d40e8da535bcb97304c5e0b409bbe943e36cf",
       "textLen": 1525,
       "failCount": 0
     },
     "hunyuan-pricing": {
-      "fetchedAt": "2026-09-16T13:07:24.347Z",
+      "fetchedAt": "2026-09-16T19:04:55.694Z",
       "hash": "b8d282b93affd1b4e6e1cd257cb9f02f99db48051960fd2b1e17e83c01c967b1",
       "textLen": 2383,
       "failCount": 0
     },
     "deepseek-pricing": {
-      "fetchedAt": "2026-09-16T13:07:24.992Z",
+      "fetchedAt": "2026-09-16T19:04:56.280Z",
       "hash": "b37afcfdea8c9e56650671c8fa826e9a99f34707dc203a646b654e73dfb11969",
       "textLen": 2427,
       "failCount": 0
     },
     "moonshot-pricing": {
-      "fetchedAt": "2026-09-16T13:07:28.799Z",
+      "fetchedAt": "2026-09-16T19:04:56.350Z",
       "hash": "0861432055c2b1a6653e9fcb2eb1d9f72085876495a97be6213110f6674a5ca0",
       "textLen": 633,
       "failCount": 0,
       "lastChangedAt": "2026-09-15T07:08:17.243Z"
     },
     "siliconflow-notes": {
-      "fetchedAt": "2026-09-16T13:07:24.489Z",
+      "fetchedAt": "2026-09-16T19:04:56.143Z",
       "hash": "0871523b7e810fcecff47f13cde17fa0a4f56a08ba4af36db1ca2749db3118c1",
       "textLen": 32350,
       "failCount": 0
     },
     "qiniu-docs": {
-      "fetchedAt": "2026-09-16T13:07:25.504Z",
+      "fetchedAt": "2026-09-16T19:04:56.871Z",
       "hash": "474cd8e5be7164ba54f79622cdbe44ad9f19d87c0eca96eb92b4c117a1e5258e",
       "textLen": 9971,
       "failCount": 0
     },
     "xunfei-web-doc": {
-      "fetchedAt": "2026-09-16T13:07:25.887Z",
+      "fetchedAt": "2026-09-16T19:04:57.819Z",
       "hash": "cb2e65b6aaa990b4b449c3c16624654e772092b9cca2cfb1dbc286080c08463f",
       "textLen": 8056,
       "failCount": 0
     },
     "ctyun-tokenhub": {
-      "fetchedAt": "2026-09-16T13:07:26.369Z",
+      "fetchedAt": "2026-09-16T19:04:57.624Z",
       "hash": "4f36474bc752b97f32198baf161e5350dfd120ee52bf24625f1d57d797308dfc",
       "textLen": 4470,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T13:07:26.369Z"
     },
     "longcat-changelog": {
-      "fetchedAt": "2026-09-16T13:07:30.394Z",
+      "fetchedAt": "2026-09-16T19:04:59.214Z",
       "hash": "913420f8ff0a9fec38e56bda75b662ca093842eb8145995b2f957379f422a797",
       "textLen": 4451,
       "failCount": 0
     },
     "streamlake-wanqing": {
-      "fetchedAt": "2026-09-16T13:07:28.207Z",
+      "fetchedAt": "2026-09-16T19:04:59.729Z",
       "hash": "716a33fb87d349272da326446ab9a13d870129408df0c5549d439d9bd2fc639d",
       "textLen": 3246,
       "failCount": 0
     },
     "baidu-wenxin-doc": {
-      "fetchedAt": "2026-09-16T13:07:27.748Z",
+      "fetchedAt": "2026-09-16T19:04:58.709Z",
       "hash": "86fa0ce3bf6581837e5593c79d0050ca0c07efc06e44c519ed5d828ae21a7fbe",
       "textLen": 10750,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T07:06:43.537Z"
     },
     "gitee-moark-docs": {
-      "fetchedAt": "2026-09-16T13:07:29.148Z",
+      "fetchedAt": "2026-09-16T19:04:58.885Z",
       "hash": "736d3f38980a48f19ae50c19e0235d981a2c952c16666fea136aa7063a0ab4ee",
       "textLen": 1757,
       "failCount": 0
     },
     "cloudflare-pricing": {
-      "fetchedAt": "2026-09-16T13:07:29.219Z",
+      "fetchedAt": "2026-09-16T19:04:59.853Z",
       "hash": "5ab5b2699c39fd96cf25c424380e3367e8c2c718fbd0dbbe7988312903ef0e71",
       "textLen": 12017,
       "failCount": 0
     },
     "scnet-maas": {
-      "fetchedAt": "2026-09-16T13:07:29.497Z",
+      "fetchedAt": "2026-09-16T19:05:00.155Z",
       "hash": "8f6b1a9c21babab230ff619aeef218381ecaac6c854ffd96e1258fef8dcc904e",
       "textLen": 137,
       "failCount": 0
     },
     "mistral-pricing": {
-      "fetchedAt": "2026-09-16T13:07:29.705Z",
+      "fetchedAt": "2026-09-16T19:05:00.429Z",
       "hash": "4a4a08b4cecd463b8a15b48a83246fb0c8ae935b1e86c3e92f288771010e6781",
       "textLen": 7506,
       "failCount": 0
     },
     "cohere-rate-limits": {
-      "fetchedAt": "2026-09-16T13:07:29.594Z",
+      "fetchedAt": "2026-09-16T19:05:00.296Z",
       "hash": "231e9cfdc8313e6b90453bf17c26ba527172ccda7956e748d2b0743571c6e65c",
       "textLen": 6048,
       "failCount": 0
@@ -116,43 +116,44 @@
       "fetchedAt": "2026-09-16T13:07:30.337Z",
       "hash": "7ba85503ddd86b000f43b36b3c92bf8aeda2e8b6d105d9368e9ce39257e35905",
       "textLen": 5431,
-      "failCount": 0
+      "failCount": 1,
+      "lastError": "TypeError: fetch failed"
     },
     "gemini-pricing": {
-      "fetchedAt": "2026-09-16T13:07:30.231Z",
+      "fetchedAt": "2026-09-16T19:05:00.671Z",
       "hash": "39007c98eb9c4f4464e1b5edfcd41b646fef6930c0f89e4fe93dc028d65cc6ae",
       "textLen": 54973,
       "failCount": 0,
       "lastChangedAt": "2026-09-15T19:05:03.663Z"
     },
     "groq-rate-limits": {
-      "fetchedAt": "2026-09-16T13:07:29.847Z",
+      "fetchedAt": "2026-09-16T19:05:00.530Z",
       "hash": "382a1c3ddc73140b91cbe32b248b103e28ae85745f67e1391e6052c28f42cfad",
       "textLen": 6073,
       "failCount": 0,
       "lastChangedAt": "2026-09-15T07:08:20.449Z"
     },
     "sambanova-rate": {
-      "fetchedAt": "2026-09-16T13:07:29.660Z",
+      "fetchedAt": "2026-09-16T19:05:00.399Z",
       "hash": "9d41e92d8f52caa24bdebec3bd933bb9ab8a426bbff06f0d0181c9ea5d6deecb",
       "textLen": 2995,
       "failCount": 0
     },
     "xai-docs": {
-      "fetchedAt": "2026-09-16T13:07:30.071Z",
+      "fetchedAt": "2026-09-16T19:05:00.700Z",
       "hash": "f129306cb9b61e0c046c3e3606164c21e1b11d076521a5045370c7f989593f3e",
       "textLen": 2687,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T01:13:35.402Z"
     },
     "ppio-docs": {
-      "fetchedAt": "2026-09-16T13:07:28.011Z",
+      "fetchedAt": "2026-09-16T19:05:00.121Z",
       "hash": "8c15e094b2a79f838bcc29f4c6cef591200a647b34053b4b7a922b98db8d77c5",
       "textLen": 12644,
       "failCount": 0
     },
     "openrouter-free-models": {
-      "fetchedAt": "2026-09-16T13:07:30.124Z",
+      "fetchedAt": "2026-09-16T19:05:00.677Z",
       "freeIds": [
         "cohere/north-mini-code:free",
         "dots-studio/dots-3-note-preview:free",
@@ -174,61 +175,63 @@
         "openrouter/free",
         "poolside/laguna-s-2.1:free",
         "poolside/laguna-xs-2.1:free",
+        "stealth/union-alpha",
         "thinkingmachines/inkling-small:free",
         "thinkingmachines/inkling:free",
         "z-ai/glm-5.2:free"
       ],
-      "freeCount": 23,
+      "freeCount": 24,
       "failCount": 0
     },
     "tokenrhythm-root": {
-      "fetchedAt": "2026-09-16T13:07:29.862Z",
+      "fetchedAt": "2026-09-16T19:05:00.278Z",
       "hash": "6852b90e697ef80eb584e30a951904cc5ad7da51ef21eb455b3a6e05211eed61",
       "textLen": 957,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T13:07:29.862Z"
     },
     "openrouter-docs": {
-      "fetchedAt": "2026-09-16T13:07:30.538Z",
+      "fetchedAt": "2026-09-16T19:05:00.952Z",
       "hash": "86df098e65fce9074eff99bd308268f2a158a20511e3d1a2ec4778edeccbcd9a",
       "textLen": 8831,
       "failCount": 0
     },
     "tokenharbor-pricing": {
-      "fetchedAt": "2026-09-16T13:07:30.557Z",
-      "hash": "6f656de8975663c589a65abbb529a99c4b4b660bdbbcfeed90f071cc7960eaf4",
-      "textLen": 3437,
+      "fetchedAt": "2026-09-16T19:05:01.877Z",
+      "hash": "b08c8d5e88c8e69248ac98ca29f23fc1a78f851f5a127fac7b506b8d53a658aa",
+      "textLen": 3399,
       "failCount": 0,
-      "lastChangedAt": "2026-09-15T13:06:43.796Z"
+      "lastChangedAt": "2026-09-16T19:05:01.877Z"
     },
     "opencode-zen": {
-      "fetchedAt": "2026-09-16T13:07:30.466Z",
-      "hash": "d0585dc9e8d5f5e88c38e61ca77181131ecefbbdc48e13415c0d78f4d3d4d549",
-      "textLen": 13164,
-      "failCount": 0
+      "fetchedAt": "2026-09-16T19:05:01.122Z",
+      "hash": "0eb316a3aff6313c25065e8cb2be4d7b0c97c0d7168ee8fd204cf4fccd65e080",
+      "textLen": 13352,
+      "failCount": 0,
+      "lastChangedAt": "2026-09-16T19:05:01.122Z"
     },
     "ollama-cloud": {
-      "fetchedAt": "2026-09-16T13:07:30.635Z",
-      "hash": "0957d068d6fcc3f73bd398a1e1457ca6256cc022855e0d35790c055d156dde83",
-      "textLen": 4166,
+      "fetchedAt": "2026-09-16T19:05:01.158Z",
+      "hash": "0d9f152305d2166da3e705e529f4f03a64ec4a7b0026974660baedcec9dae2f2",
+      "textLen": 4156,
       "failCount": 0,
-      "lastChangedAt": "2026-09-16T13:07:30.635Z"
+      "lastChangedAt": "2026-09-16T19:05:01.158Z"
     },
     "tokenrouter-models": {
-      "fetchedAt": "2026-09-16T13:07:30.419Z",
+      "fetchedAt": "2026-09-16T19:05:00.995Z",
       "hash": "45034142d3228585309002fb2fbd16c0be17863224679650b55ae5e821cac834",
       "textLen": 11720,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T13:07:30.419Z"
     },
     "agnes-flash-doc": {
-      "fetchedAt": "2026-09-16T13:07:31.421Z",
+      "fetchedAt": "2026-09-16T19:05:01.143Z",
       "hash": "7fe838c5a58d9269d54e2bebbdfd5c1eae320cb91769409aeac8bfa263b9ffa0",
       "textLen": 10213,
       "failCount": 0
     },
     "antling-quickstart": {
-      "fetchedAt": "2026-09-16T13:07:30.320Z",
+      "fetchedAt": "2026-09-16T19:05:01.094Z",
       "hash": "31f6c44478b03018456735e6aecc35d0ccd28405a0c76fafff860d8a8d31cbf0",
       "textLen": 2772,
       "failCount": 0
@@ -237,26 +240,6 @@
   "rss": {
     "v2ex-rss": {
       "seen": [
-        "tag:www.v2ex.com,2026-09-15:/t/1242100",
-        "tag:www.v2ex.com,2026-09-15:/t/1242099",
-        "tag:www.v2ex.com,2026-09-15:/t/1242098",
-        "tag:www.v2ex.com,2026-09-15:/t/1242097",
-        "tag:www.v2ex.com,2026-09-15:/t/1242096",
-        "tag:www.v2ex.com,2026-09-15:/t/1242095",
-        "tag:www.v2ex.com,2026-09-15:/t/1242094",
-        "tag:www.v2ex.com,2026-09-15:/t/1242093",
-        "tag:www.v2ex.com,2026-09-15:/t/1242092",
-        "tag:www.v2ex.com,2026-09-15:/t/1242091",
-        "tag:www.v2ex.com,2026-09-15:/t/1242090",
-        "tag:www.v2ex.com,2026-09-15:/t/1242087",
-        "tag:www.v2ex.com,2026-09-15:/t/1242086",
-        "tag:www.v2ex.com,2026-09-15:/t/1242085",
-        "tag:www.v2ex.com,2026-09-15:/t/1242084",
-        "tag:www.v2ex.com,2026-09-15:/t/1242083",
-        "tag:www.v2ex.com,2026-09-15:/t/1242082",
-        "tag:www.v2ex.com,2026-09-15:/t/1242081",
-        "tag:www.v2ex.com,2026-09-15:/t/1242080",
-        "tag:www.v2ex.com,2026-09-15:/t/1242079",
         "tag:www.v2ex.com,2026-09-15:/t/1242078",
         "tag:www.v2ex.com,2026-09-15:/t/1242077",
         "tag:www.v2ex.com,2026-09-15:/t/1242076",
@@ -530,72 +513,38 @@
         "tag:www.v2ex.com,2026-09-16:/t/1242473",
         "tag:www.v2ex.com,2026-09-16:/t/1242472",
         "tag:www.v2ex.com,2026-09-16:/t/1242471",
-        "tag:www.v2ex.com,2026-09-16:/t/1242470"
+        "tag:www.v2ex.com,2026-09-16:/t/1242470",
+        "tag:www.v2ex.com,2026-09-16:/t/1242555",
+        "tag:www.v2ex.com,2026-09-16:/t/1242554",
+        "tag:www.v2ex.com,2026-09-16:/t/1242553",
+        "tag:www.v2ex.com,2026-09-16:/t/1242552",
+        "tag:www.v2ex.com,2026-09-16:/t/1242551",
+        "tag:www.v2ex.com,2026-09-16:/t/1242549",
+        "tag:www.v2ex.com,2026-09-16:/t/1242548",
+        "tag:www.v2ex.com,2026-09-16:/t/1242546",
+        "tag:www.v2ex.com,2026-09-16:/t/1242545",
+        "tag:www.v2ex.com,2026-09-16:/t/1242543",
+        "tag:www.v2ex.com,2026-09-16:/t/1242542",
+        "tag:www.v2ex.com,2026-09-16:/t/1242541",
+        "tag:www.v2ex.com,2026-09-16:/t/1242540",
+        "tag:www.v2ex.com,2026-09-16:/t/1242539",
+        "tag:www.v2ex.com,2026-09-16:/t/1242538",
+        "tag:www.v2ex.com,2026-09-16:/t/1242537",
+        "tag:www.v2ex.com,2026-09-16:/t/1242536",
+        "tag:www.v2ex.com,2026-09-16:/t/1242535",
+        "tag:www.v2ex.com,2026-09-16:/t/1242534",
+        "tag:www.v2ex.com,2026-09-16:/t/1242533",
+        "tag:www.v2ex.com,2026-09-16:/t/1242532",
+        "tag:www.v2ex.com,2026-09-16:/t/1242531",
+        "tag:www.v2ex.com,2026-09-16:/t/1242530",
+        "tag:www.v2ex.com,2026-09-16:/t/1242529",
+        "tag:www.v2ex.com,2026-09-16:/t/1242528",
+        "tag:www.v2ex.com,2026-09-16:/t/1242527"
       ],
-      "lastFetchedAt": "2026-09-16T13:07:30.502Z"
+      "lastFetchedAt": "2026-09-16T19:05:01.447Z"
     },
     "hn-algolia": {
       "seen": [
-        "49711946",
-        "49711940",
-        "49711939",
-        "49711931",
-        "49711925",
-        "49711922",
-        "49711916",
-        "49711906",
-        "49711895",
-        "49711890",
-        "49711887",
-        "49711884",
-        "49711856",
-        "49711855",
-        "49711853",
-        "49711832",
-        "49711823",
-        "49711809",
-        "49711783",
-        "49711777",
-        "49711772",
-        "49711766",
-        "49711763",
-        "49711744",
-        "49711722",
-        "49711702",
-        "49711695",
-        "49711694",
-        "49711675",
-        "49711667",
-        "49711666",
-        "49711650",
-        "49711631",
-        "49711613",
-        "49711611",
-        "49711603",
-        "49711590",
-        "49711582",
-        "49711570",
-        "49711555",
-        "49711545",
-        "49711544",
-        "49711533",
-        "49711526",
-        "49711491",
-        "49711489",
-        "49711486",
-        "49711484",
-        "49711480",
-        "49711466",
-        "49711464",
-        "49711455",
-        "49711447",
-        "49711424",
-        "49711419",
-        "49711418",
-        "49711409",
-        "49711402",
-        "49711400",
-        "49711397",
         "49717230",
         "49717206",
         "49717178",
@@ -835,17 +784,77 @@
         "49725622",
         "49725610",
         "49725606",
-        "49725549"
+        "49725549",
+        "49731443",
+        "49731435",
+        "49731413",
+        "49731402",
+        "49731397",
+        "49731395",
+        "49731364",
+        "49731361",
+        "49731360",
+        "49731356",
+        "49731353",
+        "49731350",
+        "49731346",
+        "49731341",
+        "49731312",
+        "49731310",
+        "49731308",
+        "49731304",
+        "49731295",
+        "49731285",
+        "49731282",
+        "49731267",
+        "49731235",
+        "49731216",
+        "49731164",
+        "49731161",
+        "49731144",
+        "49731136",
+        "49731107",
+        "49731099",
+        "49731089",
+        "49731086",
+        "49731071",
+        "49731068",
+        "49731054",
+        "49731025",
+        "49730972",
+        "49730971",
+        "49730965",
+        "49730961",
+        "49730958",
+        "49730934",
+        "49730929",
+        "49730850",
+        "49730841",
+        "49730833",
+        "49730803",
+        "49730797",
+        "49730769",
+        "49730766",
+        "49730748",
+        "49730731",
+        "49730729",
+        "49730718",
+        "49730699",
+        "49730669",
+        "49730658",
+        "49730649",
+        "49730644",
+        "49730632"
       ],
-      "lastFetchedAt": "2026-09-16T13:07:30.807Z"
+      "lastFetchedAt": "2026-09-16T19:05:01.900Z"
     }
   },
-  "updatedAt": "2026-09-16T13:07:32.584Z",
+  "updatedAt": "2026-09-16T19:05:07.565Z",
   "lastRun": {
-    "at": "2026-09-16T13:07:32.584Z",
-    "checked": 35,
+    "at": "2026-09-16T19:05:07.565Z",
+    "checked": 34,
     "changed": 4,
-    "leads": 22,
+    "leads": 13,
     "failures": 0,
     "notified": true
   }
