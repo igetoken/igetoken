@@ -1515,5 +1515,57 @@
     "openai_compatible": true,
     "publishedAt": "2026-09-15",
     "last_verified": "2026-09-15"
+  },
+  {
+    "slug": "zenmux",
+    "name": "ZenMux",
+    "category": "aggregator",
+    "website": "https://zenmux.ai",
+    "register_url": "https://zenmux.ai",
+    "docs_url": "https://zenmux.ai/docs/about/intro.html",
+    "tagline": "聚合 192 个模型的官方渠道路由网关，常驻多个 $0 免费模型",
+    "highlight": "7 个模型输入输出双 $0（含 GLM 两个长期 free SKU）；注册仅需邮箱/GitHub，无需手机号与信用卡；国内可直连",
+    "tags": [
+      "聚合平台",
+      "免费模型",
+      "OpenAI兼容",
+      "国内直连"
+    ],
+    "offers": [
+      {
+        "model": "inclusionai/ling-3.0-flash-vl（124B MoE / 5.5B 激活，原生图像+文本+视频输入，262K 上下文，支持工具调用）",
+        "quota": "限时 $0（原价 $0.06 / $0.18 每百万 token 已划线，2026-09-15 上线）；截止时间官方未公布，以站内标价为准",
+        "type": "limited"
+      },
+      {
+        "model": "z-ai/glm-4.7-flash-free、z-ai/glm-4.6v-flash-free（200K 上下文，后者支持图像/视频/文件输入）",
+        "quota": "长期 $0 免费 SKU（模型 ID 自带 -free，已在架 8 个月以上）",
+        "type": "permanent"
+      },
+      {
+        "model": "inclusionai/ling-3.0-tiny、atria-asi/atria-dawn-preview、dots-studio/dots3-note-prev、sapiens-ai/agnes-2.5-flash",
+        "quota": "预览期 / 限时 $0；免费阵容会轮换（2026-06 指南里的 kimi-k2.7-code-free 等已下架），以官网实时标价为准",
+        "type": "limited"
+      }
+    ],
+    "steps": [
+      "打开 zenmux.ai 注册（仅需邮箱 / GitHub / Google，无需手机号与信用卡）",
+      "控制台创建 Pay As You Go API Key 并立即保存",
+      "在模型列表筛选标 $0 或模型 ID 带 -free 的免费模型",
+      "OpenAI 兼容接口，base_url 指向 https://zenmux.ai/api/v1；同一 Key 亦支持 Anthropic /v1/messages 与 Google Vertex 协议"
+    ],
+    "pitfalls": [
+      "🔴 免费模型是否需先充值存在口径冲突：官方 Pay As You Go 文档只写「预付余额、最低充值 $5」，通篇未提免费模型；而多篇社区实操均为「注册 → 建 PAYG Key → 直接调 free 模型，不用信用卡」。收录时点以社区口径为准，若实际报余额不足，需先充 $5 解锁（本站已标注待实测复核）",
+      "⚠️ 免费阵容会轮换：两个 -free SKU 已稳定在架 8 个月以上，但 2026-06 社区指南里的 kimi-k2.7-code-free / glm-5.2-free / step-3.7-flash-free 现已全部下架，随时以官网实时标价为准",
+      "7 个免费模型里有 3 个在站内已有官方直连入口（Atria / Dots / Agnes），无需绕道聚合器；Ling 系列官方直连见「蚂蚁灵 Ling API」（每日 50 万 Token 免费）",
+      "别把本条的 Ling-3.0-flash-VL 与蚂蚁灵官方混写：官方直连的 Ling-3.0-flash 限时免费已于 2026-08-03 结束，本次是聚合器对 VL 变体给出的 $0，模型与活动都不同",
+      "⚠️ 运营主体为新加坡 NexaMind Singapore Pte. Ltd.（2026-09-09 前为 AI Force Singapore Pte. Ltd.），海外主体，合规与数据管辖按新加坡法律；ToS 已明列上游为 Google / OpenAI / Anthropic / xAI / DeepSeek / Moonshot / Qwen / Z.AI / Ant Group 等官方渠道",
+      "免费模型多为 Preview 版或中等规模开源模型，速率与稳定性不作保证，重要任务留好备选"
+    ],
+    "api_base": "https://zenmux.ai/api/v1",
+    "example_model": "z-ai/glm-4.7-flash-free",
+    "openai_compatible": true,
+    "publishedAt": "2026-09-16",
+    "last_verified": "2026-09-16"
   }
 ]
