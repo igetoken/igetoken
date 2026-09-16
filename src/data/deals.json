@@ -1,5 +1,35 @@
 [
   {
+    "id": "2026-09-opencode-union-alpha-free",
+    "date": "2026-09-16",
+    "platform_slug": "opencode",
+    "platform_name": "OpenCode（Zen 网关）",
+    "title": "OpenCode 匿名模型 Union Alpha 限时免费：262K 上下文 / 图像输入 / 零数据保留（同步上架 Go）",
+    "type": "new_model",
+    "reward": "限时免费调用匿名模型 Union Alpha（模型 ID union-alpha）：输入、输出、缓存读取全部 $0；262,144 上下文（最大输出 131,072）、支持图像输入；同步上架 OpenCode Go —— Go 订阅用户经 Go 路由调用该模型，不计入 Go 的月度用量额度",
+    "eligibility": "注册 OpenCode 账号、创建 API Key 即可用，无需订阅 Go（Go 是 $10/月的付费订阅，仅为增值路径）；官方未公布确切截止日，据活动口径约持续 5 天，建议尽快体验",
+    "deadline": null,
+    "howto": [
+      "打开 opencode.ai/auth 注册账号并登录，创建并复制 API Key",
+      "在 OpenCode 里运行 /connect 选择 OpenCode Zen（Go 订阅用户选 OpenCode Go），粘贴 Key",
+      "在 /models 里选择 Union Alpha（模型 ID：union-alpha）",
+      "站外调用注意协议：Union Alpha 走 Anthropic 协议端点 https://opencode.ai/zen/v1/messages，多数其他免费模型走 OpenAI 兼容的 /zen/v1/chat/completions"
+    ],
+    "summary": "OpenCode 又一次以匿名（stealth）模型做灰度压测：Union Alpha 现于 Zen 网关限时免费 —— 输入/输出/缓存全 $0，262,144 上下文（最大输出 131,072）、支持图像输入，官方称其上游 provider 遵循零数据保留（ZDR）且不将数据用于训练。活动同时同步到 OpenCode Go：Go 订阅用户也能调用该模型，且不消耗 Go 的月度用量额度（Go 本身是 $10/月付费订阅，用免费模型无需它）。这种「匿名模型 + 零数据保留 + 大方放量」的玩法与 8 月的 Ox Alpha 一脉相承，但两者并非同一个模型 —— Ox Alpha 是 1M 上下文、最终揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份尚未公布。限时窗口官方只说 limited time（活动口径约 5 天），过期即下线，以 Zen 模型列表为准。",
+    "pitfalls": [
+      "匿名（stealth）模型：官方未公布开发方与权重，能力与归属都不可预设；虽官方称其上游 provider 零保留（ZDR）、不用于训练，但在身份与合规边界披露前，别上传未公开源码、生产凭据等敏感数据",
+      "「零数据保留」是 OpenCode 对其上游 provider 政策的转述；同链路下 OpenRouter 对同类 stealth 模型的描述是「保留但不用于训练」，两者并不等同 —— 有硬性合规要求时需自行核实全链路",
+      "勿与前代匿名模型 Ox Alpha 混写：Ox Alpha（2026-08-20 上线）是 1M 上下文、后揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份未知",
+      "多模态仅指图像输入（text+image → text），不含视频输入；最大输出 131,072 tokens",
+      "限时免费无确切截止日（官方仅称 limited time，活动口径约 5 天）；OpenCode 免费模型名单轮换很快，调用前先看 /zen/v1/models 实时列表",
+      "Go 的「不消耗额度」仅指经 Go 路由调用该模型时不计入 Go 月度限额；用免费模型并不需要订阅 Go"
+    ],
+    "source": "https://opencode.ai/docs/zen/",
+    "status": "active",
+    "pinHeadline": false,
+    "excludeHeadline": false
+  },
+  {
     "id": "2026-09-zhipu-weekend-build-v",
     "date": "2026-09-11",
     "platform_slug": "zhipu",
