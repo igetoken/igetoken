@@ -1573,5 +1573,66 @@
     "ratingNote": "编辑部实测：$0 免费模型需账户余额 > 0 才能调用（官方定性为反滥用措施、非使用收费），实际门槛是先充 $5，且官方 PAYG 文档未向用户明示；充值后 7 个免费模型可直连调用、GLM 两个 free SKU 长期稳定，扣分点是入场门槛与快速轮换的免费名单。",
     "publishedAt": "2026-09-16",
     "last_verified": "2026-09-16"
+  },
+  {
+    "slug": "qoder",
+    "name": "Qoder（阿里 AI 编程平台）",
+    "category": "aggregator",
+    "website": "https://qoder.com.cn",
+    "register_url": "https://qoder.com.cn",
+    "docs_url": "https://docs.qoder.com/zh/cli/model",
+    "tagline": "阿里 AI 编程平台，Qwen3.8-Flash 限时免费（9/18–9/30），官方提供 REST API 与 Agent SDK",
+    "highlight": "Qwen3.8-Flash 活动期调用不计费（计费系数 0.1× 降至 0.0×，至 9/30 23:59:59，多模态 / 工具调用 / 长文档）；叠加「每日登录领 100 通用 Credits」（30 天有效、可累积）；官方 PAT（pt- 前缀）+ REST API / Agent SDK 可站外程序化调用",
+    "tags": [
+      "限时免费",
+      "编程场景",
+      "官方API",
+      "国内直连"
+    ],
+    "offers": [
+      {
+        "model": "Qwen3.8-Flash（限时免费）",
+        "quota": "2026-09-18 10:00 – 09-30 23:59:59 期间计费系数由 0.1× 降至 0.0×，每次调用不消耗 Credits，套餐内额度可留给其他模型",
+        "type": "limited"
+      },
+      {
+        "model": "每日登录奖励（通用 Credits）",
+        "quota": "每天 10:00 开放新一轮，每轮可领 100 通用 Credits；每笔自领取起 30 天有效、可累积，暂无结束时间；可在 Qoder / IDE / JetBrains 插件 / CLI / QoderWake / Cloud Agents / 移动端及网页版使用",
+        "type": "daily"
+      }
+    ],
+    "steps": [
+      "打开 qoder.com.cn 注册并登录（免费账号、体验版、各级订阅与会员卡用户、Credits 余额为 0 的账号均可参与）",
+      "下载桌面端 Qoder，在模型选择器中选中 Qwen3.8-Flash，无需领取资格即可免费使用",
+      "顺带领每日福利：桌面端左下角用量面板 → 🎁 礼物图标，每天 10:00 开放新一轮",
+      "站外程序化调用：Settings → API Tokens 创建 PAT（pt- 前缀，勾选所需 scope），配合官方 Agent SDK（npm @qoder-ai/qoder-agent-sdk / pip qoder-agent-sdk）或 REST API（https://api.qoder.com.cn/api/v1/）接入"
+    ],
+    "pitfalls": [
+      "⚠️ 非 OpenAI 兼容：Qoder 的对外接口是自有 REST API（api.qoder.com.cn/api/v1/）与官方 Agent SDK，不能像 OpenAI 那样直接替换 base_url；社区第三方 provider 走的是逆向签名方式，不属官方支持路径，本站不推荐采用",
+      "⚠️ Qwen3.8-Flash 免费为限时活动（至 2026-09-30 23:59:59），结束后按届时公示系数计费，其他模型或档位仍按各自规则执行",
+      "⚠️ 每日 100 Credits 属 Add-on 资源包额度，限同一账号在 Qoder 系产品内使用，并非可随意分发的标准 API Token；每轮限领一次、错过不补",
+      "⚠️ 个人 PAT 可勾选的 scope 以控制台创建页实际展示为准（官方文档示例中的 models.read / chat.completions 出自企业 Service Account 场景），接入前先确认权限是否覆盖推理调用",
+      "⚠️ 「自定义模型（Custom）」是 Qoder 去接入第三方模型的反向能力，与本站收录的免费额度无关，勿混淆"
+    ],
+    "api_base": "https://api.qoder.com.cn/api/v1/",
+    "example_model": "qwen3.8-flash",
+    "openai_compatible": false,
+    "extra_endpoints": [
+      {
+        "name": "Cloud Agents API（PAT 鉴权）",
+        "url": "https://api.qoder.com.cn/api/v1/cloud/agents"
+      },
+      {
+        "name": "PAT → job token 换取（国际版）",
+        "url": "https://openapi.qoder.sh/api/v1/jobToken/exchange"
+      }
+    ],
+    "devAgent": {
+      "name": "Qoder CLI / Qoder Agent SDK",
+      "url": "https://docs.qoder.com/zh/cli/model",
+      "note": "Qoder 官方命令行与 Agent SDK，用 PAT（pt- 前缀）鉴权即可在站外程序化调用，与账号 Credits 同一计费体系；自定义模型功能仅用于接入第三方 API Key，反向不成立。"
+    },
+    "publishedAt": "2026-09-18",
+    "last_verified": "2026-09-18"
   }
 ]

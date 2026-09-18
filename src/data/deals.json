@@ -1,5 +1,34 @@
 [
   {
+    "id": "2026-09-qoder-qwen38-flash-free",
+    "date": "2026-09-18",
+    "platform_slug": "qoder",
+    "platform_name": "Qoder（阿里 AI 编程平台）",
+    "title": "Qoder 上线 Qwen3.8-Flash 限时免费：调用不扣 Credits（计费系数 0.1× → 0.0×，至 9/30）",
+    "type": "new_model",
+    "reward": "活动期间（2026-09-18 10:00 – 09-30 23:59:59）调用 Qwen3.8-Flash 的计费系数由 0.1× 降至 0.0×，每次调用不消耗 Credits，套餐内额度可留给其他模型；模型支持代码编写、长文档处理、图像理解与工具调用。同期叠加「每日登录领 100 通用 Credits」（每笔 30 天有效、可累积）",
+    "eligibility": "Qoder CN 与国际版的个人用户全覆盖 —— 免费账号、体验版、各级订阅与会员卡用户、Credits 余额为 0 的账号均可参与；无需领取免费资格，也无需先领每日 Credits，在模型选择器里选中 Qwen3.8-Flash 即可",
+    "deadline": "2026-09-30",
+    "howto": [
+      "打开 qoder.com.cn（国际版 qoder.com）注册并登录，下载桌面端 Qoder",
+      "在模型选择器中选中 Qwen3.8-Flash —— 无需其他操作，活动期内调用不扣 Credits",
+      "顺带领每日福利：桌面端左下角用量面板 → 🎁 礼物图标，每天 10:00 开放新一轮、每轮 100 通用 Credits（至次日 10:00 前可领）",
+      "站外程序化调用：Settings → API Tokens 创建 PAT（pt- 前缀），配合官方 Agent SDK（@qoder-ai/qoder-agent-sdk / qoder-agent-sdk）或 REST API（https://api.qoder.com.cn/api/v1/）接入"
+    ],
+    "summary": "阿里把 Qwen3.8-Flash 推到 Qoder 上做限时零折：9 月 18 日 10:00 起至 9 月 30 日 23:59:59，模型计费系数从 0.1× 直接降到 0.0×，每次调用都不扣 Credits —— 且按官方口径，套餐内额度与每日奖励可以省下来给别的模型用。门槛几乎为零：免费账号、体验版、付费订阅、会员卡用户乃至 Credits 余额为 0 的账号都能用，不需要领取资格，选中模型即生效；国际版与 Qoder CN 个人用户同步覆盖。同期还有一份可滚动的福利：每天登录领 100 通用 Credits，每笔 30 天有效、未用完可累积，且官方明确「暂时没有结束时间」。Qwen3.8-Flash 本体是千问系列的多模态模型，兼顾响应速度与成本，支持代码编写、长文档处理、图像理解与工具调用，适合日常开发与资料整理。与纯产品内额度不同的是，Qoder 提供官方 PAT（pt- 前缀）与 REST API / Agent SDK，可在站外程序化调用 —— 但接入方式为 Qoder 自有接口，并非 OpenAI 兼容端点。",
+    "pitfalls": [
+      "⚠️ 限时窗口明确：Qwen3.8-Flash 免费至 2026-09-30 23:59:59（北京时间），结束后按届时公示系数计费，别把它当长期免费额度",
+      "⚠️ 非 OpenAI 兼容：站外调用走 Qoder 自有 REST API（api.qoder.com.cn/api/v1/）与官方 Agent SDK，不能直接替换 base_url；社区第三方 provider 采用逆向签名对接，不属官方支持路径",
+      "⚠️ 每日 100 Credits 是 Add-on（资源包）额度，仅限同一账号在 Qoder 系产品内使用，不能当作可转赠的 API Token；每轮限领一次、错过不补",
+      "⚠️ 个人 PAT 可勾选的 scope 以 Settings → API Tokens 创建页实际展示为准（官方文档示例里的 models.read / chat.completions 出自企业 Service Account 场景），接入前先确认权限覆盖",
+      "⚠️ 该活动与「首月订购 Credits 翻倍」「新人 300 Credits + 邀请奖励」是并行的不同活动，权益口径不要混写"
+    ],
+    "source": "https://docs.qoder.com/zh/cli/model",
+    "status": "active",
+    "pinHeadline": true,
+    "excludeHeadline": false
+  },
+  {
     "id": "2026-09-opencode-union-alpha-free",
     "date": "2026-09-16",
     "platform_slug": "opencode",
@@ -26,7 +55,7 @@
     ],
     "source": "https://opencode.ai/docs/zen/",
     "status": "active",
-    "pinHeadline": true,
+    "pinHeadline": false,
     "excludeHeadline": false
   },
   {
