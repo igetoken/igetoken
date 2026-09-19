@@ -2,162 +2,162 @@
   "version": 1,
   "sources": {
     "zhipu-docs": {
-      "fetchedAt": "2026-09-18T19:05:42.716Z",
+      "fetchedAt": "2026-09-19T01:11:59.670Z",
       "hash": "f6b28bb66900141d0e92ee6857a55901b2c7fc965ad6e0d16dbeb83942733bf2",
       "textLen": 1609,
       "failCount": 0
     },
     "bailian-free-quota": {
-      "fetchedAt": "2026-09-18T19:05:42.853Z",
+      "fetchedAt": "2026-09-19T01:12:00.007Z",
       "hash": "17497fd9878b83d7b3b2c82e1855b90fac2762b7222a7ee0c71b55c80729186f",
       "textLen": 6186,
       "failCount": 0
     },
     "siliconflow-news": {
-      "fetchedAt": "2026-09-18T19:05:43.099Z",
+      "fetchedAt": "2026-09-19T01:12:00.167Z",
       "hash": "3c40242c02cd3963c7de46d696e4dbe3a0f96ca30f67767eb681a235a9e64d0b",
       "textLen": 1512,
       "failCount": 0,
       "lastChangedAt": "2026-09-17T07:07:36.608Z"
     },
     "hunyuan-pricing": {
-      "fetchedAt": "2026-09-18T19:05:43.196Z",
+      "fetchedAt": "2026-09-19T01:12:00.341Z",
       "hash": "b8d282b93affd1b4e6e1cd257cb9f02f99db48051960fd2b1e17e83c01c967b1",
       "textLen": 2383,
       "failCount": 0
     },
     "deepseek-pricing": {
-      "fetchedAt": "2026-09-18T19:05:43.242Z",
+      "fetchedAt": "2026-09-19T01:12:00.189Z",
       "hash": "d1be1a3829bf807dc6137151c15f0fadf7a4c624de794bce58ee032e6fc0f9e5",
       "textLen": 3388,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T19:05:43.242Z"
     },
     "moonshot-pricing": {
-      "fetchedAt": "2026-09-18T19:05:44.869Z",
+      "fetchedAt": "2026-09-19T01:12:01.443Z",
       "hash": "0861432055c2b1a6653e9fcb2eb1d9f72085876495a97be6213110f6674a5ca0",
       "textLen": 633,
       "failCount": 0,
       "lastChangedAt": "2026-09-15T07:08:17.243Z"
     },
     "siliconflow-notes": {
-      "fetchedAt": "2026-09-18T19:05:44.197Z",
+      "fetchedAt": "2026-09-19T01:12:01.056Z",
       "hash": "0871523b7e810fcecff47f13cde17fa0a4f56a08ba4af36db1ca2749db3118c1",
       "textLen": 32350,
       "failCount": 0
     },
     "qiniu-docs": {
-      "fetchedAt": "2026-09-18T19:05:44.952Z",
+      "fetchedAt": "2026-09-19T01:12:01.830Z",
       "hash": "474cd8e5be7164ba54f79622cdbe44ad9f19d87c0eca96eb92b4c117a1e5258e",
       "textLen": 9971,
       "failCount": 0
     },
     "xunfei-web-doc": {
-      "fetchedAt": "2026-09-18T19:05:45.496Z",
+      "fetchedAt": "2026-09-19T01:12:02.363Z",
       "hash": "cb2e65b6aaa990b4b449c3c16624654e772092b9cca2cfb1dbc286080c08463f",
       "textLen": 8056,
       "failCount": 0
     },
     "ctyun-tokenhub": {
-      "fetchedAt": "2026-09-18T19:05:47.002Z",
+      "fetchedAt": "2026-09-19T01:12:03.266Z",
       "hash": "3f0ed58fe8244f12d618a264dacbe5f111754474ca2c0c7bfed96cc56055bf5f",
       "textLen": 4470,
       "failCount": 0,
       "lastChangedAt": "2026-09-17T07:07:45.203Z"
     },
     "longcat-changelog": {
-      "fetchedAt": "2026-09-18T19:05:49.073Z",
+      "fetchedAt": "2026-09-19T01:12:05.203Z",
       "hash": "913420f8ff0a9fec38e56bda75b662ca093842eb8145995b2f957379f422a797",
       "textLen": 4451,
       "failCount": 0
     },
     "streamlake-wanqing": {
-      "fetchedAt": "2026-09-18T19:05:48.404Z",
+      "fetchedAt": "2026-09-19T01:12:04.756Z",
       "hash": "716a33fb87d349272da326446ab9a13d870129408df0c5549d439d9bd2fc639d",
       "textLen": 3246,
       "failCount": 0
     },
     "baidu-wenxin-doc": {
-      "fetchedAt": "2026-09-18T19:05:47.302Z",
+      "fetchedAt": "2026-09-19T01:12:04.668Z",
       "hash": "86fa0ce3bf6581837e5593c79d0050ca0c07efc06e44c519ed5d828ae21a7fbe",
       "textLen": 10750,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T07:06:43.537Z"
     },
     "gitee-moark-docs": {
-      "fetchedAt": "2026-09-18T19:05:48.098Z",
+      "fetchedAt": "2026-09-19T01:12:04.696Z",
       "hash": "11abc38dd234e6a2df349ba9f161c68dd34b023aaf6392bb3f5557e7f711dec0",
       "textLen": 1755,
       "failCount": 0,
       "lastChangedAt": "2026-09-17T13:06:45.399Z"
     },
     "cloudflare-pricing": {
-      "fetchedAt": "2026-09-18T19:05:48.860Z",
+      "fetchedAt": "2026-09-19T01:12:05.313Z",
       "hash": "efcf29d39f6946cec19cec37901be7734f14fc39a5c7ff091660281cd3af00c2",
       "textLen": 12017,
       "failCount": 0,
       "lastChangedAt": "2026-09-17T19:05:01.713Z"
     },
     "scnet-maas": {
-      "fetchedAt": "2026-09-18T19:05:49.134Z",
+      "fetchedAt": "2026-09-19T01:12:05.951Z",
       "hash": "8f6b1a9c21babab230ff619aeef218381ecaac6c854ffd96e1258fef8dcc904e",
       "textLen": 137,
       "failCount": 0
     },
     "mistral-pricing": {
-      "fetchedAt": "2026-09-18T19:05:49.098Z",
+      "fetchedAt": "2026-09-19T01:12:05.765Z",
       "hash": "4a4a08b4cecd463b8a15b48a83246fb0c8ae935b1e86c3e92f288771010e6781",
       "textLen": 7506,
       "failCount": 0
     },
     "cohere-rate-limits": {
-      "fetchedAt": "2026-09-18T19:05:49.139Z",
+      "fetchedAt": "2026-09-19T01:12:05.885Z",
       "hash": "14386729b5966a571fc9926e1c1800a8c582943ad3b4325fcff6b34aeecbdc53",
       "textLen": 6124,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T01:13:30.621Z"
     },
     "ai360-open": {
-      "fetchedAt": "2026-09-18T19:05:48.305Z",
+      "fetchedAt": "2026-09-19T01:12:06.202Z",
       "hash": "7ba85503ddd86b000f43b36b3c92bf8aeda2e8b6d105d9368e9ce39257e35905",
       "textLen": 5431,
       "failCount": 0
     },
     "gemini-pricing": {
-      "fetchedAt": "2026-09-18T19:05:49.354Z",
+      "fetchedAt": "2026-09-19T01:12:06.300Z",
       "hash": "ee495e68481f2b109845df4135680def5c7ec0b633454d64386c2227ee2d4aa9",
       "textLen": 54973,
       "failCount": 0,
       "lastChangedAt": "2026-09-17T01:14:03.194Z"
     },
     "groq-rate-limits": {
-      "fetchedAt": "2026-09-18T19:05:49.292Z",
+      "fetchedAt": "2026-09-19T01:12:06.156Z",
       "hash": "382a1c3ddc73140b91cbe32b248b103e28ae85745f67e1391e6052c28f42cfad",
       "textLen": 6073,
       "failCount": 0,
       "lastChangedAt": "2026-09-15T07:08:20.449Z"
     },
     "sambanova-rate": {
-      "fetchedAt": "2026-09-18T19:05:49.477Z",
+      "fetchedAt": "2026-09-19T01:12:06.008Z",
       "hash": "9d41e92d8f52caa24bdebec3bd933bb9ab8a426bbff06f0d0181c9ea5d6deecb",
       "textLen": 2995,
       "failCount": 0
     },
     "xai-docs": {
-      "fetchedAt": "2026-09-18T19:05:49.567Z",
+      "fetchedAt": "2026-09-19T01:12:06.221Z",
       "hash": "f129306cb9b61e0c046c3e3606164c21e1b11d076521a5045370c7f989593f3e",
       "textLen": 2687,
       "failCount": 0,
       "lastChangedAt": "2026-09-16T01:13:35.402Z"
     },
     "ppio-docs": {
-      "fetchedAt": "2026-09-18T19:05:50.141Z",
+      "fetchedAt": "2026-09-19T01:12:05.675Z",
       "hash": "8c15e094b2a79f838bcc29f4c6cef591200a647b34053b4b7a922b98db8d77c5",
       "textLen": 12644,
       "failCount": 0
     },
     "openrouter-free-models": {
-      "fetchedAt": "2026-09-18T19:05:49.524Z",
+      "fetchedAt": "2026-09-19T01:12:06.242Z",
       "freeIds": [
         "cohere/north-mini-code:free",
         "deepseek/deepseek-v4-flash-0731:free",
@@ -189,55 +189,55 @@
       "failCount": 0
     },
     "tokenrhythm-root": {
-      "fetchedAt": "2026-09-18T19:05:50.225Z",
+      "fetchedAt": "2026-09-19T01:12:05.968Z",
       "hash": "6852b90e697ef80eb584e30a951904cc5ad7da51ef21eb455b3a6e05211eed61",
       "textLen": 957,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T07:05:34.683Z"
     },
     "openrouter-docs": {
-      "fetchedAt": "2026-09-18T19:05:49.847Z",
+      "fetchedAt": "2026-09-19T01:12:06.434Z",
       "hash": "76712200a01d00c693d8fb5fba51b374ec9b9418397ab985e8efcb872dbd37a7",
       "textLen": 8836,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T01:13:31.364Z"
     },
     "tokenharbor-pricing": {
-      "fetchedAt": "2026-09-18T19:05:49.824Z",
+      "fetchedAt": "2026-09-19T01:12:06.594Z",
       "hash": "7f47af7f9374b2b8ddd49a2988034d2fe5ea0c0952fc01469b10145d277fd530",
       "textLen": 3442,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T19:05:49.824Z"
     },
     "opencode-zen": {
-      "fetchedAt": "2026-09-18T19:05:49.962Z",
+      "fetchedAt": "2026-09-19T01:12:06.448Z",
       "hash": "d91833710954bbf07471d7ff10531f42bef4471c194d8034062a2ac76d590197",
       "textLen": 13115,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T13:05:05.375Z"
     },
     "ollama-cloud": {
-      "fetchedAt": "2026-09-18T19:05:50.093Z",
-      "hash": "c181388940811992a63b1bc047b42634978a0ab5e8aae93c69c6acb8b28868e0",
-      "textLen": 4162,
+      "fetchedAt": "2026-09-19T01:12:06.734Z",
+      "hash": "bb287a3eca2fa297c726cb0dc134ab4631e0dee89809582357eb369c71f6a131",
+      "textLen": 4158,
       "failCount": 0,
-      "lastChangedAt": "2026-09-18T19:05:50.093Z"
+      "lastChangedAt": "2026-09-19T01:12:06.734Z"
     },
     "tokenrouter-models": {
-      "fetchedAt": "2026-09-18T19:05:49.970Z",
+      "fetchedAt": "2026-09-19T01:12:06.468Z",
       "hash": "5e8bbd1a66a93ba392ef77d66b4b390ff51621bb36fbfb934ecb4a9acfdc0630",
       "textLen": 11734,
       "failCount": 0,
       "lastChangedAt": "2026-09-18T13:05:05.333Z"
     },
     "agnes-flash-doc": {
-      "fetchedAt": "2026-09-18T19:05:50.423Z",
+      "fetchedAt": "2026-09-19T01:12:06.815Z",
       "hash": "7fe838c5a58d9269d54e2bebbdfd5c1eae320cb91769409aeac8bfa263b9ffa0",
       "textLen": 10213,
       "failCount": 0
     },
     "antling-quickstart": {
-      "fetchedAt": "2026-09-18T19:05:50.977Z",
+      "fetchedAt": "2026-09-19T01:12:08.039Z",
       "hash": "f604ce1983137b58bb045840ca81ba170316779e01a188935248ccdeeb43960e",
       "textLen": 2772,
       "failCount": 0,
@@ -247,11 +247,6 @@
   "rss": {
     "v2ex-rss": {
       "seen": [
-        "tag:www.v2ex.com,2026-09-16:/t/1242542",
-        "tag:www.v2ex.com,2026-09-16:/t/1242541",
-        "tag:www.v2ex.com,2026-09-16:/t/1242540",
-        "tag:www.v2ex.com,2026-09-16:/t/1242539",
-        "tag:www.v2ex.com,2026-09-16:/t/1242538",
         "tag:www.v2ex.com,2026-09-16:/t/1242537",
         "tag:www.v2ex.com,2026-09-16:/t/1242536",
         "tag:www.v2ex.com,2026-09-16:/t/1242535",
@@ -546,72 +541,17 @@
         "tag:www.v2ex.com,2026-09-18:/t/1243071",
         "tag:www.v2ex.com,2026-09-18:/t/1243070",
         "tag:www.v2ex.com,2026-09-18:/t/1243069",
-        "tag:www.v2ex.com,2026-09-18:/t/1243068"
+        "tag:www.v2ex.com,2026-09-18:/t/1243068",
+        "tag:www.v2ex.com,2026-09-19:/t/1243102",
+        "tag:www.v2ex.com,2026-09-19:/t/1243101",
+        "tag:www.v2ex.com,2026-09-18:/t/1243100",
+        "tag:www.v2ex.com,2026-09-18:/t/1243099",
+        "tag:www.v2ex.com,2026-09-18:/t/1243098"
       ],
-      "lastFetchedAt": "2026-09-18T19:05:50.063Z"
+      "lastFetchedAt": "2026-09-19T01:12:06.536Z"
     },
     "hn-algolia": {
       "seen": [
-        "49745096",
-        "49745073",
-        "49745058",
-        "49745053",
-        "49745050",
-        "49745049",
-        "49745045",
-        "49745022",
-        "49744986",
-        "49744954",
-        "49744931",
-        "49744904",
-        "49744901",
-        "49744891",
-        "49744886",
-        "49744875",
-        "49744855",
-        "49744846",
-        "49744812",
-        "49744792",
-        "49744761",
-        "49744757",
-        "49744755",
-        "49744748",
-        "49744740",
-        "49744733",
-        "49744720",
-        "49744715",
-        "49744704",
-        "49744691",
-        "49744685",
-        "49744682",
-        "49744674",
-        "49744672",
-        "49744634",
-        "49744612",
-        "49744606",
-        "49744592",
-        "49744570",
-        "49744569",
-        "49744567",
-        "49744549",
-        "49744530",
-        "49744527",
-        "49744514",
-        "49744497",
-        "49744490",
-        "49744486",
-        "49744483",
-        "49744432",
-        "49744424",
-        "49744416",
-        "49744398",
-        "49744393",
-        "49744383",
-        "49744382",
-        "49744381",
-        "49744380",
-        "49744376",
-        "49744367",
         "49749003",
         "49748997",
         "49748991",
@@ -851,17 +791,77 @@
         "49758082",
         "49758063",
         "49758031",
-        "49758028"
+        "49758028",
+        "49762324",
+        "49762282",
+        "49762225",
+        "49762202",
+        "49762200",
+        "49762173",
+        "49762163",
+        "49762147",
+        "49762143",
+        "49762099",
+        "49762076",
+        "49762049",
+        "49762040",
+        "49762038",
+        "49761983",
+        "49761981",
+        "49761967",
+        "49761956",
+        "49761917",
+        "49761893",
+        "49761889",
+        "49761885",
+        "49761880",
+        "49761866",
+        "49761861",
+        "49761840",
+        "49761830",
+        "49761802",
+        "49761795",
+        "49761793",
+        "49761790",
+        "49761779",
+        "49761751",
+        "49761730",
+        "49761725",
+        "49761720",
+        "49761719",
+        "49761700",
+        "49761699",
+        "49761694",
+        "49761686",
+        "49761655",
+        "49761654",
+        "49761606",
+        "49761592",
+        "49761590",
+        "49761584",
+        "49761578",
+        "49761549",
+        "49761529",
+        "49761528",
+        "49761511",
+        "49761509",
+        "49761478",
+        "49761464",
+        "49761461",
+        "49761445",
+        "49761440",
+        "49761439",
+        "49761434"
       ],
-      "lastFetchedAt": "2026-09-18T19:05:50.369Z"
+      "lastFetchedAt": "2026-09-19T01:12:06.822Z"
     }
   },
-  "updatedAt": "2026-09-18T19:05:51.927Z",
+  "updatedAt": "2026-09-19T01:12:09.577Z",
   "lastRun": {
-    "at": "2026-09-18T19:05:51.927Z",
+    "at": "2026-09-19T01:12:09.577Z",
     "checked": 35,
-    "changed": 3,
-    "leads": 14,
+    "changed": 1,
+    "leads": 5,
     "failures": 0,
     "notified": true
   }
