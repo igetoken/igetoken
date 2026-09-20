@@ -91,28 +91,29 @@
     "date": "2026-09-16",
     "platform_slug": "opencode",
     "platform_name": "OpenCode（Zen 网关）",
-    "title": "OpenCode 匿名模型 Union Alpha 限时免费：262K 上下文 / 图像输入 / 零数据保留（同步上架 Go）",
+    "title": "OpenCode 匿名模型 Union Alpha 限时免费（已结束，模型已下线）：262K 上下文 / 图像输入 / 零数据保留",
     "type": "new_model",
-    "reward": "限时免费调用匿名模型 Union Alpha（模型 ID union-alpha）：输入、输出、缓存读取全部 $0；262,144 上下文（最大输出 131,072）、支持图像输入；同步上架 OpenCode Go —— Go 订阅用户经 Go 路由调用该模型，不计入 Go 的月度用量额度",
+    "reward": "【已下线 · 2026-09-21 官方移除】限时免费调用匿名模型 Union Alpha（模型 ID union-alpha）：输入、输出、缓存读取全部 $0；262,144 上下文（最大输出 131,072）、支持图像输入；同步上架 OpenCode Go —— Go 订阅用户经 Go 路由调用该模型，不计入 Go 的月度用量额度",
     "eligibility": "注册 OpenCode 账号、创建 API Key 即可用，无需订阅 Go（Go 是 $10/月的付费订阅，仅为增值路径）；官方未公布确切截止日，据活动口径约持续 5 天，建议尽快体验",
     "deadline": null,
     "howto": [
       "打开 opencode.ai/auth 注册账号并登录，创建并复制 API Key",
       "在 OpenCode 里运行 /connect 选择 OpenCode Zen（Go 订阅用户选 OpenCode Go），粘贴 Key",
-      "在 /models 里选择 Union Alpha（模型 ID：union-alpha）",
+      "在 /models 里选择 Union Alpha（模型 ID：union-alpha）—— 注：该模型已下线，此步骤仅作历史留存",
       "站外调用注意协议：Union Alpha 走 Anthropic 协议端点 https://opencode.ai/zen/v1/messages，多数其他免费模型走 OpenAI 兼容的 /zen/v1/chat/completions"
     ],
-    "summary": "OpenCode 又一次以匿名（stealth）模型做灰度压测：Union Alpha 现于 Zen 网关限时免费 —— 输入/输出/缓存全 $0，262,144 上下文（最大输出 131,072）、支持图像输入，官方称其上游 provider 遵循零数据保留（ZDR）且不将数据用于训练。活动同时同步到 OpenCode Go：Go 订阅用户也能调用该模型，且不消耗 Go 的月度用量额度（Go 本身是 $10/月付费订阅，用免费模型无需它）。这种「匿名模型 + 零数据保留 + 大方放量」的玩法与 8 月的 Ox Alpha 一脉相承，但两者并非同一个模型 —— Ox Alpha 是 1M 上下文、最终揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份尚未公布。限时窗口官方只说 limited time（活动口径约 5 天），过期即下线，以 Zen 模型列表为准。",
+    "summary": "OpenCode 又一次以匿名（stealth）模型做灰度压测：Union Alpha 现于 Zen 网关限时免费 —— 输入/输出/缓存全 $0，262,144 上下文（最大输出 131,072）、支持图像输入，官方称其上游 provider 遵循零数据保留（ZDR）且不将数据用于训练。活动同时同步到 OpenCode Go：Go 订阅用户也能调用该模型，且不消耗 Go 的月度用量额度（Go 本身是 $10/月付费订阅，用免费模型无需它）。这种「匿名模型 + 零数据保留 + 大方放量」的玩法与 8 月的 Ox Alpha 一脉相承，但两者并非同一个模型 —— Ox Alpha 是 1M 上下文、最终揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份尚未公布。限时窗口官方只说 limited time（活动口径约 5 天），过期即下线，以 Zen 模型列表为准。 ⚠️ 该模型已于 2026-09-21 从免费档下线：官方 /zen/v1/models（Zen）与 Go 模型列表均已不再返回 union-alpha，本条仅作存档，请勿再按上述 ID 调用；其身份始终未公布。",
     "pitfalls": [
       "匿名（stealth）模型：官方未公布开发方与权重，能力与归属都不可预设；虽官方称其上游 provider 零保留（ZDR）、不用于训练，但在身份与合规边界披露前，别上传未公开源码、生产凭据等敏感数据",
       "「零数据保留」是 OpenCode 对其上游 provider 政策的转述；同链路下 OpenRouter 对同类 stealth 模型的描述是「保留但不用于训练」，两者并不等同 —— 有硬性合规要求时需自行核实全链路",
       "勿与前代匿名模型 Ox Alpha 混写：Ox Alpha（2026-08-20 上线）是 1M 上下文、后揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份未知",
       "多模态仅指图像输入（text+image → text），不含视频输入；最大输出 131,072 tokens",
       "限时免费无确切截止日（官方仅称 limited time，活动口径约 5 天）；OpenCode 免费模型名单轮换很快，调用前先看 /zen/v1/models 实时列表",
-      "Go 的「不消耗额度」仅指经 Go 路由调用该模型时不计入 Go 月度限额；用免费模型并不需要订阅 Go"
+      "Go 的「不消耗额度」仅指经 Go 路由调用该模型时不计入 Go 月度限额；用免费模型并不需要订阅 Go",
+      "该模型已于 2026-09-21 下线：官方 /zen/v1/models 与 Go 模型列表均已不再返回 union-alpha，本条仅作存档，请勿再按此 ID 调用"
     ],
     "source": "https://opencode.ai/docs/zen/",
-    "status": "active",
+    "status": "ended",
     "pinHeadline": false,
     "excludeHeadline": false
   },
@@ -418,9 +419,9 @@
     "date": "2026-09-03",
     "platform_slug": "zhipu",
     "platform_name": "智谱AI（BigModel）",
-    "title": "智谱 ZCode「Flash × ZCode」夜间畅蹬：每晚 23:00–09:00 GLM-5.3-Flash 额度消耗为 0",
+    "title": "智谱 ZCode「Flash × ZCode」夜间畅蹬（9/20 已结束）：每晚 23:00–09:00 GLM-5.3-Flash 额度消耗为 0",
     "type": "limited_time",
-    "reward": "GLM Coding Plan 夜间活动：每天 23:00 至次日 09:00 调用 GLM-5.3-Flash，在 ZCode 中使用额度消耗为 0（畅用）；在套餐支持的其他 Agent 中使用，可用额度 ×2",
+    "reward": "【已结束 · 2026-09-20】GLM Coding Plan 夜间活动：每天 23:00 至次日 09:00 调用 GLM-5.3-Flash，在 ZCode 中使用额度消耗为 0（畅用）；在套餐支持的其他 Agent 中使用，可用额度 ×2",
     "eligibility": "已订阅 GLM Coding Plan 的用户（ZCode 客户端内 / 套餐支持的其他 Agent）；进入时段自动生效，无需手动开启",
     "deadline": "2026-09-20（限时活动，以官方为准）",
     "howto": [
@@ -428,12 +429,12 @@
       "每天 23:00 后调用 GLM-5.3-Flash，额度消耗自动归 0（畅用）",
       "在套餐支持的其他 Agent 中使用，可用额度自动 ×2"
     ],
-    "summary": "智谱 ZCode 于 9/3 起开启「Flash × ZCode」夜间畅蹬活动，至 9/20。每晚 23:00–次日 09:00 调用 GLM-5.3-Flash：ZCode 客户端内额度消耗为 0（畅用），套餐支持的其他 Agent 中可用额度 ×2；进入时段自动生效，无需手动开启。注意：额度仅限 ZCode 编程客户端内 / Coding Plan 支持的 Agent 使用，不是开放平台 API Token；活动以客户端公告形式发布，无独立外链，source 溯源至智谱官网，以客户端公告为准。",
+    "summary": "智谱 ZCode 于 9/3 起开启「Flash × ZCode」夜间畅蹬活动，至 9/20。每晚 23:00–次日 09:00 调用 GLM-5.3-Flash：ZCode 客户端内额度消耗为 0（畅用），套餐支持的其他 Agent 中可用额度 ×2；进入时段自动生效，无需手动开启。注意：额度仅限 ZCode 编程客户端内 / Coding Plan 支持的 Agent 使用，不是开放平台 API Token；活动以客户端公告形式发布，无独立外链，source 溯源至智谱官网，以客户端公告为准。 活动已于 2026-09-20 结束（官方口径至 9/20，截至 2026-09-21 未见新一轮公告；下一轮以 ZCode 客户端公告为准）。",
     "pitfalls": [
       "该活动仅对仍保有有效套餐额度的 Coding Plan 订阅用户生效：若你的套餐额度已用尽，进入夜间时段 GLM-5.3-Flash 也不会免单，须先持有可用额度才能享受「额度消耗为 0」。它不是无门槛免费福利，请勿误判。"
     ],
     "source": "https://bigmodel.cn",
-    "status": "active",
+    "status": "ended",
     "pinHeadline": false
   },
   {
@@ -751,7 +752,7 @@
     "platform_name": "OpenCode（Zen 网关）",
     "title": "OpenCode Zen 多个编程模型限时免费，每日最高 100 万 Token",
     "type": "new_model",
-    "reward": "免费模型阵容按周轮换：当前为 MiMo-V2.5 Free、Nemotron 3 Ultra / 3.5 Lightning Free、Union Alpha（匿名，限时）等，每日 20 万~100 万 Token 限额",
+    "reward": "免费模型阵容按周轮换：当前为 MiMo-V2.5 Free、Nemotron 3 Ultra / 3.5 Lightning Free、Ling 3.0 Flash Fin Free 等，每日 20 万~100 万 Token 限额（名单随时调整，调用前以 /zen/v1/models 实时列表为准）",
     "eligibility": "注册 OpenCode 账号即可，无需订阅 Go 套餐",
     "deadline": null,
     "howto": [

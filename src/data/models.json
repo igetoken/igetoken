@@ -73,7 +73,7 @@
       "网页版聊天的额度与 API Token 是两套体系，别混淆",
       "智谱的缓存（Prompt Cache）收费较高，长上下文高频复用请注意控制上下文大小、避免无意义重复",
       "已订阅 GLM Coding Plan 的用户尽量在 ZCode 客户端内用：额度消耗按 0.67 系数折算（等效约 1.5 倍配额），在 Claude Code 等其它工具中按标准系数扣，同样订阅在 ZCode 里更耐用（折算规则与截止以官方公告为准）",
-      "「Flash × ZCode」夜间畅蹬（至 9/20）仅对**仍保有有效套餐额度**的 GLM Coding Plan 用户生效：若套餐额度已用尽，即便进入 23:00–09:00 时段 GLM-5.3-Flash 也不会免单，须先有可用额度才能享受「额度消耗为 0」。该活动非无门槛免费，请勿误以为无套餐也能白嫖"
+            "「Flash × ZCode」夜间畅蹬已于 2026-09-20 结束（官方口径至 9/20，未见新一轮公告）：该活动仅对**仍保有有效套餐额度**的 GLM Coding Plan 用户生效 —— 若套餐额度已用尽，即便进入 23:00–09:00 时段 GLM-5.3-Flash 也不会免单，须先有可用额度才能享受「额度消耗为 0」。它不是无门槛免费福利，下一轮以 ZCode 客户端公告为准"
     ],
     "api_base": "https://open.bigmodel.cn/api/paas/v4",
     "example_model": "glm-4-flash",
@@ -273,10 +273,10 @@
     "register_url": "https://opencode.ai/auth",
     "docs_url": "https://opencode.ai/docs/zh-cn/zen/",
     "tagline": "开源编程代理官方模型网关，多个编程模型限时免费",
-    "highlight": "Zen 免费模型限时开放（新上匿名模型 Union Alpha：262K 上下文 / 图像输入 / 零数据保留，同步上架 Go 且不占 Go 额度；另有 Meta Muse Spark 1.3 Contributor Free 等），专为编程场景优化",
+    "highlight": "Zen 免费模型限时开放，当前 7 款（jev-1.13-free、big-pickle、mimo-v2.5-free、ling-3.0-flash-fin-free 等），名单按周轮换，专为编程场景优化",
     "tags": ["免费层", "编程场景", "免费模型轮换"],
     "offers": [
-      { "model": "Union Alpha（匿名模型 union-alpha，限时免费）", "quota": "输入/输出/缓存全 $0；262,144 上下文（最大输出 131,072）、支持图像输入；同步上架 OpenCode Go，经 Go 调用不计入 Go 的月度用量额度", "type": "limited" },
+            { "model": "★ 当前免费阵容（7 款，限时轮换）", "quota": "jev-1.13-free / big-pickle / mimo-v2.5-free / ling-3.0-flash-fin-free / nemotron-3-ultra-free / nemotron-3.5-lightning-free / muse-spark-1.3-contributor-free：输入 / 输出 / 缓存全 $0，每日 20 万~100 万 Token 限额（视模型而定）；名单按周轮换，调用前先看 /zen/v1/models 实时列表", "type": "limited" },
       { "model": "Muse Spark 1.3 Contributor Free（Meta 新模型，限时免费）", "quota": "输入/输出/缓存全免费；以授权 Meta 用你的提示词与补全训练下一代模型为条件，限 Meta 地理政策允许地区", "type": "daily" },
       { "model": "其他限时免费模型（如 MiMo-V2.5 Free、Nemotron 3 Ultra / 3.5 Lightning Free）", "quota": "限时免费，每日 20 万~100 万 Token 限额（视模型而定）", "type": "daily" },
       { "model": "邀请奖励", "quota": "邀请好友订阅 Go 套餐，双方各得 $5 使用额度", "type": "referral" }
@@ -285,11 +285,11 @@
       "打开 opencode.ai/auth 注册账号并登录",
       "创建并复制 API Key",
       "在 OpenCode 里运行 /connect 选择 OpenCode，粘贴 Key",
-      "多数免费模型是 OpenAI 兼容接口（/zen/v1/chat/completions），Union Alpha 走 Anthropic 协议端点（/zen/v1/messages）；也可接入 Claude Code 等其他编码工具"
+            "多数免费模型是 OpenAI 兼容接口（/zen/v1/chat/completions）；接入 Claude Code 等使用 Anthropic 协议的工具时，改走 /zen/v1/messages 端点"
     ],
     "pitfalls": [
-      "Union Alpha / Big Pickle 为匿名（stealth）模型：官方未公布开发方与权重，能力与归属不可预设；虽官方称上游 provider 零保留（ZDR）、不用于训练，但在身份与合规边界披露前，别上传未公开源码、生产凭据等敏感数据",
-      "勿与前代匿名模型 Ox Alpha 混写：Ox Alpha（2026-08-20 上线）是 1M 上下文、后揭晓为智谱 GLM-5.3-Flash；Union Alpha 为 262K 上下文、身份未知",
+            "Big Pickle 等为匿名（stealth）模型：官方未公布开发方与权重，能力与归属不可预设；虽官方称上游 provider 零保留（ZDR）、不用于训练，但在身份与合规边界披露前，别上传未公开源码、生产凭据等敏感数据",
+            "匿名模型下线不留存：Union Alpha（2026-09-16 上线、262K 上下文）已于 2026-09-21 从免费档移除且身份始终未公布；前代 Ox Alpha（1M 上下文）则揭晓为智谱 GLM-5.3-Flash —— 别把两者混写，也别把任何 stealth 模型当作长期可用资源",
       "免费模型名单轮换很快，限时免费随时可能下线，以 Zen 模型列表为准",
       "Muse Spark 1.3 / 1.2 的 Contributor 档会拿你的提示词与补全训练 Meta 下一代模型，涉密代码别用；且仅限 Meta 地理政策允许地区（中国大陆等受限）",
       "免费层没有固定速率限制，配额随负载浮动，跑批量任务别依赖",
@@ -298,9 +298,9 @@
     ],
     "api_base": "https://opencode.ai/zen/v1/",
     "example_model": "mimo-v2.5-free",
-    "last_verified": "2026-09-16",
+        "last_verified": "2026-09-21",
     "rating": 4,
-    "ratingNote": "编辑部实测：开源编程代理的官方模型网关（Zen），免费档持续上 Muse Spark 1.3 等编程模型，可直接作 Claude Code 等编码工具的免费后端；扣分点是免费模型名单轮换快、Contributor Free 需贡献提示词/补全给 Meta 训练下一代模型、且限 Meta 地理政策允许地区（大陆等受限）——做主力编程源前需看清模型池。",
+        "ratingNote": "编辑部实测：开源编程代理的官方模型网关（Zen），免费档持续上 Muse Spark 1.3 等编程模型，可直接作 Claude Code 等编码工具的免费后端；扣分点是免费模型名单轮换极快（匿名模型 Union Alpha 上线约 5 天即下线）、Contributor Free 需贡献提示词/补全给 Meta 训练下一代模型、且限 Meta 地理政策允许地区（大陆等受限）——做主力编程源前需看清模型池。",
     "devAgent": {
       "name": "OpenCode（开源编程代理 CLI）",
       "url": "https://opencode.ai",

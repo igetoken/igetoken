@@ -117,7 +117,9 @@ for (const slug of targets) {
   }
 
   /** 判定该处引用是否为「刻意举例」——pitfalls 内的举例，或原文本身带下架语义 */
-  const GONE_RE = /已下架|已下线|下架|已消失|不再在架|已移除|曾|早期|轮换/;
+  // 注意：必须覆盖「已 X 已下线」这类被日期/词语隔开的写法（如「已于 2026-09-21 从免费档下线」），
+  // 所以单字词「下线 / 移除 / 归档」也要进表，否则会把已标注下线的文案误报成「疑似当前在架口径」。
+  const GONE_RE = /已下架|下架|已下线|下线|已消失|不再返回|不再在架|已移除|移除|已结束|已过期|曾|早期|轮换|归档|存档|已下线归档/;
 
   const isSoft = (path, text) => /\.pitfalls\[\d+\]$/.test(path) || GONE_RE.test(text);
 
@@ -129,7 +131,7 @@ for (const slug of targets) {
     let soft = true;
     v.sources.forEach((text, path) => {
       if (!isSoft(path, text)) soft = false;
-      console.log(`      ↳ ${path}${isSoft(path, text) ? '  ⓘ 原文含「已下架/轮换」语义的举例 → 属刻意引用，通常无需修改' : '  ⚠️ 疑似当前在架口径，需核对'}`);
+      console.log(`      ↳ ${path}${isSoft(path, text) ? '  ⓘ 原文含「已下架/下线/轮换」语义 → 属刻意引用，通常无需修改' : '  ⚠️ 疑似当前在架口径，需核对'}`);
     });
     if (!soft) hardCount += 1;
   });
