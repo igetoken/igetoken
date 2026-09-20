@@ -1634,5 +1634,68 @@
     },
     "publishedAt": "2026-09-18",
     "last_verified": "2026-09-18"
+  },
+  {
+    "slug": "stepfun",
+    "name": "阶跃星辰（StepFun）",
+    "category": "domestic",
+    "website": "https://platform.stepfun.com/",
+    "register_url": "https://platform.stepfun.com/",
+    "docs_url": "https://platform.stepfun.com/docs/zh/step-plan/overview",
+    "tagline": "Step Plan 订阅制套餐限时免费：登录得 15 天、首次调用再得 15 天，邀友最高累计 75 天；另有限免语音模型",
+    "highlight": "Step Plan 订阅后提供专用 Step API Key 与可自定义 Base URL，OpenAI / Anthropic 双协议，官方明示「不限制使用平台」（Claude Code / Cursor / Trae / OpenClaw 等）；免费体验档为 Flash Mini（官方价 ¥49/月），可调用 step-5-preview / step-3.7-flash 等全部旗舰模型；普通 API 通道另有 4 个 stepaudio-3 语音模型限时免费",
+    "tags": [
+      "限时免费",
+      "订阅制",
+      "官方API",
+      "国内直连"
+    ],
+    "offers": [
+      {
+        "model": "Step Plan 免费体验（体验档为 Flash Mini）",
+        "quota": "登录即得 15 天 + 完成首次调用再得 15 天 + 每邀请 1 位好友注册双方各再得 15 天（官方口径「累计最高 45 天，总福利可达 75 天」）；体验期内额度可调用全部旗舰模型；发放额度以控制台为准",
+        "type": "limited"
+      },
+      {
+        "model": "stepaudio-3 系列语音模型（限时免费）",
+        "quota": "stepaudio-3-realtime-preview（实时全双工语音）/ stepaudio-3-chat-preview（语音理解对话）/ stepaudio-3-gen-preview（综合音频生成）/ stepaudio-3-music-preview（音乐生成）在普通 API 通道「当前状态」列为限时免费，截止时间官方未公布",
+        "type": "limited"
+      },
+      {
+        "model": "step-3.7-flash（付费；体验期外按量计费）",
+        "quota": "输入 1.35 元 / 百万 tokens（缓存命中 0.27 元）、输出 8.1 元 / 百万；零充值账号基础限速为 10 并发 / 5 RPM / 500 万 TPM",
+        "type": "permanent"
+      }
+    ],
+    "steps": [
+      "打开 platform.stepfun.com 注册并登录（无需绑卡、无需付费即可领取体验）",
+      "在套餐列表领取免费体验：登录即得 15 天 Step Plan，完成一次模型调用后再得 15 天",
+      "控制台创建 API Key，按所用工具选择 Base URL：OpenAI 兼容 https://api.stepfun.com/step_plan/v1、Anthropic 兼容（Claude Code）https://api.stepfun.com/step_plan",
+      "推荐先用 step-3.7-flash 验证通路；Claude Code 只需改 ANTHROPIC_BASE_URL 与模型名，不用改业务代码",
+      "邀请好友注册可各自再得 15 天（官方口径累计最高 45 天）；普通 API 通道的 4 个限免语音模型走 https://api.stepfun.com/v1"
+    ],
+    "pitfalls": [
+      "⚠️ Step Plan 与按量付费 API 是两套独立体系：Base URL、额度互不相通 —— 官方原文「访问普通 API 地址会进入普通 API 通道……调用成功并不表示消耗了 Step Plan Credit」，混配会出现「以为在薅体验额度、实际在扣账户余额」",
+      "⚠️ 免费体验发放的 Credit 数字官方活动页未列明：第三方一致口径为「体验档 = Flash Mini（400M Credits，约合 ¥400 面值）」，实际发放以控制台为准；月池额度月末清零、不结转",
+      "⚠️ 第二个 15 天要「完成首次调用」才发放：只注册不调用只拿到 15 天，领取后建议立刻跑一次 step-3.7-flash",
+      "⚠️ 体验期到期后的续费与扣费规则官方未明示（FAQ 仅有「可随时取消订阅、已付费用不退还」）→ 领取后建议在控制台确认订阅与续费状态，避免到期自动扣费",
+      "⚠️ 免费 ≠ step-3.7-flash 免费：文本旗舰按量付费，免费的是 Step Plan 体验期内的额度消耗；普通 API 通道限时免费的只有 4 个 stepaudio-3 语音模型，别把两者混写成一条",
+      "⚠️ 活动为限时活动，官方活动页未标注截止时间（历史两轮曾分别标注过不同的截止日）→ 随时可能下线，建议尽快领取，具体规则以平台页面与控制台为准"
+    ],
+    "api_base": "https://api.stepfun.com/v1",
+    "example_model": "step-3.7-flash",
+    "openai_compatible": true,
+    "extra_endpoints": [
+      {
+        "name": "Step Plan（OpenAI 兼容，消耗套餐 Credit）",
+        "url": "https://api.stepfun.com/step_plan/v1"
+      },
+      {
+        "name": "Step Plan（Anthropic 兼容，Claude Code 用）",
+        "url": "https://api.stepfun.com/step_plan"
+      }
+    ],
+    "publishedAt": "2026-09-20",
+    "last_verified": "2026-09-20"
   }
 ]

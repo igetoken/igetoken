@@ -1,10 +1,39 @@
 [
   {
+    "id": "2026-09-step-step-plan-free-trial",
+    "date": "2026-09-20",
+    "platform_slug": "stepfun",
+    "platform_name": "阶跃星辰（StepFun）",
+    "title": "阶跃星辰 Step Plan 限时免费：登录即得 15 天，首次调用再得 15 天，邀友最高累计 75 天",
+    "type": "limited_time",
+    "reward": "Step Plan 免费体验：登录即得 15 天，完成首次调用再得 15 天，每邀请 1 位好友注册双方各再得 15 天（官方口径「累计最高 45 天，总福利可达 75 天」）；体验档为 Flash Mini，体验期内额度可调用 step-5-preview、step-3.7-flash、stepaudio-3 系列等全部旗舰模型",
+    "eligibility": "阶跃星辰开放平台注册用户（登录即可领取，无需绑卡、无需付费，新老账号均可参与）；体验档默认为 Flash Mini，发放额度以控制台为准",
+    "deadline": "官方活动页未标注截止时间（限时活动，随时可能下线）；建议尽快领取，具体以平台页面与控制台为准",
+    "howto": [
+      "打开 platform.stepfun.com 注册并登录，在套餐列表点领取免费体验（登录即得 15 天）",
+      "立刻跑一次模型调用（推荐 step-3.7-flash）触发第二个 15 天 —— 只注册不调用拿不到",
+      "控制台创建 API Key：OpenAI 兼容填 https://api.stepfun.com/step_plan/v1；Claude Code 填 https://api.stepfun.com/step_plan",
+      "邀请好友注册，双方各再得 15 天，官方口径累计最高 45 天、总福利可达 75 天"
+    ],
+    "summary": "阶跃星辰把主力订阅产品 Step Plan 拿来做限时免费体验：登录即得 15 天，完成首次调用再得 15 天，每邀 1 位好友注册双方各再得 15 天，官方口径「累计最高 45 天，总福利可达 75 天」。免费的是 Flash Mini 档体验额度，但能调用全部旗舰模型 —— step-5-preview、step-3.7-flash 与 stepaudio-3 语音系列都在内。真正的价值在于出向：Step Plan 发专用 Step API Key，且允许自定义 Base URL，官方明示「不限制使用平台」，Claude Code / Cursor / Trae / OpenClaw / Cline 都能直接接，一个订阅覆盖整条编码与 Agent 工具链。要注意三件事：一是免费体验发放的 Credit 数字官方活动页没写（第三方口径为 Flash Mini 的 400M Credits，约合 ¥400 面值），以控制台实际发放为准；二是 Step Plan 与按量付费 API 完全独立，Base URL 走错不会消耗体验额度、而是扣账户余额；三是活动没有公开截止日期，属随时可能下线的限时活动，建议尽快领取。",
+    "pitfalls": [
+      "Step Plan 与按量付费 API 是两套独立体系：Base URL 与额度互不相通，官方原文「访问普通 API 地址会进入普通 API 通道……调用成功并不表示消耗了 Step Plan Credit」→ 混配会出现「以为在花体验额度、实际在扣账户余额」",
+      "第二个 15 天需要「完成首次调用」才发放，只注册不调用只拿到 15 天；领取后建议立刻跑一次调用",
+      "免费体验发放的 Credit 额度官方活动页未列明，第三方口径为 Flash Mini 档的 400M Credits（约合 ¥400 面值）→ 以控制台实际发放为准；月池额度月末清零、不结转",
+      "免费的是 Step Plan 体验期内的额度消耗，不代表 step-3.7-flash 等文本模型本身免费；普通 API 通道限时免费的只有 stepaudio-3 系列的 4 个语音模型",
+      "体验期到期后的续费与扣费规则官方未明示（FAQ 仅写「可随时取消、已付费用不退还」）→ 建议领取后在控制台确认订阅与续费状态，避免到期自动扣费",
+      "活动为限时活动，官方活动页未标注截止时间（此前两轮曾分别标注过不同的截止日）→ 随时可能下线，规则以平台页面为准"
+    ],
+    "source": "https://platform.stepfun.com/step-plan",
+    "status": "active",
+    "pinHeadline": true
+  },
+  {
     "id": "2026-09-zhipu-weekend-build-vi",
     "date": "2026-09-18",
     "platform_slug": "zhipu",
     "platform_name": "智谱AI（BigModel）",
-    "title": "智谱 ZCode WEEKEND BUILD VI：3 亿 GLM-5.3-Flash Token 现在就能领（今晚 23:00 生效，9/20 09:00 到期）",
+    "title": "智谱 ZCode WEEKEND BUILD VI：3 亿 GLM-5.3-Flash Token（第六轮，9/20 09:00 已到期清零，已结束）",
     "type": "limited_time",
     "reward": "每人 3 亿 GLM-5.3-Flash Tokens（第六轮；ZCode 客户端左下角活动卡片现在即可领取，北京时间 2026-09-18 23:00 生效，有效期至 09-20 上午 09:00，到点清零不累积）",
     "eligibility": "所有登录 ZCode 客户端的用户（新老用户均可，无需绑卡、无需订阅 Coding Plan）；打开客户端看到左下角卡片即可点击领取，额度到点自动生效",
@@ -25,8 +54,8 @@
       "额度对应 GLM-5.3-Flash，生效后请在「模型设置」里确认模型选择正确；若选成其他模型，扣的是另一份额度；客户端需 3.10 及以上版本"
     ],
     "source": "https://zcode.z.ai/",
-    "status": "active",
-    "pinHeadline": true
+    "status": "ended",
+    "pinHeadline": false
   },
   {
     "id": "2026-09-qoder-qwen38-flash-free",
