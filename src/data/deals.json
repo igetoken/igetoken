@@ -1,5 +1,34 @@
 [
   {
+    "id": "2026-09-opencode-mimo-v26-free",
+    "date": "2026-09-22",
+    "platform_slug": "opencode",
+    "platform_name": "OpenCode（Zen 网关）",
+    "title": "OpenCode x 小米 MiMo-V2.6 Flash 限时免费开放，Pro 同步上线 Go 订阅",
+    "type": "new_model",
+    "reward": "小米 9/22 发布并开源的 MiMo-V2.6 Flash（309B 总参 / 15B 激活，Sparse MoE，1M 上下文，原生文本 / 图像 / 视频 / 音频输入）已进入 OpenCode Zen 免费档，限时输入 / 输出 / 缓存读写全免（模型 ID：mimo-v2.6-flash-free）；同系列 Flash 与 Pro 同步上线 OpenCode Go 订阅（$10/月，月额度 Flash $60 / Pro $15）",
+    "eligibility": "注册 OpenCode 账号即可使用免费档，无需订阅 Go 套餐；Go 订阅（$10/月）为可选付费项，用于换取稳定低延迟访问，用免费模型不需要它",
+    "deadline": "官方未标注截止时间（官方口径为限时开放、用于收集反馈与改进模型），随时可能下线；建议尽快领取，以 Zen 模型列表实时为准",
+    "howto": [
+      "打开 opencode.ai/auth 注册账号并登录",
+      "创建并复制 API Key，在 OpenCode 里 /connect 选择 OpenCode Zen",
+      "在 /models 里选 MiMo-V2.6-Flash Free（模型 ID：mimo-v2.6-flash-free，端点 https://opencode.ai/zen/v1/chat/completions）",
+      "已订阅 Go 的用户走 /zen/go/v1 端点，模型 ID 带 opencode-go/ 前缀（如 opencode-go/mimo-v2.6-pro）"
+    ],
+    "summary": "小米于 2026-09-22 发布并开源 MiMo-V2.6 系列（Pro / Flash 双原生全模态模型，Sparse MoE 架构、1M 上下文，MIT 许可完全开源；Pro 为 1.02T 总参 / 42B 激活，Flash 为 309B 总参 / 15B 激活，后者在 Artificial Analysis 综合智能指数拿到 46 分，官方称已超过 Kimi K3 与 Qwen3.8 Max、为当前最强开源模型）。OpenCode 同步接住：Zen 免费档新增 MiMo-V2.6-Flash Free，输入 / 输出 / 缓存读写全部 $0，模型 ID 为 mimo-v2.6-flash-free。官方明说这是限时开放、用来收集反馈与改进模型，所以随时可能下线，别当长期主力。同系列 MiMo-V2.6 Flash 与 Pro 也上线了 OpenCode Go 订阅（$10/月），但那属于付费额度而非免费：Flash 月额度 $60（每 5 小时约 3 万次请求），Pro 因官方尚未谈下折扣、月额度只有 $15。三个注意点：一是免费档数据条款 —— Zen 隐私章节把 MiMo-V2.6-Flash Free 与 Big Pickle、MiMo-V2.5 Free、Ling 3.0 Flash Fin Free 同列为免费期数据可能用于改进模型，涉密代码别用；二是模型权重已按 MIT 开源、可自行部署，OpenCode 提供的是托管调用；三是小米官方 API 定价（Flash 输入 ¥1 / 输出 ¥2 每百万 tokens，Pro ¥3 / ¥6，含 99% 缓存折扣）与 OpenCode 侧费率不同，比价以各自官方为准。",
+    "pitfalls": [
+      "免费档的 MiMo-V2.6-Flash Free 属「免费期数据可能用于改进模型」一档（与 Big Pickle、MiMo-V2.5 Free、Ling 3.0 Flash Fin Free 同列，官方 Zen 隐私章节明示）→ 未公开源码、生产凭据、涉密代码别走这一档",
+      "官方口径是限时开放、用于收集反馈与改进模型，没有公开截止日 → 随时可能下线，别当长期稳定源；调用前先看 /zen/v1/models 实时列表",
+      "Go 订阅里的 MiMo-V2.6 Flash / Pro 是付费额度（需 $10/月订阅费），不是免费：Flash 月额度 $60、Pro 仅 $15（官方解释 Pro 属较新、尚未谈下折扣的模型）→ 别把「上线 Go」误读成「免费开放」",
+      "小米官方 API 与 OpenCode 侧费率不同（官方 Flash 输入 ¥1 / 输出 ¥2 每百万 tokens、Pro ¥3 / ¥6，含 99% 缓存折扣；OpenCode Go 侧 Flash $0.14 / $0.28、Pro $0.435 / $0.87）→ 比价时各自以官方为准",
+      "MiMo-V2.6 权重已按 MIT 许可开源、可自行部署，OpenCode 提供的是托管调用 → 别把「开源权重」当成「免费 API 额度」的同义说法",
+      "小米同日还上线了 MiMo Desktop 桌面客户端与会员订阅（Pro 支持 UltraSpeed 超高速模式），那属产品内使用、不发放可导出 API Key，与本文讨论的 OpenCode 通道是两回事"
+    ],
+    "source": "https://opencode.ai/docs/zh-cn/zen/",
+    "status": "active",
+    "pinHeadline": true
+  },
+  {
     "id": "2026-09-step-step-plan-free-trial",
     "date": "2026-09-20",
     "platform_slug": "stepfun",
@@ -26,7 +55,7 @@
     ],
     "source": "https://platform.stepfun.com/step-plan",
     "status": "active",
-    "pinHeadline": true
+    "pinHeadline": false
   },
   {
     "id": "2026-09-zhipu-weekend-build-vi",
