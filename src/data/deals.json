@@ -1,5 +1,36 @@
 [
   {
+    "id": "2026-09-xiaomi-mimo-platform-launch",
+    "date": "2026-09-22",
+    "platform_slug": "xiaomi-mimo",
+    "platform_name": "小米 MiMo 开放平台",
+    "title": "小米 MiMo 开放平台上线：新客赠 API 体验金、邀请有礼双方各得 ¥10，MiMo-V2.6 系列 MIT 全开源",
+    "type": "signup_bonus",
+    "reward": "新客注册赠 API 体验金（金额以控制台实际发放为准，40 天有效）；邀请有礼：好友注册后 3 天内绑定邀请码，双方各得 ¥10 API 体验金，好友首单 9 折、邀请人另得实付金额 10% 返现；另有三款 mimo-v2.5-tts 语音合成模型限时免费",
+    "eligibility": "小米账号即可注册（大陆手机号或三方授权登录），领取赠金不强制实名认证；充值与购买 Token Plan 套餐需完成实名认证；邀请奖励的 ¥10 仅限注册地区为中国大陆的账号",
+    "deadline": "官方未标注活动截止时间；赠金自到账起 40 天内有效、先到期先扣。邀请奖励需好友在注册后 3 天内完成绑定，逾期不可补",
+    "howto": [
+      "用小米账号登录 platform.xiaomimimo.com，进入控制台 API Keys 页创建按量付费 Key（格式 sk-xxxxx）",
+      "OpenAI 兼容填 Base URL https://api.xiaomimimo.com/v1；Claude Code / Cursor 等 Anthropic 兼容工具填 https://api.xiaomimimo.com/anthropic",
+      "模型名用 mimo-v2.6-flash（单价更低）或 mimo-v2.6-pro（Agent / 编码更强），先用 Flash 验证通路",
+      "有邀请码的话务必在注册后 3 天内完成绑定，绑定成功后双方各得 ¥10 体验金，超时无法补绑",
+      "赠金 40 天内有效、仅可抵扣按量计费调用，可在控制台用量页查看余额与消耗明细"
+    ],
+    "summary": "小米于 2026-09-22 发布并开源 MiMo-V2.6 系列（Pro / Flash 双原生全模态模型，1M 上下文，权重按 MIT 许可完全开源，技术报告与训练代码同步公开），同日上线 Xiaomi MiMo API 开放平台。这是小米官方的模型服务平台，不是套壳：官方 API Key（sk- 前缀）、可按量付费，且同时兼容 OpenAI 与 Anthropic 两套协议 —— OpenAI 兼容端点为 api.xiaomimimo.com/v1，Anthropic 兼容端点为 api.xiaomimimo.com/anthropic，Claude Code / Cursor 等工具只需改 Base URL 与模型名即可接入。免费侧有三条线：一是新客注册赠 API 体验金（金额官方未公示固定值，以控制台为准）；二是邀请有礼 —— 好友注册后 3 天内绑定邀请码，双方各得 ¥10 API 体验金，好友首单 9 折、邀请人再得实付 10% 返现；三是 mimo-v2.5-tts 系列三款语音合成模型限时免费。赠金统一 40 天有效、先到期先扣，且只能抵扣按量计费。三件要注意的事：一是 Token Plan 订阅额度仅限编程工具场景，官方明文禁止「用于自动化脚本、自定义应用程序后端等明显非 Coding 场景」，违规可暂停服务，想跑应用后端请走按量付费；二是 Token Plan 与按量付费是两套独立额度体系，Base URL 不同、互不相通；三是 mimo-v2.5-pro / mimo-v2.5 两款旧模型将于 2026-10-21 10:00 下线，新接入请直接用 v2.6 系列。",
+    "pitfalls": [
+      "赠金 40 天有效、先到期先扣，且只能抵扣按量计费 —— 不能买 Token Plan、不可提现转让；邀请奖励的 ¥10 仅限注册地区为中国大陆的账号，非大陆账号拿不到",
+      "邀请奖励有绑定时限：被邀请人须在注册后 3 天内完成绑定，超时无法补绑 → 分享邀请链接时记得提醒好友及时操作",
+      "Token Plan 订阅额度仅限编程工具场景：官方明文禁止「以 API 调用的形式用于自动化脚本、自定义应用程序后端等明显非 Coding 场景」，违规可暂停服务、封禁 Key",
+      "Token Plan（tp- / ttp- Key）与按量付费（sk- Key）是两套独立体系，Base URL 与额度互不相通（token-plan-cn.xiaomimimo.com vs api.xiaomimimo.com）→ 误配会出现「以为在花套餐额度、实际在扣账户余额」",
+      "mimo-v2.5-pro / mimo-v2.5 将于 2026-10-21 10:00 官方下线，原模型名失效 → 新接入请直接用 mimo-v2.6 系列",
+      "模型权重开源 ≠ API 免费：权重虽以 MIT 许可开放、可自行部署，平台 API 仍一律按量计费（除缓存写入与 TTS 限免）→ 别把「开源权重」当成「免费额度」",
+      "跑分宣传需自行过滤：官方口径是「在多数 Agent 基准上与 Claude Opus 5 / GPT-5.6 Sol 持平」，Artificial Analysis 智能指数 46 分为开源权重第一，但最难的终端任务与竞赛编程仍明显落后闭源旗舰 → 按自身任务实测选型"
+    ],
+    "source": "https://platform.xiaomimimo.com/",
+    "status": "active",
+    "pinHeadline": false
+  },
+  {
     "id": "2026-09-opencode-mimo-v26-free",
     "date": "2026-09-22",
     "platform_slug": "opencode",
